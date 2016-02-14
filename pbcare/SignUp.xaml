@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="pbcare.SignUp"
+			 Title="مستخدم جديد">
+	<ContentPage.Content>
+	<StackLayout VerticalOptions="Center">
+			<Label Text="اسم المستخدم" HorizontalOptions="Center"/>
+			<Entry x:Name="usernameEntry" Placeholder="أسماء" />
+
+			<Label Text="الإيميل" HorizontalOptions="Center"/>
+			<Entry x:Name="emailEntry" Placeholder="email@abc.com" />
+
+			<Label Text="كلمة المرور" HorizontalOptions="Center"/>
+			<Entry x:Name="passwordEntry" Placeholder="كلمة المرور" />
+
+			<Label Text="تأكيد كلمة المرور" HorizontalOptions="Center"/>
+			<Entry x:Name="passwordConfirmEntry" Placeholder="تأكيد كلمة المرور" />
+
+			<Button Text="تسجيل" Clicked="OnSignUpButtonClicked" />
+
+			<Label x:Name="messageSignUp" HorizontalOptions="Center"/>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
