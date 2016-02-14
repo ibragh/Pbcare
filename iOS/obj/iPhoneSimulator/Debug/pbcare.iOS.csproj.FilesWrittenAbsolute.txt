@@ -1,0 +1,14 @@
+/Users/ibrahim/Projects/pbacre/iOS/obj/iPhoneSimulator/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/ibrahim/Projects/pbacre/iOS/obj/iPhoneSimulator/Debug/ibtool/LaunchScreen.nib
+/Users/ibrahim/Projects/pbacre/iOS/obj/iPhoneSimulator/Debug/actool/partial-info.plist
+/Users/ibrahim/Projects/pbacre/iOS/obj/iPhoneSimulator/Debug/actool/asset-manifest.plist
+/Users/ibrahim/Projects/pbacre/iOS/obj/iPhoneSimulator/Debug/optimized/
+/Users/ibrahim/Projects/pbacre/iOS/bin/iPhoneSimulator/Debug/pbcare.iOS.exe.mdb
+/Users/ibrahim/Projects/pbacre/iOS/bin/iPhoneSimulator/Debug/pbcare.iOS.exe
+/Users/ibrahim/Projects/pbacre/iOS/obj/iPhoneSimulator/Debug/pbcare.iOS.exe
+/Users/ibrahim/Projects/pbacre/iOS/obj/iPhoneSimulator/Debug/pbcare.iOS.exe.mdb
+/Users/ibrahim/Projects/pbacre/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Platform.iOS.dll
+/Users/ibrahim/Projects/pbacre/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Core.dll
+/Users/ibrahim/Projects/pbacre/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Xaml.dll
+/Users/ibrahim/Projects/pbacre/iOS/bin/iPhoneSimulator/Debug/pbcare.dll
+/Users/ibrahim/Projects/pbacre/iOS/bin/iPhoneSimulator/Debug/pbcare.dll.mdb
