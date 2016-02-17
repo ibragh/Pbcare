@@ -15,15 +15,16 @@ namespace pbcare
 			Navigation.PushAsync(new AddPregnancy ());
 		}
 		public void followPregnancy(object sender, EventArgs e){
-            var page = new CarouselPage();
-            page.Title = "أسابيع الحمل";
+			
+//			var page = new CarouselPage();
+//			page.Title = " whatever";
+//			var p1 = new page1 ();
+//			var p2 = new page2 ();
+//			page.Children.Add (p1);
+//			page.Children.Add (p2);
+//			Navigation.PushAsync (page);
+		}
 
-            page.Children.Add(new page1());
-            page.Children.Add(new page2());
-            page.Children.Add(new page3());
-            page.Children.Add(new page4());
-          
-        }
 	}
 }
 
