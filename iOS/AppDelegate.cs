@@ -14,7 +14,7 @@ namespace pbcare.iOS
 		{
 			global::Xamarin.Forms.Forms.Init ();
 
-			LoadApplication (new pbcare ());
+			LoadApplication (new pbcareApp ());
 
 			return base.FinishedLaunching (app, options);
 		}

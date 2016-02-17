@@ -1,25 +1,26 @@
-﻿<Properties StartupItem="iOS/pbcare.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.2" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare/FollowPregnancy.xaml">
+﻿<Properties StartupItem="iOS\pbcare.iOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\PregnancyPage.xaml">
     <Files>
-      <File FileName="pbcare/pbcare.cs" Line="1" Column="1" />
-      <File FileName="pbcare/LoginPage.xaml" Line="1" Column="1" />
-      <File FileName="pbcare/LoginPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="pbcare/SignUp.xaml" Line="1" Column="1" />
-      <File FileName="pbcare/SignUp.xaml.cs" Line="1" Column="1" />
-      <File FileName="pbcare/User.cs" Line="1" Column="1" />
-      <File FileName="pbcare/MyPage.xaml" Line="10" Column="26" />
-      <File FileName="pbcare/MyPage.xaml.cs" Line="14" Column="3" />
-      <File FileName="pbcare/AddPregnancy.xaml" Line="21" Column="24" />
-      <File FileName="pbcare/AddPregnancy.xaml.cs" Line="3" Column="21" />
-      <File FileName="pbcare/PregnancyPage.xaml" Line="7" Column="102" />
-      <File FileName="pbcare/PregnancyPage.xaml.cs" Line="16" Column="4" />
-      <File FileName="pbcare/FollowPregnancy.xaml" Line="1" Column="31" />
-      <File FileName="pbcare/FollowPregnancy.xaml.cs" Line="8" Column="53" />
+      <File FileName="pbcare\pbcare.cs" Line="1" Column="1" />
+      <File FileName="pbcare\LoginPage.xaml" Line="1" Column="1" />
+      <File FileName="pbcare\LoginPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="pbcare\SignUp.xaml" Line="1" Column="1" />
+      <File FileName="pbcare\SignUp.xaml.cs" Line="1" Column="1" />
+      <File FileName="pbcare\User.cs" Line="1" Column="1" />
+      <File FileName="pbcare\MyPage.xaml" Line="1" Column="1" />
+      <File FileName="pbcare\MyPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="pbcare\AddPregnancy.xaml" Line="1" Column="1" />
+      <File FileName="pbcare\AddPregnancy.xaml.cs" Line="1" Column="1" />
+      <File FileName="pbcare\PregnancyPage.xaml" Line="11" Column="15" />
+      <File FileName="pbcare\PregnancyPage.xaml.cs" Line="9" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>iOS\pbcare.iOS.csproj</String>
+  </DisabledProjects>
 </Properties>

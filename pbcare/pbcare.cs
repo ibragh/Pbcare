@@ -4,10 +4,10 @@ using Xamarin.Forms;
 
 namespace pbcare
 {
-	public class pbcare : Application
+	public class pbcareApp : Application
 	{
 		public static bool IsUserLoggedIn { get; set;}
-		public pbcare ()
+		public pbcareApp ()
 		{
 //			if (!IsUserLoggedIn) {
 //				MainPage = new NavigationPage (new LoginPage ());

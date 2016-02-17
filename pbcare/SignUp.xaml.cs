@@ -26,7 +26,7 @@ namespace pbcare
 			if (signUpSucceeded) {
 				var rootPage = Navigation.NavigationStack.FirstOrDefault ();
 				if (rootPage != null) {
-					pbcare.IsUserLoggedIn = true;
+					pbcareApp.IsUserLoggedIn = true;
 					Navigation.InsertPageBefore (new MyPage (), Navigation.NavigationStack.First ());
 					await Navigation.PopToRootAsync ();
 				}
