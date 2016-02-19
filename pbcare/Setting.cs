@@ -8,6 +8,7 @@ namespace pbcare
 	{
 		public Setting ()
 		{
+			this.Title = "الظبط";
 			var listView = new ListView {ItemsSource = new string[] {
 					"saud ", " Ibra", "buhari", "Ahmed"
 				},

@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="pbcare.PregnancyPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			 x:Class="pbcare.PregnancyPage"
+			 Title="حملي">
 	<ContentPage.Content>
-			<StackLayout>
+		<StackLayout>
 		        <Button Text="إضافة حمل" BorderColor="Black" Clicked="addPregnancy"/>
 		        <Button Text="متابعة حملي " BorderColor="Black"  Clicked="followPregnancy"/>
 		        <Button Text="متابعة تطور الجنين بالصور" BorderColor="Black" />

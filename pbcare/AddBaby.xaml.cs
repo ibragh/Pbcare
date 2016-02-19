@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Xamarin.Forms;
 
 namespace pbcare
@@ -10,7 +11,6 @@ namespace pbcare
 		{
 			InitializeComponent ();
 		}
-
 		public void saveChildInfo(object sender , EventArgs e){
 			var child = new Child ();
 			child.name = childName.Text;
@@ -23,7 +23,6 @@ namespace pbcare
 		public void saveChildCancled(object sender , EventArgs e){
 			Navigation.PopAsync ();
 		}
-
 	}
 }
 

@@ -7,33 +7,30 @@ namespace pbcare
 {
 	public partial class LoginPage : ContentPage
 	{
-		static List<User> UsersList = new List<User>();
+		//static List<User> UsersList = new List<User>();
 		public LoginPage ()
 		{
 			InitializeComponent ();
 		}
-		void OnSignUpButtonClicked (object sender, EventArgs e)
+		async void OnSignUpButtonClicked (object sender, EventArgs e)
 		{
-			Navigation.PushAsync (new SignUp ());
+			await Navigation.PushAsync (new SignUp ());
 
 		}
 
-		void OnLoginButtonClicked (object sender, EventArgs e)
+		async void OnLoginButtonClicked (object sender, EventArgs e)
 		{
 			var user = new User() {
 				Email = emailEntry.Text,
 				Password = passwordEntry.Text
 			};
-			UsersList.Add (new User() {
-				Email = emailEntry.Text,
-				Password = passwordEntry.Text
-			});
+		
 
 			var isValid = AreCredentialsCorrect (user);
 			if (isValid) {
 				pbcareApp.IsUserLoggedIn = true;
 				Navigation.InsertPageBefore (new MyPage (), this);
-				Navigation.PopAsync ();
+				await Navigation.PopAsync ();
 				messageLogin.Text = string.Empty;
 			} else {
 				messageLogin.Text = "فشل تسجيل الدخول";

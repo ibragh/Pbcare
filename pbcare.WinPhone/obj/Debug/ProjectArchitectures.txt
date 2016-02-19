@@ -1,2 +1,0 @@
-C:\Users\ibra\Documents\Projects\pbcare-master\pbcare.WinPhone\pbcare.WinPhone.csproj;neutral
-C:\Users\ibra\Documents\Projects\pbcare-master\pbcare\pbcare.csproj;neutral

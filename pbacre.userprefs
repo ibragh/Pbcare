@@ -1,26 +1,19 @@
-﻿<Properties StartupItem="iOS\pbcare.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\PregnancyPage.xaml">
+﻿<Properties StartupItem="iOS/pbcare.iOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.2" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare/PregnancyPage.xaml.cs">
     <Files>
-      <File FileName="pbcare\pbcare.cs" Line="1" Column="1" />
-      <File FileName="pbcare\LoginPage.xaml" Line="1" Column="1" />
-      <File FileName="pbcare\LoginPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="pbcare\SignUp.xaml" Line="1" Column="1" />
-      <File FileName="pbcare\SignUp.xaml.cs" Line="1" Column="1" />
-      <File FileName="pbcare\User.cs" Line="1" Column="1" />
-      <File FileName="pbcare\MyPage.xaml" Line="1" Column="1" />
-      <File FileName="pbcare\MyPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="pbcare\AddPregnancy.xaml" Line="1" Column="1" />
-      <File FileName="pbcare\AddPregnancy.xaml.cs" Line="1" Column="1" />
-      <File FileName="pbcare\PregnancyPage.xaml" Line="11" Column="15" />
-      <File FileName="pbcare\PregnancyPage.xaml.cs" Line="9" Column="3" />
+      <File FileName="pbcare/pbcare.cs" Line="1" Column="1" />
+      <File FileName="pbcare/MyPage.xaml" Line="18" Column="3" />
+      <File FileName="pbcare/MyPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="pbcare/AddPregnancy.xaml" Line="1" Column="1" />
+      <File FileName="pbcare/AddPregnancy.xaml.cs" Line="1" Column="1" />
+      <File FileName="pbcare/PregnancyPage.xaml" Line="11" Column="15" />
+      <File FileName="pbcare/PregnancyPage.xaml.cs" Line="22" Column="15" />
+      <File FileName="pbcare/Weekly.cs" Line="12" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <DisabledProjects>
-    <String>iOS\pbcare.iOS.csproj</String>
-  </DisabledProjects>
 </Properties>

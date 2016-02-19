@@ -1,1 +1,0 @@
-C:\Users\ibra\Documents\Projects\pbcare-master\Droid\bin\Debug\Xamarin.Forms.Platform.Android.dll

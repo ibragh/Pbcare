@@ -11,12 +11,9 @@ namespace pbcare
 		{
 			InitializeComponent ();
 		}
-
 		public void addBaby(object sender, EventArgs e){
 			Navigation.PushAsync (new AddBaby ());
-			}
 		}
 	}
-
-				
+}
 
