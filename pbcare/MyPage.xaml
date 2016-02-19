@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="pbcare.MyPage" xmlns:myapp="clr-namespace:pbcare;assembly=pbcare">
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			x:Class="pbcare.MyPage"
+			xmlns:myapp="clr-namespace:pbcare;assembly=pbcare">
 	<TabbedPage.Children>
 
 		<NavigationPage Title="حملي">
@@ -15,9 +18,9 @@
 		</NavigationPage>
 
 		<NavigationPage Title="المنتدى">
-<!--			<x:Arguments>
+			<x:Arguments>
 				<myapp:WebsitePage />
-			</x:Arguments>-->
+			</x:Arguments>
 		</NavigationPage>
 
 		<NavigationPage Title="الظبط">

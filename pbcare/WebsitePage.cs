@@ -4,11 +4,23 @@ using Xamarin.Forms;
 
 namespace pbcare
 {
-	public class WebsitePage : ContentView
+	public class WebsitePage : ContentPage
 	{
 		public WebsitePage ()
 		{
-			Content = new Label { Text = "Hello ContentView" };
+			this.Title = "المنتدى";
+			var listView = new ListView {ItemsSource = new string[] {
+					"ِAAA ", " BB", "CC", "DD"
+				},
+
+
+			};
+
+			Content = new StackLayout {
+				Children = {  
+					listView   
+				}
+			};
 		}
 	}
 }
