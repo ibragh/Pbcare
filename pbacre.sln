@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pbcare.iOS", "iOS\pbcare.iO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pbcare.Droid", "Droid\pbcare.Droid.csproj", "{9131B6CF-0ACB-45D7-8058-6D95C85FC7FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pbcare.UITest", "pbcare.UITest\pbcare.UITest.csproj", "{D3CA0C36-8928-4245-A417-101A14C14C8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pbcare.UITest", "UITest\pbcare.UITest.csproj", "{D3CA0C36-8928-4245-A417-101A14C14C8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

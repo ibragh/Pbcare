@@ -12,14 +12,15 @@ namespace pbcare
 		{
 			InitializeComponent ();
 		}
-		async void OnSignUpButtonClicked (object sender, EventArgs e)
+		void OnSignUpButtonClicked (object sender, EventArgs e)
 		{
-			await Navigation.PushAsync (new SignUp ());
+			 Navigation.PushAsync (new SignUp ());
 
 		}
 
-		async void OnLoginButtonClicked (object sender, EventArgs e)
+		 void OnLoginButtonClicked (object sender, EventArgs e)
 		{
+		
 			var user = new User() {
 				Email = emailEntry.Text,
 				Password = passwordEntry.Text
@@ -30,13 +31,15 @@ namespace pbcare
 			if (isValid) {
 				pbcareApp.IsUserLoggedIn = true;
 				Navigation.InsertPageBefore (new MyPage (), this);
-				await Navigation.PopAsync ();
+
+				Navigation.PopAsync ();
 				messageLogin.Text = string.Empty;
 			} else {
 				messageLogin.Text = "فشل تسجيل الدخول";
 				messageLogin.TextColor = Color.Red;
 				passwordEntry.Text = string.Empty;
 			}
+
 		}
 		bool AreCredentialsCorrect (User user)
 		{
