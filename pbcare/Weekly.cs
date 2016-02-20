@@ -8,7 +8,8 @@ namespace pbcare
 	{
 		public Week1 ()
 		{
-			Content = new StackLayout { 
+			Content = new StackLayout {
+				Padding = 10 ,
 				Children = {
 					new Label { Text = "Hello ContentPage 1" }
 				}
@@ -20,7 +21,8 @@ namespace pbcare
 	{
 		public Week2 ()
 		{
-			Content = new StackLayout { 
+			Content = new StackLayout {
+				Padding = 10 ,
 				Children = {
 					new Label { Text = "Hello ContentPage 2" }
 				}
@@ -33,6 +35,7 @@ namespace pbcare
 		public Week3 ()
 		{
 			Content = new StackLayout { 
+				Padding = 10 ,
 				Children = {
 					new Label { Text = "Hello ContentPage 3" }
 				}
@@ -45,6 +48,7 @@ namespace pbcare
 		public Week4 ()
 		{
 			Content = new StackLayout { 
+				Padding = 10 ,
 				Children = {
 					new Label { Text = "Hello ContentPage 4" }
 				}
@@ -57,6 +61,7 @@ namespace pbcare
 		public Week5 ()
 		{
 			Content = new StackLayout { 
+				Padding = 10 ,
 				Children = {
 					new Label { Text = "Hello ContentPage 5" }
 				}
@@ -68,7 +73,8 @@ namespace pbcare
 	{
 		public Week6 ()
 		{
-			Content = new StackLayout { 
+			Content = new StackLayout {
+				Padding = 10 ,
 				Children = {
 					new Label { Text = "Hello ContentPage 6" }
 				}
@@ -81,6 +87,7 @@ namespace pbcare
 		public Week7 ()
 		{
 			Content = new StackLayout { 
+				Padding = 10 ,
 				Children = {
 					new Label { Text = "Hello ContentPage 7" }
 				}
@@ -93,6 +100,7 @@ namespace pbcare
 		public Week8 ()
 		{
 			Content = new StackLayout { 
+				Padding = 10 ,
 				Children = {
 					new Label { Text = "Hello ContentPage 8" }
 				}
@@ -105,6 +113,7 @@ namespace pbcare
 		public Week9 ()
 		{
 			Content = new StackLayout { 
+				Padding = 10 ,
 				Children = {
 					new Label { Text = "Hello ContentPage 9" }
 				}
@@ -117,6 +126,7 @@ namespace pbcare
 		public Week10 ()
 		{
 			Content = new StackLayout { 
+				Padding = 10 ,
 				Children = {
 					new Label { Text = "Hello ContentPage 10" }
 				}

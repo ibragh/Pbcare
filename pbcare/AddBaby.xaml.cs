@@ -12,12 +12,10 @@ namespace pbcare
 			InitializeComponent ();
 		}
 		public void saveChildInfo(object sender , EventArgs e){
-			var child = new Child ();
-			child.name = childName.Text;
-			//child.birthDate = birthdate;
-			child.gender = "m";
-			s.Text = child.name +" "+child.gender; 
-			s.TextColor = Color.Red;
+			var child = new Child (childName.Text , 'M');
+			pbcareApp.u.MyChilren.Add (child);
+			Navigation.PopAsync ();
+
 		}
 
 		public void saveChildCancled(object sender , EventArgs e){
