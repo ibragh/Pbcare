@@ -1,18 +1,18 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace pbcare
 {
-	public class BabyPage2 : ContentPage
+	public class BabyPage : ContentPage
 	{
-		public BabyPage2 ()
+		public BabyPage()
 		{
-			
+
 			ListView childrenList = new ListView {
 				RowHeight = 40
 			};
-			 
+
 
 
 			childrenList.ItemsSource = pbcareApp.u.MyChilren;
@@ -20,7 +20,7 @@ namespace pbcare
 			childrenList.ItemTemplate.SetBinding (TextCell.TextProperty, "name");
 
 			childrenList.ItemSelected +=  (Sender, Event) => {
-				
+
 			};
 
 			var AddChild = new Button {

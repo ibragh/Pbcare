@@ -13,7 +13,7 @@
 
 		<NavigationPage Title="أطفالي">
 			<x:Arguments>
-				<myapp:BabyPage2 />
+				<myapp:BabyPage/>
 			</x:Arguments>
 		</NavigationPage>
 

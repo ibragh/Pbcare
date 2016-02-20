@@ -51,14 +51,11 @@
     <Compile Include="AddBaby.xaml.cs">
       <DependentUpon>AddBaby.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BabyPage.xaml.cs">
-      <DependentUpon>BabyPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Child.cs" />
     <Compile Include="Setting.cs" />
     <Compile Include="pbcareApp.cs" />
     <Compile Include="WebsitePage.cs" />
-    <Compile Include="BabyPage2.cs" />
+    <Compile Include="BabyPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -91,9 +88,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="AddBaby.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BabyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
