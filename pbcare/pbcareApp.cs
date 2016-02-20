@@ -4,9 +4,11 @@ using Xamarin.Forms;
 
 namespace pbcare
 {
+	
 	public class pbcareApp : Application
 	{
 		public static bool IsUserLoggedIn { get; set;}
+		public static User u = new User ();
 		public pbcareApp ()
 		{
 //			if (!IsUserLoggedIn) {
@@ -14,8 +16,8 @@ namespace pbcare
 //			} else {
 //				MainPage = new NavigationPage (new MyPage ());
 //			}
-			MainPage = new MyPage();
 
+			MainPage = new MyPage ();
 			/*     00000000    Importent 0000000
 			 * We need to handle Android physical back button 
 			 * bcz it make the app stopped if it pressed

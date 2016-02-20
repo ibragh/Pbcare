@@ -9,20 +9,12 @@ namespace pbcare
 		public WebsitePage ()
 		{
 			this.Title = "المنتدى";
-			var listView = new ListView {ItemsSource = new string[] {
-					"ِAAA ", " BB", "CC", "DD"
-				},
 
 
-			};
-
-			Content = new StackLayout {
-				Children = {  
-					listView   
-				}
-			};
+		}
+			
 		}
 	}
-}
+
 
 
