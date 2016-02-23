@@ -11,7 +11,6 @@ C:\Users\TOSHIBA\Documents\GitHub\pbcare\pbcare\obj\Debug\pbcare.SignUp.xaml.g.c
 C:\Users\TOSHIBA\Documents\GitHub\pbcare\pbcare\obj\Debug\pbcare.MyPage.xaml.g.cs
 C:\Users\TOSHIBA\Documents\GitHub\pbcare\pbcare\obj\Debug\pbcare.AddPregnancy.xaml.g.cs
 C:\Users\TOSHIBA\Documents\GitHub\pbcare\pbcare\obj\Debug\pbcare.PregnancyPage.xaml.g.cs
-C:\Users\TOSHIBA\Documents\GitHub\pbcare\pbcare\obj\Debug\pbcare.AddBaby.xaml.g.cs
 C:\Users\TOSHIBA\Documents\GitHub\pbcare\pbcare\obj\Debug\pbcare.dll
 C:\Users\TOSHIBA\Documents\GitHub\pbcare\pbcare\obj\Debug\pbcare.pdb
 C:\Users\TOSHIBA\Documents\GitHub\pbcare\pbcare\obj\Debug\pbcare.dll.mdb

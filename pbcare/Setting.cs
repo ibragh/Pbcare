@@ -6,6 +6,8 @@ namespace pbcare
 {
 	public class Setting : ContentPage
 	{
+		
+
 		public Setting ()
 		{
 			ListView setting = new ListView {
@@ -16,11 +18,14 @@ namespace pbcare
 			setting.ItemTemplate = new DataTemplate (typeof(TextCell));
 			setting.ItemTemplate.SetBinding (TextCell.TextProperty, "Name");
 
+
 			setting.ItemSelected +=  (Sender, Event) => {
 				var selceted = (everyCell)Event.SelectedItem;
 				var settingView = new settingView(selceted);
 				Navigation.PushAsync(settingView);
 			};
+
+
 
 			var logOutButton = new Button {
 				Text = " تسجيل خــــروج ",
@@ -54,6 +59,7 @@ namespace pbcare
 				Placeholder = "أدخل اسمك هنا"	,
 
 			};
+
 	//================================================= 2
 			var yourPass = new Label {
 				Text = "كلمة المرور : ",
@@ -72,23 +78,64 @@ namespace pbcare
 			};
 	//================================================  3 
 
-			var svaeButton = new Button {
+			var saveNameButton = new Button {
 				Text = " حفظ البيانات ",
 
+			};
+			saveNameButton.Clicked += (sender, e) => {
+				if(!nameEntry.Text.Equals(null)){
+					pbcareApp.u.Username = nameEntry.Text ;
+					Navigation.PopAsync();
+					DisplayAlert("  تم","  تغيير الاسم إلى"+nameEntry.Text,"موافق");
+
+				}else{
+					DisplayAlert("خطأ","لم يتم إدخال أي اسم","إلغاء");
+				}
+			};
+
+			var savePassButton = new Button{
+				Text = "حفظ البيانات"
+			};
+
+			savePassButton.Clicked += (sender, e) => {
+				if(!passwordEntry.Text.Equals(null) && passConfirm.Text.Equals(passwordEntry.Text)){
+					pbcareApp.u.Password = passwordEntry.Text ;
+					Navigation.PopAsync();
+					DisplayAlert(" تم"," تغيير كلمة المرور ","موافق");
+
+				}else if(passwordEntry.Text != passConfirm.Text ){
+					DisplayAlert("خطأ","كلمة المرور غير متطابقة","إلغاء");
+
+				}else if(passConfirm.Text.Equals(null) && passwordEntry.Text.Equals(null)){
+					DisplayAlert("خطأ","لم يتم إدخال كلمة مرور","إلغاء");
+				}
 
 			};
-			var CancelButton = new Button {
+
+			var CancelNameButton = new Button {
 				Text = "إلغاء",
 
 			};
 
+			CancelNameButton.Clicked += (sender, e) => {
+				Navigation.PopAsync();
+			};
+
+			var CancelPassButton = new Button {
+				Text = "إلغاء",
+
+			};
+
+			CancelPassButton.Clicked += (sender, e) => {
+				Navigation.PopAsync();
+			};
 			return new List<everyCell> {
 				// frist cell " change name " 
 				new everyCell {
 					Name = "تغيير الاسم",
 					View = new StackLayout {
 						VerticalOptions = LayoutOptions.FillAndExpand,
-						Children = { yourname, nameEntry, svaeButton, CancelButton}
+						Children = { yourname, nameEntry, saveNameButton, CancelNameButton}
 					}
 				},
 
@@ -97,7 +144,7 @@ namespace pbcare
 					Name = "تغيير كلمة المرور" ,
 					View = new StackLayout {
 						VerticalOptions = LayoutOptions.FillAndExpand,
-						Children = { yourPass, passwordEntry, passConfirm, svaeButton, CancelButton}
+						Children = { yourPass, passwordEntry, passConfirm, savePassButton, CancelPassButton}
 					}
 				},
 

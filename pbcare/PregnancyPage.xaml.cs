@@ -19,23 +19,49 @@ namespace pbcare
 
 		public void followPregnancy (object sender, EventArgs e)
 		{
-			var page = new CarouselPage ();
-			page.Title = "whatever";
+			var FollowPregnancy = new CarouselPage ();
+			FollowPregnancy.Title = " أسابيع الحمل";
 
 
 
-			page.Children.Add (new Week10());
-			page.Children.Add (new Week2());
-			page.Children.Add (new Week3());
-			page.Children.Add (new Week4());
-			page.Children.Add (new Week5());
-			page.Children.Add (new Week6());
-			page.Children.Add (new Week7());
-			page.Children.Add (new Week8());
-			page.Children.Add (new Week9());
-			page.Children.Add (new Week1());
+			FollowPregnancy.Children.Add (new Week1());
+			FollowPregnancy.Children.Add (new Week2());
+			FollowPregnancy.Children.Add (new Week3());
+			FollowPregnancy.Children.Add (new Week4());
+			FollowPregnancy.Children.Add (new Week5());
+			FollowPregnancy.Children.Add (new Week6());
+			FollowPregnancy.Children.Add (new Week7());
+			FollowPregnancy.Children.Add (new Week8());
+			FollowPregnancy.Children.Add (new Week9());
+			FollowPregnancy.Children.Add (new Week10());
 
-			Navigation.PushAsync (page);
+			Navigation.PushAsync (FollowPregnancy);
+		}
+
+		public void FetusImages (object sender , EventArgs e){
+		
+			Navigation.PushAsync (new FetusImages ());
+		}
+
+		public void followFetus (object sender, EventArgs e)
+		{
+			var FollowFetusByWeek = new CarouselPage ();
+			FollowFetusByWeek.Title = "الجنين";
+
+
+
+			FollowFetusByWeek.Children.Add (new Week1());
+			FollowFetusByWeek.Children.Add (new Week2());
+			FollowFetusByWeek.Children.Add (new Week3());
+			FollowFetusByWeek.Children.Add (new Week4());
+			FollowFetusByWeek.Children.Add (new Week5());
+			FollowFetusByWeek.Children.Add (new Week6());
+			FollowFetusByWeek.Children.Add (new Week7());
+			FollowFetusByWeek.Children.Add (new Week8());
+			FollowFetusByWeek.Children.Add (new Week9());
+			FollowFetusByWeek.Children.Add (new Week10());
+
+			Navigation.PushAsync (FollowFetusByWeek);
 		}
 	}
 }

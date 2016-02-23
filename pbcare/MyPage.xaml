@@ -23,7 +23,7 @@
 			</x:Arguments>
 		</NavigationPage>
 
-		<NavigationPage Title="الظبط">
+		<NavigationPage Title="الضبط">
 			<x:Arguments>
 				<myapp:Setting />
 			</x:Arguments>

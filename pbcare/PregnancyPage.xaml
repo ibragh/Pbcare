@@ -7,8 +7,8 @@
 		<StackLayout>
 		        <Button Text="إضافة حمل" BorderColor="Black" Clicked="addPregnancy"/>
 		        <Button Text="متابعة حملي " BorderColor="Black"  Clicked="followPregnancy"/>
-		        <Button Text="متابعة تطور الجنين بالصور" BorderColor="Black" />
-		        <Button Text="متابعة تطور الجنين بالأسابيع" BorderColor="Black"  />
+		        <Button Text="متابعة تطور الجنين بالصور" BorderColor="Black" Clicked="FetusImages" />
+		        <Button Text="متابعة تطور الجنين بالأسابيع" BorderColor="Black" Clicked="followFetus" />
 	        </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

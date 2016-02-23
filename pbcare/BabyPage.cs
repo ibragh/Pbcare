@@ -10,14 +10,14 @@ namespace pbcare
 		{
 
 			ListView childrenList = new ListView {
-				RowHeight = 40
+				RowHeight = 70
 			};
 
 
 
 			childrenList.ItemsSource = pbcareApp.u.MyChilren;
 			childrenList.ItemTemplate = new DataTemplate (typeof(TextCell));
-			childrenList.ItemTemplate.SetBinding (TextCell.TextProperty, "name");
+			childrenList.ItemTemplate.SetBinding 	(TextCell.TextProperty, "name");
 
 			childrenList.ItemSelected +=  (Sender, Event) => {
 
