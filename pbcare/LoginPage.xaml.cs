@@ -30,7 +30,7 @@ namespace pbcare
 			var isValid = AreCredentialsCorrect (user);
 			if (isValid) {
 				pbcareApp.IsUserLoggedIn = true;
-				Navigation.InsertPageBefore (new MyPage (), this);
+				//Application.Current = MyPage ();
 
 				Navigation.PopAsync ();
 				messageLogin.Text = string.Empty;

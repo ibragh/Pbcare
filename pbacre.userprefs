@@ -1,30 +1,8 @@
-﻿<Properties StartupItem="iOS\pbcare.iOS.csproj">
+﻿<Properties StartupItem="pbcare/pbcare.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\AddBaby.cs">
-    <Files>
-      <File FileName="pbcare\MyPage.xaml" Line="1" Column="1" />
-      <File FileName="pbcare\MyPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="iOS\Main.cs" Line="1" Column="1" />
-      <File FileName="pbcare\WebsitePage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Setting.cs" Line="87" Column="41" />
-      <File FileName="pbcare\pbcareApp.cs" Line="1" Column="1" />
-      <File FileName="pbcare\AddPregnancy.xaml" Line="1" Column="1" />
-      <File FileName="pbcare\AddPregnancy.xaml.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Weekly.cs" Line="1" Column="1" />
-      <File FileName="pbcare\User.cs" Line="1" Column="1" />
-      <File FileName="pbcare\PregnancyPage.xaml" Line="1" Column="1" />
-      <File FileName="pbcare\Child.cs" Line="1" Column="1" />
-      <File FileName="pbcare\BabyPage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\FetusImages.cs" Line="1" Column="1" />
-      <File FileName="pbcare\PregnancyPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="pbcare\AddBaby.cs" Line="7" Column="22" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <DisabledProjects>
-    <String>pbcare.UITest/pbcare.UITest.csproj</String>
-  </DisabledProjects>
 </Properties>
