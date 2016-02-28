@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Xamarin.Forms;
 
 namespace pbcare
@@ -11,8 +10,9 @@ namespace pbcare
 		public static User u = new User ();
 		public pbcareApp ()
 		{
-			MainPage = new NavigationPage(new DatabaseTest ());
+			MainPage = new MyPage ();
 		}
+			
 		static DatabaseClass db;
 		public static DatabaseClass DB {
 			get { 
