@@ -8,7 +8,7 @@ namespace pbcare
 	{
 		public BabyPage()
 		{
-
+			this.Title = "طفلي";
 			ListView childrenList = new ListView {
 				RowHeight = 70
 			};

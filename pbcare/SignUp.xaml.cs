@@ -24,12 +24,10 @@ namespace pbcare
 
 			var signUpSucceeded = AreDetailsValid (user);
 			if (signUpSucceeded) {
-				var rootPage = Navigation.NavigationStack.FirstOrDefault ();
-				if (rootPage != null) {
-					pbcareApp.IsUserLoggedIn = true;
-					Navigation.InsertPageBefore (new MyPage (), Navigation.NavigationStack.First ());
-					await Navigation.PopToRootAsync ();
-				}
+
+				pbcareApp.IsUserLoggedIn = true;
+				pbcareApp.MyNavigation.PopModalAsync();
+				messageSignUp.Text = string.Empty;
 			} else {
 				messageSignUp.Text = "فشل تسجيل الدخول";
 				messageSignUp.TextColor = Color.Red;

@@ -14,11 +14,12 @@ namespace pbcare.Droid
 
 		public SQLite.SQLiteConnection GetConnection ()
 		{
-			
-			var path = "/Users/ibrahim/Projects/pbcare_resources/pbcare.db";
+			string docs = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			string databaseFilePath = Path.Combine(docs, "pbcare.db");
+			//var path = "/Users/ibrahim/Projects/pbcare_resources/pbcare.db";
 			// This is where we copy in the prepopulated database
 
-			var conn = new SQLite.SQLiteConnection (path);
+			var conn = new SQLite.SQLiteConnection (databaseFilePath);
 
 			// Return the database connection 
 			return conn;

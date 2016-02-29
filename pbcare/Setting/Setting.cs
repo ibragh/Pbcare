@@ -10,6 +10,7 @@ namespace pbcare
 
 		public Setting ()
 		{
+			this.Title = "الإعدادات";
 			ListView setting = new ListView {
 				RowHeight = 50  
 			};

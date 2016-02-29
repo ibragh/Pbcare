@@ -31,8 +31,7 @@ namespace pbcare
 			if (isValid) {
 				pbcareApp.IsUserLoggedIn = true;
 				//Application.Current = MyPage ();
-
-				Navigation.PopAsync ();
+				pbcareApp.MyNavigation.PopModalAsync();
 				messageLogin.Text = string.Empty;
 			} else {
 				messageLogin.Text = "فشل تسجيل الدخول";
@@ -43,7 +42,7 @@ namespace pbcare
 		}
 		bool AreCredentialsCorrect (User user)
 		{
-			return user.Email == "a" && user.Password == "a";
+			return ((user.Email == "A" && user.Password == "A")||(user.Email == "a" && user.Password == "a")) ;
 		}
 	}
 }

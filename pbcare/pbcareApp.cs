@@ -6,11 +6,19 @@ namespace pbcare
 	
 	public class pbcareApp : Application
 	{
+		public static INavigation MyNavigation { get; private set; }
+		public static Page GetMainPage()
+		{
+			var p = new MyPage ();
+			MyNavigation = p.Navigation;
+			return p;
+		}
+
 		public static bool IsUserLoggedIn { get; set;}
 		public static User u = new User ();
 		public pbcareApp ()
 		{
-			MainPage = new MyPage ();
+			MainPage = GetMainPage ();
 		}
 			
 		static DatabaseClass db;
