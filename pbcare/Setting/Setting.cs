@@ -85,7 +85,7 @@ namespace pbcare
 			};
 			saveNameButton.Clicked += (sender, e) => {
 				if(!nameEntry.Text.Equals(null)){
-					pbcareApp.u.Username = nameEntry.Text ;
+					pbcareApp.u.name = nameEntry.Text ;
 					Navigation.PopAsync();
 					DisplayAlert("  تم","  تغيير الاسم إلى"+nameEntry.Text,"موافق");
 

@@ -45,7 +45,7 @@ namespace pbcare
 			saveButton.Clicked += (sender, e) => {
 				if(nameEntry.Text != null && gender.SelectedIndex != -1 ){
 					var child = new Child (nameEntry.Text , "M");
-					pbcareApp.u.MyChilren.Add (child);
+					//pbcareApp.u.MyChilren.Add (child);
 					Navigation.PopAsync ();
 				
 				}else{

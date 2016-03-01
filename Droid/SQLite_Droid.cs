@@ -8,26 +8,17 @@ namespace pbcare.Droid
 {
 	public class SQLite_Droid : ISQLite
 	{
-		public SQLite_Droid ()
-		{
-		}
-
+		public SQLite_Droid (){}
 		public SQLite.SQLiteConnection GetConnection ()
 		{
-			string docs = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-			string databaseFilePath = Path.Combine(docs, "pbcare.db");
-			//var path = "/Users/ibrahim/Projects/pbcare_resources/pbcare.db";
-			// This is where we copy in the prepopulated database
-
-			var conn = new SQLite.SQLiteConnection (databaseFilePath);
-
-			// Return the database connection 
+			var sqliteFilename = "pbcare.db";
+			string documentsPath = System.Environment.GetFolderPath (System.Environment.SpecialFolder.Personal); // Documents folder
+			var path = Path.Combine(documentsPath, sqliteFilename);
+			// Create the connection
+			var conn = new SQLite.SQLiteConnection(path);
+			// Return the database connection
 			return conn;
 
 		}
 	}
 }
-
-
-
-

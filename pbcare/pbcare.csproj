@@ -54,9 +54,6 @@
     <Compile Include="WebsiteView\WebsitePage.cs" />
     <Compile Include="ISQLite\ISQLite.cs" />
     <Compile Include="ISQLite\DatabaseClass.cs" />
-    <Compile Include="ISQLite\DatabaseTest.xaml.cs">
-      <DependentUpon>DatabaseTest.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pregnancy\AddPregnancy.cs" />
     <Compile Include="Pregnancy\CalMyDueDate.cs" />
   </ItemGroup>
@@ -91,9 +88,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pregnancy\PregnancyPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ISQLite\DatabaseTest.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
