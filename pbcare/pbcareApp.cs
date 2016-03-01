@@ -18,19 +18,21 @@ namespace pbcare
 		public static User u = new User ();
 		public pbcareApp ()
 		{
+			IsUserLoggedIn = true;
 			MainPage = GetMainPage ();
 		}
 			
-		static DatabaseClass db;
-		public static DatabaseClass DB {
+		static DatabaseClass database;
+		public static DatabaseClass Database {
 			get { 
-				if (db == null) {
-					db = new DatabaseClass ();
+				if (database == null) {
+					database = new DatabaseClass ();
 				} 
-				return db;
+				return database;
 
 			}
 		}
+	
 		protected override void OnStart ()
 		{
 			// Handle when your app starts

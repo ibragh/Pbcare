@@ -7,7 +7,7 @@ namespace pbcare
 {
 	public partial class LoginPage : ContentPage
 	{
-		//static List<User> UsersList = new List<User>();
+		
 		public LoginPage ()
 		{
 			InitializeComponent ();
@@ -21,17 +21,12 @@ namespace pbcare
 		 void OnLoginButtonClicked (object sender, EventArgs e)
 		{
 		
-			var user = new User() {
-				Email = emailEntry.Text,
-				Password = passwordEntry.Text
-			};
-		
+			string Email = emailEntry.Text;
+			string pwd = passwordEntry.Text;
 
-			var isValid = AreCredentialsCorrect (user);
-			if (isValid) {
+			if (pbcareApp.Database.checkLogin (Email, pwd)) {
 				pbcareApp.IsUserLoggedIn = true;
-				//Application.Current = MyPage ();
-				pbcareApp.MyNavigation.PopModalAsync();
+				pbcareApp.MyNavigation.PopModalAsync ();
 				messageLogin.Text = string.Empty;
 			} else {
 				messageLogin.Text = "فشل تسجيل الدخول";
@@ -40,10 +35,7 @@ namespace pbcare
 			}
 
 		}
-		bool AreCredentialsCorrect (User user)
-		{
-			return ((user.Email == "A" && user.Password == "A")||(user.Email == "a" && user.Password == "a")) ;
-		}
+
 	}
 }
 

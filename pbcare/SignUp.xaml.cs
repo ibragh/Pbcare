@@ -12,36 +12,31 @@ namespace pbcare
 		{
 			InitializeComponent ();
 		}
-		async void OnSignUpButtonClicked (object sender, EventArgs e)
+		 void OnSignUpButtonClicked (object sender, EventArgs e)
 		{
-			var user = new User () {
-				Username = usernameEntry.Text,
-				Password = passwordEntry.Text,
-				Email = emailEntry.Text
-			};
-
-			// Sign up logic goes here
-
-			var signUpSucceeded = AreDetailsValid (user);
-			if (signUpSucceeded) {
-
-				pbcareApp.IsUserLoggedIn = true;
-				pbcareApp.MyNavigation.PopModalAsync();
-				messageSignUp.Text = string.Empty;
+			string Email = emailEntry.Text;
+			string pwd = passwordEntry.Text;
+			string pwdCon = passwordConfirmEntry.Text;
+			string name = usernameEntry.Text;
+			if (string.IsNullOrWhiteSpace (Email) || string.IsNullOrWhiteSpace (pwd) || string.IsNullOrWhiteSpace (pwdCon) || string.IsNullOrWhiteSpace (name)) {
+				messageSignUp.Text = "1";
+			} else if (!Email.Contains ("@")) {
+				messageSignUp.Text = "2";
+			} else if (!pwd.Equals(pwdCon)) {
+				messageSignUp.Text = "3";
 			} else {
-				messageSignUp.Text = "فشل تسجيل الدخول";
-				messageSignUp.TextColor = Color.Red;
+				if (pbcareApp.Database.signup (Email, pwd, name)) {
+					pbcareApp.IsUserLoggedIn = true;
+					pbcareApp.MyNavigation.PopModalAsync ();
+					messageSignUp.Text = string.Empty;
+				} else {
+					messageSignUp.Text = "4";
+					messageSignUp.TextColor = Color.Red;
+					passwordEntry.Text = string.Empty;
+				}
+
+			}
 			}
 		}
 
-		bool AreDetailsValid (User user)
-		{
-			//if (passwordEntry == passwordConfirmEntry)
-				return (!string.IsNullOrWhiteSpace (user.Username) && !string.IsNullOrWhiteSpace (user.Password) && !string.IsNullOrWhiteSpace (user.Email) && user.Email.Contains ("@"));
-		//	else
-			//	return false;
-		}
-
-	}
 }
-
