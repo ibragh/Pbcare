@@ -11,10 +11,12 @@ namespace pbcare.Droid
 		public SQLite_Droid (){}
 		public SQLite.SQLiteConnection GetConnection ()
 		{
-			var sqliteFilename = "pbcare.db";
+			
+
 			string documentsPath = System.Environment.GetFolderPath (System.Environment.SpecialFolder.Personal); // Documents folder
-			var path = Path.Combine(documentsPath, sqliteFilename);
+			string path = Path.Combine(documentsPath, "pbcare.db3");
 			// Create the connection
+
 			var conn = new SQLite.SQLiteConnection(path);
 			// Return the database connection
 			return conn;

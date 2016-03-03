@@ -18,10 +18,11 @@ namespace pbcare
 		public static User u = new User ();
 		public pbcareApp ()
 		{
-			IsUserLoggedIn = true;
+
+			//IsUserLoggedIn = true;
 			MainPage = GetMainPage ();
 		}
-			
+
 		static DatabaseClass database;
 		public static DatabaseClass Database {
 			get { 
@@ -32,7 +33,7 @@ namespace pbcare
 
 			}
 		}
-	
+
 		protected override void OnStart ()
 		{
 			// Handle when your app starts

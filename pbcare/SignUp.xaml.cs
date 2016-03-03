@@ -12,31 +12,32 @@ namespace pbcare
 		{
 			InitializeComponent ();
 		}
-		 void OnSignUpButtonClicked (object sender, EventArgs e)
+		void OnSignUpButtonClicked (object sender, EventArgs e)
 		{
 			string Email = emailEntry.Text;
 			string pwd = passwordEntry.Text;
 			string pwdCon = passwordConfirmEntry.Text;
 			string name = usernameEntry.Text;
 			if (string.IsNullOrWhiteSpace (Email) || string.IsNullOrWhiteSpace (pwd) || string.IsNullOrWhiteSpace (pwdCon) || string.IsNullOrWhiteSpace (name)) {
-				messageSignUp.Text = "1";
+				messageSignUp.Text = "please fill all fields";
 			} else if (!Email.Contains ("@")) {
-				messageSignUp.Text = "2";
+				messageSignUp.Text = "please type your email correctly";
 			} else if (!pwd.Equals(pwdCon)) {
-				messageSignUp.Text = "3";
+				messageSignUp.Text = "password is not matched";
 			} else {
 				if (pbcareApp.Database.signup (Email, pwd, name)) {
 					pbcareApp.IsUserLoggedIn = true;
 					pbcareApp.MyNavigation.PopModalAsync ();
 					messageSignUp.Text = string.Empty;
+					pbcareApp.u.Email = Email;
+					pbcareApp.u.name = name;
 				} else {
-					messageSignUp.Text = "4";
-					messageSignUp.TextColor = Color.Red;
+					messageSignUp.Text = "Email is registered";
 					passwordEntry.Text = string.Empty;
 				}
 
 			}
-			}
 		}
+	}
 
 }

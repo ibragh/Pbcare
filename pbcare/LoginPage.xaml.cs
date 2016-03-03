@@ -14,13 +14,13 @@ namespace pbcare
 		}
 		void OnSignUpButtonClicked (object sender, EventArgs e)
 		{
-			 Navigation.PushAsync (new SignUp ());
+			Navigation.PushAsync (new SignUp ());
 
 		}
 
-		 void OnLoginButtonClicked (object sender, EventArgs e)
+		void OnLoginButtonClicked (object sender, EventArgs e)
 		{
-		
+
 			string Email = emailEntry.Text;
 			string pwd = passwordEntry.Text;
 
@@ -28,6 +28,7 @@ namespace pbcare
 				pbcareApp.IsUserLoggedIn = true;
 				pbcareApp.MyNavigation.PopModalAsync ();
 				messageLogin.Text = string.Empty;
+				pbcareApp.u.Email = Email;
 			} else {
 				messageLogin.Text = "فشل تسجيل الدخول";
 				messageLogin.TextColor = Color.Red;

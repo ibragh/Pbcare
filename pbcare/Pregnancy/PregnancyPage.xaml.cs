@@ -12,56 +12,26 @@ namespace pbcare
 			InitializeComponent ();
 		}
 
-		public void addPregnancy (object sender, EventArgs e)
+		public void AddPregnancyClicked (object sender, EventArgs e)
 		{
-			Navigation.PushAsync (new AddPregnancy ());
+			Navigation.PushAsync (new AddPregnancyPage ());
 		}
 
-		public void followPregnancy (object sender, EventArgs e)
+		public void FollowPregnancyWeeklyClicked (object sender, EventArgs e)
 		{
-			var FollowPregnancy = new CarouselPage ();
-			FollowPregnancy.Title = " أسابيع الحمل";
 
 
-
-			FollowPregnancy.Children.Add (new Week1());
-			FollowPregnancy.Children.Add (new Week2());
-			FollowPregnancy.Children.Add (new Week3());
-			FollowPregnancy.Children.Add (new Week4());
-			FollowPregnancy.Children.Add (new Week5());
-			FollowPregnancy.Children.Add (new Week6());
-			FollowPregnancy.Children.Add (new Week7());
-			FollowPregnancy.Children.Add (new Week8());
-			FollowPregnancy.Children.Add (new Week9());
-			FollowPregnancy.Children.Add (new Week10());
-
-			Navigation.PushAsync (FollowPregnancy);
+			Navigation.PushAsync ( new FollowPregnancy());
 		}
 
-		public void FetusImages (object sender , EventArgs e){
-		
-			Navigation.PushAsync (new FetusImages ());
+		public void FollowFetusByImagesClicked (object sender , EventArgs e){
+
+			Navigation.PushAsync (new FollowFetusByImages ());
 		}
 
-		public void followFetus (object sender, EventArgs e)
+		public void FollowFetusWeeklyClicked (object sender, EventArgs e)
 		{
-			var FollowFetusByWeek = new CarouselPage ();
-			FollowFetusByWeek.Title = "الجنين";
-
-
-
-			FollowFetusByWeek.Children.Add (new Week1());
-			FollowFetusByWeek.Children.Add (new Week2());
-			FollowFetusByWeek.Children.Add (new Week3());
-			FollowFetusByWeek.Children.Add (new Week4());
-			FollowFetusByWeek.Children.Add (new Week5());
-			FollowFetusByWeek.Children.Add (new Week6());
-			FollowFetusByWeek.Children.Add (new Week7());
-			FollowFetusByWeek.Children.Add (new Week8());
-			FollowFetusByWeek.Children.Add (new Week9());
-			FollowFetusByWeek.Children.Add (new Week10());
-
-			Navigation.PushAsync (FollowFetusByWeek);
+			Navigation.PushAsync (new FollowFetusWeekly ());
 		}
 	}
 }
