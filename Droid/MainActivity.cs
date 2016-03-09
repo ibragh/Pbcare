@@ -19,12 +19,20 @@ namespace pbcare.Droid
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 
 			Xamarin.Forms.Forms.ViewInitialized += (object sender, Xamarin.Forms.ViewInitializedEventArgs e) => {
-				if (!string.IsNullOrWhiteSpace(e.View.StyleId)) {
+				if (!string.IsNullOrWhiteSpace (e.View.StyleId)) {
 					e.NativeView.ContentDescription = e.View.StyleId;
 				}
 			};
 
 			LoadApplication (new pbcareApp ());
+		}
+
+		public override void OnBackPressed ()
+		{
+			// This prevents a user from being able to hit the back button and leave the login page.
+			if (pbcareApp.IsUserLoggedIn) {
+				base.OnBackPressed ();
+			}
 		}
 	}
 }

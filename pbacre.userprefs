@@ -1,32 +1,6 @@
-﻿<Properties StartupItem="pbcare/pbcare.csproj">
+﻿<Properties StartupItem="iOS/pbcare.iOS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.2" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="UITest/Tests.cs">
-    <Files>
-      <File FileName="UITest/AppInitializer.cs" Line="1" Column="1" />
-      <File FileName="UITest/Tests.cs" Line="4" Column="7" />
-      <File FileName="Droid/SQLite_Droid.cs" Line="1" Column="1" />
-      <File FileName="iOS/SQLite_iOS.cs" Line="23" Column="4" />
-      <File FileName="pbcare/ISQLite/DatabaseClass.cs" Line="1" Column="1" />
-      <File FileName="pbcare/pbcareApp.cs" Line="1" Column="1" />
-      <File FileName="pbcare/LoginPage.xaml.cs" Line="1" Column="1" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="pbacre" expanded="True" selected="True">
-            <Node name="pbcare.UITest" expanded="True">
-              <Node name="Packages" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State name="__root__">
-          <Node />
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/ibrahim/Projects/pbcare github/Droid/SQLite_Droid.cs" line="20" column="1" />
