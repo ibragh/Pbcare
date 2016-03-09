@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
+
 
 namespace pbcare.iOS
 {
@@ -17,6 +18,13 @@ namespace pbcare.iOS
 			#endif
 
 			global::Xamarin.Forms.Forms.Init();
+
+			Forms.ViewInitialized += (object sender, ViewInitializedEventArgs e) => {
+				// http://developer.xamarin.com/recipes/testcloud/set-accessibilityidentifier-ios/
+				if (null != e.View.StyleId) {
+					e.NativeView.AccessibilityIdentifier = e.View.StyleId;
+				}
+			};
 
 			// TODO - set the StyleId of views here.
 

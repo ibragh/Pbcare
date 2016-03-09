@@ -14,13 +14,11 @@ namespace pbcare
 		}
 		void OnSignUpButtonClicked (object sender, EventArgs e)
 		{
-			Navigation.PushAsync (new SignUp ());
+			Navigation.PushAsync (new SignUpPage ());
 
 		}
-
 		void OnLoginButtonClicked (object sender, EventArgs e)
 		{
-
 			string Email = emailEntry.Text;
 			string pwd = passwordEntry.Text;
 
@@ -34,9 +32,7 @@ namespace pbcare
 				messageLogin.TextColor = Color.Red;
 				passwordEntry.Text = string.Empty;
 			}
-
 		}
-
 	}
 }
 

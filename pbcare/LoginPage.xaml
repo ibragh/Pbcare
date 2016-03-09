@@ -11,11 +11,14 @@
 
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="Center">
-			<Label Text="الإيميل" HorizontalOptions="Center"/>
-			<Entry x:Name="emailEntry" Placeholder="email@abc.com" />
-			<Label Text="كلمة المرور" HorizontalOptions="Center"/>
-			<Entry x:Name="passwordEntry" Placeholder="Password" />
-			<Button Text="تسجيل دخول" Clicked="OnLoginButtonClicked" BorderWidth="1" BorderRadius="15" BorderColor="Blue" TextColor="White" BackgroundColor="Blue"/>
+			<Label Text="الإيميل" HorizontalOptions="Center" StyleId="EmailLabel"/>
+			<Entry x:Name="emailEntry" Placeholder="email@abc.com" StyleId="EmailEntry"/>
+			<Label Text="كلمة المرور" HorizontalOptions="Center" StyleId="PasswordLabel"/>
+			<Entry x:Name="passwordEntry" Placeholder="Password" StyleId="PasswordEntry"/>
+			<Button Text="تسجيل دخول" Clicked="OnLoginButtonClicked" 
+			BorderWidth="1" BorderRadius="15" BorderColor="Blue" 
+			TextColor="White" BackgroundColor="Blue"
+			StyleId="LoginButton"/>
 			<Label x:Name="messageLogin" HorizontalOptions="Center" />
 		</StackLayout>
 	</ContentPage.Content>

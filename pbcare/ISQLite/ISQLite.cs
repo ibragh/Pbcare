@@ -4,7 +4,6 @@ namespace pbcare
 {
 	public interface ISQLite
 	{
-		
 		SQLiteConnection GetConnection ();
 	}
 }

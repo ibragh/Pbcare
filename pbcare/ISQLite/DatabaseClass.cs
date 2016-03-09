@@ -13,7 +13,7 @@ namespace pbcare
 		public DatabaseClass ()
 		{
 
-			DB = DependencyService.Get<ISQLite> ().GetConnection ();
+			DB = DependencyService.Get<ISQLite> ().GetConnection (); 
 
 		}
 
@@ -29,17 +29,20 @@ namespace pbcare
 
 		public bool signup (string email, string password, string name)
 		{
-			if (DB.Table<User> ().Where (user => user.Email == email ).FirstOrDefault () != null) {
+			try {
+				if (DB.Table<User> ().Where (user => user.Email == email).FirstOrDefault () != null) {
+					return false;
+				} else {
+					User u = new User ();
+					u.Email = email;
+					u.Password = password;
+					u.name = name;
+					DB.Insert (u);
+					return true;
+				}
+			} catch (Exception ex) {
 				return false;
-			} else {
-				User u = new User ();
-				u.Email = email;
-				u.Password = password;
-				u.name = name;
-				DB.Insert (u);
-				return true;
-			}
-
+			} 
 		}
 
 		public int AddPregnancyToDB (string email, string date)
