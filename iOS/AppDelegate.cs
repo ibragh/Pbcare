@@ -4,7 +4,8 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
-
+using System.IO;
+using SQLite;
 
 namespace pbcare.iOS
 {
@@ -16,6 +17,7 @@ namespace pbcare.iOS
 			#if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
 			#endif
+
 
 			global::Xamarin.Forms.Forms.Init();
 

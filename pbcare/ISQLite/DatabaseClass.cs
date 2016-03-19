@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using SQLite;
+using System.Diagnostics;
 
 namespace pbcare
 {
@@ -14,9 +15,12 @@ namespace pbcare
 		{
 
 			DB = DependencyService.Get<ISQLite> ().GetConnection (); 
-
+			DB.CreateTable<User> ();
+			DB.CreateTable<PregnancyDuedateTable> ();
+			DB.CreateTable<PregnancyWeeklyTable> ();
 		}
 
+		// check login in email & password are match in db
 		public bool checkLogin (string email, string password)
 		{
 
@@ -27,6 +31,7 @@ namespace pbcare
 			}
 		}
 
+		// check signup entries
 		public bool signup (string email, string password, string name)
 		{
 			try {
@@ -41,6 +46,7 @@ namespace pbcare
 					return true;
 				}
 			} catch (Exception ex) {
+				Debug.WriteLine (ex.ToString());
 				return false;
 			} 
 		}
@@ -55,13 +61,13 @@ namespace pbcare
 				if (DB.Table<User> ().Where (c => c.Email == email).FirstOrDefault () != null) {
 					// check if the account is not already rigesterd..
 					// if so, and user want do edit, there is another way to do that
-					if (DB.Table<PregnancyDuedate> ().Where (c => c.Email == email).FirstOrDefault () != null) {
+					if (DB.Table<PregnancyDuedateTable> ().Where (c => c.Email == email).FirstOrDefault () != null) {
 						return 1;
 						// check if due date on this account is not an empty string
-					} else if (DB.Table<PregnancyDuedate> ().Where (c => c.Email == email && c.dueDate == "").FirstOrDefault () == null) {
+					} else if (DB.Table<PregnancyDuedateTable> ().Where (c => c.Email == email && c.dueDate == "").FirstOrDefault () == null) {
 						return 2;
 					} else {
-						PregnancyDuedate p = new PregnancyDuedate ();
+						PregnancyDuedateTable p = new PregnancyDuedateTable ();
 						p.Email = email;
 						p.dueDate = date;
 						DB.Insert (p);
@@ -74,9 +80,30 @@ namespace pbcare
 				}
 
 			} catch (Exception ex) {
+				Debug.WriteLine (ex.ToString());
 				return -1;
 			} 
 		}
+
+		public string  InsertIntoPregnancyWeekly (int WeekNumber)
+		{
+			try {
+				var PregnancyWeek = DB.Table<PregnancyWeeklyTable>().Where(c => c.week == WeekNumber).FirstOrDefault();
+				if( PregnancyWeek!= null){
+					return PregnancyWeek.info;
+				}else{
+					return "المعلومة غير محفوظة في الداتابيس";
+				}
+
+			} catch (Exception ex) {
+				Debug.WriteLine (ex.ToString());
+				return ex.ToString();
+			}
+
+
+		}
+
+	
 	}
 }
 

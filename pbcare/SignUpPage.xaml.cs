@@ -18,21 +18,24 @@ namespace pbcare
 			string pwd = passwordEntry.Text;
 			string pwdCon = passwordConfirmEntry.Text;
 			string name = usernameEntry.Text;
-			if (string.IsNullOrWhiteSpace (Email) || string.IsNullOrWhiteSpace (pwd) || string.IsNullOrWhiteSpace (pwdCon) || string.IsNullOrWhiteSpace (name)) {
-				messageSignUp.Text = "please fill all fields";
+			if (string.IsNullOrWhiteSpace (Email) || string.IsNullOrWhiteSpace (pwd) || 
+				string.IsNullOrWhiteSpace (pwdCon) || string.IsNullOrWhiteSpace (name)) {
+				messageSignUp.Text = "فضلاً املأ الفراغات"; // please fill all fields
 			} else if (!Email.Contains ("@")) {
-				messageSignUp.Text = "please type your email correctly";
+				messageSignUp.Text = "فضلاً .. تأكد من كتابة الإيميل بشكل صحيح"; // please .. type your Email correctly
 			} else if (!pwd.Equals(pwdCon)) {
-				messageSignUp.Text = "password is not matched";
+				messageSignUp.Text = "كلمة المرور غير متطابقة"; // Password not matched
 			} else {
 				if (pbcareApp.Database.signup (Email, pwd, name)) {
 					pbcareApp.IsUserLoggedIn = true;
+					messageSignUp.TextColor = Color.Green;
+					messageSignUp.Text = "تم تسجيل الدخول بنجاح"; 
 					pbcareApp.MyNavigation.PopModalAsync ();
-					messageSignUp.Text = string.Empty;
 					pbcareApp.u.Email = Email;
 					pbcareApp.u.name = name;
+
 				} else {
-					messageSignUp.Text = "Email is registered";
+					messageSignUp.Text = "تم التسجيل بنفس الإيميل مسبقاً"; // Email is rigistered
 					passwordEntry.Text = string.Empty;
 				}
 

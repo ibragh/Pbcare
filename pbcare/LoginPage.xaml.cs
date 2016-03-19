@@ -22,17 +22,23 @@ namespace pbcare
 			string Email = emailEntry.Text;
 			string pwd = passwordEntry.Text;
 
-			if (pbcareApp.Database.checkLogin (Email, pwd)) {
+			if (string.IsNullOrWhiteSpace (Email) || string.IsNullOrWhiteSpace (pwd)) {
+				messageLogin.Text = "فضلاً املأ الفراغات";
+			} else if (!Email.Contains ("@")) {
+				messageLogin.Text = "فضلاً .. تأكد من كتابة الإيميل بشكل صحيح";
+			} else if (pbcareApp.Database.checkLogin (Email, pwd)) {
+				messageLogin.TextColor = Color.Green;
+				messageLogin.Text = "تم تسجيل الدخول بنجاح"; 
 				pbcareApp.IsUserLoggedIn = true;
 				pbcareApp.MyNavigation.PopModalAsync ();
-				messageLogin.Text = string.Empty;
 				pbcareApp.u.Email = Email;
 			} else {
-				messageLogin.Text = "فشل تسجيل الدخول";
-				messageLogin.TextColor = Color.Red;
-				passwordEntry.Text = string.Empty;
+				messageLogin.Text = "فشل تسجيل الدخول .. الرجاء ال";
+
 			}
 		}
+
 	}
+
 }
 

@@ -21,7 +21,7 @@ namespace pbcare
 
 		public pbcareApp ()
 		{
-		//	IsUserLoggedIn = true;
+			IsUserLoggedIn = true;
 			MainPage = GetMainPage ();
 		}
 

@@ -19,7 +19,7 @@
 
 			<Button Text="تسجيل" Clicked="OnSignUpButtonClicked" StyleId="SignUpButton"/>
 
-			<Label x:Name="messageSignUp" HorizontalOptions="Center"/>
+			<Label x:Name="messageSignUp" HorizontalOptions="Center" TextColor="Red"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

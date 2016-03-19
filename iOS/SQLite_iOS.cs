@@ -17,13 +17,11 @@ namespace pbcare.iOS
 		{
 
 			var sqliteFilename = "pbcare.db";
-//			string documentsPath = Environment.GetFolderPath (Environment.SpecialFolder.Personal); // Documents folder
-//			string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library folder
-//			var path = Path.Combine (libraryPath, sqliteFilename);
+			string documentsPath = Environment.GetFolderPath (Environment.SpecialFolder.Personal); // Documents folder
+			string libraryPath = Path.Combine (documentsPath, "..", "Library"); // Library folder
+			var path = Path.Combine (libraryPath, sqliteFilename);
 
 
-			var path = "/Users/ibrahim/Projects/pbcare_resources/pbcare.db";
-			// This is where we copy in the prepopulated database
 
 			if (!File.Exists (path)) {
 				File.Copy (sqliteFilename, path);

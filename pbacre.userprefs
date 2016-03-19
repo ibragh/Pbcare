@@ -1,6 +1,16 @@
 ﻿<Properties StartupItem="iOS/pbcare.iOS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.2" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare/Pregnancy/FollowPregnancy/FollowPregnancy.cs">
+    <Files>
+      <File FileName="pbcare/Pregnancy/FollowPregnancy/FollowPregnancy.cs" Line="20" Column="6" />
+      <File FileName="pbcare/ISQLite/DatabaseClass.cs" Line="100" Column="26" />
+      <File FileName="pbcare/ISQLite/Tables.cs" Line="15" Column="2" />
+      <File FileName="pbcare/LoginPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="pbcare/pbcareApp.cs" Line="24" Column="3" />
+      <File FileName="pbcare/Baby/AddBaby.cs" Line="47" Column="10" />
+      <File FileName="pbcare/Baby/Child.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/ibrahim/Projects/pbcare github/Droid/SQLite_Droid.cs" line="20" column="1" />

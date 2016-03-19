@@ -19,7 +19,7 @@
 			BorderWidth="1" BorderRadius="15" BorderColor="Blue" 
 			TextColor="White" BackgroundColor="Blue"
 			StyleId="LoginButton"/>
-			<Label x:Name="messageLogin" HorizontalOptions="Center" />
+			<Label x:Name="messageLogin" HorizontalOptions="Center" TextColor="Red"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
