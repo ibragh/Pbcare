@@ -128,5 +128,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\pbcare.db" />
+    <BundleResource Include="Resources\MyBaby.png" />
+    <BundleResource Include="Resources\MyPregnancy.png" />
+    <BundleResource Include="Resources\Setting.png" />
+    <BundleResource Include="Resources\Website.png" />
   </ItemGroup>
 </Project>

@@ -11,27 +11,30 @@ namespace pbcare
 
 			var dueDate = new DatePicker {
 				Format= "D",
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.Center
 			};
 			Button Calculate = new Button {
 				Text = "Calculate",
 				BorderWidth = 1,
 				BorderColor = Color.Red,
-				HorizontalOptions = LayoutOptions.CenterAndExpand
+				HorizontalOptions = LayoutOptions.Center
 			};
 			Label MyDueDate = new Label {
 				Text = "",
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.Center,
 				TextColor=Color.Blue
 			};
 			Calculate.Clicked += delegate {
 				int y=dueDate.Date.Year, m=dueDate.Date.Month, d=dueDate.Date.Day;
 				MyDueDate.Text = d+"/"+m+"/"+y;
+				DisplayAlert ("Success", "Your Due date is " + MyDueDate.Text, "Done");
+				Navigation.PopToRootAsync();
+
 			};
 			Content = new StackLayout { 
-				HorizontalOptions = LayoutOptions.CenterAndExpand, Padding=20 ,
+				VerticalOptions = LayoutOptions.Center, Padding=20 ,
 				Children = {
-					new Label { Text = "First day of my last period " ,},
+					new Label { Text = "First day of my last period " ,TextColor=Color.Green},
 					dueDate,
 					Calculate,
 					MyDueDate,

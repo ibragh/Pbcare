@@ -16,12 +16,12 @@ namespace pbcare
 		}
 
 		public static bool IsUserLoggedIn { get; set; }
-
+		public static DateTime FinaldueDate { get; set;}
 		public static User u = new User ();
 
 		public pbcareApp ()
 		{
-			IsUserLoggedIn = true;
+		//	IsUserLoggedIn = true;
 			MainPage = GetMainPage ();
 		}
 

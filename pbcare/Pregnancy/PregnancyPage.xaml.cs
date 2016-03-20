@@ -21,10 +21,11 @@ namespace pbcare
 		{
 
 
-			Navigation.PushAsync ( new FollowPregnancy());
+			Navigation.PushAsync (new FollowPregnancy ());
 		}
 
-		public void FollowFetusByImagesClicked (object sender , EventArgs e){
+		public void FollowFetusByImagesClicked (object sender, EventArgs e)
+		{
 
 			Navigation.PushAsync (new FollowFetusByImages ());
 		}
@@ -32,6 +33,13 @@ namespace pbcare
 		public void FollowFetusWeeklyClicked (object sender, EventArgs e)
 		{
 			Navigation.PushAsync (new FollowFetusWeekly ());
+		}
+
+		public int Now_Week ()
+		{
+			int n = 0;
+			DateTime.Now.AddDays(7).ToString("dd.MM.yy");
+			return n;
 		}
 	}
 }

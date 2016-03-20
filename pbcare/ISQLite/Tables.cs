@@ -5,7 +5,7 @@ namespace pbcare
 
 	public class PregnancyDuedateTable
 	{
-		public string Email { get; set; }
+		public string email { get; set; }
 
 		public string dueDate { get; set; }
 

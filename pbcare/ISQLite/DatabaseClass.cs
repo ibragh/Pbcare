@@ -46,7 +46,7 @@ namespace pbcare
 					return true;
 				}
 			} catch (Exception ex) {
-				Debug.WriteLine (ex.ToString());
+				Debug.WriteLine (ex.ToString ());
 				return false;
 			} 
 		}
@@ -57,18 +57,18 @@ namespace pbcare
 				User u = new User ();
 				u.Email = email;
 
-				// check it user i is registred
+				// check if user i is registred
 				if (DB.Table<User> ().Where (c => c.Email == email).FirstOrDefault () != null) {
 					// check if the account is not already rigesterd..
 					// if so, and user want do edit, there is another way to do that
-					if (DB.Table<PregnancyDuedateTable> ().Where (c => c.Email == email).FirstOrDefault () != null) {
+					if (DB.Table<PregnancyDuedateTable> ().Where (c => c.email == email).FirstOrDefault () != null) {
 						return 1;
 						// check if due date on this account is not an empty string
-					} else if (DB.Table<PregnancyDuedateTable> ().Where (c => c.Email == email && c.dueDate == "").FirstOrDefault () == null) {
-						return 2;
+//					} else if (DB.Table<PregnancyDuedateTable> ().Where (c => c.email == email && c.dueDate != "").FirstOrDefault () == null) {
+//						return 2;
 					} else {
 						PregnancyDuedateTable p = new PregnancyDuedateTable ();
-						p.Email = email;
+						p.email = email;
 						p.dueDate = date;
 						DB.Insert (p);
 						return 99;
@@ -80,7 +80,7 @@ namespace pbcare
 				}
 
 			} catch (Exception ex) {
-				Debug.WriteLine (ex.ToString());
+				Debug.WriteLine (ex.ToString ());
 				return -1;
 			} 
 		}
@@ -88,16 +88,17 @@ namespace pbcare
 		public string  InsertIntoPregnancyWeekly (int WeekNumber)
 		{
 			try {
-				var PregnancyWeek = DB.Table<PregnancyWeeklyTable>().Where(c => c.week == WeekNumber).FirstOrDefault();
-				if( PregnancyWeek!= null){
+				// 
+				var PregnancyWeek = DB.Table<PregnancyWeeklyTable> ().Where (c => c.week == WeekNumber).FirstOrDefault ();
+				if (PregnancyWeek != null) {
 					return PregnancyWeek.info;
-				}else{
+				} else {
 					return "المعلومة غير محفوظة في الداتابيس";
 				}
 
 			} catch (Exception ex) {
-				Debug.WriteLine (ex.ToString());
-				return ex.ToString();
+				Debug.WriteLine (ex.ToString ());
+				return ex.ToString ();
 			}
 
 

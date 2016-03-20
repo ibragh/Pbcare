@@ -5,25 +5,26 @@
 			xmlns:myapp="clr-namespace:pbcare;assembly=pbcare">
 	<TabbedPage.Children>
 
-		<NavigationPage Title="حملي">
+		<NavigationPage Title="حملي" Icon="MyPregnancy.png">
 			<x:Arguments>
 				<myapp:PregnancyPage />
 			</x:Arguments>
+
 		</NavigationPage>
 
-		<NavigationPage Title="أطفالي">
+		<NavigationPage Title="أطفالي"  Icon="MyBaby.png">
 			<x:Arguments>
 				<myapp:BabyPage/>
 			</x:Arguments>
 		</NavigationPage>
 
-		<NavigationPage Title="المنتدى">
+		<NavigationPage Title="المنتدى"  Icon="Website.png">
 			<x:Arguments>
 				<myapp:WebsitePage />
 			</x:Arguments>
 		</NavigationPage>
 
-		<NavigationPage Title="الضبط">
+		<NavigationPage Title="الضبط"  Icon="Setting.png">
 			<x:Arguments>
 				<myapp:Setting />
 			</x:Arguments>
