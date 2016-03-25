@@ -33,7 +33,7 @@ namespace pbcare
 					pbcareApp.MyNavigation.PopModalAsync ();
 					pbcareApp.u.Email = Email;
 					pbcareApp.u.name = name;
-
+					pbcareApp.Database.InsertUserLoggedin (true);
 				} else {
 					messageSignUp.Text = "تم التسجيل بنفس الإيميل مسبقاً"; // Email is rigistered
 					passwordEntry.Text = string.Empty;

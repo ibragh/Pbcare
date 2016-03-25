@@ -12,12 +12,12 @@ namespace pbcare
 		public PregnancyWeekly(string w, string msg)
 		{
 			this.week = w;
-			this.messege = msg;
+			this.message = msg;
 		}
 
 		public string week { private set; get; }
 
-		public string messege { private set; get; }
+		public string message { private set; get; }
 
 	}
 }

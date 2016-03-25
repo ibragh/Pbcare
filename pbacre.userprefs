@@ -1,9 +1,17 @@
-﻿<Properties StartupItem="Droid/pbcare.Droid.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 7 (Marshmallow)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/SQLite_Droid.cs">
+﻿<Properties StartupItem="iOS/pbcare.iOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.2" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare/Pregnancy/FollowFetus/FollowFetusByImages.cs">
     <Files>
       <File FileName="pbcare/pbcareApp.cs" Line="1" Column="1" />
-      <File FileName="Droid/SQLite_Droid.cs" Line="23" Column="71" />
+      <File FileName="pbcare/Pregnancy/PregnancyPage.xaml.cs" Line="25" Column="41" />
+      <File FileName="pbcare/pbcareMainPage.xaml.cs" Line="21" Column="5" />
+      <File FileName="pbcare/ISQLite/DatabaseClass.cs" Line="124" Column="1" />
+      <File FileName="pbcare/ISQLite/Tables.cs" Line="26" Column="1" />
+      <File FileName="pbcare/Pregnancy/FollowPregnancy/FollowPregnancy.cs" Line="23" Column="21" />
+      <File FileName="pbcare/Pregnancy/FollowPregnancy/PregnancyWeekly.cs" Line="20" Column="24" />
+      <File FileName="pbcare/Pregnancy/FollowPregnancy/PregnancyWeeklyPage.cs" Line="18" Column="6" />
+      <File FileName="pbcare/Pregnancy/FollowFetus/FollowFetusWeekly.cs" Line="27" Column="37" />
+      <File FileName="pbcare/Pregnancy/FollowFetus/FollowFetusByImages.cs" Line="13" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

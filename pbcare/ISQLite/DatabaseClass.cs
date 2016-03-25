@@ -18,8 +18,42 @@ namespace pbcare
 			DB.CreateTable<User> ();
 			DB.CreateTable<PregnancyDuedateTable> ();
 			DB.CreateTable<PregnancyWeeklyTable> ();
+			DB.CreateTable<UserLoggedIn> ();
+		}
+		// check if user is logged in previasly... will chgange it later
+		public bool checkUserLoggedin ()
+		{
+			try {
+				
+				var RigrsterdUser = DB.Table<UserLoggedIn> ().Where (i => i.loggedIn == 1).FirstOrDefault ();
+				if (RigrsterdUser != null) {
+					pbcareApp.u.Email = RigrsterdUser.email;
+					pbcareApp.IsUserLoggedIn = true ;
+					return true; // User has logged in before
+				} else {
+					return false; // User has NOT logged in before
+				}
+			} catch (Exception ex) {
+				Debug.WriteLine (ex.ToString ());
+				return false;
+			}
 		}
 
+		public void InsertUserLoggedin (bool status)
+		{
+			if (status) {
+				UserLoggedIn u = new UserLoggedIn ();
+				u.loggedIn = 1;
+				u.email = pbcareApp.u.Email;
+				DB.Insert (u);
+			} else {
+				UserLoggedIn u = new UserLoggedIn ();
+				u.loggedIn = 0;
+				u.email = pbcareApp.u.Email;
+				DB.Insert (u);
+			}
+
+		}
 		// check login in email & password are match in db
 		public bool checkLogin (string email, string password)
 		{

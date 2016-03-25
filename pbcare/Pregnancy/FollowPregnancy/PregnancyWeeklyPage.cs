@@ -6,31 +6,28 @@ namespace pbcare
 	public class PregnancyWeeklyPage : ContentPage
 	{
 		
-		public PregnancyWeeklyPage (bool includeBigLabel)
+		public PregnancyWeeklyPage ()
 		{
-			// Build the page
-			this.Content = new StackLayout {
-				 Padding = 20,
-				Children = {
-
-				}
+			Label WeekLabel = new Label {
+				FontSize = 50,
+				HorizontalOptions = LayoutOptions.Center, TextColor = Color.Red
 			};
-			// Add in the big Label at top for CarouselPage.
-			if (includeBigLabel) {
-				Label bigLabel = new Label {
-					FontSize = 50,
-					HorizontalOptions = LayoutOptions.Center
-				};
-				Label bigLabel1 = new Label { 
-					FontSize = 20,
-					HorizontalOptions = LayoutOptions.Center
-				};
-				bigLabel.SetBinding (Label.TextProperty, "week");
-				bigLabel1.SetBinding (Label.TextProperty, "messege");
-				(this.Content as StackLayout).Children.Insert (0, bigLabel);
-				(this.Content as StackLayout).Children.Insert (1, bigLabel1);
-			}
+			Label messageLabel = new Label { 
+				FontSize = 20,
+				HorizontalOptions = LayoutOptions.Center, TextColor = Color.Red
+			};
+			WeekLabel.SetBinding (Label.TextProperty, "week");
+			messageLabel.SetBinding (Label.TextProperty, "message");
+
+			this.Content = new StackLayout {
+				Padding = 20,
+				Children = {
+					WeekLabel, messageLabel
+				}
+			};	
 		}
 	}
 }
+		
+
 	

@@ -24,7 +24,7 @@ namespace pbcare
 
 			this.ItemTemplate = new DataTemplate(() =>
 				{
-					return new PregnancyWeeklyPage(true);
+					return new PregnancyWeeklyPage();
 				});
 			this.SelectedItem = ((PregnancyWeekly[])ItemsSource) [2];
 		}

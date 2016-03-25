@@ -9,7 +9,9 @@ namespace pbcare
 
 		public string dueDate { get; set; }
 
-		public PregnancyDuedateTable (){}
+		public PregnancyDuedateTable ()
+		{
+		}
 
 	}
 
@@ -19,7 +21,21 @@ namespace pbcare
 
 		public string info { get; set; }
 
-		public PregnancyWeeklyTable (){}
+		public PregnancyWeeklyTable ()
+		{
+		}
+
+	}
+
+	public class UserLoggedIn
+	{
+		public int loggedIn { get; set; }
+
+		public string email { get; set; }
+
+		public UserLoggedIn ()
+		{
+		}
 
 	}
 }
