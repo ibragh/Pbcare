@@ -3311,8 +3311,11 @@ namespace pbcare.Droid
 			// aapt resource value: 0x7f020062
 			public const int mr_ic_settings_light = 2130837602;
 			
+			// aapt resource value: 0x7f020064
+			public const int notification_template_icon_bg = 2130837604;
+			
 			// aapt resource value: 0x7f020063
-			public const int notification_template_icon_bg = 2130837603;
+			public const int screen = 2130837603;
 			
 			static Drawable()
 			{
@@ -4478,6 +4481,9 @@ namespace pbcare.Droid
 			// aapt resource value: 0x7f080006
 			public const int CardView_Light = 2131230726;
 			
+			// aapt resource value: 0x7f080145
+			public const int MyTheme = 2131231045;
+			
 			// aapt resource value: 0x7f080025
 			public const int Platform_AppCompat = 2131230757;
 			
@@ -4765,6 +4771,9 @@ namespace pbcare.Droid
 			
 			// aapt resource value: 0x7f080001
 			public const int Theme_MediaRouter_Light = 2131230721;
+			
+			// aapt resource value: 0x7f080144
+			public const int Theme_Splash = 2131231044;
 			
 			// aapt resource value: 0x7f0800fd
 			public const int ThemeOverlay_AppCompat = 2131230973;

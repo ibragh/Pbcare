@@ -41,19 +41,17 @@ namespace pbcare
 
 		public void InsertUserLoggedin (bool status)
 		{
+			UserLoggedIn u = new UserLoggedIn ();
 			if (status) {
-				UserLoggedIn u = new UserLoggedIn ();
 				u.loggedIn = 1;
 				u.email = pbcareApp.u.Email;
 				DB.Insert (u);
 			} else {
-				UserLoggedIn u = new UserLoggedIn ();
-				u.loggedIn = 0;
-				u.email = pbcareApp.u.Email;
-				DB.Insert (u);
+				DB.DeleteAll<UserLoggedIn>();
 			}
 
 		}
+
 		// check login in email & password are match in db
 		public bool checkLogin (string email, string password)
 		{
