@@ -130,7 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon.png" />
-    <BundleResource Include="Resources\pbcare.db" />
     <BundleResource Include="Resources\MyBaby.png" />
     <BundleResource Include="Resources\MyPregnancy.png" />
     <BundleResource Include="Resources\Setting.png" />
@@ -138,5 +137,7 @@
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\pbcare.db3" />
+    <BundleResource Include="Resources\pbcare.db" />
   </ItemGroup>
 </Project>

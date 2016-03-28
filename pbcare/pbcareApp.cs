@@ -6,7 +6,7 @@ namespace pbcare
 	
 	public class pbcareApp : Application
 	{
-		public static INavigation MyNavigation { get; private set; }
+		public static INavigation MyNavigation { get; set; }
 
 		public static Page GetMainPage ()
 		{
@@ -15,15 +15,32 @@ namespace pbcare
 			return p;
 		}
 
+		public pbcareApp ()
+		{
+
+			MainPage = GetMainPage ();
+		}
+
 		public static bool IsUserLoggedIn { get; set; }
 		public static DateTime FinaldueDate { get; set;}
 		public static User u = new User ();
+		/*Calculate Current Week*/
+		public static int CurrentWeek(){
+			TimeSpan difference = pbcareApp.FinaldueDate - DateTime.Now ;
+			int days =( 280 - (int) difference.TotalDays) +1;
 
-		public pbcareApp ()
-		{
-			
-			MainPage = GetMainPage ();
+			int i;
+			for (i=0; i < 280; i=i+7) {
+				for (int j = i; j <= (i+7); j++) {
+					if (days == j) {
+						return i / 7;
+					}
+				}
+			}
+			return i/7;
+
 		}
+
 
 
 

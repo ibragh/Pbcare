@@ -27,14 +27,25 @@ namespace pbcare
 				
 				var RigrsterdUser = DB.Table<UserLoggedIn> ().Where (i => i.loggedIn == 1).FirstOrDefault ();
 				if (RigrsterdUser != null) {
+					/* Retreve Email from Database */
 					pbcareApp.u.Email = RigrsterdUser.email;
 					pbcareApp.IsUserLoggedIn = true ;
+					/* Retreve DueDate from Database */
+					var DueDateObj = DB.Table<PregnancyDuedateTable> ().Where (i => i.email == pbcareApp.u.Email).FirstOrDefault ();
+
+					string DueDate= DueDateObj.dueDate;
+
+
+
+					DateTime loadedDate = DateTime.ParseExact("08/08/2015", "d", null);
+					pbcareApp.FinaldueDate = loadedDate.Date;
+
 					return true; // User has logged in before
 				} else {
 					return false; // User has NOT logged in before
 				}
 			} catch (Exception ex) {
-				Debug.WriteLine (ex.ToString ());
+				Debug.WriteLine ("********************************************************************* : "+ex.ToString ());
 				return false;
 			}
 		}
