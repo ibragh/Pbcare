@@ -25,14 +25,15 @@ namespace pbcare.Droid
 //		}
 //	}
 
-	[Activity (Label = "pbcare.Droid", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+	[Activity (Label = "pbcare.Droid", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize |
+		ConfigChanges.Orientation, WindowSoftInputMode = SoftInput.AdjustResize)]
+	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
 			// Must be called before base.OnCreate (bundle);
-			FormsAppCompatActivity.ToolbarResource = Resource.Layout.Toolbar;
-			FormsAppCompatActivity.TabLayoutResource = Resource.Layout.TabLayout;
+//			FormsAppCompatActivity.ToolbarResource = Resource.Layout.Toolbar;
+//			FormsAppCompatActivity.TabLayoutResource = Resource.Layout.TabLayout;
 
 			base.OnCreate (bundle);
 

@@ -1,14 +1,6 @@
-﻿<Properties StartupItem="iOS/pbcare.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.2" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare/Pregnancy/PregnancyPage.cs">
-    <Files>
-      <File FileName="pbcare/pbcareApp.cs" Line="22" Column="29" />
-      <File FileName="pbcare/Pregnancy/FollowPregnancy/PregnancyWeeklyPage.cs" Line="1" Column="1" />
-      <File FileName="pbcare/Pregnancy/FollowPregnancy/FollowPregnancy.cs" Line="17" Column="35" />
-      <File FileName="pbcare/Pregnancy/PregnancyPage.cs" Line="110" Column="34" />
-      <File FileName="iOS/Info.plist" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+﻿<Properties StartupItem="Droid\pbcare.Droid.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Android" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/ibrahim/Projects/pbcare github/Droid/SQLite_Droid.cs" line="20" column="1" />
@@ -34,4 +26,8 @@
       </CommandData>
     </Data>
   </MonoDevelop.Ide.CustomExecutionModes>
+  <DisabledProjects>
+    <String>iOS\pbcare.iOS.csproj</String>
+  </DisabledProjects>
+  <MonoDevelop.Ide.ItemProperties.pbcare.Droid AndroidDesignerPreferredDevice="Nexus 4" />
 </Properties>

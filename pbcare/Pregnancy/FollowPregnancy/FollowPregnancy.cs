@@ -27,7 +27,7 @@ namespace pbcare
 			});
 			// selected week .. so her preganncy week will
 			// be the first screen will appear 
-			this.SelectedItem = ((PregnancyWeekly[])ItemsSource) [4];
+			this.SelectedItem = ((PregnancyWeekly[])ItemsSource); // it needs change
 		//	this.CurrentPage = this.Children[9];
 
 		}
