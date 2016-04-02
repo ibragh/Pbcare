@@ -4,6 +4,8 @@ using System.Linq;
 using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
+using Xamarin.UITest.iOS;
+using Xamarin.UITest.Android;
 
 namespace pbcare
 {
@@ -16,13 +18,16 @@ namespace pbcare
 
 		public Tests (Platform platform)
 		{
+			
 			this.platform = platform;
 		}
 
 		[SetUp]
 		public void BeforeEachTest ()
 		{
+			
 			app = AppInitializer.StartApp (platform);
+
 		}
 
 		[Test]

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SQLite;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace pbcare
 {
@@ -23,6 +24,7 @@ namespace pbcare
 		// check if user is logged in previasly... will chgange it later
 		public bool checkUserLoggedin ()
 		{
+			string DueDate="";
 			try {
 				
 				var RigrsterdUser = DB.Table<UserLoggedIn> ().Where (i => i.loggedIn == 1).FirstOrDefault ();
@@ -31,21 +33,16 @@ namespace pbcare
 					pbcareApp.u.Email = RigrsterdUser.email;
 					pbcareApp.IsUserLoggedIn = true ;
 					/* Retreve DueDate from Database */
-					var DueDateObj = DB.Table<PregnancyDuedateTable> ().Where (i => i.email == pbcareApp.u.Email).FirstOrDefault ();
-
-					string DueDate= DueDateObj.dueDate;
-
-
-
-					DateTime loadedDate = DateTime.ParseExact("08/08/2015", "d", null);
-					pbcareApp.FinaldueDate = loadedDate.Date;
-
+					DueDate = DB.Table<PregnancyDuedateTable> ().Where (i => i.email == pbcareApp.u.Email).FirstOrDefault ().dueDate;
+					/*Convert DueDate string to a valid DateTime*/
+					pbcareApp.FinaldueDate = DateTime.ParseExact(DueDate, "ddMMyyyy", null).Date;
 					return true; // User has logged in before
+
 				} else {
 					return false; // User has NOT logged in before
 				}
 			} catch (Exception ex) {
-				Debug.WriteLine ("********************************************************************* : "+ex.ToString ());
+				Debug.WriteLine (DueDate+"********************************************************************* : "+ex.ToString ());
 				return false;
 			}
 		}
@@ -54,7 +51,7 @@ namespace pbcare
 		{
 			UserLoggedIn u = new UserLoggedIn ();
 			if (status) {
-				u.loggedIn = 1;
+				u.loggedIn = 1; // will delete it later
 				u.email = pbcareApp.u.Email;
 				DB.Insert (u);
 			} else {
@@ -100,15 +97,13 @@ namespace pbcare
 				User u = new User ();
 				u.Email = email;
 
-				// check if user i is registred
+				// check if user is registred
 				if (DB.Table<User> ().Where (c => c.Email == email).FirstOrDefault () != null) {
 					// check if the account is not already rigesterd..
 					// if so, and user want do edit, there is another way to do that
 					if (DB.Table<PregnancyDuedateTable> ().Where (c => c.email == email).FirstOrDefault () != null) {
 						return 1;
-						// check if due date on this account is not an empty string
-//					} else if (DB.Table<PregnancyDuedateTable> ().Where (c => c.email == email && c.dueDate != "").FirstOrDefault () == null) {
-//						return 2;
+					// user is ready to store a new DueDate
 					} else {
 						PregnancyDuedateTable p = new PregnancyDuedateTable ();
 						p.email = email;

@@ -9,6 +9,7 @@ namespace pbcare
 	{
 		public PregnancyPage ()
 		{
+			this.Title = "حملي";
 			Button AddPregnancy = new Button {Text = "إضافة حمل",
 				TextColor = Color.FromHex ("#F7F7F7"),
 				WidthRequest = 200,
@@ -45,9 +46,9 @@ namespace pbcare
 			};
 
 			AddPregnancy.Clicked += AddPregnancyClicked;
-			FollowPregnancy.Clicked += FollowPregnancyWeeklyClicked ;
-			FollowFetusImages.Clicked += FollowFetusByImagesClicked ;
-			FollowFetusWeekly.Clicked += FollowFetusWeeklyClicked ;
+			FollowPregnancy.Clicked += FollowPregnancyWeeklyClicked;
+			FollowFetusImages.Clicked += FollowFetusByImagesClicked;
+			FollowFetusWeekly.Clicked += FollowFetusWeeklyClicked;
 
 			StackLayout NewUser = new StackLayout {
 				VerticalOptions = LayoutOptions.Center, Padding = 20,
@@ -59,17 +60,15 @@ namespace pbcare
 			StackLayout RigesteredUser = new StackLayout {
 				VerticalOptions = LayoutOptions.Center, Padding = 20,
 				Children = {
+					AddPregnancy,
 					FollowPregnancy,
 					FollowFetusImages,
 					FollowFetusWeekly
 				}
 			};
 
-			if (pbcareApp.FinaldueDate.GetHashCode() == 0) {
-				Content = NewUser;
-			} else {
-				Content = RigesteredUser;
-			}
+			Content = RigesteredUser;
+
 		}
 
 		public void AddPregnancyClicked (object sender, EventArgs e)
@@ -80,26 +79,37 @@ namespace pbcare
 		public void FollowPregnancyWeeklyClicked (object sender, EventArgs e)
 		{
 
-
-			Navigation.PushAsync (new FollowPregnancy ());
+			if(pbcareApp.FinaldueDate.GetHashCode() == 0){
+				DisplayAlert ("Error","You should Add pregnancy","OK");
+			}else{
+				sendNotification ();
+				Navigation.PushAsync (new FollowPregnancy ());
+			}
 		}
 
 		public void FollowFetusByImagesClicked (object sender, EventArgs e)
 		{
-			// Only for testing
-			sendNotification ();
-			Navigation.PushAsync (new FollowFetusByImages ());
+			if (pbcareApp.FinaldueDate.GetHashCode() == 0) {
+				DisplayAlert ("Error", "You should Add pregnancy", "OK");
+			} else {
+				// Only for testing
+
+				Navigation.PushAsync (new FollowFetusByImages ());
+			}
 		}
 
 		public void FollowFetusWeeklyClicked (object sender, EventArgs e)
 		{
-			Navigation.PushAsync (new FollowFetusWeekly ());
+			if (pbcareApp.FinaldueDate.GetHashCode() == 0) {
+				DisplayAlert ("Error", "You should Add pregnancy", "OK");
+			} else {
+				Navigation.PushAsync (new FollowFetusWeekly ());
+			}
 		}
 
 		public void sendNotification ()
 		{
-			Notifications.Instance.Send ("ABC", "I got a notification", when: TimeSpan.FromSeconds (20));
-
+			Notifications.Instance.Send ("Notification","I got notification for ABCD",when: TimeSpan.FromSeconds (2));
 		}
 
 	}

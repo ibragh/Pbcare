@@ -6,27 +6,34 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Support;
+using Xamarin.Forms.Platform.Android;
+
 
 namespace pbcare.Droid
 {
 	// Show the splash screen
-	[Activity(Theme = "@style/Theme.Splash",  MainLauncher = true, NoHistory = true, 
-		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]              
-	public class SplashActivity : Activity
-	{
-		protected override void OnCreate(Bundle bundle)
-		{
-			base.OnCreate(bundle);
-			System.Threading.Thread.Sleep(1000); 
-			this.StartActivity(typeof(MainActivity));
-		}
-	}
+//	[Activity(Theme = "@style/Theme.Splash",  MainLauncher = true, NoHistory = true, 
+//		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]              
+//	public class SplashActivity : Activity
+//	{
+//		protected override void OnCreate(Bundle bundle)
+//		{
+//			base.OnCreate(bundle);
+//			System.Threading.Thread.Sleep(1000); 
+//			this.StartActivity(typeof(MainActivity));
+//		}
+//	}
 
 	[Activity (Label = "pbcare.Droid", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
+	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
+			// Must be called before base.OnCreate (bundle);
+			FormsAppCompatActivity.ToolbarResource = Resource.Layout.Toolbar;
+			FormsAppCompatActivity.TabLayoutResource = Resource.Layout.TabLayout;
+
 			base.OnCreate (bundle);
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);

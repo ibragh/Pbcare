@@ -8,28 +8,28 @@ namespace pbcare
 	{
 		public FollowPregnancy ()
 		{
-			this.Title = "PregnancyWeekly";
-
-
-			//var CurrentWeek = DateTime.Now.Subtract (pbcareApp.FinaldueDate);
-
+			this.Title = "متابعة الحمل الأسبوعي";
+			int CurrentWeek = pbcareApp.CurrentWeek (pbcareApp.FinaldueDate);
 
 			string[] info = new string[41];
 			for (int i = 1; i < info.Length; i++) {
+				// get the pregnancy weekly info from local database
 				info [i] = pbcareApp.Database.InsertIntoPregnancyWeekly (i);
 			}
-
-			PregnancyWeekly[] d = new PregnancyWeekly[41];
-			for (int i = 1; i < d.Length; i++) {
-				d[i] = new PregnancyWeekly("Week "+i,info [i]);
+			PregnancyWeekly[] pregnancyWeek = new PregnancyWeekly[41];
+			for (int i = 1; i < pregnancyWeek.Length; i++) {
+				pregnancyWeek[i] = new PregnancyWeekly("الأسبوع "+i,info [i]);
 			}
-			
+			this.ItemsSource =pregnancyWeek;
+
 			this.ItemTemplate = new DataTemplate (() => {
 				return new PregnancyWeeklyPage (); // ContentPage
 			});
-			this.ItemsSource =d;
+			// selected week .. so her preganncy week will
+			// be the first screen will appear 
+			this.SelectedItem = ((PregnancyWeekly[])ItemsSource) [4];
+		//	this.CurrentPage = this.Children[9];
 
-			this.SelectedItem = ((PregnancyWeekly[])ItemsSource) [pbcareApp.CurrentWeek()];
 		}
 
 	}

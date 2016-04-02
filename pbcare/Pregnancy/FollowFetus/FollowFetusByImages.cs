@@ -6,43 +6,83 @@ namespace pbcare
 {
 	public class FollowFetusByImages :  ContentPage
 	{
-		public FollowFetusByImages()
+		public FollowFetusByImages ()
 		{
-			this.Title = "Pregnancy Weekly";
-			string msg = "Text Text Text Week 7 Text Text Text Text \n " +
-				"Text Text Text Week 7 Text Text Text Text \n" +
-				"Text Text Text Week 7 Text Text Text Text \n" +
-				"Text Text Text Week 7 Text Text Text Text \n" +
-				"Text Text Text Week 7 Text Text Text Text \n";
+			this.Title = "متابعة الحمل الأسبوعي";
+			string msg = "لا تحاولي مسح البقع الداكنة من على أنفك ووجنتيك وجبهتك." +
+			             " إنها ليست أوساخًا—بل هي حالة شائعة في " +
+			             "الحمل تسمى الكلف أو \"قناع الحمل.\" الهرمونات هي السبب في ظهور تلك البقع، وتعاني منها بعض السيدات الحوامل وليس كلهن." +
+			             " كذلك فإن هرمونات الحمل مسؤولة عن ظهور الخط الأسود، وهو خط غامق يظهر من أسفل السرة إلى عظمة العانة";
+
 			Label WeekLabel = new Label {
-				Text="Week 7",
+				Text = "الأسبوع ١٩",
 				FontSize = 50,
 				HorizontalOptions = LayoutOptions.Center, TextColor = Color.Red
 			};
 			Label messageLabel = new Label { 
-				Text=msg,
+				Text = msg,
 				FontSize = 20,
-				HorizontalOptions = LayoutOptions.Center, TextColor = Color.Red
+				HorizontalOptions = LayoutOptions.Center,
 			};
 
+			Content = new  StackLayout {
+				Children = {
+					WeekLabel,
+					messageLabel
+				}
 
-//			this.ItemsSource = new PregnancyWeekly[] 
-//			{
-//				new PregnancyWeekly("week1", msg),
-//				new PregnancyWeekly("week2", msg),
-//				new PregnancyWeekly("week3", msg),
-//				new PregnancyWeekly("week4", msg),
-//				new PregnancyWeekly("week5", msg),
-//				new PregnancyWeekly("week6", msg)
-//			};
-//
-//			this.ItemTemplate = new DataTemplate(() =>
-//				{
-//					return new PregnancyWeeklyPage(true);
-//				});
-//			this.SelectedItem = ((PregnancyWeekly[])ItemsSource) [2];
+			};
+		}
+	}
+	public class FollowFetusByImages2 :  ContentPage
+	{
+		public FollowFetusByImages2 ()
+		{
+			this.Title = "متابعة الحمل الأسبوعي";
+			string msg = "لا تحاولي مسح البقع الداكنة من ا تحاولي مسح البقع الداكنة من على أنفك ووجنتيهوعلى أنفك ووجنتيهو خط غامق يظهر من أسفل السرة إلى عظمة العانة";
 
-			Content = new  StackLayout{
+			Label WeekLabel = new Label {
+				Text = "الأسبوع ٢٠ ",
+				FontSize = 50,
+				HorizontalOptions = LayoutOptions.Center, TextColor = Color.Red
+			};
+			Label messageLabel = new Label { 
+				Text = msg,
+				FontSize = 20,
+				HorizontalOptions = LayoutOptions.Center,
+			};
+
+			Content = new  StackLayout {
+				Children = {
+					WeekLabel,
+					messageLabel
+				}
+
+			};
+		}
+	}
+	public class FollowFetusByImages1 :  ContentPage
+	{
+		public FollowFetusByImages1 ()
+		{
+			this.Title = "متابعة الحمل الأسبوعي";
+			string msg = "لا تحا مسح اجبهتك." +
+				" إنها ليست أوساخًا—بل هي حالة شائعة في " +
+				"الحمل تسمى الكلف أو \"قنسيدات الحوامل وليس كلهن." +
+				" كذلك فإن هرمونات الحمل مسؤولة عن ظهور الخط الأسود، وهو خط غامق يظهر من أسفل السرة إلى عظمة العانة";
+
+			Label WeekLabel = new Label {
+				Text = "الأسبوع ١٨",
+				FontSize = 50,
+				HorizontalOptions = LayoutOptions.Center, TextColor = Color.Red
+			};
+			Label messageLabel = new Label { 
+				Text = msg,
+				FontSize = 20,
+				HorizontalOptions = LayoutOptions.Center,
+			};
+
+			Content = new  StackLayout {
 				Children = {
 					WeekLabel,
 					messageLabel

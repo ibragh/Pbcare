@@ -22,7 +22,7 @@ namespace pbcare
 			};
 
 			Button CalMyDate = new Button {
-				Text = "Calculate my Due date", 
+				Text = "حاسبة الحمل", 
 				TextColor = Color.Red, HorizontalOptions = LayoutOptions.Center,
 				Font = Font.SystemFontOfSize (NamedSize.Default), BorderWidth = 1, BorderColor = Color.Red
 
@@ -30,7 +30,7 @@ namespace pbcare
 			CalMyDate.Clicked += (object sender, EventArgs e) => Navigation.PushAsync (new CalMyDueDate ());
 
 			Button AddDueDate = new Button {
-				Text = " Add Due Date ", 
+				Text = " إضافة", 
 				TextColor = Color.Blue, HorizontalOptions = LayoutOptions.Center,
 				FontSize = 30, BorderWidth = 1, BorderColor = Color.Blue
 			};
@@ -41,39 +41,36 @@ namespace pbcare
 				 * AND not after ten months from the current date 
 				 */
 				if (dueDate.Date < DateTime.Now.AddDays (-1) || dueDate.Date > DateTime.Now.AddMonths (11)) {
-					Navigation.PopAsync ();
-					DisplayAlert ("Error", "Please set a valid Pregnancy Daue Date Or " +
-					"Use the Due Date Calculator", "OK");
+					DisplayAlert ("خطأ", "يجب أن يكون موعد الولادة المتوقع صحيحاً", "تم");
 				} else {
 					pbcareApp.FinaldueDate = dueDate.Date; /* Save data for farther use */
+					int CurrentWeek = pbcareApp.CurrentWeek(dueDate.Date); // for testing
+					//  convert date to formatted string for DB 
+					DueDateText = dueDate.Date.ToString("ddMMyyyy"); 
+					// convert date to string for display 
 					int y = dueDate.Date.Year, m = dueDate.Date.Month, d = dueDate.Date.Day;
-					DueDateText = d + "/" + m + "/" + y; /* convert date to string for display */
+					string DueDateDisplay = d + "/" + m + "/" + y; 
+
 					// the result from [AddPregnancyToDB] method will return numbers, each one has a meaning
-					int result = pbcareApp.Database.AddPregnancyToDB (pbcareApp.u.Email, DueDateText);
+					int result = pbcareApp.Database.AddPregnancyToDB (pbcareApp.u.Email,DueDateText );
 					if (result == -1) {
-						DisplayAlert ("Error", "Unkown Error -1", "OK");
+						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
 					} else if (result == 0) {
 						Navigation.PopAsync ();
-						DisplayAlert ("Error", "User is not registered", "OK");
+						DisplayAlert ("خطأ", "المستخدم غير مسجل مسبقاً", "تم");
 
 					} else if (result == 1) {
 						Navigation.PopAsync ();
-						DisplayAlert ("Error", "There is Due Date record rigistered, " +
-						"If u want to edit u should press 'Edit my due date' Button", "OK");
+						DisplayAlert ("خطأ", "يوجد لديكي حمل مسبق - لتغيير تاريخ الحمل من الإعدادات", "تم");
 
-					} else if (result == 2) {
+					}  else if (result == 99) { /* SUCCESSFUL */
 						Navigation.PopAsync ();
-						DisplayAlert ("Error", "Please do not leave Due date Empty", "OK");
-
-					} else if (result == 99) { /* SUCCESSFUL */
-					
-						Navigation.PopAsync ();
-						DisplayAlert ("Success", "Your Due date is " + DueDateText, "Done");
+						DisplayAlert ("", "موعدك الولادة المتوقع : " + DueDateDisplay+" \nأنتي الآن في الأسبوع الـ "+CurrentWeek, "تم");
 					
 
 					} else {
 						Navigation.PopAsync ();
-						DisplayAlert ("Error", "Unkown Error", "OK");
+						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
 
 					}
 				}
@@ -82,9 +79,9 @@ namespace pbcare
 			Content = new StackLayout { 
 				VerticalOptions = LayoutOptions.Center, Padding = 20,
 				Children = {
+					CalMyDate,
 					OptionText,
 					dueDate,
-					CalMyDate,
 					AddDueDate
 				}
 			};

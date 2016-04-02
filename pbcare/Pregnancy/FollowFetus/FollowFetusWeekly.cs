@@ -9,24 +9,16 @@ namespace pbcare
 		public FollowFetusWeekly()
 		{
 			this.Title = "Fetus Weekly";
-			string msg = "bla bla bla bla sdfshfghgfhfg \n hj";
 
 
-			this.ItemsSource = new PregnancyWeekly[] 
-			{
-				new PregnancyWeekly("week1", msg),
-				new PregnancyWeekly("week2", msg),
-				new PregnancyWeekly("week3", msg),
-				new PregnancyWeekly("week4", msg),
-				new PregnancyWeekly("week5", msg),
-				new PregnancyWeekly("week6", msg)
-			};
+			this.Children.Add (new FetusWeeklyTry (5));
+			this.Children.Add (new FetusWeeklyTry (1));
+			this.Children.Add (new FetusWeeklyTry (2));
+			this.Children.Add (new FetusWeeklyTry (1));
+			this.Children.Add (new FetusWeeklyTry (5));
 
-			this.ItemTemplate = new DataTemplate(() =>
-				{
-					return new PregnancyWeeklyPage();
-				});
-			this.SelectedItem = ((PregnancyWeekly[])ItemsSource) [2];
+			this.CurrentPage = this.Children [2];
+
 		}
 	}
 }

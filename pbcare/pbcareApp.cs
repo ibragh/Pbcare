@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace pbcare
 {
@@ -22,27 +23,20 @@ namespace pbcare
 		}
 
 		public static bool IsUserLoggedIn { get; set; }
-		public static DateTime FinaldueDate { get; set;}
-		public static User u = new User ();
-		/*Calculate Current Week*/
-		public static int CurrentWeek(){
-			TimeSpan difference = pbcareApp.FinaldueDate - DateTime.Now ;
-			int days =( 280 - (int) difference.TotalDays) +1;
 
-			int i;
-			for (i=0; i < 280; i=i+7) {
-				for (int j = i; j <= (i+7); j++) {
-					if (days == j) {
-						return i / 7;
-					}
-				}
-			}
-			return i/7;
+		public static DateTime FinaldueDate { get; set; }
+
+		public static User u = new User ();
+
+		/* Calculate Current Week */
+		public static int CurrentWeek (DateTime dueDate)
+		{
+			TimeSpan difference = dueDate - DateTime.Now.AddDays (-1);
+			// for calculating the past days of pregnancy
+			double PastDays = (280 - (int)difference.TotalDays); 
+			return (int)Math.Ceiling (PastDays / 7);
 
 		}
-
-
-
 
 		static DatabaseClass database;
 

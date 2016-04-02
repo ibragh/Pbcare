@@ -1,10 +1,12 @@
 ﻿<Properties StartupItem="iOS/pbcare.iOS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.2" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare/Pregnancy/PregnancyPage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare/Pregnancy/PregnancyPage.cs">
     <Files>
-      <File FileName="pbcare/Pregnancy/FollowPregnancy/FollowPregnancy.cs" Line="32" Column="33" />
-      <File FileName="pbcare/Pregnancy/PregnancyPage.xaml.cs" Line="46" Column="6" />
-      <File FileName="pbcare/pbcareApp.cs" Line="20" Column="32" />
+      <File FileName="pbcare/pbcareApp.cs" Line="22" Column="29" />
+      <File FileName="pbcare/Pregnancy/FollowPregnancy/PregnancyWeeklyPage.cs" Line="1" Column="1" />
+      <File FileName="pbcare/Pregnancy/FollowPregnancy/FollowPregnancy.cs" Line="17" Column="35" />
+      <File FileName="pbcare/Pregnancy/PregnancyPage.cs" Line="110" Column="34" />
+      <File FileName="iOS/Info.plist" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

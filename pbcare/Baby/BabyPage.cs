@@ -15,7 +15,7 @@ namespace pbcare
 
 
 
-		//	childrenList.ItemsSource = pbcareApp.u.MyChilren;
+			//childrenList.ItemsSource = pbcareApp.u.MyChilren;
 			childrenList.ItemTemplate = new DataTemplate (typeof(TextCell));
 			childrenList.ItemTemplate.SetBinding 	(TextCell.TextProperty, "name");
 
