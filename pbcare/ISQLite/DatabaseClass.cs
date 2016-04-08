@@ -17,6 +17,7 @@ namespace pbcare
 
 			DB = DependencyService.Get<ISQLite> ().GetConnection (); 
 			DB.CreateTable<User> ();
+			DB.CreateTable<Child> ();
 			DB.CreateTable<PregnancyDuedateTable> ();
 			DB.CreateTable<PregnancyWeeklyTable> ();
 			DB.CreateTable<UserLoggedIn> ();
@@ -93,6 +94,7 @@ namespace pbcare
 
 		public int AddPregnancyToDB (string email, string date)
 		{
+
 			try {
 				User u = new User ();
 				u.Email = email;
@@ -142,6 +144,37 @@ namespace pbcare
 
 		}
 
+		public List<Child> gitChildren(string email)
+		{
+			
+			try{
+				return  DB.Table<Child> ().Where (c => c.mother == email).ToList();
+			}
+			catch(Exception ex){
+				return null ;
+			}
+		}
+
+
+		public Child gitChild(string name , string email){
+		
+			try{
+				return DB.Table<Child>().Where (c => c.name == name && c.mother == email).FirstOrDefault();
+			}
+			catch(Exception ex){
+				return null;
+			}
+		}
+
+		public List<vaccinationTable> gitVaccinations()
+		{
+			try{
+				return DB.Table<vaccinationTable>().ToList();
+			}
+			catch(Exception ex){
+				return null;
+			}
+		}
 	
 	}
 }

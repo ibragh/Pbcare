@@ -38,5 +38,18 @@ namespace pbcare
 		}
 
 	}
+
+	public class vaccinationTable
+	{
+		public string ID { get; set; }
+		public string name { get; set; }
+		public string info { get; set; }
+		public string time { get; set; }
+	
+		public vaccinationTable ()
+		{
+		}
+
+	}
 }
 

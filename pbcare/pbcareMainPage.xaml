@@ -2,10 +2,12 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
 			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			x:Class="pbcare.pbcareMainPage"
-			xmlns:myapp="clr-namespace:pbcare;assembly=pbcare">
+			xmlns:myapp="clr-namespace:pbcare;assembly=pbcare"
+			BackgroundImage = "mainPB.jpg">
+
 	<TabbedPage.Children>
 
-		<NavigationPage Title="حملي" Icon="MyPregnancy.png">
+		<NavigationPage Title="حملي" Icon="MyPregnancy.png" >
 			<x:Arguments>
 				<myapp:PregnancyPage />
 			</x:Arguments>
@@ -24,7 +26,7 @@
 			</x:Arguments>
 		</NavigationPage>
 
-		<NavigationPage Title="الضبط"  Icon="Setting.png">
+		<NavigationPage Title="الإعدادات"  Icon="Setting.png">
 			<x:Arguments>
 				<myapp:SettingPage />
 			</x:Arguments>

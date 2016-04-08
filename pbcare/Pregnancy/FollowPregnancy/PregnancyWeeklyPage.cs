@@ -8,6 +8,8 @@ namespace pbcare
 		
 		public PregnancyWeeklyPage ()
 		{
+			BackgroundImage = "mainPB.jpg";
+
 			Label WeekLabel = new Label {
 				FontSize = 50,
 				HorizontalOptions = LayoutOptions.Center, TextColor = Color.Red

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 			 x:Class="pbcare.LoginPage"
-			 Title="تسجيل دخول">
+			 Title = "PB Care"
+			 BackgroundImage = "fetusB.jpg">
 
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Name="مستخدم جديد" Activated="OnSignUpButtonClicked"/>
@@ -10,16 +11,15 @@
 
 
 	<ContentPage.Content>
-		<StackLayout VerticalOptions="Center">
-			<Label Text="الإيميل" HorizontalOptions="Center" StyleId="EmailLabel"/>
+
+	 	<StackLayout VerticalOptions="End" Padding = "20,0,20,0">
+			<Label Text="البريد الإلكتروني" HorizontalOptions="CenterAndExpand" StyleId="EmailLabel" TextColor = "Black" FontAttributes="Bold"/>
 			<Entry x:Name="emailEntry" Placeholder="email@abc.com" StyleId="EmailEntry"/>
-			<Label Text="كلمة المرور" HorizontalOptions="Center" StyleId="PasswordLabel"/>
-			<Entry x:Name="passwordEntry" Placeholder="Password" StyleId="PasswordEntry"/>
-			<Button Text="تسجيل دخول" Clicked="OnLoginButtonClicked" 
-			BorderWidth="1" BorderRadius="15" BorderColor="Blue" 
-			TextColor="White" BackgroundColor="Blue"
-			StyleId="LoginButton"/>
-			<Label x:Name="messageLogin" HorizontalOptions="Center" TextColor="Red"/>
+			<Label Text="كلمة المرور" HorizontalOptions="Center" StyleId="PasswordLabel" TextColor = "Black" FontAttributes="Bold"/>
+			<Entry x:Name="passwordEntry" Placeholder="كلمة المرور" StyleId="PasswordEntry" IsPassword="true"/>
+			<Button Image="LoginIcon.png" Clicked="OnLoginButtonClicked" 
+			BorderWidth="1"  BorderRadius="15" HorizontalOptions="Center" BackgroundColor="Transparent" StyleId="LoginButton" />
+			<Label x:Name="messageLogin" VerticalOptions="EndAndExpand" HorizontalOptions="Center" TextColor="Red"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

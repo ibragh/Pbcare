@@ -8,7 +8,7 @@ namespace pbcare
 	{
 		public AddBaby ()
 		{
-
+			BackgroundImage = "mainPB.jpg";
 			var childName = new Label {
 				Text = "إسم الطفل",
 				HorizontalOptions = LayoutOptions.End
@@ -44,12 +44,17 @@ namespace pbcare
 
 			saveButton.Clicked += (sender, e) => {
 				if(nameEntry.Text != null && gender.SelectedIndex != -1 ){
-					var child = new Child (nameEntry.Text , "M");
-					//pbcareApp.u.MyChilren.Add (child);
+					Child Baby = new Child();
+					Baby.name = nameEntry.Text ;
+					Baby.gender = gender.Items[gender.SelectedIndex];
+					Baby.mother = pbcareApp.u.Email ;
+					Baby.birthDate = "ddd";
+
+					BabyPage.MyChilren.Add(Baby);
 					Navigation.PopAsync ();
 				
 				}else{
-					DisplayAlert("Error" , "Child Information did not completed","Cancel");
+					DisplayAlert("خطأ" , "معلومات الطفل غير كاملة","إلغاء");
 				}
 			};
 

@@ -10,38 +10,56 @@ namespace pbcare
 		public PregnancyPage ()
 		{
 			this.Title = "حملي";
-			Button AddPregnancy = new Button {Text = "إضافة حمل",
+			BackgroundImage = "mainPB.jpg";
+
+			Button AddPregnancy = new Button {
+				Text = "إضافة حمل",
+				Image = "plus.png",
+				BorderRadius = 30,
+				HorizontalOptions = LayoutOptions.Start,
 				TextColor = Color.FromHex ("#F7F7F7"),
 				WidthRequest = 200,
 				FontAttributes = FontAttributes.Bold,
-				BackgroundColor = Color.FromHex ("#FF2A68"),
-				BorderColor = Color.FromHex ("#FF2A68"), 
+				BackgroundColor = Color.FromHex ("#000080"),
+				BorderColor = Color.FromHex ("#000080"),
 				BorderWidth = 1,
 			};
-			Button FollowPregnancy = new Button {Text = "متابعة حملي ",
+			Button FollowPregnancy = new Button {
+				Text = "متابعة حملي ",
+				Image = "pregnant.png",
+				BorderRadius = 30,
+				HorizontalOptions = LayoutOptions.End,
 				TextColor = Color.FromHex ("#F7F7F7"),
 				FontAttributes = FontAttributes.Bold,
 				WidthRequest = 200,
-				BackgroundColor = Color.FromHex ("#FF2A68"),
-				BorderColor = Color.FromHex ("#FF2A68"),
-				BorderWidth = 1,
+				BackgroundColor = Color.FromHex ("#000080"),
+				BorderColor = Color.FromHex ("#000080"),
+				BorderWidth = 2,
 			};
-			Button FollowFetusImages = new Button {Text = "متابعة تطور الجنين بالصور",
+			Button FollowFetusImages = new Button {
+				Text = "متابعة تطور الجنين بالصور",
+				Image = "fetus.png",
+				BorderRadius = 30,
+				HorizontalOptions = LayoutOptions.Start,
 				TextColor = Color.FromHex ("#F7F7F7"),
 				FontAttributes = FontAttributes.Bold,
 				WidthRequest = 200,
-				BackgroundColor = Color.FromHex ("#FF2A68"),
-				BorderColor = Color.FromHex ("#FF2A68"),
-				BorderWidth = 1,
+				BackgroundColor = Color.FromHex ("#000080"),
+				BorderColor = Color.FromHex ("#000080"),
+				BorderWidth = 2,
 			
 			};
-			Button FollowFetusWeekly = new Button {Text = "متابعة تطور الجنين بالأسابيع",
+			Button FollowFetusWeekly = new Button {
+				Text = "متابعة تطور الجنين بالأسابيع",
+				Image = "fetus.png",
+				BorderRadius = 30,
+				HorizontalOptions = LayoutOptions.End,
 				TextColor = Color.FromHex ("#F7F7F7"),
 				FontAttributes = FontAttributes.Bold,
 				WidthRequest = 200,
-				BackgroundColor = Color.FromHex ("#FF2A68"),
-				BorderColor = Color.FromHex ("#FF2A68"),
-				BorderWidth = 1,
+				BackgroundColor = Color.FromHex ("#000080"),
+				BorderColor = Color.FromHex ("#000080"),
+				BorderWidth = 2 ,
 				
 			};
 
@@ -50,24 +68,17 @@ namespace pbcare
 			FollowFetusImages.Clicked += FollowFetusByImagesClicked;
 			FollowFetusWeekly.Clicked += FollowFetusWeeklyClicked;
 
-			StackLayout NewUser = new StackLayout {
-				VerticalOptions = LayoutOptions.Center, Padding = 20,
-				Children = {
-					AddPregnancy,
 
-				}
-			};
-			StackLayout RigesteredUser = new StackLayout {
+			Content = new StackLayout {
 				VerticalOptions = LayoutOptions.Center, Padding = 20,
 				Children = {
+				//	la,
 					AddPregnancy,
 					FollowPregnancy,
 					FollowFetusImages,
-					FollowFetusWeekly
+					FollowFetusWeekly,
 				}
 			};
-
-			Content = RigesteredUser;
 
 		}
 

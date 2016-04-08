@@ -8,6 +8,8 @@ namespace pbcare
 	{
 		public FetusWeeklyTry (int i)
 		{
+			BackgroundImage = "mainPB.jpg";
+
 			var a = new Label {
 				Text= "AAA Test ",
 				TextColor = Color.Blue

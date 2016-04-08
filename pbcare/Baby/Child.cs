@@ -1,17 +1,20 @@
 ﻿using System;
+using Xamarin.Forms;
 
 namespace pbcare
 {
-	public class Child
+	public class Child 
 	{
-		//public Image ChildImage { get; set; }
+		
+		public string mother { get; set; }
 		public string name { get; set; }
-		//public DatePicker birthDate { get; set; }
+		public string birthDate { get; set; }
 		public string gender { get; set;}
 
-		public Child (string n , string g){
-			this.name = n;
-			this.gender = g;
+
+		public Child (){
+//			this.name = n;
+//			this.gender = g;
 		}
 
 	}

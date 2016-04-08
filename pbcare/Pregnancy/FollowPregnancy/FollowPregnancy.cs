@@ -9,6 +9,8 @@ namespace pbcare
 		public FollowPregnancy ()
 		{
 			this.Title = "متابعة الحمل الأسبوعي";
+			BackgroundImage = "mainPB.jpg";
+
 			int CurrentWeek = pbcareApp.CurrentWeek (pbcareApp.FinaldueDate);
 
 			string[] info = new string[41];

@@ -9,6 +9,7 @@ namespace pbcare
 		public WebsitePage ()
 		{
 			this.Title = "المنتدى";
+			BackgroundImage = "mainPB.jpg";
 
 
 		}

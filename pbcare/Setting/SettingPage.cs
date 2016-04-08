@@ -12,6 +12,8 @@ namespace pbcare
 		public SettingPage ()
 		{
 			this.Title = "الإعدادات";
+			BackgroundImage = "mainPB.jpg";
+
 			ListView setting = new ListView {
 				RowHeight = 50  
 			};
@@ -32,14 +34,16 @@ namespace pbcare
 			var logOutButton = new Button {
 				Text = " تسجيل خــــروج ",
 				TextColor = Color.White,
+				Image = "logOut.png",
 				FontSize = 15,
 				BackgroundColor = Color.Red,
-				VerticalOptions = LayoutOptions.End
+				//VerticalOptions = LayoutOptions.Center,
+				//HorizontalOptions = LayoutOptions.Start
 			};
 			logOutButton.Clicked += LogOutButton_Clicked;
 
 			Content = new StackLayout {
-				VerticalOptions = LayoutOptions.FillAndExpand,
+				//VerticalOptions = LayoutOptions.FillAndExpand,
 				Padding = 20,
 				Children = {  
 					setting,
@@ -60,11 +64,11 @@ namespace pbcare
 
 
 		}
-		async void LogoutAlert(){
+		//async void LogoutAlert(){
 
 			//var MyAlert = await DisplayAlert ("Notice", "Confirm logout", "Ok", "Cancel");
 			//return MyAlert;
-		}
+	//	}
 
 		public List<everyCell> getSettingList ()
 		{
@@ -76,7 +80,9 @@ namespace pbcare
 				HorizontalOptions = LayoutOptions.End,
 			};
 
-			var nameEntry = new Entry { Placeholder = "أدخل اسمك هنا" };
+			var nameEntry = new Entry { Placeholder = "أدخل اسمك هنا" ,
+				BackgroundColor = Color.Pink
+			};
 				
 			var yourPass = new Label {
 				Text = "كلمة المرور : ",
@@ -106,7 +112,7 @@ namespace pbcare
 
 			savePassButton.Clicked += (sender, e) => {
 				if (!passwordEntry.Text.Equals (null) && passConfirm.Text.Equals (passwordEntry.Text)) {
-					pbcareApp.u.Password = passwordEntry.Text;
+					//pbcareApp.u.Password = passwordEntry.Text;
 					Navigation.PopAsync ();
 					DisplayAlert (" تم", " تغيير كلمة المرور ", "موافق");
 
@@ -178,6 +184,7 @@ namespace pbcare
 		public settingView (everyCell sample)
 		{
 			Title = sample.Name;
+			BackgroundColor = Color.White;
 			sample.View.HorizontalOptions = LayoutOptions.FillAndExpand;
 			Content = new StackLayout {
 				Padding = 20,
