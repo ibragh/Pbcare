@@ -7,6 +7,7 @@ namespace pbcare
 {
 	public class BabyPage : ContentPage
 	{
+<<<<<<< Updated upstream
 		
 		public static List<Child> MyChilren = new List<Child>(); 
 		ListView childrenList = new ListView {
@@ -22,14 +23,21 @@ namespace pbcare
 			MyChilren = pbcareApp.Database.gitChildren (pbcareApp.u.Email);
 			Debug.WriteLine (pbcareApp.u.Email+"******************************************");
 
+=======
+		public static INavigation MyNavigation { get; set; }
+		ListView childrenList = new ListView {
+			RowHeight = 60
+		};
+		public BabyPage()
+		{
+			Title = "طفلي";
+			BackgroundImage = "mainPB.jpg";
+		
+>>>>>>> Stashed changes
 			childrenList.ItemTemplate = new DataTemplate (typeof(EveryChildCell));
 			childrenList.SeparatorColor = Color.Black;
 			childrenList.ItemSelected +=  (Sender, Event) => {
 				((ListView)Sender).SelectedItem = null; 
-			};
-
-			var l = new Label {
-				Text = "" + pbcareApp.u.Email
 			};
 
 			var AddChild = new Button {
@@ -56,10 +64,15 @@ namespace pbcare
 				Padding = new Thickness(10,20,10 ,53),
 				Children = {  
 					childrenList ,
-					l,
 					AddChild
 				}
 			};
+
+		}
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			childrenList.ItemsSource = pbcareApp.Database.getChildrenFromDB(pbcareApp.u.Email);
 
 		}
 

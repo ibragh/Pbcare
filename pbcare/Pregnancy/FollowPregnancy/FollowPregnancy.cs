@@ -15,6 +15,7 @@ namespace pbcare
 
 			string[] info = new string[41];
 			for (int i = 1; i < info.Length; i++) {
+				
 				// get the pregnancy weekly info from local database
 				info [i] = pbcareApp.Database.InsertIntoPregnancyWeekly (i);
 			}

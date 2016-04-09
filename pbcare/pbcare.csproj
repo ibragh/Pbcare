@@ -63,7 +63,9 @@
     <Compile Include="Baby\EveryChildCell.cs" />
     <Compile Include="Baby\VaccinationList.cs" />
     <Compile Include="Baby\EveryVaccinationCell.cs" />
-    <Compile Include="LogInPage.cs" />
+    <Compile Include="Baby\FollowBaby\BabyMonthlyPage.cs" />
+    <Compile Include="Baby\FollowBaby\BabyMonthly.cs" />
+    <Compile Include="Baby\FollowBaby\FollowBabyMonthly.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -111,5 +113,6 @@
     <Folder Include="Setting\" />
     <Folder Include="WebsiteView\" />
     <Folder Include="ISQLite\" />
+    <Folder Include="Baby\FollowBaby\" />
   </ItemGroup>
 </Project>

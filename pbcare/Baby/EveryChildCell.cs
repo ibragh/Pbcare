@@ -6,6 +6,7 @@ namespace pbcare
 {
 	public class EveryChildCell : ViewCell
 	{
+		public static INavigation Navigation { get; set; }
 		public EveryChildCell ()
 		{
 			var childName = new Label {
@@ -36,9 +37,9 @@ namespace pbcare
 			info.SetBinding(Button.CommandParameterProperty, "name");
 			info.Clicked += (sender, e) => {
 				var b = (Button) sender;
-				var t = b.CommandParameter;
-				Child c = pbcareApp.Database.gitChild(t+"" , pbcareApp.u.Email);
-				// show vaccinations of child 
+//				var t = b.CommandParameter;
+//				Child c = pbcareApp.Database.getChildFromDB(t+"" , pbcareApp.u.Email);
+				((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new FollowBabyMonthly());
 
 			};
 			var vacc = new Button { 
@@ -55,8 +56,8 @@ namespace pbcare
 			vacc.Clicked += (sender, e) => {
 				var b = (Button)sender;
 				var t = b.CommandParameter;
-				Child c = pbcareApp.Database.gitChild (t + "", pbcareApp.u.Email);
-				// show information of child
+				Child c = pbcareApp.Database.getChildFromDB (t + "", pbcareApp.u.Email);
+				((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new VaccinationList(c));
 			};
 
 			View = new StackLayout {

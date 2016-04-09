@@ -21,30 +21,44 @@ namespace pbcare
 			DB.CreateTable<PregnancyDuedateTable> ();
 			DB.CreateTable<PregnancyWeeklyTable> ();
 			DB.CreateTable<UserLoggedIn> ();
+			DB.CreateTable<BabyMonthlyTable> ();
+
 		}
 		// check if user is logged in previasly... will chgange it later
 		public bool checkUserLoggedin ()
 		{
-			string DueDate="";
+			string DueDate = "";
 			try {
+				if (DB.Table<UserLoggedIn> ().Where (i => i.loggedIn == 1).FirstOrDefault () != null) {
+					var RigrsterdUser = DB.Table<UserLoggedIn> ().Where (i => i.loggedIn == 1).FirstOrDefault ();
 				
-				var RigrsterdUser = DB.Table<UserLoggedIn> ().Where (i => i.loggedIn == 1).FirstOrDefault ();
-				if (RigrsterdUser != null) {
+					Debug.WriteLine (" RigrsterdUser loggedIn *************** : " + RigrsterdUser.loggedIn.ToString ());
+
 					/* Retreve Email from Database */
 					pbcareApp.u.Email = RigrsterdUser.email;
-					pbcareApp.IsUserLoggedIn = true ;
+					Debug.WriteLine (" RigrsterdUser email ************ : " + RigrsterdUser.email);
+					pbcareApp.IsUserLoggedIn = true;
 					/* Retreve DueDate from Database */
-					DueDate = DB.Table<PregnancyDuedateTable> ().Where (i => i.email == pbcareApp.u.Email).FirstOrDefault ().dueDate;
-					/*Convert DueDate string to a valid DateTime*/
-					pbcareApp.FinaldueDate = DateTime.ParseExact(DueDate, "ddMMyyyy", null).Date;
+					if (GetDueDate () != "false") {
+						DueDate = GetDueDate ();
+						Debug.WriteLine (" DueDate ************ : " + DueDate.ToString ());
+						/*Convert DueDate string to a valid DateTime*/
+						pbcareApp.FinaldueDate = DateTime.ParseExact (DueDate, "ddMMyyyy", null).Date;
+					}
+
 					return true; // User has logged in before
 
 				} else {
 					return false; // User has NOT logged in before
 				}
+
 			} catch (Exception ex) {
-				Debug.WriteLine (DueDate+"********************************************************************* : "+ex.ToString ());
+				if (pbcareApp.IsUserLoggedIn) {
+					Debug.WriteLine ("******************** :"+ex.ToString ());
+					return true;
+				}else{
 				return false;
+					}
 			}
 		}
 
@@ -56,11 +70,20 @@ namespace pbcare
 				u.email = pbcareApp.u.Email;
 				DB.Insert (u);
 			} else {
-				DB.DeleteAll<UserLoggedIn>();
+				DB.DeleteAll<UserLoggedIn> ();
 			}
 
 		}
 
+		public string GetDueDate ()
+		{
+			try {
+				return DB.Table<PregnancyDuedateTable> ().Where (i => i.email == pbcareApp.u.Email).FirstOrDefault ().dueDate;
+			} catch (Exception ex) {
+				Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return "false";
+			}
+		}
 		// check login in email & password are match in db
 		public bool checkLogin (string email, string password)
 		{
@@ -87,7 +110,7 @@ namespace pbcare
 					return true;
 				}
 			} catch (Exception ex) {
-				Debug.WriteLine (ex.ToString ());
+				Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 			} 
 		}
@@ -105,7 +128,7 @@ namespace pbcare
 					// if so, and user want do edit, there is another way to do that
 					if (DB.Table<PregnancyDuedateTable> ().Where (c => c.email == email).FirstOrDefault () != null) {
 						return 1;
-					// user is ready to store a new DueDate
+						// user is ready to store a new DueDate
 					} else {
 						PregnancyDuedateTable p = new PregnancyDuedateTable ();
 						p.email = email;
@@ -120,7 +143,7 @@ namespace pbcare
 				}
 
 			} catch (Exception ex) {
-				Debug.WriteLine (ex.ToString ());
+				Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return -1;
 			} 
 		}
@@ -137,43 +160,81 @@ namespace pbcare
 				}
 
 			} catch (Exception ex) {
-				Debug.WriteLine (ex.ToString ());
+				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return ex.ToString ();
 			}
 
 
 		}
 
-		public List<Child> gitChildren(string email)
+		public List<Child> getChildrenFromDB (string email)
 		{
 			
-			try{
-				return  DB.Table<Child> ().Where (c => c.mother == email).ToList();
-			}
-			catch(Exception ex){
-				return null ;
-			}
-		}
-
-
-		public Child gitChild(string name , string email){
-		
-			try{
-				return DB.Table<Child>().Where (c => c.name == name && c.mother == email).FirstOrDefault();
-			}
-			catch(Exception ex){
+			try {
+				return  DB.Table<Child> ().Where (c => c.mother == email).ToList ();
+			} catch (Exception ex) {
+				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return null;
 			}
 		}
 
-		public List<vaccinationTable> gitVaccinations()
+		public bool AddChildToDB (string mother, string childName, string bd,string gender)
 		{
-			try{
-				return DB.Table<vaccinationTable>().ToList();
+
+			try {
+				Child c = new Child ();
+				c.mother = mother;
+				c.name = childName;
+				c.birthDate= bd;
+				c.gender = gender;
+				DB.Insert (c);
+				return true;
+
+				Debug.WriteLine ("**** Method is: " + this.ToString ());
+
+			} catch(Exception ex){
+				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return false;
 			}
-			catch(Exception ex){
+		}
+		public Child getChildFromDB (string name, string email)
+		{
+		
+			try {
+				return DB.Table<Child> ().Where (c => c.name == name && c.mother == email).FirstOrDefault ();
+			} catch (Exception ex) {
+				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return null;
 			}
+		}
+
+		public List<vaccinationTable> getVaccinationsFromDB ()
+		{
+			try {
+				return DB.Table<vaccinationTable> ().ToList ();
+			} catch (Exception ex) {
+				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return null;
+			}
+		}
+
+		public string  InsertIntoBabyMonthly (int MonthNumber)
+		{
+			try {
+				// 
+				var BabyMonth = DB.Table<BabyMonthlyTable> ().Where (c => c.month == MonthNumber).FirstOrDefault ();
+				if (BabyMonth != null) {
+					return BabyMonth.info;
+				} else {
+					return "المعلومة غير محفوظة في الداتابيس";
+				}
+
+			} catch (Exception ex) {
+				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return ex.ToString ();
+			}
+
+
 		}
 	
 	}

@@ -9,6 +9,7 @@ namespace pbcare
 	{
 		public pbcareMainPage ()
 		{
+			
 			InitializeComponent ();
 		}
 		protected override void OnAppearing ()

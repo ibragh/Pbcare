@@ -17,7 +17,7 @@ namespace pbcare
 			ListView vaccinationList = new ListView {
 				RowHeight = 50
 			};
-			Vaccinations =  pbcareApp.Database.gitVaccinations();
+			Vaccinations =  pbcareApp.Database.getVaccinationsFromDB();
 
 			vaccinationList.ItemsSource = Vaccinations;
 			vaccinationList.ItemTemplate = new DataTemplate (typeof(EveryVaccinationCell));
