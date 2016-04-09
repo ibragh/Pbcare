@@ -12,7 +12,7 @@ namespace pbcare
 		public SettingPage ()
 		{
 			this.Title = "الإعدادات";
-			BackgroundImage = "mainPB.jpg";
+
 
 			ListView setting = new ListView {
 				RowHeight = 50  
@@ -33,18 +33,23 @@ namespace pbcare
 
 			var logOutButton = new Button {
 				Text = " تسجيل خــــروج ",
-				TextColor = Color.White,
 				Image = "logOut.png",
+				TextColor = Color.White,
 				FontSize = 15,
-				BackgroundColor = Color.Red,
-				//VerticalOptions = LayoutOptions.Center,
-				//HorizontalOptions = LayoutOptions.Start
+				WidthRequest = 200,
+				HeightRequest = 65,
+				BackgroundColor = Color.Red ,
+				VerticalOptions = LayoutOptions.End ,
+				FontAttributes = FontAttributes.Bold ,
+				BorderRadius = 30 ,
+				BorderWidth = 4
 			};
+
 			logOutButton.Clicked += LogOutButton_Clicked;
 
 			Content = new StackLayout {
-				//VerticalOptions = LayoutOptions.FillAndExpand,
-				Padding = 20,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				Padding = new Thickness(10 ,20 , 10 , 53) ,
 				Children = {  
 					setting,
 					logOutButton

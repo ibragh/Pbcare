@@ -8,7 +8,7 @@ namespace pbcare
 	{
 		public AddBaby ()
 		{
-			BackgroundImage = "mainPB.jpg";
+			
 			var childName = new Label {
 				Text = "إسم الطفل",
 				HorizontalOptions = LayoutOptions.End

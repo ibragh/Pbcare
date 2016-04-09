@@ -10,7 +10,7 @@ namespace pbcare
 		public PregnancyPage ()
 		{
 			this.Title = "حملي";
-			BackgroundImage = "mainPB.jpg";
+
 
 			Button AddPregnancy = new Button {
 				Text = "إضافة حمل",

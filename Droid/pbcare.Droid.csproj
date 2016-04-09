@@ -125,7 +125,8 @@
     <AndroidResource Include="Resources\drawable\pregnant.png" />
     <AndroidResource Include="Resources\drawable\fetusB.jpg" />
     <AndroidResource Include="Resources\drawable\child.png" />
-    <AndroidResource Include="Resources\drawable\mainPB.jpg" />
+    <AndroidResource Include="Resources\drawable\B14_2.png" />
+    <AndroidResource Include="Resources\drawable\B14.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets')" />

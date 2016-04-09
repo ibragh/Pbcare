@@ -9,7 +9,6 @@ namespace pbcare
 		public FollowFetusWeekly()
 		{
 			this.Title = "Fetus Weekly";
-			BackgroundImage = "mainPB.jpg";
 
 			this.Children.Add (new FetusWeeklyTry (5));
 			this.Children.Add (new FetusWeeklyTry (1));

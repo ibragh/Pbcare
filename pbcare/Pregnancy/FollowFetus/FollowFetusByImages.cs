@@ -9,7 +9,6 @@ namespace pbcare
 		public FollowFetusByImages ()
 		{
 			this.Title = "متابعة الحمل الأسبوعي";
-			BackgroundImage = "mainPB.jpg";
 
 			string msg = "لا تحاولي مسح البقع الداكنة من على أنفك ووجنتيك وجبهتك." +
 			             " إنها ليست أوساخًا—بل هي حالة شائعة في " +

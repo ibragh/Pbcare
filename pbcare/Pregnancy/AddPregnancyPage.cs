@@ -11,7 +11,7 @@ namespace pbcare
 		public AddPregnancyPage ()
 		{
 			this.Title = "إضافة حمل";
-			BackgroundImage = "mainPB.jpg";
+
 
 			Label OptionText = new Label {
 				Text = "أدخلي تاريخ الولادة",
