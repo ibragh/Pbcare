@@ -9,10 +9,9 @@
 		<ToolbarItem Name="مستخدم جديد" Activated="OnSignUpButtonClicked"/>
 	</ContentPage.ToolbarItems>
 
-
 	<ContentPage.Content>
 
-<<<<<<< Updated upstream
+
 	 	<StackLayout  VerticalOptions="Center" Padding = "20,0,20,0">
 			<Label Text="البريد الإلكتروني"  HorizontalOptions="CenterAndExpand" StyleId="EmailLabel" TextColor = "Black" FontAttributes="Bold"/>
 			<Entry x:Name="emailEntry" Placeholder="email@abc.com"  StyleId="EmailEntry"/>
@@ -20,7 +19,7 @@
 			<Entry x:Name="passwordEntry" Placeholder="كلمة المرور" StyleId="PasswordEntry"  IsPassword="true"/>
 			<Button Text="تسجيل الدخول" TextColor="Blue" BackgroundColor ="#898C90" Clicked="OnLoginButtonClicked" 
 			BorderWidth="1"  BorderRadius="15" WidthRequest="200" HorizontalOptions="Center" StyleId="LoginButton" />
-=======
+		</StackLayout>
 	 	<StackLayout VerticalOptions="End" Padding = "20,0,20,0">
 			<Label Text="البريد الإلكتروني" HorizontalOptions="CenterAndExpand" StyleId="EmailLabel" TextColor = "Black" FontAttributes="Bold"/>
 			<Entry x:Name="emailEntry" Placeholder="email@abc.com" StyleId="EmailEntry" TextColor="Red"/>
@@ -28,7 +27,7 @@
 			<Entry x:Name="passwordEntry" Placeholder="كلمة المرور" StyleId="PasswordEntry" IsPassword="true" TextColor="Red"/>
 			<Button Image="LoginIcon.png" Clicked="OnLoginButtonClicked" 
 			BorderWidth="1"  BorderRadius="15" HorizontalOptions="Center" BackgroundColor="Transparent" StyleId="LoginButton" />
->>>>>>> Stashed changes
+
 			<Label x:Name="messageLogin" VerticalOptions="EndAndExpand" HorizontalOptions="Center" TextColor="Red"/>
 		</StackLayout>
 	</ContentPage.Content>

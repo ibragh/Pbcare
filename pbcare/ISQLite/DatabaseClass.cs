@@ -218,24 +218,23 @@ namespace pbcare
 			}
 		}
 
-		public string  InsertIntoBabyMonthly (int MonthNumber)
-		{
-			try {
-				// 
-				var BabyMonth = DB.Table<BabyMonthlyTable> ().Where (c => c.month == MonthNumber).FirstOrDefault ();
-				if (BabyMonth != null) {
-					return BabyMonth.info;
-				} else {
-					return "المعلومة غير محفوظة في الداتابيس";
-				}
-
-			} catch (Exception ex) {
-				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
-				return ex.ToString ();
-			}
-
-
-		}
+//		public string  InsertIntoBabyMonthly (int MonthNumber)
+//		{
+//			try {
+//				// 
+//				var BabyMonth = DB.Table<BabyMonthlyTable> ().Where (c => c.month == MonthNumber).FirstOrDefault ();
+//				if (BabyMonth != null) {
+//					return BabyMonth.info;
+//				} else {
+//					return "المعلومة غير محفوظة في الداتابيس";
+//				}
+//
+//			} catch (Exception ex) {
+//				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+//				return ex.ToString ();
+//			}
+//
+//		}
 	
 	}
 }

@@ -138,14 +138,13 @@
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\pbcare.db3" />
-    <BundleResource Include="Resources\mainPB.jpg" />
-    <BundleResource Include="Resources\fetusB.jpg" />
-    <BundleResource Include="Resources\LoginIcon.png" />
     <BundleResource Include="Resources\vaccinationLogo.png" />
     <BundleResource Include="Resources\infoLogo.png" />
     <BundleResource Include="Resources\fetus.png" />
     <BundleResource Include="Resources\logOut.png" />
     <BundleResource Include="Resources\pregnant.png" />
     <BundleResource Include="Resources\plus.png" />
+    <BundleResource Include="Resources\B14.png" />
+    <BundleResource Include="Resources\B14_2.png" />
   </ItemGroup>
 </Project>

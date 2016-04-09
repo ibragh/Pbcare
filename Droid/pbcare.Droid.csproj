@@ -118,12 +118,10 @@
     <AndroidResource Include="Resources\drawable\icon.png" />
     <AndroidResource Include="Resources\drawable\infoLogo.png" />
     <AndroidResource Include="Resources\drawable\vaccinationLogo.png" />
-    <AndroidResource Include="Resources\drawable\LoginIcon.png" />
     <AndroidResource Include="Resources\drawable\logOut.png" />
     <AndroidResource Include="Resources\drawable\plus.png" />
     <AndroidResource Include="Resources\drawable\fetus.png" />
     <AndroidResource Include="Resources\drawable\pregnant.png" />
-    <AndroidResource Include="Resources\drawable\fetusB.jpg" />
     <AndroidResource Include="Resources\drawable\child.png" />
     <AndroidResource Include="Resources\drawable\B14_2.png" />
     <AndroidResource Include="Resources\drawable\B14.png" />

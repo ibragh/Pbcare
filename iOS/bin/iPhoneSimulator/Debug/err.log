@@ -1,0 +1,93 @@
+2016-04-09 13:11:32.168 DEBUG CalabashServer:242 | Creating the server: <LPHTTPServer: 0x7ae4b210>
+2016-04-09 13:11:32.189 DEBUG CalabashServer:243 | Calabash iOS server version: CALABASH VERSION: 0.18.2
+2016-04-09 13:11:32.189 DEBUG CalabashServer:246 | App Base SDK: iphonesimulator9.2
+2016-04-09 13:11:32.190 DEBUG CalabashServer:278 | IPHONE_SIMULATOR_ROOT: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
+2016-04-09 13:11:33.136 DEBUG CalabashServer:264 | Calabash iOS server is listening on: 0.0.0.0 port 37265
+2016-04-09 13:11:35.085 DEBUG LPWKWebViewRuntimeLoader:221 | WKWebView successfully implemented LPWebViewProtocol
+2016-04-09 13:11:35.108 pbcare.iOS[16934:641775] Xamarin.iOS: Socket error while connecting to IDE on 127.0.0.1:55011: Connection refused
+2016-04-09 13:11:38.590 pbcare.iOS[16934:641598] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-09 13:11:38.590 pbcare.iOS[16934:641598] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b621940 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-09 13:11:38.591 pbcare.iOS[16934:641598] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-09 13:11:38.591 pbcare.iOS[16934:641598] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b621940 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-09 13:11:38.591 pbcare.iOS[16934:641598] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-09 13:11:38.591 pbcare.iOS[16934:641598] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b621940 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-09 13:11:38.592 pbcare.iOS[16934:641598] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-09 13:11:38.592 pbcare.iOS[16934:641598] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b621940 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-09 13:11:38.592 pbcare.iOS[16934:641598] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-09 13:11:38.592 pbcare.iOS[16934:641598] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b621940 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-09 13:11:38.593 pbcare.iOS[16934:641598] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-09 13:11:38.593 pbcare.iOS[16934:641598] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b621940 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-09 13:11:38.881 pbcare.iOS[16934:641598]  RigrsterdUser loggedIn *************** : 1
+2016-04-09 13:11:38.882 pbcare.iOS[16934:641598]  RigrsterdUser email ************ : A@a
+2016-04-09 13:11:38.888 pbcare.iOS[16934:641598] **** Method id: pbcare.DatabaseClass Exeption is :System.NullReferenceException: Object reference not set to an instance of an object
+  at pbcare.DatabaseClass.GetDueDate () [0x00084] in /Users/ibrahim/Projects/pbcare/pbcare/ISQLite/DatabaseClass.cs:81 
+2016-04-09 13:11:38.987 pbcare.iOS[16934:641598] 
+Unhandled Exception:
+System.ArgumentNullException: Value cannot be null.
+Parameter name: image
+  at UIKit.UIColor.FromPatternImage (UIKit.UIImage image) [0x00011] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/build/ios/native/UIKit/UIColor.g.cs:181 
+  at Xamarin.Forms.Platform.iOS.PageRenderer.UpdateBackground () <0x1a5a2908 + 0x000af> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.PageRenderer.ViewDidLoad () <0x1a5a1978 + 0x00213> in <filename unknown>:0 
+  at (wrapper managed-to-native) ObjCRuntime.Messaging:IntPtr_objc_msgSendSuper (intptr,intptr)
+  at UIKit.UIViewController.get_View () [0x00030] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/build/ios/native/UIKit/UIViewController.g.cs:2783 
+  at Xamarin.Forms.Platform.iOS.PageRenderer.get_NativeView () <0x1a5a18d0 + 0x00021> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.PageRenderer.SetElement (Xamarin.Forms.VisualElement element) <0x1a5a14d8 + 0x0008f> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.Platform.CreateRenderer (Xamarin.Forms.VisualElement element) <0x1a56d658 + 0x00060> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer.CreateViewControllerForPage (Xamarin.Forms.Page page) <0x1a5a0ff0 + 0x000b3> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer+<OnPushAsync>d__52.MoveNext () <0x1a5a0d90 + 0x0003b> in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter`1[TResult].GetResult () [0x00000] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:372 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer+<<ViewDidLoad>b__20_0>d.MoveNext () <0x1a5a0790 + 0x00133> in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.AsyncMethodBuilderCore.<ThrowAsync>m__0 (System.Object state) [0x00000] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/compilerservices/AsyncMethodBuilder.cs:994 
+  at UIKit.UIKitSynchronizationContext+<Post>c__AnonStorey0.<>m__0 () [0x00000] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/UIKit/UIKitSynchronizationContext.cs:24 
+  at Foundation.NSAsyncActionDispatcher.Apply () [0x00000] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/Foundation/NSAction.cs:163 
+  at (wrapper managed-to-native) UIKit.UIApplication:UIApplicationMain (int,string[],intptr,intptr)
+  at UIKit.UIApplication.Main (System.String[] args, IntPtr principal, IntPtr delegate) [0x00005] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/UIKit/UIApplication.cs:77 
+  at UIKit.UIApplication.Main (System.String[] args, System.String principalClassName, System.String delegateClassName) [0x0001c] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/UIKit/UIApplication.cs:60 
+  at pbcare.iOS.Application.Main (System.String[] args) [0x00008] in /Users/ibrahim/Projects/pbcare/iOS/Main.cs:17 
+2016-04-09 13:11:38.988 pbcare.iOS[16934:641598] Unhandled managed exception:
+Value cannot be null.
+Parameter name: image (System.ArgumentNullException)
+  at UIKit.UIColor.FromPatternImage (UIKit.UIImage image) [0x00011] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/build/ios/native/UIKit/UIColor.g.cs:181 
+  at Xamarin.Forms.Platform.iOS.PageRenderer.UpdateBackground () <0x1a5a2908 + 0x000af> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.PageRenderer.ViewDidLoad () <0x1a5a1978 + 0x00213> in <filename unknown>:0 
+  at (wrapper managed-to-native) ObjCRuntime.Messaging:IntPtr_objc_msgSendSuper (intptr,intptr)
+  at UIKit.UIViewController.get_View () [0x00030] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/build/ios/native/UIKit/UIViewController.g.cs:2783 
+  at Xamarin.Forms.Platform.iOS.PageRenderer.get_NativeView () <0x1a5a18d0 + 0x00021> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.PageRenderer.SetElement (Xamarin.Forms.VisualElement element) <0x1a5a14d8 + 0x0008f> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.Platform.CreateRenderer (Xamarin.Forms.VisualElement element) <0x1a56d658 + 0x00060> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer.CreateViewControllerForPage (Xamarin.Forms.Page page) <0x1a5a0ff0 + 0x000b3> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer+<OnPushAsync>d__52.MoveNext () <0x1a5a0d90 + 0x0003b> in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x00047] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:201 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x0002e] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:170 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x0000b] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:142 
+  at System.Runtime.CompilerServices.TaskAwaiter`1[TResult].GetResult () [0x00000] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/compilerservices/TaskAwaiter.cs:372 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer+<<ViewDidLoad>b__20_0>d.MoveNext () <0x1a5a0790 + 0x00133> in <filename unknown>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/exceptionservices/exceptionservicescommon.cs:143 
+  at System.Runtime.CompilerServices.AsyncMethodBuilderCore.<ThrowAsync>m__0 (System.Object state) [0x00000] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/_build/Library/Frameworks/Xamarin.iOS.framework/Versions/git/src/mono/external/referencesource/mscorlib/system/runtime/compilerservices/AsyncMethodBuilder.cs:994 
+  at UIKit.UIKitSynchronizationContext+<Post>c__AnonStorey0.<>m__0 () [0x00000] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/UIKit/UIKitSynchronizationContext.cs:24 
+  at Foundation.NSAsyncActionDispatcher.Apply () [0x00000] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/Foundation/NSAction.cs:163 
+  at (wrapper managed-to-native) UIKit.UIApplication:UIApplicationMain (int,string[],intptr,intptr)
+  at UIKit.UIApplication.Main (System.String[] args, IntPtr principal, IntPtr delegate) [0x00005] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/UIKit/UIApplication.cs:77 
+  at UIKit.UIApplication.Main (System.String[] args, System.String principalClassName, System.String delegateClassName) [0x0001c] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/UIKit/UIApplication.cs:60 
+  at pbcare.iOS.Application.Main (System.String[] args) [0x00008] in /Users/ibrahim/Projects/pbcare/iOS/Main.cs:17 
+2016-04-09 13:11:38.988 pbcare.iOS[16934:641598] critical: Stacktrace:
+
+2016-04-09 13:11:38.988 pbcare.iOS[16934:641598] critical: 
+Native stacktrace:
+

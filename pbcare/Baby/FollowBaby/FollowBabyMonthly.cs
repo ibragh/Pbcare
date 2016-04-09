@@ -13,22 +13,22 @@ namespace pbcare
 
 			//int CurrentWeek = pbcareApp.CurrentWeek (pbcareApp.FinaldueDate);
 
-			string[] info = new string[41];
-			for (int i = 1; i < info.Length; i++) {
-				// get the Baby monthly info from local database
-				info [i] = pbcareApp.Database.InsertIntoPregnancyWeekly (i);
-			}
-			BabyMonthly[] BabyMonth = new BabyMonthly[41];
-			for (int i = 1; i < BabyMonth.Length; i++) {
-				BabyMonth[i] = new PregnancyWeekly("الأسبوع "+i,info [i]);
-			}
-			this.ItemsSource =BabyMonth;
-
-			this.ItemTemplate = new DataTemplate (() => {
-				return new PregnancyWeeklyPage (); // ContentPage
-			});
-			this.SelectedItem = ((PregnancyWeekly[])ItemsSource); 
-			;
+//			string[] info = new string[41];
+//			for (int i = 1; i < info.Length; i++) {
+//				// get the Baby monthly info from local database
+//				info [i] = pbcareApp.Database.InsertIntoPregnancyWeekly (i);
+//			}
+//			BabyMonthly[] BabyMonth = new BabyMonthly[41];
+//			for (int i = 1; i < BabyMonth.Length; i++) {
+//				BabyMonth[i] = new PregnancyWeekly("الأسبوع "+i,info [i]);
+//			}
+//			this.ItemsSource =BabyMonth;
+//
+//			this.ItemTemplate = new DataTemplate (() => {
+//				return new PregnancyWeeklyPage (); // ContentPage
+//			});
+//			this.SelectedItem = ((PregnancyWeekly[])ItemsSource); 
+//			;
 
 		}
 

@@ -7,24 +7,8 @@ namespace pbcare
 {
 	public class BabyPage : ContentPage
 	{
-<<<<<<< Updated upstream
-		
-		public static List<Child> MyChilren = new List<Child>(); 
-		ListView childrenList = new ListView {
-			RowHeight = 60
-		};
 
-		public BabyPage()
-		{
-			this.Title = "أطفالي";
-
-
-
-			MyChilren = pbcareApp.Database.gitChildren (pbcareApp.u.Email);
-			Debug.WriteLine (pbcareApp.u.Email+"******************************************");
-
-=======
-		public static INavigation MyNavigation { get; set; }
+	
 		ListView childrenList = new ListView {
 			RowHeight = 60
 		};
@@ -33,7 +17,6 @@ namespace pbcare
 			Title = "طفلي";
 			BackgroundImage = "mainPB.jpg";
 		
->>>>>>> Stashed changes
 			childrenList.ItemTemplate = new DataTemplate (typeof(EveryChildCell));
 			childrenList.SeparatorColor = Color.Black;
 			childrenList.ItemSelected +=  (Sender, Event) => {
@@ -75,15 +58,7 @@ namespace pbcare
 			childrenList.ItemsSource = pbcareApp.Database.getChildrenFromDB(pbcareApp.u.Email);
 
 		}
-
-		protected override void OnAppearing ()
-		{
 			
-			childrenList.ItemsSource = MyChilren;
-			base.OnAppearing ();
-
-
-		}
 
 	}
 }
