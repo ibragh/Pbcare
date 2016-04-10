@@ -2,8 +2,9 @@
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using pbcare.Droid;
+using pbcare;
 
-[assembly: ExportRenderer (typeof(Entry), typeof(MyEntryRenderer))]
+[assembly: ExportRenderer (typeof(Entry1), typeof(MyEntryRenderer))]
 
 namespace pbcare.Droid
 {
@@ -14,7 +15,7 @@ namespace pbcare.Droid
 			base.OnElementChanged (e);
 
 			if (Control != null) {
-				Control.SetBackgroundColor (global::Android.Graphics.Color.Argb(200,185,185,185));
+				Control.SetBackgroundColor (global::Android.Graphics.Color.Argb(200,130,150,195));
 			}
 		}
 	}

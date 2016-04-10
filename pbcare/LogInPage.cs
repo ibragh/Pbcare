@@ -10,7 +10,8 @@ namespace pbcare
 		{
 			BackgroundImage = "mainB.png";
 
-			var emailEntry = new Entry{ 
+			var emailEntry = new Entry1
+			{ 
 				Placeholder = "البريد الإلكتروني",
 				TextColor = Color.FromHex("#5069A1"),
 				PlaceholderColor = Color.FromHex("#5069A1"),
@@ -18,7 +19,7 @@ namespace pbcare
 				AnchorX = 100
 			};
 
-			var passwordEntry = new Entry{
+			var passwordEntry = new Entry1{
 				Placeholder = "كلمة المـــرور",
 				TextColor = Color.FromHex("#5069A1"),
 				PlaceholderColor = Color.FromHex("#5069A1"),
@@ -34,8 +35,9 @@ namespace pbcare
 				Text = "مستخدم جديد",
 				TextColor = Color.FromHex("#E2E2E2"),
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
-				BackgroundColor = Color.FromHex("#5069A1"),
-				BorderColor = Color.FromHex("#5069A1"),
+				VerticalOptions = LayoutOptions.EndAndExpand,
+				BackgroundColor = Color.Transparent, // Color.FromHex("#5069A1"),
+				BorderColor = Color.Transparent, // Color.FromHex("#5069A1"),
 				HeightRequest = 33,
 			};
 
@@ -51,7 +53,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#5069A1"),
 				BorderColor = Color.FromHex("#5069A1"),
-				HeightRequest = 33 ,
+				HeightRequest = 47 ,
 			};
 
 			LoginButton.Clicked += (sender, e) => {
@@ -82,22 +84,28 @@ namespace pbcare
 
 				Content = new StackLayout { 
 					Orientation = StackOrientation.Vertical,
-					VerticalOptions = LayoutOptions.Center,
-					Padding = new Thickness (30, 0, 30, 15),
+					VerticalOptions = LayoutOptions.FillAndExpand,
+					Padding = new Thickness (30, 60, 30, 0),
 					HorizontalOptions = LayoutOptions.CenterAndExpand,
 					Children = {
+							i,emailEntry, passwordEntry,
 
-						i,emailEntry, passwordEntry,
-						new StackLayout {
-							Padding = new Thickness (0, 30, 0, 30),
-							Children = {
-								LoginButton, sinUpButton , 
+							new StackLayout {
+								Children = {
+									LoginButton, messageLogin, 
+
+									new StackLayout{
+									//VerticalOptions = LayoutOptions.EndAndExpand,
+										Padding = new Thickness (0, 60, 0, 0),
+										Children = {
+											sinUpButton ,
+									}
+								}
 							}
-						},
-
-						messageLogin
+						}
 					}
 				}
+					
 			};
 		}
 
