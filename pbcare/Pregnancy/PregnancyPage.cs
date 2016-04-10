@@ -14,7 +14,7 @@ namespace pbcare
 			BackgroundImage = "back.png";
 
 			var welcomeLogo = new Image{ 
-				Source = "logo.png"
+				Source = ""
 			};
 
 			Button AddPregnancy = new Button {
@@ -123,6 +123,12 @@ namespace pbcare
 		public void sendNotification ()
 		{
 			Notifications.Instance.Send ("Notification","I got notification for ABCD",when: TimeSpan.FromSeconds (2));
+		}
+
+
+		protected override void OnAppearing()
+		{
+			NavigationPage.SetHasNavigationBar (this, false);
 		}
 			
 	}

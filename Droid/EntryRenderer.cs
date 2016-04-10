@@ -15,7 +15,7 @@ namespace pbcare.Droid
 			base.OnElementChanged (e);
 
 			if (Control != null) {
-				Control.SetBackgroundColor (global::Android.Graphics.Color.Argb(200,130,150,195));
+				Control.SetBackgroundColor (global::Android.Graphics.Color.Argb(80,184,228,241));
 			}
 		}
 	}

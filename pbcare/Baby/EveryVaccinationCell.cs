@@ -8,6 +8,11 @@ namespace pbcare
 	{
 		public EveryVaccinationCell ()
 		{
+			var ss = new Label{ 
+				BackgroundColor = Color.Transparent,
+				TextColor = Color.Transparent,
+				Text = "000",
+			};
 			var VaccinationName = new Label {
 				Text = " . ",
 				FontSize = Device.GetNamedSize (NamedSize.Medium, typeof(Label)),
@@ -17,16 +22,18 @@ namespace pbcare
 
 			View = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
-				HorizontalOptions = LayoutOptions.StartAndExpand,
-				Padding = new Thickness (15, 5, 5, 15),
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				Padding = new Thickness (15, 5, 0, 15),
 
 				Children = {
-
 					new StackLayout {
-						Padding = new Thickness (15, 5, 5, 15),
+						Padding = new Thickness (15, 5, 0, 15),
 						Orientation = StackOrientation.Vertical,
-						Children = { VaccinationName }
-					}
+						HorizontalOptions = LayoutOptions.EndAndExpand,
+						Children = { VaccinationName}
+					},
+					ss
+
 				}
 			};
 		}

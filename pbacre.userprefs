@@ -1,15 +1,16 @@
 ﻿<Properties StartupItem="Droid\pbcare.Droid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.047b5bf7" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\pbcareMainPage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\Baby\VaccinationList.cs">
     <Files>
-      <File FileName="pbcare\Baby\EveryChildCell.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Baby\VaccinationList.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Baby\FollowBaby\BabyMonthly.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Baby\FollowBaby\BabyMonthlyPage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Baby\FollowBaby\FollowBabyMonthly.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Baby\AddBaby.cs" Line="1" Column="1" />
+      <File FileName="pbcare\LogInPage.cs" Line="1" Column="1" />
+      <File FileName="Droid\EntryRenderer.cs" Line="1" Column="1" />
+      <File FileName="pbcare\pbcareApp.cs" Line="1" Column="1" />
+      <File FileName="pbcare\pbcareMainPage.xaml.cs" Line="1" Column="1" />
       <File FileName="pbcare\Baby\BabyPage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Baby\EveryVaccinationCell.cs" Line="1" Column="1" />
+      <File FileName="pbcare\Setting\LogoutPage.cs" Line="1" Column="1" />
+      <File FileName="pbcare\Setting\SettingPage.cs" Line="1" Column="1" />
+      <File FileName="pbcare\Baby\VaccinationList.cs" Line="32" Column="42" />
+      <File FileName="pbcare\Baby\AddBaby.cs" Line="1" Column="1" />
       <File FileName="pbcare\Pregnancy\FollowFetus\FetusWeeklyTry.cs" Line="1" Column="1" />
       <File FileName="pbcare\Pregnancy\FollowFetus\FollowFetusByImages.cs" Line="1" Column="1" />
       <File FileName="pbcare\Pregnancy\FollowFetus\FollowFetusWeekly.cs" Line="1" Column="1" />
@@ -17,22 +18,8 @@
       <File FileName="pbcare\Pregnancy\FollowPregnancy\PregnancyWeekly.cs" Line="1" Column="1" />
       <File FileName="pbcare\Pregnancy\FollowPregnancy\PregnancyWeeklyPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Pregnancy\AddPregnancyPage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Pregnancy\CalMyDueDate.cs" Line="1" Column="1" />
       <File FileName="pbcare\Pregnancy\PregnancyPage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Setting\SettingPage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\WebsiteView\WebsitePage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\pbcareApp.cs" Line="1" Column="1" />
-      <File FileName="pbcare\SignUpPage.xaml" Line="1" Column="1" />
-      <File FileName="pbcare\ISQLite\DatabaseClass.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Baby\Child.cs" Line="1" Column="1" />
-      <File FileName="pbcare\ISQLite\Tables.cs" Line="1" Column="1" />
-      <File FileName="..\..\..\..\..\Program Files (x86)\MSBuild\Xamarin\Android\Xamarin.Android.Common.targets" Line="1" Column="1" />
-      <File FileName="pbcare\Setting\LogoutPage.cs" Line="1" Column="1" />
-      <File FileName="Droid\EntryRenderer.cs" Line="1" Column="1" />
-      <File FileName="Droid\SQLite_Droid.cs" Line="1" Column="1" />
-      <File FileName="pbcare\LogInPage.cs" Line="7" Column="24" />
-      <File FileName="pbcare\pbcareMainPage.xaml" Line="5" Column="54" />
-      <File FileName="pbcare\pbcareMainPage.xaml.cs" Line="20" Column="65" />
+      <File FileName="pbcare\Baby\EveryVaccinationCell.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -43,6 +43,11 @@ namespace pbcare
 				}
 			};
 		}
+
+		protected override void OnAppearing()
+		{
+			NavigationPage.SetHasNavigationBar (this, false);
+		}
 	}
 }
 

@@ -46,7 +46,7 @@ namespace pbcare
 
 			Content = new StackLayout {
 				VerticalOptions= LayoutOptions.FillAndExpand,
-				Padding = new Thickness(10,20,10 ,53),
+				Padding = new Thickness(10,20,0 ,53),
 				Children = {  
 					childrenList ,
 					AddChild
@@ -57,6 +57,7 @@ namespace pbcare
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
+			NavigationPage.SetHasNavigationBar (this, false);
 			childrenList.ItemsSource = pbcareApp.Database.getChildrenFromDB(pbcareApp.u.Email);
 
 		}

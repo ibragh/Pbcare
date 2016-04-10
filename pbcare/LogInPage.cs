@@ -8,13 +8,12 @@ namespace pbcare
 	{
 		public LogInPage ()
 		{
-			BackgroundImage = "mainB.png";
+			BackgroundColor = Color.FromRgb (94, 196, 225);
 
-			var emailEntry = new Entry1
-			{ 
+			var emailEntry = new Entry1{ 
 				Placeholder = "البريد الإلكتروني",
 				TextColor = Color.FromHex("#5069A1"),
-				PlaceholderColor = Color.FromHex("#5069A1"),
+				PlaceholderColor = Color.FromRgba(255,255,255,225),
 				WidthRequest = 30 ,
 				AnchorX = 100
 			};
@@ -22,7 +21,7 @@ namespace pbcare
 			var passwordEntry = new Entry1{
 				Placeholder = "كلمة المـــرور",
 				TextColor = Color.FromHex("#5069A1"),
-				PlaceholderColor = Color.FromHex("#5069A1"),
+				PlaceholderColor = Color.FromRgba(255,255,255,225),
 				WidthRequest = 30 ,
 			};
 
@@ -35,25 +34,29 @@ namespace pbcare
 				Text = "مستخدم جديد",
 				TextColor = Color.FromHex("#E2E2E2"),
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
-				VerticalOptions = LayoutOptions.EndAndExpand,
-				BackgroundColor = Color.Transparent, // Color.FromHex("#5069A1"),
-				BorderColor = Color.Transparent, // Color.FromHex("#5069A1"),
-				HeightRequest = 33,
+				BackgroundColor = Color.Transparent,
+				BorderColor = Color.Transparent
 			};
 
 			sinUpButton.Clicked += (sender, e) => {
 				Navigation.PushAsync (new SignUpPage ());
 			};
+
 			Image i = new Image{ 
-				Source= "mainBLogo.png"};
+				Source= "mainBLogo2.png"
+			};
+
+			var empty = new Label {
+				HeightRequest = 100
+			};
 
 			var LoginButton = new Button {
-				Text = "دخــول",
-				TextColor = Color.FromHex("#E2E2E2"),
+				Text = "تســـجيل الدخــول",
+				TextColor = Color.FromHex("#FFFFFF"),
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
-				BackgroundColor = Color.FromHex("#5069A1"),
-				BorderColor = Color.FromHex("#5069A1"),
-				HeightRequest = 47 ,
+				BackgroundColor = Color.FromHex("#FFA4C1"),
+				BorderColor = Color.FromHex("#FFA4C1"),
+				HeightRequest = 40 ,
 			};
 
 			LoginButton.Clicked += (sender, e) => {
@@ -81,34 +84,33 @@ namespace pbcare
 			};
 
 			Content = new ScrollView{
-
+				
 				Content = new StackLayout { 
-					Orientation = StackOrientation.Vertical,
-					VerticalOptions = LayoutOptions.FillAndExpand,
-					Padding = new Thickness (30, 60, 30, 0),
-					HorizontalOptions = LayoutOptions.CenterAndExpand,
-					Children = {
-							i,emailEntry, passwordEntry,
-
-							new StackLayout {
-								Children = {
-									LoginButton, messageLogin, 
-
-									new StackLayout{
-									//VerticalOptions = LayoutOptions.EndAndExpand,
-										Padding = new Thickness (0, 60, 0, 0),
-										Children = {
-											sinUpButton ,
-									}
-								}
-							}
+				Orientation = StackOrientation.Vertical,
+				VerticalOptions = LayoutOptions.Center,
+				Padding = new Thickness (30, 0, 30, 15),
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				Children = {
+						
+						i, empty, emailEntry, passwordEntry, LoginButton,
+						new StackLayout {
+						Padding = new Thickness (0, 30, 0, 30),
+						Children = {
+								messageLogin , 
 						}
-					}
+					},
+
+						sinUpButton
 				}
-					
+				}
 			};
 		}
 
+		protected override void OnAppearing ()
+		{
+			base.OnAppearing ();
+			NavigationPage.SetHasNavigationBar (this, false); 
+		}
 	}
 }
 

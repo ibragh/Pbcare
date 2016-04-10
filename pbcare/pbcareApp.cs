@@ -13,6 +13,8 @@ namespace pbcare
 		{
 			var p = new pbcareMainPage ();
 			MyNavigation = p.Navigation;
+
+
 			return p;
 		}
 
@@ -20,6 +22,7 @@ namespace pbcare
 		{
 
 			MainPage = GetMainPage ();
+
 		}
 
 		public static bool IsUserLoggedIn { get; set; }
@@ -50,9 +53,11 @@ namespace pbcare
 			}
 		}
 
+	
 		protected override void OnStart ()
 		{
 			// Handle when your app starts
+
 		}
 
 		protected override void OnSleep ()
