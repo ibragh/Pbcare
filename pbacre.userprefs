@@ -1,11 +1,10 @@
 ﻿<Properties StartupItem="Droid\pbcare.Droid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.047b5bf7" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\Baby\VaccinationList.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="pbcare\LogInPage.cs" Line="1" Column="1" />
       <File FileName="Droid\EntryRenderer.cs" Line="1" Column="1" />
       <File FileName="pbcare\pbcareApp.cs" Line="1" Column="1" />
-      <File FileName="pbcare\pbcareMainPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="pbcare\pbcareMainPage.xaml.cs" Line="21" Column="57" />
       <File FileName="pbcare\Baby\BabyPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Setting\LogoutPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Setting\SettingPage.cs" Line="1" Column="1" />
@@ -20,6 +19,7 @@
       <File FileName="pbcare\Pregnancy\AddPregnancyPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Pregnancy\PregnancyPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Baby\EveryVaccinationCell.cs" Line="1" Column="1" />
+      <File FileName="pbcare\LogInPage.cs" Line="11" Column="51" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
