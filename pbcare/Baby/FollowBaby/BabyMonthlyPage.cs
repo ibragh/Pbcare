@@ -8,7 +8,7 @@ namespace pbcare
 
 		public BabyMonthlyPage ()
 		{
-			BackgroundImage = "mainPB.jpg";
+			BackgroundImage = null ;
 
 			Label monthLabel = new Label {
 				FontSize = 50,

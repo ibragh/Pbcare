@@ -8,7 +8,9 @@ namespace pbcare
 	{
 		public AddBaby ()
 		{
-			
+			Title = "إضــافة طــفل ";
+			BackgroundImage = null;
+
 			var childName = new Label {
 				Text = "إسم الطفل",
 				HorizontalOptions = LayoutOptions.End
@@ -45,12 +47,6 @@ namespace pbcare
 			saveButton.Clicked += (sender, e) => {
 				if (nameEntry.Text != null && gender.SelectedIndex != -1) {
 					
-//					Child Baby = new Child ();
-//					Baby.name = nameEntry.Text;
-//					Baby.gender = gender.Items [gender.SelectedIndex];
-//					Baby.mother = pbcareApp.u.Email;
-//					Baby.birthDate = "ddd";
-
 					bool check = pbcareApp.Database.AddChildToDB (pbcareApp.u.Email, 
 						             nameEntry.Text,
 						             "2/2/1111",

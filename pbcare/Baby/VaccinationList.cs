@@ -12,7 +12,7 @@ namespace pbcare
 		public VaccinationList (Child c)
 		{
 			this.Title = c.name + "  تطعيمات ";
-
+			BackgroundImage = null;
 
 			ListView vaccinationList = new ListView {
 				RowHeight = 50

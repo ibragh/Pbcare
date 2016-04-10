@@ -65,7 +65,20 @@ namespace pbcare
 		public vaccinationTable ()
 		{
 		}
+			
+	}
 
+	public class ChildVaccinations
+	{
+		public string ChildID { get; set; }
+
+		public string VaccinationID { get; set; }
+
+		public string isTaken { get; set; }
+
+		public ChildVaccinations()
+		{
+		}
 	}
 }
 

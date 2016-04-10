@@ -15,10 +15,12 @@ namespace pbcare
 		public BabyPage()
 		{
 			Title = "طفلي";
-			BackgroundImage = "mainPB.jpg";
+			BackgroundImage = null ;
 		
 			childrenList.ItemTemplate = new DataTemplate (typeof(EveryChildCell));
 			childrenList.SeparatorColor = Color.Black;
+			childrenList.BackgroundColor = Color.Transparent;
+
 			childrenList.ItemSelected +=  (Sender, Event) => {
 				((ListView)Sender).SelectedItem = null; 
 			};

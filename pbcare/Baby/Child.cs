@@ -5,7 +5,7 @@ namespace pbcare
 {
 	public class Child 
 	{
-		
+		public int ChildID { get; set; }
 		public string mother { get; set; }
 		public string name { get; set; }
 		public string birthDate { get; set; }

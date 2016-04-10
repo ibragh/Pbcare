@@ -22,6 +22,7 @@ namespace pbcare
 			DB.CreateTable<PregnancyWeeklyTable> ();
 			DB.CreateTable<UserLoggedIn> ();
 			DB.CreateTable<BabyMonthlyTable> ();
+			DB.CreateTable<ChildVaccinations> ();
 
 		}
 		// check if user is logged in previasly... will chgange it later

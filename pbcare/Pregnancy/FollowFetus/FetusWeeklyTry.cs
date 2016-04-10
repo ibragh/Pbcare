@@ -8,7 +8,7 @@ namespace pbcare
 	{
 		public FetusWeeklyTry (int i)
 		{
-			
+			BackgroundImage = null;
 
 			var a = new Label {
 				Text= "AAA Test ",

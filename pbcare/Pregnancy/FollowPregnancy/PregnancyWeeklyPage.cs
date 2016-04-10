@@ -8,7 +8,7 @@ namespace pbcare
 		
 		public PregnancyWeeklyPage ()
 		{
-			BackgroundImage = "mainPB.jpg";
+			BackgroundImage = null ;
 
 			Label WeekLabel = new Label {
 				FontSize = 50,

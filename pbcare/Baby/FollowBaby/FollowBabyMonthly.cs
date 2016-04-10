@@ -9,7 +9,7 @@ namespace pbcare
 		public FollowBabyMonthly ()
 		{
 			this.Title = "متابعة الطفل الشهرية";
-			BackgroundImage = "mainPB.jpg";
+			BackgroundImage = null ;
 
 			//int CurrentWeek = pbcareApp.CurrentWeek (pbcareApp.FinaldueDate);
 

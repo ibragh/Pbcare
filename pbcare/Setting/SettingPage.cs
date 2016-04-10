@@ -20,6 +20,7 @@ namespace pbcare
 					
 			setting.ItemsSource = getSettingList ();
 			setting.ItemTemplate = new DataTemplate (typeof(TextCell));
+			setting.BackgroundColor = Color.Transparent ;
 			setting.ItemTemplate.SetBinding (TextCell.TextProperty, "Name");
 
 

@@ -7,58 +7,48 @@ namespace pbcare
 {
 	public partial class PregnancyPage : ContentPage
 	{
+
 		public PregnancyPage ()
 		{
 			this.Title = "حملي";
+			BackgroundImage = "back.png";
 
+			var welcomeLogo = new Image{ 
+				Source = "logo.png"
+			};
 
 			Button AddPregnancy = new Button {
 				Text = "إضافة حمل",
 				Image = "plus.png",
-				BorderRadius = 30,
-				HorizontalOptions = LayoutOptions.Start,
-				TextColor = Color.FromHex ("#F7F7F7"),
-				WidthRequest = 200,
-				FontAttributes = FontAttributes.Bold,
-				BackgroundColor = Color.FromHex ("#000080"),
-				BorderColor = Color.FromHex ("#000080"),
+				TextColor = Color.FromRgb(238,238,238),
+				BackgroundColor = Color.FromRgb(59,89,153),
+				BorderColor = Color.FromRgb(59,89,153),
 				BorderWidth = 1,
 			};
 			Button FollowPregnancy = new Button {
 				Text = "متابعة حملي ",
 				Image = "pregnant.png",
-				BorderRadius = 30,
-				HorizontalOptions = LayoutOptions.End,
-				TextColor = Color.FromHex ("#F7F7F7"),
-				FontAttributes = FontAttributes.Bold,
-				WidthRequest = 200,
-				BackgroundColor = Color.FromHex ("#000080"),
-				BorderColor = Color.FromHex ("#000080"),
+				TextColor = Color.FromRgb(238,238,238),
+				BackgroundColor = Color.FromRgb(59,89,153),
+				BorderColor = Color.FromRgb(59,89,153),
 				BorderWidth = 2,
 			};
 			Button FollowFetusImages = new Button {
 				Text = "متابعة تطور الجنين بالصور",
 				Image = "fetus.png",
-				BorderRadius = 30,
-				HorizontalOptions = LayoutOptions.Start,
-				TextColor = Color.FromHex ("#F7F7F7"),
-				FontAttributes = FontAttributes.Bold,
-				WidthRequest = 200,
-				BackgroundColor = Color.FromHex ("#000080"),
-				BorderColor = Color.FromHex ("#000080"),
+				TextColor = Color.FromRgb(238,238,238),
+				BackgroundColor = Color.FromRgb(59,89,153),
+				BorderColor = Color.FromRgb(59,89,153),
 				BorderWidth = 2,
 			
 			};
 			Button FollowFetusWeekly = new Button {
 				Text = "متابعة تطور الجنين بالأسابيع",
 				Image = "fetus.png",
-				BorderRadius = 30,
-				HorizontalOptions = LayoutOptions.End,
-				TextColor = Color.FromHex ("#F7F7F7"),
-				FontAttributes = FontAttributes.Bold,
+				TextColor = Color.FromRgb(238,238,238),
 				WidthRequest = 200,
-				BackgroundColor = Color.FromHex ("#000080"),
-				BorderColor = Color.FromHex ("#000080"),
+				BackgroundColor = Color.FromRgb(59,89,153),
+				BorderColor = Color.FromRgb(59,89,153),
 				BorderWidth = 2 ,
 				
 			};
@@ -69,18 +59,30 @@ namespace pbcare
 			FollowFetusWeekly.Clicked += FollowFetusWeeklyClicked;
 
 
-			Content = new StackLayout {
-				VerticalOptions = LayoutOptions.Center, Padding = 20,
+			Content = new ScrollView{
+
+				Content = new StackLayout {
+				Orientation = StackOrientation.Vertical,
+				Padding = new Thickness(30,20,30,0),
+				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = {
-				//	la,
-					AddPregnancy,
-					FollowPregnancy,
-					FollowFetusImages,
-					FollowFetusWeekly,
+					welcomeLogo,
+					new StackLayout{
+							Padding = new Thickness(0,10,0,20),
+							Children = {
+									AddPregnancy,
+									FollowPregnancy,
+									FollowFetusImages,
+									FollowFetusWeekly,
+
+										}
+									}
+				     	}
 				}
 			};
 
 		}
+
 
 		public void AddPregnancyClicked (object sender, EventArgs e)
 		{
@@ -122,7 +124,7 @@ namespace pbcare
 		{
 			Notifications.Instance.Send ("Notification","I got notification for ABCD",when: TimeSpan.FromSeconds (2));
 		}
-
+			
 	}
 }
 
