@@ -30,7 +30,7 @@ namespace pbcare
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 			};
 
-			var sinUpButton = new Button {
+			var sinUpButton = new Button1 {
 				Text = "مستخدم جديد",
 				TextColor = Color.FromHex("#E2E2E2"),
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
@@ -87,7 +87,7 @@ namespace pbcare
 				
 				Content = new StackLayout { 
 				Orientation = StackOrientation.Vertical,
-				VerticalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.FillAndExpand,
 				Padding = new Thickness (30, 0, 30, 15),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				Children = {

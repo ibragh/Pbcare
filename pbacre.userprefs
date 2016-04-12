@@ -4,11 +4,11 @@
     <Files>
       <File FileName="Droid\EntryRenderer.cs" Line="1" Column="1" />
       <File FileName="pbcare\pbcareApp.cs" Line="1" Column="1" />
-      <File FileName="pbcare\pbcareMainPage.xaml.cs" Line="21" Column="57" />
+      <File FileName="pbcare\pbcareMainPage.xaml.cs" Line="1" Column="1" />
       <File FileName="pbcare\Baby\BabyPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Setting\LogoutPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Setting\SettingPage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Baby\VaccinationList.cs" Line="32" Column="42" />
+      <File FileName="pbcare\Baby\VaccinationList.cs" Line="1" Column="1" />
       <File FileName="pbcare\Baby\AddBaby.cs" Line="1" Column="1" />
       <File FileName="pbcare\Pregnancy\FollowFetus\FetusWeeklyTry.cs" Line="1" Column="1" />
       <File FileName="pbcare\Pregnancy\FollowFetus\FollowFetusByImages.cs" Line="1" Column="1" />
@@ -19,7 +19,8 @@
       <File FileName="pbcare\Pregnancy\AddPregnancyPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Pregnancy\PregnancyPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Baby\EveryVaccinationCell.cs" Line="1" Column="1" />
-      <File FileName="pbcare\LogInPage.cs" Line="11" Column="51" />
+      <File FileName="pbcare\LogInPage.cs" Line="1" Column="1" />
+      <File FileName="pbacre.userprefs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

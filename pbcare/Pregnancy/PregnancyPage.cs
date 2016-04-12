@@ -7,50 +7,71 @@ namespace pbcare
 {
 	public partial class PregnancyPage : ContentPage
 	{
+		Image welcomeLogo , plus;
+		Button AddPregnancy, FollowPregnancy, FollowFetusImages, FollowFetusWeekly, finishPreg_  ;
 
 		public PregnancyPage ()
 		{
 			this.Title = "حملي";
 			BackgroundImage = "back.png";
 
-			var welcomeLogo = new Image{ 
+			 welcomeLogo = new Image { 
 				Source = ""
 			};
 
-			Button AddPregnancy = new Button {
+			plus = new Image{ 
+				Source= "plus.png ",
+				HorizontalOptions = LayoutOptions.End,
+			};
+
+			AddPregnancy = new Button1 {
 				Text = "إضافة حمل",
-				Image = "plus.png",
-				TextColor = Color.FromRgb(238,238,238),
-				BackgroundColor = Color.FromRgb(59,89,153),
-				BorderColor = Color.FromRgb(59,89,153),
+				//Image = "plus.png",
+				TextColor = Color.FromHex("#FFFFFF"),
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
+				BackgroundColor = Color.FromHex("#FFA4C1"),
+				BorderColor = Color.FromHex("#FFA4C1"),
+			};
+			FollowPregnancy = new Button {
+				Text = " حــمــلــي ",
+				//Image = "pregnant.png",
+				FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Button)),
+				//TextColor = Color.FromRgb (238, 238, 238),
+				TextColor = Color.FromRgb(127,127,127),
+				BackgroundColor = Color.FromRgb (59, 89, 153),
+				BorderColor = Color.Black, // Color.FromRgb(127,127,127),
+				BorderWidth = 5,
+				BorderRadius = 0 ,
+			};
+			finishPreg_ = new Button1 {
+				Text = "تــــمت الــولادة",
+				TextColor = Color.White,
+				BackgroundColor = Color.FromHex("#FFA4C1"),
+				BorderColor = Color.FromHex("#FFA4C1"),
+				HeightRequest = 40 ,
 				BorderWidth = 1,
+				BorderRadius = 0 ,
 			};
-			Button FollowPregnancy = new Button {
-				Text = "متابعة حملي ",
-				Image = "pregnant.png",
-				TextColor = Color.FromRgb(238,238,238),
-				BackgroundColor = Color.FromRgb(59,89,153),
-				BorderColor = Color.FromRgb(59,89,153),
-				BorderWidth = 2,
+			FollowFetusImages = new Button {
+				Text = "متابعةالجنين بالصور",
+				//Image = "fetus.png",
+				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Button)),
+				TextColor = Color.FromRgb (238, 238, 238),
+				BackgroundColor = Color.FromRgb (59, 89, 153),
+				BorderColor = Color.FromRgb (59, 89, 153),
+				BorderWidth = 1,
+				BorderRadius = 0 ,
 			};
-			Button FollowFetusImages = new Button {
-				Text = "متابعة تطور الجنين بالصور",
-				Image = "fetus.png",
-				TextColor = Color.FromRgb(238,238,238),
-				BackgroundColor = Color.FromRgb(59,89,153),
-				BorderColor = Color.FromRgb(59,89,153),
-				BorderWidth = 2,
-			
-			};
-			Button FollowFetusWeekly = new Button {
-				Text = "متابعة تطور الجنين بالأسابيع",
-				Image = "fetus.png",
-				TextColor = Color.FromRgb(238,238,238),
+			FollowFetusWeekly = new Button {
+				Text = "متابعةالجنين بالأسابيع",
+				//Image = "fetus.png",
+				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Button)),
+				TextColor = Color.FromRgb (238, 238, 238),
 				WidthRequest = 200,
-				BackgroundColor = Color.FromRgb(59,89,153),
-				BorderColor = Color.FromRgb(59,89,153),
-				BorderWidth = 2 ,
-				
+				BackgroundColor = Color.FromRgb (59, 89, 153),
+				BorderColor = Color.FromRgb (59, 89, 153),
+				BorderWidth = 1,
+				BorderRadius = 0 ,
 			};
 
 			AddPregnancy.Clicked += AddPregnancyClicked;
@@ -58,28 +79,6 @@ namespace pbcare
 			FollowFetusImages.Clicked += FollowFetusByImagesClicked;
 			FollowFetusWeekly.Clicked += FollowFetusWeeklyClicked;
 
-
-			Content = new ScrollView{
-
-				Content = new StackLayout {
-				Orientation = StackOrientation.Vertical,
-				Padding = new Thickness(30,20,30,0),
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				Children = {
-					welcomeLogo,
-					new StackLayout{
-							Padding = new Thickness(0,10,0,20),
-							Children = {
-									AddPregnancy,
-									FollowPregnancy,
-									FollowFetusImages,
-									FollowFetusWeekly,
-
-										}
-									}
-				     	}
-				}
-			};
 
 		}
 
@@ -129,6 +128,37 @@ namespace pbcare
 		protected override void OnAppearing()
 		{
 			NavigationPage.SetHasNavigationBar (this, false);
+			if(pbcareApp.FinaldueDate.GetHashCode() == 0){
+
+				Content = new StackLayout {
+					//Orientation = StackOrientation.Horizontal,
+					Children = {
+								AddPregnancy
+					}
+				};
+
+			}else{
+				Content =  new StackLayout {
+					
+					Orientation = StackOrientation.Vertical,
+					Padding = new Thickness(0,0,0,50),
+					VerticalOptions = LayoutOptions.FillAndExpand,
+					Children = {
+						new StackLayout{
+							//Orientation = StackOrientation.Horizontal,
+							Padding = 10,
+							Spacing = 0,
+							Children = {
+								FollowPregnancy,
+								FollowFetusImages,
+								FollowFetusWeekly,
+
+							}
+						},
+						finishPreg_
+					}
+				};
+			}
 		}
 			
 	}

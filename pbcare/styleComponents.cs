@@ -11,6 +11,10 @@ namespace pbcare
 	public class Entry2 : Entry 
 	{
 	}
+
+	public class Button1 : Button
+	{
+	}
 }
 
 

@@ -8,11 +8,11 @@ namespace pbcare
 	{
 		public EveryVaccinationCell ()
 		{
-			var ss = new Label{ 
-				BackgroundColor = Color.Transparent,
-				TextColor = Color.Transparent,
-				Text = "000",
-			};
+//			var isTaken = new Button{ 
+//
+//			};
+//			isTaken.SetBinding(Button.ImageProperty, "isTaken");
+
 			var VaccinationName = new Label {
 				Text = " . ",
 				FontSize = Device.GetNamedSize (NamedSize.Medium, typeof(Label)),
@@ -32,7 +32,7 @@ namespace pbcare
 						HorizontalOptions = LayoutOptions.EndAndExpand,
 						Children = { VaccinationName}
 					},
-					ss
+
 
 				}
 			};

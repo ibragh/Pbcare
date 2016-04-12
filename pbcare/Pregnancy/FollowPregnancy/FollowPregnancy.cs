@@ -33,6 +33,7 @@ namespace pbcare
 			this.SelectedItem = ((PregnancyWeekly[])ItemsSource); // it needs change
 		//	this.CurrentPage = this.Children[9];
 
+
 		}
 
 	}
