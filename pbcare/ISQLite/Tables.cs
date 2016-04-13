@@ -40,6 +40,18 @@ namespace pbcare
 
 	}
 
+	public class Months
+	{
+		public int month { get; set; }
+
+		public string Info { get; set; }
+
+		public Months ()
+		{
+		}
+
+	}
+
 	public class UserLoggedIn
 	{
 		public int loggedIn { get; set; }
@@ -54,13 +66,13 @@ namespace pbcare
 
 	public class vaccinationTable
 	{
-		public string ID { get; set; }
+		public int VaccinationID { get; set; }
 
 		public string name { get; set; }
 
 		public string info { get; set; }
 
-		public string time { get; set; }
+		public int time { get; set; }
 
 		public vaccinationTable ()
 		{
@@ -70,11 +82,12 @@ namespace pbcare
 
 	public class ChildVaccinations
 	{
-		public string ChildID { get; set; }
+		public string mother  { get; set; }
+		public string ChildName { get; set; }
 
-		public string VaccinationID { get; set; }
+		public int VaccinationID { get; set; }
 
-		public string isTaken { get; set; }
+		public int isTaken { get; set; }
 
 		public ChildVaccinations()
 		{

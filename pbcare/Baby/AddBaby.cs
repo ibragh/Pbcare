@@ -45,19 +45,23 @@ namespace pbcare
 			};
 
 			saveButton.Clicked += (sender, e) => {
-				if (nameEntry.Text != null && gender.SelectedIndex != -1) {
-					
-					bool check = pbcareApp.Database.AddChildToDB (pbcareApp.u.Email, 
-						             nameEntry.Text,
-						             "2/2/1111",
-						             gender.Items [gender.SelectedIndex]);
+				if (!string.IsNullOrWhiteSpace (nameEntry.Text) && gender.SelectedIndex != -1) {
+					Child baby = new Child{
+						mother = pbcareApp.u.Email,
+						ChildName = nameEntry.Text,
+						birthDate = birthdate.Date.ToString("ddMMyyyy") ,
+						gender = gender.Items [gender.SelectedIndex]
+					};
+					bool check = pbcareApp.Database.AddChildToDB(baby);
+
 					if (check) {
+						pbcareApp.Database.insertChildVaccinations(baby.ChildName);
 						Navigation.PopAsync ();
 					} else {
 						DisplayAlert ("خطأ", "معلومات الطفل غير كاملة", "إلغاء");
 					}
 				} else {
-					DisplayAlert ("خطأ", "معلومات الطفل غير كاملة", "إلغاء");
+					DisplayAlert ("خطأ", "معلومات الطفل غير كاملة22", "إلغاء");
 				}
 			};
 

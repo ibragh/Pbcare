@@ -15,6 +15,10 @@ namespace pbcare
 	public class Button1 : Button
 	{
 	}
+
+	public class ToolbarItem1 : ToolbarItem
+	{
+	}
 }
 
 

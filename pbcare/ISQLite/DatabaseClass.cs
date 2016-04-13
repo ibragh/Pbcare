@@ -179,22 +179,21 @@ namespace pbcare
 			}
 		}
 
-		public bool AddChildToDB (string mother, string childName, string bd,string gender)
+		public bool AddChildToDB (Child child)
 		{
-
 			try {
-				Child c = new Child ();
-				c.mother = mother;
-				c.name = childName;
-				c.birthDate= bd;
-				c.gender = gender;
-				DB.Insert (c);
+//				Child c = new Child ();
+//				c.mother = child.mother;
+//				c.name = child.name;
+//				c.birthDate= child.birthDate;
+//				c.gender = child.gender;
+				DB.Insert (child);
 				return true;
 
 				Debug.WriteLine ("**** Method is: " + this.ToString ());
 
 			} catch(Exception ex){
-				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				Debug.WriteLine ("****&&&^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 			}
 		}
@@ -202,7 +201,7 @@ namespace pbcare
 		{
 		
 			try {
-				return DB.Table<Child> ().Where (c => c.name == name && c.mother == email).FirstOrDefault ();
+				return DB.Table<Child> ().Where (c => c.ChildName == name && c.mother == email).FirstOrDefault ();
 			} catch (Exception ex) {
 				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return null;
@@ -219,8 +218,45 @@ namespace pbcare
 			}
 		}
 
+		public bool getVaccinaton(int VID, string childName)
+		{
+			var isTakeIt =  DB.Table<ChildVaccinations> ().Where( v => v.VaccinationID == VID && v.ChildName == childName && v.mother == pbcareApp.u.Email ).FirstOrDefault().isTaken;
+			if (isTakeIt == 1) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
+		public void insertChildVaccinations(string childName)
+		{
+			ChildVaccinations CV = new ChildVaccinations ();
+			var VaccinationList = DB.Table<vaccinationTable> ().ToArray ();
+			for(var i = 0; i < VaccinationList.Length; i++){
+				CV.mother = pbcareApp.u.Email;
+				CV.ChildName = childName;
+				CV.VaccinationID = VaccinationList [i].VaccinationID;
+				CV.isTaken = 0;
+				DB.Insert (CV);
+			}
+		}
 
+		public void updateIsTaken(bool isTakenCase , int VID , string childName){
+			int takeVacc;
+
+			if(isTakenCase){
+				takeVacc = 1 ;
+			}else{
+				takeVacc = 0;
+			}
+
+			DB.Query<ChildVaccinations> ("UPDATE ChildVaccinations Set isTaken  = ? WHERE ChildName = ? and VaccinationID = ?", takeVacc, childName, VID);
+		}
+
+		public int getVaccinationDate(int VID)
+		{
+			return DB.Table<vaccinationTable> ().Where(v => v.VaccinationID == VID).FirstOrDefault().time;
+		}
 //		public string  InsertIntoBabyMonthly (int MonthNumber)
 //		{
 //			try {

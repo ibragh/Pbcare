@@ -22,7 +22,7 @@ namespace pbcare
 			setting.ItemTemplate = new DataTemplate (typeof(TextCell));
 			setting.BackgroundColor = Color.Transparent ;
 			setting.ItemTemplate.SetBinding (TextCell.TextProperty, "Name");
-
+			setting.BackgroundColor = Color.Transparent;
 
 			setting.ItemSelected += (Sender, Event) => {
 				var selceted = (everyCell)Event.SelectedItem;
@@ -175,7 +175,7 @@ namespace pbcare
 
 		protected override void OnAppearing()
 		{
-			NavigationPage.SetHasNavigationBar (this, false);
+			
 		}
 	}
 

@@ -9,11 +9,13 @@ namespace pbcare
 	{
 		Image welcomeLogo , plus;
 		Button AddPregnancy, FollowPregnancy, FollowFetusImages, FollowFetusWeekly, finishPreg_  ;
+		Image s = new Image { Source = "notPregnant2.png" };
+		Image s2 = new Image { Source = "arrows.png" };
 
 		public PregnancyPage ()
 		{
 			this.Title = "حملي";
-			BackgroundImage = "back.png";
+			BackgroundColor = Color.FromRgb (94, 196, 225);
 
 			 welcomeLogo = new Image { 
 				Source = ""
@@ -37,7 +39,7 @@ namespace pbcare
 				//Image = "pregnant.png",
 				FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Button)),
 				//TextColor = Color.FromRgb (238, 238, 238),
-				TextColor = Color.FromRgb(127,127,127),
+				TextColor = Color.White, //Color.FromRgb (238, 238, 238),
 				BackgroundColor = Color.FromRgb (59, 89, 153),
 				BorderColor = Color.Black, // Color.FromRgb(127,127,127),
 				BorderWidth = 5,
@@ -55,8 +57,8 @@ namespace pbcare
 			FollowFetusImages = new Button {
 				Text = "متابعةالجنين بالصور",
 				//Image = "fetus.png",
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Button)),
-				TextColor = Color.FromRgb (238, 238, 238),
+				FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Button)),
+				TextColor = Color.White, //Color.FromRgb (238, 238, 238),
 				BackgroundColor = Color.FromRgb (59, 89, 153),
 				BorderColor = Color.FromRgb (59, 89, 153),
 				BorderWidth = 1,
@@ -65,9 +67,9 @@ namespace pbcare
 			FollowFetusWeekly = new Button {
 				Text = "متابعةالجنين بالأسابيع",
 				//Image = "fetus.png",
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Button)),
-				TextColor = Color.FromRgb (238, 238, 238),
-				WidthRequest = 200,
+				FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Button)),
+				TextColor = Color.White, //Color.FromRgb (238, 238, 238),
+				//WidthRequest = 200,
 				BackgroundColor = Color.FromRgb (59, 89, 153),
 				BorderColor = Color.FromRgb (59, 89, 153),
 				BorderWidth = 1,
@@ -78,7 +80,7 @@ namespace pbcare
 			FollowPregnancy.Clicked += FollowPregnancyWeeklyClicked;
 			FollowFetusImages.Clicked += FollowFetusByImagesClicked;
 			FollowFetusWeekly.Clicked += FollowFetusWeeklyClicked;
-
+			finishPreg_.Clicked += pregnancyFinished ;
 
 		}
 
@@ -119,6 +121,9 @@ namespace pbcare
 			}
 		}
 
+		public void pregnancyFinished(object sender, EventArgs e){
+			//ToolbarItems.Add (plusButton);
+		}
 		public void sendNotification ()
 		{
 			Notifications.Instance.Send ("Notification","I got notification for ABCD",when: TimeSpan.FromSeconds (2));
@@ -127,17 +132,29 @@ namespace pbcare
 
 		protected override void OnAppearing()
 		{
-			NavigationPage.SetHasNavigationBar (this, false);
+			
 			if(pbcareApp.FinaldueDate.GetHashCode() == 0){
 
 				Content = new StackLayout {
-					//Orientation = StackOrientation.Horizontal,
+					HorizontalOptions = LayoutOptions.FillAndExpand,
+					VerticalOptions = LayoutOptions.Start,
+					Padding = new Thickness (20, 50 ,20 , 30),
+					Spacing = 20 ,
 					Children = {
-								AddPregnancy
+						s , 
+						AddPregnancy
+//						new Label {
+//							Text = "لإضافة حمل الرجاء الضغط على + في أعلى الصفحة ",
+//							TextColor = Color.White, // Color.FromHex("#FFA4C1"),
+//							FontSize = Device.GetNamedSize(NamedSize.Medium , typeof(Label)),
+//							FontAttributes = FontAttributes.Bold
+//						}
 					}
 				};
 
 			}else{
+				ToolbarItems.Remove (plusButton);
+
 				Content =  new StackLayout {
 					
 					Orientation = StackOrientation.Vertical,
@@ -145,7 +162,7 @@ namespace pbcare
 					VerticalOptions = LayoutOptions.FillAndExpand,
 					Children = {
 						new StackLayout{
-							//Orientation = StackOrientation.Horizontal,
+							Orientation = StackOrientation.Horizontal,
 							Padding = 10,
 							Spacing = 0,
 							Children = {

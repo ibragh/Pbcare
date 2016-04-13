@@ -11,16 +11,22 @@ namespace pbcare
 		{
 			var childName = new Label {
 				Text = "Label 1",
-				TextColor = Color.Black ,
+				TextColor = Color.White ,
 				FontSize = Device.GetNamedSize (NamedSize.Medium, typeof(Label)),
-				FontAttributes = FontAttributes.Bold
+				FontAttributes = FontAttributes.Bold,
+				HorizontalOptions = LayoutOptions.Start,
+				VerticalOptions = LayoutOptions.Start,
+
 			};
-			childName.SetBinding(Label.TextProperty, "name");
+			childName.SetBinding(Label.TextProperty, "ChildName");
 
 			var childGender = new Label {
 				Text = "Label 2",
-				TextColor = Color.Black ,
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label))
+				TextColor = Color.White ,
+				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+				HorizontalOptions = LayoutOptions.End,
+				VerticalOptions = LayoutOptions.Center,
+
 			};
 			childGender.SetBinding(Label.TextProperty, "gender");
 
@@ -30,16 +36,16 @@ namespace pbcare
 				WidthRequest = 45,
 				HeightRequest = 50,
 				BorderRadius = 100 ,
-				HorizontalOptions = LayoutOptions.End,
+				HorizontalOptions = LayoutOptions.Start,
 				VerticalOptions = LayoutOptions.Center
 			};
 
-			info.SetBinding(Button.CommandParameterProperty, "name");
+			info.SetBinding(Button.CommandParameterProperty, "ChildName");
 			info.Clicked += (sender, e) => {
 				var b = (Button) sender;
-//				var t = b.CommandParameter;
-//				Child c = pbcareApp.Database.getChildFromDB(t+"" , pbcareApp.u.Email);
-				((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new FollowBabyMonthly());
+				var t = b.CommandParameter;
+				Child c = pbcareApp.Database.getChildFromDB(t+"" , pbcareApp.u.Email);
+				//((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new FollowBabyMonthly(c));
 
 			};
 			var vacc = new Button { 
@@ -48,11 +54,11 @@ namespace pbcare
 				WidthRequest = 45,
 				HeightRequest = 50,
 				BorderRadius = 100 ,
-				HorizontalOptions = LayoutOptions.EndAndExpand,
+				HorizontalOptions = LayoutOptions.StartAndExpand,
 				VerticalOptions = LayoutOptions.Center
 			};
 
-			vacc.SetBinding(Button.CommandParameterProperty, "name");
+			vacc.SetBinding(Button.CommandParameterProperty, "ChildName");
 			vacc.Clicked += (sender, e) => {
 				var b = (Button)sender;
 				var t = b.CommandParameter;
@@ -62,17 +68,19 @@ namespace pbcare
 
 			View = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
-				HorizontalOptions = LayoutOptions.StartAndExpand,
-				Padding = new Thickness (15, 5, 5, 15),
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				Padding = new Thickness (15, 5, 10, 15),
 
 				Children = {
+					info, vacc ,
 
 					new StackLayout {
-						Padding = new Thickness (15, 5, 5, 15),
+						Spacing = 1,
+						Padding = new Thickness (15, 5, 35, 15),
 						Orientation = StackOrientation.Vertical,
 						Children = { childName, childGender }
 					},
-					vacc , info
+
 				}
 			};
 		}

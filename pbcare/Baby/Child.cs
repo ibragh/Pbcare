@@ -5,9 +5,9 @@ namespace pbcare
 {
 	public class Child 
 	{
-		public int ChildID { get; set; }
+		
 		public string mother { get; set; }
-		public string name { get; set; }
+		public string ChildName { get; set; }
 		public string birthDate { get; set; }
 		public string gender { get; set;}
 
@@ -18,6 +18,35 @@ namespace pbcare
 		}
 
 	}
+
+	public class ChildInfo : ContentPage 
+	{
+		public ChildInfo(Child c){
+			
+			Title = c.ChildName;
+
+			Label name = new Label {
+				Text = c.ChildName
+			};
+
+			DateTime birthdate = DateTime.ParseExact (c.birthDate, "ddMMyyyy", null);
+			TimeSpan difference = birthdate - DateTime.Now.AddDays (-1);
+
+			double PastDays = (720 - (int)difference.TotalDays);
+			int old = (int)Math.Ceiling (PastDays / 30);
+
+			Label info = new Label {
+				Text = ""+ old
+			};
+
+			Content = new StackLayout {
+				Children = {
+					name, info
+				}
+			};
+		}
+	}
+
 
 }
 

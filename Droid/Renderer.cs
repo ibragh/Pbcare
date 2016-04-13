@@ -6,6 +6,8 @@ using pbcare;
 
 [assembly: ExportRenderer (typeof(Entry1), typeof(Entry_1))]
 [assembly: ExportRenderer (typeof(Entry2), typeof(Entry_2))]
+[assembly: ExportRenderer (typeof(ToolbarItem1), typeof(ToolbarItem11))]
+
 namespace pbcare.Droid
 {
 	class Entry_1 : EntryRenderer
@@ -33,6 +35,9 @@ namespace pbcare.Droid
 		}
 	}
 
-
+	class ToolbarItem11 : ToolbarRenderer
+	{
+		
+	}
 }
 
