@@ -47,7 +47,7 @@ namespace pbcare
 			};
 
 			var empty = new Label {
-				HeightRequest = 100
+				HeightRequest = 50
 			};
 
 			var LoginButton = new Button {
@@ -88,8 +88,8 @@ namespace pbcare
 				Content = new StackLayout { 
 				Orientation = StackOrientation.Vertical,
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				Padding = new Thickness (30, 0, 30, 15),
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				Padding = new Thickness (30, 60, 30, 15),
+					HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children = {
 						
 						i, empty, emailEntry, passwordEntry, LoginButton,

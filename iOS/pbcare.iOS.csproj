@@ -118,6 +118,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="SQLite_iOS.cs" />
+    <Compile Include="Renderer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
@@ -140,11 +141,12 @@
     <BundleResource Include="Resources\pbcare.db3" />
     <BundleResource Include="Resources\vaccinationLogo.png" />
     <BundleResource Include="Resources\infoLogo.png" />
-    <BundleResource Include="Resources\fetus.png" />
     <BundleResource Include="Resources\logOut.png" />
-    <BundleResource Include="Resources\pregnant.png" />
     <BundleResource Include="Resources\plus.png" />
-    <BundleResource Include="Resources\B14.png" />
-    <BundleResource Include="Resources\B14_2.png" />
+    <BundleResource Include="Resources\right.png" />
+    <BundleResource Include="Resources\notPregnant2.png" />
+    <BundleResource Include="Resources\X.png" />
+    <BundleResource Include="Resources\plus2.png" />
+    <BundleResource Include="Resources\mainBLogo2.png" />
   </ItemGroup>
 </Project>

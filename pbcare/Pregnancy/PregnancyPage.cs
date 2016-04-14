@@ -153,7 +153,7 @@ namespace pbcare
 				};
 
 			}else{
-				ToolbarItems.Remove (plusButton);
+			//	ToolbarItems.Remove (plusButton);
 
 				Content =  new StackLayout {
 					
