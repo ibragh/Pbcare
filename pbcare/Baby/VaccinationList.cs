@@ -14,11 +14,10 @@ namespace pbcare
 		public VaccinationList (Child c)
 		{
 			this.Title = "تطعيمات "+ c.ChildName ;
-			BackgroundColor = Color.White;
-
+			BackgroundColor = Color.FromRgb (94, 196, 225);
 
 			Vaccinations =  pbcareApp.Database.getVaccinationsFromDB();
-
+		
 			vaccinationList.ItemsSource = Vaccinations;
 			vaccinationList.ItemTemplate = new DataTemplate (typeof(EveryVaccinationCell));
 

@@ -3201,10 +3201,10 @@ namespace pbcare.Droid
 			public const int abc_textfield_search_material = 2130837565;
 			
 			// aapt resource value: 0x7f02003e
-			public const int arrows = 2130837566;
+			public const int back = 2130837566;
 			
 			// aapt resource value: 0x7f02003f
-			public const int back = 2130837567;
+			public const int children = 2130837567;
 			
 			// aapt resource value: 0x7f020040
 			public const int design_fab_background = 2130837568;
@@ -3329,35 +3329,29 @@ namespace pbcare.Droid
 			// aapt resource value: 0x7f020068
 			public const int mr_ic_settings_light = 2130837608;
 			
-			// aapt resource value: 0x7f020072
-			public const int notification_template_icon_bg = 2130837618;
+			// aapt resource value: 0x7f020070
+			public const int notification_template_icon_bg = 2130837616;
 			
 			// aapt resource value: 0x7f020069
-			public const int notPregnant = 2130837609;
+			public const int notPregnant2 = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int notPregnant2 = 2130837610;
+			public const int plus2 = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int plus = 2130837611;
+			public const int pregnant = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int plus2 = 2130837612;
+			public const int right = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int pregnant = 2130837613;
+			public const int screen = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int right = 2130837614;
+			public const int vaccinationLogo = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int screen = 2130837615;
-			
-			// aapt resource value: 0x7f020070
-			public const int vaccinationLogo = 2130837616;
-			
-			// aapt resource value: 0x7f020071
-			public const int X = 2130837617;
+			public const int X = 2130837615;
 			
 			static Drawable()
 			{

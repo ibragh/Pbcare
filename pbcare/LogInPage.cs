@@ -23,6 +23,7 @@ namespace pbcare
 				TextColor = Color.FromHex("#5069A1"),
 				PlaceholderColor = Color.FromRgba(255,255,255,225),
 				WidthRequest = 30 ,
+				IsPassword = true
 			};
 
 			var messageLogin = new Label {

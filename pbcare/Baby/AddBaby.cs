@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using Acr.Notifications;
 
 namespace pbcare
 {
@@ -9,39 +10,50 @@ namespace pbcare
 		public AddBaby ()
 		{
 			Title = "إضــافة طــفل ";
-			BackgroundImage = null;
+			BackgroundColor = Color.FromRgb (94, 196, 225);
+
 
 			var childName = new Label {
 				Text = "إسم الطفل",
+				TextColor = Color.White,
 				HorizontalOptions = LayoutOptions.End
 			};
 
-			var nameEntry = new Entry {
+			var nameEntry = new Entry1 {
 				Placeholder = " اسم الطفل هنا",
-
+				PlaceholderColor = Color.White,
+				TextColor = Color.FromHex("#5069A1"),
 			
 			};
 
 			var childGender = new Label {
 				Text = "الجنس",
+				TextColor = Color.White,
 				HorizontalOptions = LayoutOptions.End,
 			};
 
-			var gender = new Picker ();
-			gender.Title = "إختر الجنس";
+			var gender = new Picker1 ();
+			gender.Title = "اختر الجنس";
 			gender.Items.Add ("ذكر");
 			gender.Items.Add ("أنثى");
 
 
 			var childBirthdate = new Label {
 				Text = "تاريخ الميلاد",
+				TextColor = Color.White,
 				HorizontalOptions = LayoutOptions.End,
 			};
 
-			var birthdate = new DatePicker ();
+			var birthdate = new DatePicker1 ();
 
 			var saveButton = new Button {
-				Text = "حفظ البيانات"
+				Text = "حفظ البيانات",
+				TextColor = Color.FromHex("#FFFFFF"),
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
+				BackgroundColor = Color.FromHex("#FFA4C1"),
+				BorderColor = Color.FromHex("#FFA4C1"),
+				HeightRequest = 40 ,
+				WidthRequest = 110
 			};
 
 			saveButton.Clicked += (sender, e) => {
@@ -56,38 +68,59 @@ namespace pbcare
 
 					if (check) {
 						pbcareApp.Database.insertChildVaccinations(baby.ChildName);
+						var Vaccinations =  pbcareApp.Database.getVaccinationsFromDB();
+
 						Navigation.PopAsync ();
+						for(int i = 0 ; i < Vaccinations.Count ; i++){
+							var periodInSecond = 2592000 * Vaccinations[i].time ; 
+							Notifications.Instance.Send ("تنبيه", Vaccinations[i].name + "  for  " + baby.ChildName ,when: TimeSpan.FromSeconds (periodInSecond));
+						}
 					} else {
-						DisplayAlert ("خطأ", "معلومات الطفل غير كاملة", "إلغاء");
+						DisplayAlert ("خطأ", "لديك طفل مسجل مسبقا بنفس الاسم ", "إلغاء");
 					}
 				} else {
-					DisplayAlert ("خطأ", "معلومات الطفل غير كاملة22", "إلغاء");
+					DisplayAlert ("خطأ", "معلومات الطفل غير كاملة", "إلغاء");
 				}
 			};
 
 			var cancelButton = new Button {
-				Text = "إلغاء"
+				Text = "إلغاء",
+				TextColor = Color.FromHex("#FFFFFF"),
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
+				BackgroundColor = Color.FromHex("#FFA4C1"),
+				BorderColor = Color.FromHex("#FFA4C1"),
+				HeightRequest = 40 ,
+				WidthRequest = 110
 			};
 
 			cancelButton.Clicked += (sender, e) => {
 				Navigation.PopAsync ();
 			};
 
-			Content = new StackLayout {
-				Padding = 20, 
-				Children = {
-					childName,
-					nameEntry,
-					childGender,
-					gender,
-					childBirthdate,
-					birthdate,
-					saveButton,
-					cancelButton
-				}
+			Content = new ScrollView {
+					Content = new StackLayout {
+						Padding = 20, 
+						Spacing = 15,
+						Children = {
+							childName,
+							nameEntry,
+							childGender,
+							gender,
+							childBirthdate,
+							birthdate,
+							new StackLayout{
+								Padding = new Thickness (0 , 20 , 0 , 10),
+								Orientation = StackOrientation.Horizontal,
+								HorizontalOptions = LayoutOptions.Center,
+								Children = {
+									cancelButton,
+									saveButton
+								}
+							}
+						}
+					}
 			};
-		}
 	}
 }
-
+}
 

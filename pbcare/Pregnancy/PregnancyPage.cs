@@ -87,7 +87,7 @@ namespace pbcare
 
 		public void AddPregnancyClicked (object sender, EventArgs e)
 		{
-			Navigation.PushAsync (new AddPregnancyPage ());
+			Navigation.PushAsync (new AddPregPage ());
 		}
 
 		public void FollowPregnancyWeeklyClicked (object sender, EventArgs e)
@@ -126,7 +126,7 @@ namespace pbcare
 		}
 		public void sendNotification ()
 		{
-			Notifications.Instance.Send ("Notification","I got notification for ABCD",when: TimeSpan.FromSeconds (2));
+			Notifications.Instance.Send ("Notification","I got notification for ABCD",when: TimeSpan.FromSeconds (30));
 		}
 
 

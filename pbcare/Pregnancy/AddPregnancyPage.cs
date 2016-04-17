@@ -29,6 +29,7 @@ namespace pbcare
 				Font = Font.SystemFontOfSize (NamedSize.Default), BorderWidth = 1, BorderColor = Color.Red
 
 			};
+
 			CalMyDate.Clicked += (object sender, EventArgs e) => Navigation.PushAsync (new CalMyDueDate ());
 
 			Button AddDueDate = new Button {
@@ -66,8 +67,8 @@ namespace pbcare
 						DisplayAlert ("خطأ", "يوجد لديكي حمل مسبق - لتغيير تاريخ الحمل من الإعدادات", "تم");
 
 					}  else if (result == 99) { /* SUCCESSFUL */
-						Navigation.PopAsync ();
 						DisplayAlert ("", "موعدك الولادة المتوقع : " + DueDateDisplay+" \nأنتي الآن في الأسبوع الـ "+CurrentWeek, "تم");
+						Navigation.PopAsync ();
 					
 
 					} else {

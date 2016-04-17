@@ -6,7 +6,9 @@ using pbcare;
 
 [assembly: ExportRenderer (typeof(Entry1), typeof(Entry_1))]
 [assembly: ExportRenderer (typeof(Entry2), typeof(Entry_2))]
-[assembly: ExportRenderer (typeof(ToolbarItem1), typeof(ToolbarItem11))]
+[assembly: ExportRenderer (typeof(DatePicker1), typeof(DatePicker_1))]
+[assembly: ExportRenderer (typeof(Picker1), typeof(Picker_1))]
+
 
 namespace pbcare.Droid
 {
@@ -35,9 +37,34 @@ namespace pbcare.Droid
 		}
 	}
 
-	class ToolbarItem11 : ToolbarRenderer
+	class DatePicker_1 : DatePickerRenderer
 	{
-		
+		protected override void OnElementChanged (ElementChangedEventArgs<DatePicker> e)
+		{
+			base.OnElementChanged (e);
+
+			if (Control != null) {
+				Control.SetBackgroundColor (global::Android.Graphics.Color.Argb(80,184,228,241));
+				Control.SetTextColor(global::Android.Graphics.Color.Argb(255,80,105,161));
+
+			}
+		}
 	}
+
+	class Picker_1 : PickerRenderer
+	{
+		protected override void OnElementChanged (ElementChangedEventArgs<Picker> e)
+		{
+			base.OnElementChanged (e);
+
+			if (Control != null) {
+				Control.SetBackgroundColor (global::Android.Graphics.Color.Argb(80,184,228,241));
+				Control.SetTextColor(global::Android.Graphics.Color.Argb(255,80,105,161));
+
+			}
+		}
+	}
+
+
 }
 

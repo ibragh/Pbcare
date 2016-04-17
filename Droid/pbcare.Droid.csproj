@@ -119,7 +119,6 @@
     <AndroidResource Include="Resources\drawable\infoLogo.png" />
     <AndroidResource Include="Resources\drawable\vaccinationLogo.png" />
     <AndroidResource Include="Resources\drawable\logOut.png" />
-    <AndroidResource Include="Resources\drawable\plus.png" />
     <AndroidResource Include="Resources\drawable\fetus.png" />
     <AndroidResource Include="Resources\drawable\pregnant.png" />
     <AndroidResource Include="Resources\drawable\back.png" />
@@ -130,6 +129,7 @@
     <AndroidResource Include="Resources\drawable\X.png" />
     <AndroidResource Include="Resources\drawable\plus2.png" />
     <AndroidResource Include="Resources\drawable\notPregnant2.png" />
+    <AndroidResource Include="Resources\drawable\children.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets')" />

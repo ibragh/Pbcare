@@ -9,6 +9,7 @@ namespace pbcare
 		public WebsitePage ()
 		{
 			this.Title = "المنتدى";
+			BackgroundColor = Color.FromRgb (94, 196, 225);
 
 
 		}

@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="iOS/pbcare.iOS.csproj">
+﻿<Properties StartupItem="Droid\pbcare.Droid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Android" />
   <MonoDevelop.Ide.Workbench>
     <Pads>

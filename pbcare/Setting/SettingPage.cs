@@ -12,7 +12,7 @@ namespace pbcare
 		public SettingPage ()
 		{
 			this.Title = "الإعدادات";
-
+			BackgroundColor = Color.FromRgb (94, 196, 225);
 
 			ListView setting = new ListView {
 				RowHeight = 50  
@@ -86,9 +86,7 @@ namespace pbcare
 				HorizontalOptions = LayoutOptions.End,
 			};
 
-			var nameEntry = new Entry { Placeholder = "أدخل اسمك هنا" ,
-				BackgroundColor = Color.Pink
-			};
+			var nameEntry = new Entry1 { Placeholder = "أدخل اسمك هنا" };
 				
 			var yourPass = new Label {
 				Text = "كلمة المرور : ",
@@ -96,8 +94,8 @@ namespace pbcare
 				HorizontalOptions = LayoutOptions.End,
 			};
 
-			var passwordEntry = new Entry {	Placeholder = "أدخل كلمة المرور هنا" };
-			var passConfirm = new Entry { Placeholder = " تأكيد كلمة المرور" };
+			var passwordEntry = new Entry1 {	Placeholder = "أدخل كلمة المرور هنا" };
+			var passConfirm = new Entry1 { Placeholder = " تأكيد كلمة المرور" };
 			var saveNameButton = new Button { Text = " حفظ البيانات " };
 
 			saveNameButton.Clicked += (sender, e) => {

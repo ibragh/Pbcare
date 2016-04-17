@@ -7,8 +7,7 @@ namespace pbcare
 {
 	public class BabyPage : ContentPage
 	{
-
-	
+		Button AddChild ;
 		ListView childrenList = new ListView {
 			RowHeight = 60
 		};
@@ -16,15 +15,6 @@ namespace pbcare
 		{
 			Title = "أطفالي";
 
-			ToolbarItem plus = new ToolbarItem {
-				Icon = "plus2.png",
-				Command = new Command (() => Navigation.PushAsync (new AddBaby()))
-			};
-
-			ToolbarItems.Add(plus);
-
-
-			BackgroundImage = null ;
 			BackgroundColor = Color.FromRgb (94, 196, 225);
 
 			childrenList.ItemTemplate = new DataTemplate (typeof(EveryChildCell));
@@ -35,40 +25,68 @@ namespace pbcare
 				((ListView)Sender).SelectedItem = null; 
 			};
 
-//			var AddChild = new Button {
-//				Text = "إضافة طفـــل",
-//				Image = "plus.png",
-//				TextColor = Color.White,
-//				FontSize = 15,
-//				WidthRequest = 200,
-//				HeightRequest = 65,
-//				BackgroundColor = Color.FromHex ("#FF2A68"),
-//				VerticalOptions = LayoutOptions.End,
-//				FontAttributes = FontAttributes.Bold,
-//				BorderRadius = 30 ,
-//				BorderWidth = 4
-//			};
-//					
-//			AddChild.Clicked += (sender, e) => {
-//				Navigation.PushAsync(new AddBaby());
-//
-//			};
+			AddChild = new Button {
+				Text = " + ",
+				FontAttributes = FontAttributes.None,
+				FontSize = 40,
+				TextColor = Color.White,
+				WidthRequest = 63,
+				HeightRequest = 63,
+				BackgroundColor = Color.FromHex("#FFA4C1"),
+				VerticalOptions = LayoutOptions.End,
+				HorizontalOptions = LayoutOptions.Center,
+				BorderRadius = 100 ,
+			};
+					
+			AddChild.Clicked += (sender, e) => {
+				Navigation.PushAsync(new AddBaby());
 
-			Content = new StackLayout {
-				VerticalOptions= LayoutOptions.FillAndExpand,
-				Padding = new Thickness(0, 20, 0, 20),
-				Children = {  
-					childrenList ,
-					//AddChild
-				}
 			};
 
 		}
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
-			childrenList.ItemsSource = pbcareApp.Database.getChildrenFromDB(pbcareApp.u.Email);
+			var childrenNum = pbcareApp.Database.getChildrenFromDB(pbcareApp.u.Email);
+			childrenList.ItemsSource = childrenNum;
+			Image c = new Image {
+				Source = "children.png"
+			};
 
+			Label message = new Label {
+				Text = "ليس لديك أطفال مسجلين    \n للإضافة الرجاء الضغط على + ",
+				TextColor = Color.White,
+				FontSize = Device.GetNamedSize(NamedSize.Medium ,typeof(Label)),
+				FontAttributes = FontAttributes.Bold,
+				HorizontalOptions = LayoutOptions.Center				 
+					
+			};
+			if(childrenNum.Count == 0){
+				Content = new ScrollView {
+					Content = new StackLayout {
+						HorizontalOptions = LayoutOptions.Center,
+						VerticalOptions = LayoutOptions.Center,
+						Spacing = 20,
+						Padding = new Thickness (0, 20, 0, 40),
+						Children = { 
+							c,
+							message,
+							AddChild
+						}
+					}
+				};
+			}else{
+				Content = new ScrollView {
+					Content = new StackLayout {
+						VerticalOptions= LayoutOptions.FillAndExpand,
+						Padding = new Thickness (0, 20, 0, 40),
+						Children = { 
+							childrenList,
+							AddChild
+						}
+					}
+				};
+			}
 		}
 			
 

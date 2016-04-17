@@ -275,6 +275,12 @@ namespace pbcare
 //
 //		}
 	
+
+//		public static long get_Vaccination_Appointment_InSeconds(int Vaccinations)
+//		{
+//			
+//		}
+
 	}
 }
 

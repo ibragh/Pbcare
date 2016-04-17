@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace pbcare
 {
@@ -40,6 +41,7 @@ namespace pbcare
 			return (int)Math.Ceiling (PastDays / 7);
 
 		}
+
 
 		static DatabaseClass database;
 

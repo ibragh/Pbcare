@@ -16,7 +16,11 @@ namespace pbcare
 	{
 	}
 
-	public class ToolbarItem1 : ToolbarItem
+	public class DatePicker1 : DatePicker
+	{
+	}
+
+	public class Picker1 : Picker
 	{
 	}
 }
