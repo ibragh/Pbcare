@@ -20,7 +20,8 @@ namespace pbcare
 		
 			vaccinationList.ItemsSource = Vaccinations;
 			vaccinationList.ItemTemplate = new DataTemplate (typeof(EveryVaccinationCell));
-
+			vaccinationList.BackgroundColor = Color.Transparent;
+			vaccinationList.SeparatorColor = Color.White;
 			vaccinationList.ItemSelected +=  (Sender, Event) => {
 				var V = (vaccinationTable)Event.SelectedItem;
 				Navigation.PushAsync(new VaccinationInfoView(V, c));

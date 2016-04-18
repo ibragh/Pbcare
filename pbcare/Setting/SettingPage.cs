@@ -23,7 +23,7 @@ namespace pbcare
 			setting.ItemsSource = settingList ;
 			setting.ItemTemplate = new DataTemplate (typeof(everyCell));
 			setting.BackgroundColor = Color.Transparent ;
-
+			setting.SeparatorColor = Color.White;
 			setting.ItemSelected += (Sender, Event) => {
 				var selceted = (settingClass)Event.SelectedItem;
 				var settingView = new settingView (selceted);
@@ -42,7 +42,6 @@ namespace pbcare
 				VerticalOptions = LayoutOptions.End ,
 				FontAttributes = FontAttributes.Bold ,
 				BorderRadius = 30 ,
-				BorderWidth = 4
 			};
 
 			logOutButton.Clicked += OnAlertYesNoClicked;
@@ -130,6 +129,11 @@ namespace pbcare
 
 			var CancelButton = new Button {
 				Text = "إلغاء",
+				TextColor = Color.FromHex("#FFFFFF"),
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
+				BackgroundColor = Color.FromHex("#FFA4C1"),
+				BorderColor = Color.FromHex("#FFA4C1"),
+				HeightRequest = 50 ,
 			};
 
 			CancelButton.Clicked += (sender, e) => {
@@ -144,7 +148,13 @@ namespace pbcare
 				};
 
 				var nameEntry = new Entry1 { Placeholder = "أدخل اسمك هنا" };
-				var saveNameButton = new Button { Text = " حفظ البيانات " 
+				var saveNameButton = new Button { 
+					Text = " حفظ البيانات " ,
+					TextColor = Color.FromHex("#FFFFFF"),
+					FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
+					BackgroundColor = Color.FromHex("#FFA4C1"),
+					BorderColor = Color.FromHex("#FFA4C1"),
+					HeightRequest = 50 ,
 				};
 				
 				saveNameButton.Clicked += (sender, e) => {
@@ -184,7 +194,12 @@ namespace pbcare
 				var passwordEntry = new Entry1 {	Placeholder = "أدخل كلمة المرور هنا" };
 				var passConfirm = new Entry1 { Placeholder = " تأكيد كلمة المرور" };
 				var savePassButton = new Button {
-					Text = "حفظ البيانات"
+					Text = "حفظ البيانات",
+					TextColor = Color.FromHex("#FFFFFF"),
+					FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
+					BackgroundColor = Color.FromHex("#FFA4C1"),
+					BorderColor = Color.FromHex("#FFA4C1"),
+					HeightRequest = 50 ,
 				};
 	
 				savePassButton.Clicked += (sender, e) => {

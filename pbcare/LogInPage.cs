@@ -31,7 +31,7 @@ namespace pbcare
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 			};
 
-			var sinUpButton = new Button1 {
+			var sinUpButton = new Button {
 				Text = "مستخدم جديد",
 				TextColor = Color.FromHex("#E2E2E2"),
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
@@ -57,7 +57,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
-				HeightRequest = 40 ,
+				HeightRequest = 50 ,
 			};
 
 			LoginButton.Clicked += (sender, e) => {

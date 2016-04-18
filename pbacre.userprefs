@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="Droid/pbcare.Droid.csproj">
+﻿<Properties StartupItem="iOS/pbcare.iOS.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Jelly Bean)" />
   <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

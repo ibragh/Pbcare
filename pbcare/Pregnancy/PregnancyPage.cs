@@ -17,7 +17,7 @@ namespace pbcare
 			this.Title = "حملي";
 			BackgroundColor = Color.FromRgb (94, 196, 225);
 
-			AddPregnancy = new Button1 {
+			AddPregnancy = new Button {
 				Text = "إضافة حمل",
 				TextColor = Color.FromHex("#FFFFFF"),
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
@@ -48,7 +48,7 @@ namespace pbcare
 				BorderColor = Color.FromHex("#FFA4C1"),
 			};
 
-			finishPreg_ = new Button1 {
+			finishPreg_ = new Button {
 				Text = "تــــمت الــولادة",
 				TextColor = Color.FromHex("#FFFFFF"),
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
@@ -105,7 +105,7 @@ namespace pbcare
 
 			if (answer == true) {
 				pbcareApp.u.isPregnant = 0;
-				pbcareApp.Database.updateIsPrenant (0);
+				pbcareApp.Database.updateIsPregnant (0);
 				pbcareApp.Database.removeDueDate ();
 				await DisplayAlert ("ألف مبروك ","حمداً لله على سلامتك","إضافة مولودك");
 				await Navigation.PushAsync (new AddBaby ());

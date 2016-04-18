@@ -8,13 +8,6 @@ namespace pbcare
 	{
 	}
 
-	public class Entry2 : Entry 
-	{
-	}
-
-	public class Button1 : Button
-	{
-	}
 
 	public class DatePicker1 : DatePicker
 	{

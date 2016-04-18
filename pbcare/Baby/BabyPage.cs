@@ -31,13 +31,18 @@ namespace pbcare
 				FontSize = 40,
 				TextColor = Color.White,
 				WidthRequest = 63,
-				HeightRequest = 63,
+				HeightRequest= 63,
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				VerticalOptions = LayoutOptions.End,
 				HorizontalOptions = LayoutOptions.Center,
-				BorderRadius = 100 ,
+				BorderColor = Color.FromHex("#FFA4C1"),
+				BorderWidth = 1 ,
+				BorderRadius = 30
 			};
-					
+
+		
+
+
 			AddChild.Clicked += (sender, e) => {
 				Navigation.PushAsync(new AddBaby());
 

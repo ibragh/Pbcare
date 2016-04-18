@@ -105,8 +105,9 @@ namespace pbcare
 		// check login in email & password are match in db
 		public bool checkLogin (string email, string password)
 		{
-
-			if (DB.Table<User> ().Where (user => user.Email == email && user.Password == password).FirstOrDefault () != null) {
+			var Logeduser = DB.Table<User> ().Where (user => user.Email == email && user.Password == password).FirstOrDefault ();
+			if ( Logeduser != null) {
+				pbcareApp.u.isPregnant = Logeduser.isPregnant;
 				return true;
 			} else {
 				return false;
@@ -330,7 +331,7 @@ namespace pbcare
 			}
 		}
 		//
-		public void updateIsPrenant (int PregnancyCase)
+		public void updateIsPregnant (int PregnancyCase)
 		{
 			try {
 				DB.Query<User> ("UPDATE User Set isPregnant  = ? WHERE email = ? ", PregnancyCase, pbcareApp.u.Email);

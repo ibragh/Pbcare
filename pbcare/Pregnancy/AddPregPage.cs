@@ -15,26 +15,26 @@ namespace pbcare
 				Text = "حساب تاريخ الولادة", 
 				TextColor = Color.White,
 				HorizontalOptions = LayoutOptions.Center,
-				Font = Font.SystemFontOfSize (NamedSize.Small),
+				Font = Font.SystemFontOfSize (NamedSize.Micro),
 				FontAttributes = FontAttributes.Bold,
 				BorderWidth = 2,
 				BorderColor = Color.FromHex("FFA4C1"),
 				BackgroundColor =  Color.FromHex("FFA4C1"),
-				WidthRequest = 100,
-				HeightRequest = 30,
+				WidthRequest = 110,
+				HeightRequest = 40,
 			};
 
 			Button DueDateButton = new Button {
 				Text =  "تحديد تاريخ الولادة ",
 				TextColor =  Color.White,
 				HorizontalOptions = LayoutOptions.Center,
-				Font = Font.SystemFontOfSize (NamedSize.Small),
+				Font = Font.SystemFontOfSize (NamedSize.Micro),
 				FontAttributes = FontAttributes.Bold,
 				BorderWidth = 2,
 				BorderColor =  Color.FromHex("FFA4C1"),
 				BackgroundColor = Color.Transparent,
-				WidthRequest = 100,
-				HeightRequest = 30,
+				WidthRequest = 110,
+				HeightRequest = 40,
 
 			};
 
@@ -58,7 +58,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
-				HeightRequest = 40 ,
+				HeightRequest = 50,
 			};
 
 			String DueDateText;
@@ -96,9 +96,9 @@ namespace pbcare
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -2));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
-						pbcareApp.Database.updateIsPrenant(1);
+						pbcareApp.Database.updateIsPregnant(1);
 						pbcareApp.u.isPregnant = 1;
-						Navigation.PopAsync ();
+						//Navigation.PopAsync ();
 
 
 					} else {
@@ -121,7 +121,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
-				HeightRequest = 40 ,
+				HeightRequest = 50 ,
 			};
 			Label MyDueDate = new Label {
 				Text = "ادخلي تاريخ أول يوم في فترة حملك ",
@@ -157,9 +157,10 @@ namespace pbcare
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -2));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
-						pbcareApp.Database.updateIsPrenant(1);
+						pbcareApp.Database.updateIsPregnant(1);
+
 						pbcareApp.u.isPregnant = 1;
-						Navigation.PopAsync ();
+						//Navigation.PopAsync ();
 
 
 					} else {
@@ -190,7 +191,7 @@ namespace pbcare
 							HorizontalOptions = LayoutOptions.Center,
 							VerticalOptions = LayoutOptions.Start,
 							Padding = new Thickness (10, 20),
-							Spacing = -7,
+							Spacing = -5,
 							Children = {
 								CalMyDateButton , DueDateButton
 						
@@ -227,7 +228,7 @@ namespace pbcare
 							HorizontalOptions = LayoutOptions.Center,
 							VerticalOptions = LayoutOptions.Start,
 							Padding = new Thickness (10, 20),
-							Spacing = -7,
+							Spacing = -5,
 							Children = {
 								CalMyDateButton , DueDateButton
 
@@ -254,7 +255,7 @@ namespace pbcare
 						HorizontalOptions = LayoutOptions.Center,
 						VerticalOptions = LayoutOptions.Start,
 						Padding = new Thickness (10, 20),
-						Spacing = -7,
+						Spacing = -5,
 						Children = {
 							CalMyDateButton , DueDateButton
 

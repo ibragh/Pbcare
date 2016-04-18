@@ -84,7 +84,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
-				HeightRequest = 40 ,
+				HeightRequest = 50 ,
 			};
 
 			SignUpButton.Clicked += (sender, e) => {
@@ -108,6 +108,7 @@ namespace pbcare
 						pbcareApp.MyNavigation.PopModalAsync ();
 						pbcareApp.u.Email = Email;
 						pbcareApp.u.name = name;
+						pbcareApp.u.isPregnant = 0 ;
 						pbcareApp.Database.InsertUserLoggedin (true);
 					} else {
 						messageSignUp.Text = "تم التسجيل بنفس الإيميل مسبقاً"; // Email is rigistered
