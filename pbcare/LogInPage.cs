@@ -40,7 +40,7 @@ namespace pbcare
 			};
 
 			sinUpButton.Clicked += (sender, e) => {
-				Navigation.PushAsync (new SignUpPage ());
+				Navigation.PushAsync (new SignUpPage2 ());
 			};
 
 			Image i = new Image{ 

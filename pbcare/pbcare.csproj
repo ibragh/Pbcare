@@ -38,24 +38,15 @@
     <Compile Include="WebsiteView\WebsitePage.cs" />
     <Compile Include="ISQLite\ISQLite.cs" />
     <Compile Include="ISQLite\DatabaseClass.cs" />
-    <Compile Include="Pregnancy\CalMyDueDate.cs" />
     <Compile Include="Pregnancy\FollowFetus\FollowFetusByImages.cs" />
     <Compile Include="Pregnancy\FollowFetus\FollowFetusWeekly.cs" />
     <Compile Include="Pregnancy\FollowPregnancy\FollowPregnancy.cs" />
     <Compile Include="Pregnancy\FollowPregnancy\PregnancyWeekly.cs" />
     <Compile Include="Pregnancy\FollowPregnancy\PregnancyWeeklyPage.cs" />
     <Compile Include="ISQLite\User.cs" />
-    <Compile Include="Pregnancy\AddPregnancyPage.cs" />
-    <Compile Include="SignUpPage.xaml.cs">
-      <DependentUpon>SignUpPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ISQLite\Tables.cs" />
     <Compile Include="Setting\SettingPage.cs" />
-    <Compile Include="Setting\LogoutPage.cs" />
     <Compile Include="Pregnancy\PregnancyPage.cs" />
-    <Compile Include="pbcareMainPage.xaml.cs">
-      <DependentUpon>pbcareMainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pregnancy\FollowFetus\FetusWeeklyTry.cs" />
     <Compile Include="Baby\EveryChildCell.cs" />
     <Compile Include="Baby\VaccinationList.cs" />
@@ -66,6 +57,10 @@
     <Compile Include="styleComponents.cs" />
     <Compile Include="LogInPage.cs" />
     <Compile Include="Pregnancy\AddPregPage.cs" />
+    <Compile Include="SignUpPage.cs" />
+    <Compile Include="pbcareMainPage.xaml.cs">
+      <DependentUpon>pbcareMainPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -94,9 +89,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SignUpPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="pbcareMainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

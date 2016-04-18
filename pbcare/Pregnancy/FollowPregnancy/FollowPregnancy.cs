@@ -9,7 +9,7 @@ namespace pbcare
 		public FollowPregnancy ()
 		{
 			this.Title = "متابعة الحمل الأسبوعي";
-			BackgroundColor = Color.FromRgb (94, 196, 225);
+			BackgroundColor = Color.FromRgb (197, 255, 255);
 
 
 			int CurrentWeek = pbcareApp.CurrentWeek (pbcareApp.FinaldueDate);
@@ -26,9 +26,6 @@ namespace pbcare
 			}
 			this.ItemsSource =pregnancyWeek;
 			this.ItemTemplate = new DataTemplate (typeof(PregnancyWeeklyPage));
-//			this.ItemTemplate = new DataTemplate (() => {
-//				return new PregnancyWeeklyPage (); // ContentPage
-//			});
 			// selected week .. so her preganncy week will
 			// be the first screen will appear 
 			this.SelectedItem = ((PregnancyWeekly[])ItemsSource); // it needs change

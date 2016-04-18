@@ -4,93 +4,84 @@ using Xamarin.Forms;
 
 namespace pbcare
 {
-	public class FollowFetusByImages :  ContentPage
+	public class FollowFetusByImages :  CarouselPage
 	{
 		public FollowFetusByImages ()
 		{
+
 			this.Title = "متابعة الحمل الأسبوعي";
+			BackgroundColor = Color.White; //Color.FromRgb (197, 255, 255);
+			int CurrentWeek = pbcareApp.CurrentWeek (pbcareApp.FinaldueDate);
 
-			string msg = "لا تحاولي مسح البقع الداكنة من على أنفك ووجنتيك وجبهتك." +
-			             " إنها ليست أوساخًا—بل هي حالة شائعة في " +
-			             "الحمل تسمى الكلف أو \"قناع الحمل.\" الهرمونات هي السبب في ظهور تلك البقع، وتعاني منها بعض السيدات الحوامل وليس كلهن." +
-			             " كذلك فإن هرمونات الحمل مسؤولة عن ظهور الخط الأسود، وهو خط غامق يظهر من أسفل السرة إلى عظمة العانة";
+			string[] images = new string[41];
+			for (int i = 1; i < images.Length; i++) {
+				images [i] = "fetus"+i+".png";
+			}
 
-			Label WeekLabel = new Label {
-				Text = "الأسبوع ١٩",
-				FontSize = 50,
-				HorizontalOptions = LayoutOptions.Center, TextColor = Color.Red
-			};
-			Label messageLabel = new Label { 
-				Text = msg,
-				FontSize = 20,
-				HorizontalOptions = LayoutOptions.Center,
-			};
+			fetusImages[] FetusImages = new fetusImages[41];
+			for (int i = 1; i < FetusImages.Length; i++) {
+				FetusImages[i] = new fetusImages("الأسبوع "+i,images[i]);
+			}
+			this.ItemsSource = FetusImages;
+			this.ItemTemplate = new DataTemplate (typeof(fetuseImagesPage));
+			// selected week .. so her preganncy week will
+			// be the first screen will appear 
+			this.SelectedItem = ((fetusImages[])ItemsSource);
 
-			Content = new  StackLayout {
-				Children = {
-					WeekLabel,
-					messageLabel
-				}
-
-			};
-		}
 	}
-	public class FollowFetusByImages2 :  ContentPage
-	{
-		public FollowFetusByImages2 ()
+}
+	//================================================
+		public class fetusImages
 		{
-			this.Title = "متابعة الحمل الأسبوعي";
-			string msg = "لا تحاولي مسح البقع الداكنة من ا تحاولي مسح البقع الداكنة من على أنفك ووجنتيهوعلى أنفك ووجنتيهو خط غامق يظهر من أسفل السرة إلى عظمة العانة";
+		public string month { set; get; }
 
-			Label WeekLabel = new Label {
-				Text = "الأسبوع ٢٠ ",
-				FontSize = 50,
-				HorizontalOptions = LayoutOptions.Center, TextColor = Color.Red
-			};
-			Label messageLabel = new Label { 
-				Text = msg,
-				FontSize = 20,
-				HorizontalOptions = LayoutOptions.Center,
-			};
-
-			Content = new  StackLayout {
-				Children = {
-					WeekLabel,
-					messageLabel
-				}
-
-			};
+		public string image { set; get; }
+			public fetusImages ()
+			{
+			}
+		public fetusImages(string m, string img)
+			{
+				this.month = m;
+			this.image = img ;
+			}
+			
 		}
-	}
-	public class FollowFetusByImages1 :  ContentPage
+
+	//==========================================================
+	public class fetuseImagesPage : ContentPage
 	{
-		public FollowFetusByImages1 ()
+		Label monthLabel ;
+		Image ImageLabel ;
+
+		public fetuseImagesPage ()
 		{
-			this.Title = "متابعة الحمل الأسبوعي";
-			string msg = "لا تحا مسح اجبهتك." +
-				" إنها ليست أوساخًا—بل هي حالة شائعة في " +
-				"الحمل تسمى الكلف أو \"قنسيدات الحوامل وليس كلهن." +
-				" كذلك فإن هرمونات الحمل مسؤولة عن ظهور الخط الأسود، وهو خط غامق يظهر من أسفل السرة إلى عظمة العانة";
 
-			Label WeekLabel = new Label {
-				Text = "الأسبوع ١٨",
+			monthLabel = new Label {
 				FontSize = 50,
-				HorizontalOptions = LayoutOptions.Center, TextColor = Color.Red
-			};
-			Label messageLabel = new Label { 
-				Text = msg,
-				FontSize = 20,
-				HorizontalOptions = LayoutOptions.Center,
+				HorizontalOptions = LayoutOptions.Center, 
+				TextColor = Color.FromHex("#5069A1"),
 			};
 
-			Content = new  StackLayout {
+			ImageLabel = new Image { 
+				
+			};
+
+			monthLabel.SetBinding (Label.TextProperty, "month");
+			ImageLabel.SetBinding (Image.SourceProperty, "image");
+
+
+		}
+
+		protected override void OnAppearing ()
+		{
+
+			this.Content = new StackLayout {
+				Padding = 20,
+				Spacing = 20 ,
 				Children = {
-					WeekLabel,
-					messageLabel
+					monthLabel, ImageLabel
 				}
-
 			};
 		}
 	}
 }
-

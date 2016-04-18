@@ -28,7 +28,7 @@ namespace pbcare
 
 		public static bool IsUserLoggedIn { get; set; }
 
-		public static DateTime FinaldueDate { get; set; }
+		public static DateTime FinaldueDate  { get; set; } 
 
 		public static User u = new User ();
 
@@ -38,10 +38,19 @@ namespace pbcare
 			TimeSpan difference = dueDate - DateTime.Now.AddDays (-1);
 			// for calculating the past days of pregnancy
 			double PastDays = (280 - (int)difference.TotalDays); 
-			return (int)Math.Ceiling (PastDays / 7);
+			return (int)Math.Ceiling ((PastDays/7));
 
 		}
 
+		/* Calculate Current Month */
+		public static int CurrentMonth (string birth)
+		{
+			DateTime birthDate = DateTime.ParseExact (birth , "ddMMyyyy", null);
+			TimeSpan difference = DateTime.Now.AddDays (-1) - birthDate ;
+			double PastDays = ((int)difference.TotalDays ); 
+			return (int)Math.Ceiling ((PastDays/30) );
+
+		}
 
 		static DatabaseClass database;
 

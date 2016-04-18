@@ -37,6 +37,7 @@ namespace pbcare
 
 					/* Retreve Email from Database */
 					pbcareApp.u.Email = RigrsterdUser.email;
+					pbcareApp.u.isPregnant = DB.Table<User>().Where(c=> c.Email == pbcareApp.u.Email).FirstOrDefault().isPregnant;
 					Debug.WriteLine (" RigrsterdUser email ************ : " + RigrsterdUser.email);
 					pbcareApp.IsUserLoggedIn = true;
 					/* Retreve DueDate from Database */
@@ -76,6 +77,10 @@ namespace pbcare
 
 		}
 
+		public void removeDueDate(){
+			
+			DB.Query<PregnancyDuedateTable> ("DELETE FROM PregnancyDuedateTable WHERE email = ?", pbcareApp.u.Email);
+		}
 		public string GetDueDate ()
 		{
 			try {
@@ -107,6 +112,7 @@ namespace pbcare
 					u.Email = email;
 					u.Password = password;
 					u.name = name;
+					u.isPregnant = 0 ;
 					DB.Insert (u);
 					return true;
 				}
@@ -162,6 +168,25 @@ namespace pbcare
 
 			} catch (Exception ex) {
 				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return ex.ToString ();
+			}
+
+
+		}
+
+		public string  getInfoOfMonth (int MonthNumber)
+		{
+			try {
+				// 
+				var month = DB.Table<BabyMonthlyTable> ().Where (c => c.month == MonthNumber).FirstOrDefault ();
+				if (month != null) {
+					return month.info;
+				} else {
+					return "المعلومة غير محفوظة في الداتابيس";
+				}
+
+			} catch (Exception ex) {
+				//Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return ex.ToString ();
 			}
 
@@ -257,29 +282,10 @@ namespace pbcare
 		{
 			return DB.Table<vaccinationTable> ().Where(v => v.VaccinationID == VID).FirstOrDefault().time;
 		}
-//		public string  InsertIntoBabyMonthly (int MonthNumber)
-//		{
-//			try {
-//				// 
-//				var BabyMonth = DB.Table<BabyMonthlyTable> ().Where (c => c.month == MonthNumber).FirstOrDefault ();
-//				if (BabyMonth != null) {
-//					return BabyMonth.info;
-//				} else {
-//					return "المعلومة غير محفوظة في الداتابيس";
-//				}
-//
-//			} catch (Exception ex) {
-//				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
-//				return ex.ToString ();
-//			}
-//
-//		}
-	
-
-//		public static long get_Vaccination_Appointment_InSeconds(int Vaccinations)
-//		{
-//			
-//		}
+//		
+		public void updateIsPrenant(int PregnancyCase){
+			DB.Query<User> ("UPDATE User Set isPregnant  = ? WHERE email = ? ", PregnancyCase, pbcareApp.u.Email);
+		}
 
 	}
 }

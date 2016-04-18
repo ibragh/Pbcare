@@ -45,7 +45,7 @@ namespace pbcare
 				var b = (Button) sender;
 				var t = b.CommandParameter;
 				Child c = pbcareApp.Database.getChildFromDB(t+"" , pbcareApp.u.Email);
-				//((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new FollowBabyMonthly(c));
+				((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new FollowBabyMonthly(c));
 
 			};
 			var vacc = new Button { 

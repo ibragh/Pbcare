@@ -6,30 +6,27 @@ namespace pbcare
 {
 	public class FollowBabyMonthly : CarouselPage
 	{
-		public FollowBabyMonthly ()
+		public FollowBabyMonthly (Child c )
 		{
 			this.Title = "متابعة الطفل الشهرية";
-			BackgroundImage = null ;
+			BackgroundColor = Color.FromRgb (197, 255, 255);
 
-			//int CurrentWeek = pbcareApp.CurrentWeek (pbcareApp.FinaldueDate);
+			int CurrentMonth = pbcareApp.CurrentMonth (c.birthDate);
 
-//			string[] info = new string[41];
-//			for (int i = 1; i < info.Length; i++) {
-//				// get the Baby monthly info from local database
-//				info [i] = pbcareApp.Database.InsertIntoPregnancyWeekly (i);
-//			}
-//			BabyMonthly[] BabyMonth = new BabyMonthly[41];
-//			for (int i = 1; i < BabyMonth.Length; i++) {
-//				BabyMonth[i] = new PregnancyWeekly("الأسبوع "+i,info [i]);
-//			}
-//			this.ItemsSource =BabyMonth;
-//
-//			this.ItemTemplate = new DataTemplate (() => {
-//				return new PregnancyWeeklyPage (); // ContentPage
-//			});
-//			this.SelectedItem = ((PregnancyWeekly[])ItemsSource); 
-//			;
+			string[] info = new string[13];
+			for (int i = 1; i < info.Length; i++) {
+				// get the Baby monthly info from local database
+				info [i] = pbcareApp.Database.getInfoOfMonth (i);
+			}
+			BabyMonthly[] BabyMonth = new BabyMonthly[13];
+			for (int i = 1; i < BabyMonth.Length; i++) {
+				BabyMonth[i] = new BabyMonthly(" الشهر "+ i ,info [i]);
+			}
 
+			this.ItemsSource = BabyMonth;
+			this.ItemTemplate = new DataTemplate (typeof(BabyMonthlyPage));
+
+			this.SelectedItem = ((BabyMonthly[])ItemsSource);
 		}
 
 	}

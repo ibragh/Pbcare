@@ -17,7 +17,7 @@ namespace pbcare
 
 	public class BabyMonthlyTable
 	{
-		public string month { private set; get; }
+		public int month { private set; get; }
 
 		public string info { private set; get; }
 

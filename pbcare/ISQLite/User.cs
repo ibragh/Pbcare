@@ -14,6 +14,7 @@ namespace pbcare
 
 		public string name { get; set; }
 
+		public int isPregnant { get; set; }
 	
 
 		public User ()

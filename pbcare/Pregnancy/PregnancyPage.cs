@@ -2,33 +2,23 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Acr.Notifications;
+using System.Diagnostics;
 
 namespace pbcare
 {
 	public partial class PregnancyPage : ContentPage
 	{
-		Image welcomeLogo , plus;
+		
 		Button AddPregnancy, FollowPregnancy, FollowFetusImages, FollowFetusWeekly, finishPreg_  ;
 		Image s = new Image { Source = "notPregnant2.png" };
-		Image s2 = new Image { Source = "arrows.png" };
 
 		public PregnancyPage ()
 		{
 			this.Title = "حملي";
 			BackgroundColor = Color.FromRgb (94, 196, 225);
 
-			 welcomeLogo = new Image { 
-				Source = ""
-			};
-
-			plus = new Image{ 
-				Source= "plus.png ",
-				HorizontalOptions = LayoutOptions.End,
-			};
-
 			AddPregnancy = new Button1 {
 				Text = "إضافة حمل",
-				//Image = "plus.png",
 				TextColor = Color.FromHex("#FFFFFF"),
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#FFA4C1"),
@@ -36,51 +26,41 @@ namespace pbcare
 			};
 			FollowPregnancy = new Button {
 				Text = " حــمــلــي ",
-				//Image = "pregnant.png",
-				FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Button)),
-				//TextColor = Color.FromRgb (238, 238, 238),
-				TextColor = Color.White, //Color.FromRgb (238, 238, 238),
-				BackgroundColor = Color.FromRgb (59, 89, 153),
-				BorderColor = Color.Black, // Color.FromRgb(127,127,127),
-				BorderWidth = 5,
-				BorderRadius = 0 ,
-			};
-			finishPreg_ = new Button1 {
-				Text = "تــــمت الــولادة",
-				TextColor = Color.White,
+				TextColor = Color.FromHex("#FFFFFF"),
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
-				HeightRequest = 40 ,
-				BorderWidth = 1,
-				BorderRadius = 0 ,
 			};
+
 			FollowFetusImages = new Button {
-				Text = "متابعةالجنين بالصور",
-				//Image = "fetus.png",
-				FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Button)),
-				TextColor = Color.White, //Color.FromRgb (238, 238, 238),
-				BackgroundColor = Color.FromRgb (59, 89, 153),
-				BorderColor = Color.FromRgb (59, 89, 153),
-				BorderWidth = 1,
-				BorderRadius = 0 ,
+				Text = "متابعة الجنين بالصور",
+				TextColor = Color.FromHex("#FFFFFF"),
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
+				BackgroundColor = Color.FromHex("#FFA4C1"),
+				BorderColor = Color.FromHex("#FFA4C1"),
 			};
+
 			FollowFetusWeekly = new Button {
-				Text = "متابعةالجنين بالأسابيع",
-				//Image = "fetus.png",
-				FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Button)),
-				TextColor = Color.White, //Color.FromRgb (238, 238, 238),
-				//WidthRequest = 200,
-				BackgroundColor = Color.FromRgb (59, 89, 153),
-				BorderColor = Color.FromRgb (59, 89, 153),
-				BorderWidth = 1,
-				BorderRadius = 0 ,
+				Text = "متابعة الجنين بالأسابيع",
+				TextColor = Color.FromHex("#FFFFFF"),
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
+				BackgroundColor = Color.FromHex("#FFA4C1"),
+				BorderColor = Color.FromHex("#FFA4C1"),
+			};
+
+			finishPreg_ = new Button1 {
+				Text = "تــــمت الــولادة",
+				TextColor = Color.FromHex("#FFFFFF"),
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
+				BackgroundColor = Color.FromHex("#5069A1"),
+				BorderColor = Color.FromHex("#5069A1"),
 			};
 
 			AddPregnancy.Clicked += AddPregnancyClicked;
 			FollowPregnancy.Clicked += FollowPregnancyWeeklyClicked;
 			FollowFetusImages.Clicked += FollowFetusByImagesClicked;
 			FollowFetusWeekly.Clicked += FollowFetusWeeklyClicked;
-			finishPreg_.Clicked += pregnancyFinished ;
+			finishPreg_.Clicked += OnAlertYesNoClicked ;
 
 		}
 
@@ -93,47 +73,49 @@ namespace pbcare
 		public void FollowPregnancyWeeklyClicked (object sender, EventArgs e)
 		{
 
-			if(pbcareApp.FinaldueDate.GetHashCode() == 0){
+			if(pbcareApp.u.isPregnant == 0){
 				DisplayAlert ("Error","You should Add pregnancy","OK");
 			}else{
-				sendNotification ();
 				Navigation.PushAsync (new FollowPregnancy ());
 			}
 		}
 
 		public void FollowFetusByImagesClicked (object sender, EventArgs e)
 		{
-			if (pbcareApp.FinaldueDate.GetHashCode() == 0) {
+			if (pbcareApp.u.isPregnant == 0) {
 				DisplayAlert ("Error", "You should Add pregnancy", "OK");
 			} else {
-				// Only for testing
-
 				Navigation.PushAsync (new FollowFetusByImages ());
 			}
 		}
 
 		public void FollowFetusWeeklyClicked (object sender, EventArgs e)
 		{
-			if (pbcareApp.FinaldueDate.GetHashCode() == 0) {
+			if (pbcareApp.u.isPregnant == 0) {
 				DisplayAlert ("Error", "You should Add pregnancy", "OK");
 			} else {
 				Navigation.PushAsync (new FollowFetusWeekly ());
 			}
 		}
 
-		public void pregnancyFinished(object sender, EventArgs e){
-			//ToolbarItems.Add (plusButton);
-		}
-		public void sendNotification ()
+		async void OnAlertYesNoClicked (object sender, EventArgs e)
 		{
-			Notifications.Instance.Send ("Notification","I got notification for ABCD",when: TimeSpan.FromSeconds (30));
-		}
+			var answer = await DisplayAlert ("تمت الولادة  ", "هل أنتي متأكدة من إنهاء جميع معلومات الحمل الحالي و أن الولادة قد تمت ؟ ", "نعم", "لا");
+			Debug.WriteLine ("Answer: " + answer);
 
+			if (answer == true) {
+				pbcareApp.u.isPregnant = 0;
+				pbcareApp.Database.updateIsPrenant (0);
+				pbcareApp.Database.removeDueDate ();
+				await DisplayAlert ("ألف مبروك ","حمداً لله على سلامتك","إضافة مولودك");
+				await Navigation.PushAsync (new AddBaby ());
+			}
+		}
 
 		protected override void OnAppearing()
 		{
 			
-			if(pbcareApp.FinaldueDate.GetHashCode() == 0){
+			if(pbcareApp.u.isPregnant == 0){
 
 				Content = new StackLayout {
 					HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -143,41 +125,24 @@ namespace pbcare
 					Children = {
 						s , 
 						AddPregnancy
-//						new Label {
-//							Text = "لإضافة حمل الرجاء الضغط على + في أعلى الصفحة ",
-//							TextColor = Color.White, // Color.FromHex("#FFA4C1"),
-//							FontSize = Device.GetNamedSize(NamedSize.Medium , typeof(Label)),
-//							FontAttributes = FontAttributes.Bold
-//						}
 					}
 				};
 
 			}else{
-			//	ToolbarItems.Remove (plusButton);
-
-				Content =  new StackLayout {
-					
-					Orientation = StackOrientation.Vertical,
-					Padding = new Thickness(0,0,0,50),
-					VerticalOptions = LayoutOptions.FillAndExpand,
-					Children = {
-						new StackLayout{
-							Orientation = StackOrientation.Horizontal,
-							Padding = 10,
-							Spacing = 0,
-							Children = {
-								FollowPregnancy,
-								FollowFetusImages,
-								FollowFetusWeekly,
-
-							}
-						},
-						finishPreg_
+				Content =  new ScrollView {
+					Content = new StackLayout {
+						Padding = new Thickness(20 ,40,20,20),
+						VerticalOptions = LayoutOptions.FillAndExpand,
+						Children = {
+									FollowPregnancy,
+									FollowFetusImages,
+									FollowFetusWeekly,
+									finishPreg_
+						}
 					}
 				};
 			}
 		}
-			
 	}
 }
 

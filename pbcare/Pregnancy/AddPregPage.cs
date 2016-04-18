@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using Acr.Notifications;
 
 namespace pbcare
 {
@@ -91,6 +92,12 @@ namespace pbcare
 
 					}  else if (result == 99) { /* SUCCESSFUL */
 						DisplayAlert ("", "موعدك الولادة المتوقع : " + DueDateDisplay+" \nأنتي الآن في الأسبوع الـ "+CurrentWeek, "تم");
+						TimeSpan difference = dueDate.Date - DateTime.Now.AddDays (-1);
+						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -2));
+						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
+						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
+						pbcareApp.Database.updateIsPrenant(1);
+						pbcareApp.u.isPregnant = 1;
 						Navigation.PopAsync ();
 
 
@@ -104,7 +111,7 @@ namespace pbcare
 //===============================================================================
 			//Calculate DueDate !!!
 
-			var dueDatePicker = new DatePicker1 {
+			var firstPregnancyDate = new DatePicker1 {
 				Format= "D",
 				VerticalOptions = LayoutOptions.Center
 			};
@@ -122,13 +129,47 @@ namespace pbcare
 				TextColor=Color.White,
 				FontSize = Device.GetNamedSize(NamedSize.Medium , typeof(Label))
 			};
-			CalculateButton.Clicked += delegate {
-				int y=dueDate.Date.Year, m=dueDate.Date.Month, d=dueDate.Date.Day;
-				MyDueDate.Text = d+"/"+m+"/"+y;
-				DisplayAlert ("Success", "Your Due date is " + MyDueDate.Text, "Done");
-				Navigation.PopToRootAsync();
 
+			CalculateButton.Clicked += (sender, e) =>  {
+				if (firstPregnancyDate.Date > DateTime.Now.AddDays (-1) || firstPregnancyDate.Date < DateTime.Now.AddMonths (-9)) {
+					DisplayAlert ("خطأ", "يجب أن يكون موعد التاريخ صحيحا ", "تم");
+				}else{
+					
+					DateTime expectedDueDate = firstPregnancyDate.Date.AddDays(280);
+					pbcareApp.FinaldueDate = expectedDueDate.Date; 
+					int currentWeek = pbcareApp.CurrentWeek(expectedDueDate.Date);
+					int y = expectedDueDate.Date.Year, m = expectedDueDate.Date.Month, d = expectedDueDate.Date.Day;
+					string DueDateDisplay = d + "/" + m + "/" + y; 
+
+					// the result from [AddPregnancyToDB] method will return numbers, each one has a meaning
+					int result = pbcareApp.Database.AddPregnancyToDB (pbcareApp.u.Email,DueDateDisplay );
+					if (result == -1) {
+						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
+					} else if (result == 0) {
+						DisplayAlert ("خطأ", "المستخدم غير مسجل مسبقاً", "تم");
+
+					} else if (result == 1) {
+						DisplayAlert ("خطأ", "يوجد لديكي حمل مسبق - لتغيير تاريخ الحمل من الإعدادات", "تم");
+
+					}  else if (result == 99) { /* SUCCESSFUL */
+						DisplayAlert ("", "موعدك الولادة المتوقع : " + DueDateDisplay+" \nأنتي الآن في الأسبوع الـ "+currentWeek, "تم");
+						TimeSpan difference = expectedDueDate.Date - DateTime.Now.AddDays (-1);
+						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -2));
+						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
+						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
+						pbcareApp.Database.updateIsPrenant(1);
+						pbcareApp.u.isPregnant = 1;
+						Navigation.PopAsync ();
+
+
+					} else {
+						Navigation.PopAsync ();
+						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
+
+					}
+				}
 			};
+				
 //===============================================================================================
 
 			DueDateButton.Clicked += (sender, e) => {
@@ -197,7 +238,7 @@ namespace pbcare
 							Padding = 20,
 							Children = {
 								MyDueDate,
-								dueDatePicker,
+								firstPregnancyDate,
 								CalculateButton
 							}
 						}
@@ -224,7 +265,7 @@ namespace pbcare
 						Padding = 20,
 						Children = {
 							MyDueDate,
-							dueDatePicker,
+							firstPregnancyDate,
 							CalculateButton
 						}
 					}
