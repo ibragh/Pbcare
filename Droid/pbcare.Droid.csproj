@@ -139,6 +139,21 @@
     <AndroidResource Include="Resources\drawable\fetus8.PNG" />
     <AndroidResource Include="Resources\drawable\fetus9.PNG" />
     <AndroidResource Include="Resources\drawable\fetus10.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus11.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus12.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus13.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus14.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus15.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus16.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus17.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus18.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus19.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus20.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus21.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus22.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus23.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus24.PNG" />
+    <AndroidResource Include="Resources\drawable\fetus25.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets')" />
