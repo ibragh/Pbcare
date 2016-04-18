@@ -1,22 +1,57 @@
-2016-04-14 03:55:07.043 DEBUG CalabashServer:242 | Creating the server: <LPHTTPServer: 0x7b72b950>
-2016-04-14 03:55:07.043 DEBUG CalabashServer:243 | Calabash iOS server version: CALABASH VERSION: 0.18.2
-2016-04-14 03:55:07.044 DEBUG CalabashServer:246 | App Base SDK: iphonesimulator9.2
-2016-04-14 03:55:07.044 DEBUG CalabashServer:278 | IPHONE_SIMULATOR_ROOT: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
-2016-04-14 03:55:07.065 DEBUG CalabashServer:264 | Calabash iOS server is listening on: 0.0.0.0 port 37265
-2016-04-14 03:55:07.080 DEBUG LPWKWebViewRuntimeLoader:221 | WKWebView successfully implemented LPWebViewProtocol
-2016-04-14 03:55:07.119 pbcare.iOS[38170:1488681] Xamarin.iOS: Socket error while connecting to IDE on 127.0.0.1:58355: Connection refused
-2016-04-14 03:55:08.111 pbcare.iOS[38170:1488647] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+2016-04-18 19:23:48.958 DEBUG CalabashServer:242 | Creating the server: <LPHTTPServer: 0x79e555e0>
+2016-04-18 19:23:48.958 DEBUG CalabashServer:243 | Calabash iOS server version: CALABASH VERSION: 0.18.2
+2016-04-18 19:23:48.959 DEBUG CalabashServer:246 | App Base SDK: iphonesimulator9.2
+2016-04-18 19:23:48.959 DEBUG CalabashServer:278 | IPHONE_SIMULATOR_ROOT: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
+2016-04-18 19:23:49.065 DEBUG CalabashServer:264 | Calabash iOS server is listening on: 0.0.0.0 port 37265
+2016-04-18 19:23:51.321 DEBUG LPWKWebViewRuntimeLoader:221 | WKWebView successfully implemented LPWebViewProtocol
+2016-04-18 19:23:56.595 pbcare.iOS[2212:48937] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
 	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
-2016-04-14 03:55:08.111 pbcare.iOS[38170:1488647] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7bf9d780 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
-2016-04-14 03:55:08.112 pbcare.iOS[38170:1488647] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+2016-04-18 19:23:56.595 pbcare.iOS[2212:48937] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7c89bba0 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-18 19:23:56.596 pbcare.iOS[2212:48937] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
 	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
-2016-04-14 03:55:08.112 pbcare.iOS[38170:1488647] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7bf9d780 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
-2016-04-14 03:55:08.112 pbcare.iOS[38170:1488647] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+2016-04-18 19:23:56.596 pbcare.iOS[2212:48937] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7c89bba0 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-18 19:23:56.596 pbcare.iOS[2212:48937] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
 	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
-2016-04-14 03:55:08.112 pbcare.iOS[38170:1488647] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7bf9d780 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
-2016-04-14 03:55:08.113 pbcare.iOS[38170:1488647] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+2016-04-18 19:23:56.596 pbcare.iOS[2212:48937] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7c89bba0 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-18 19:23:56.596 pbcare.iOS[2212:48937] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
 	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
-2016-04-14 03:55:08.113 pbcare.iOS[38170:1488647] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7bf9d780 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
-2016-04-14 03:55:08.113 pbcare.iOS[38170:1488647] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+2016-04-18 19:23:56.597 pbcare.iOS[2212:48937] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7c89bba0 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-18 19:23:56.597 pbcare.iOS[2212:48937] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
 	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
-2016-04-14 03:55:08.113 pbcare.iOS[38170:1488647] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7bf9d780 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-18 19:23:56.597 pbcare.iOS[2212:48937] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7c89bba0 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-18 19:23:56.597 pbcare.iOS[2212:48937] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-18 19:23:56.597 pbcare.iOS[2212:48937] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7c89bba0 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-18 19:24:40.792 pbcare.iOS[2212:48937] popViewControllerAnimated: called on <Xamarin_Forms_Platform_iOS_NavigationRenderer 0x7b3b7800> while an existing transition or presentation is occurring; the navigation stack will not be updated.
+2016-04-18 19:24:40.794 pbcare.iOS[2212:48937] setViewControllers:animated: called on <Xamarin_Forms_Platform_iOS_NavigationRenderer 0x7b3b7800> while an existing transition or presentation is occurring; the navigation stack will not be updated.
+2016-04-18 19:24:41.252 pbcare.iOS[2212:48937] Location Notification: تنبيه:موعد ولادتك قد حان أو اقترب 
+2016-04-18 19:24:41.259 pbcare.iOS[2212:48937] Location Notification: تنبيه:موعد ولادتك قد حان أو اقترب 
+2016-04-18 19:24:41.260 pbcare.iOS[2212:48937] Location Notification: تنبيه:موعد ولادتك قد حان أو اقترب 
+2016-04-18 19:27:20.942 pbcare.iOS[2212:48937] Location Notification: تنبيه:الإلتهاب الكبدي (ب)  for  Sami
+2016-04-18 19:27:21.129 pbcare.iOS[2212:48937] Location Notification: تنبيه:الدرن  for  Sami
+2016-04-18 19:31:38.081 pbcare.iOS[2212:48937] 
+Unhandled Exception:
+System.NullReferenceException: Object reference not set to an instance of an object
+  at Xamarin.Forms.Platform.iOS.Platform.GetRenderer (Xamarin.Forms.VisualElement bindable) <0x1a487278 + 0x00018> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer.GetAppearedOrDisappearedTask (Xamarin.Forms.Page page) <0x1a548eb8 + 0x00083> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer.RemoveViewControllers (Boolean animated) <0x1fe498c8 + 0x000e3> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer.PopViewController (Boolean animated) <0x1fe49798 + 0x0001b> in <filename unknown>:0 
+  at (wrapper managed-to-native) UIKit.UIApplication:UIApplicationMain (int,string[],intptr,intptr)
+  at UIKit.UIApplication.Main (System.String[] args, IntPtr principal, IntPtr delegate) [0x00005] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/UIKit/UIApplication.cs:77 
+  at UIKit.UIApplication.Main (System.String[] args, System.String principalClassName, System.String delegateClassName) [0x0001c] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/UIKit/UIApplication.cs:60 
+  at pbcare.iOS.Application.Main (System.String[] args) [0x00008] in /Users/ibrahim/Projects/pbcare/iOS/Main.cs:17 
+2016-04-18 19:31:38.086 pbcare.iOS[2212:48937] Unhandled managed exception:
+Object reference not set to an instance of an object (System.NullReferenceException)
+  at Xamarin.Forms.Platform.iOS.Platform.GetRenderer (Xamarin.Forms.VisualElement bindable) <0x1a487278 + 0x00018> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer.GetAppearedOrDisappearedTask (Xamarin.Forms.Page page) <0x1a548eb8 + 0x00083> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer.RemoveViewControllers (Boolean animated) <0x1fe498c8 + 0x000e3> in <filename unknown>:0 
+  at Xamarin.Forms.Platform.iOS.NavigationRenderer.PopViewController (Boolean animated) <0x1fe49798 + 0x0001b> in <filename unknown>:0 
+  at (wrapper managed-to-native) UIKit.UIApplication:UIApplicationMain (int,string[],intptr,intptr)
+  at UIKit.UIApplication.Main (System.String[] args, IntPtr principal, IntPtr delegate) [0x00005] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/UIKit/UIApplication.cs:77 
+  at UIKit.UIApplication.Main (System.String[] args, System.String principalClassName, System.String delegateClassName) [0x0001c] in /Users/builder/data/lanes/3051/5f11db87/source/maccore/src/UIKit/UIApplication.cs:60 
+  at pbcare.iOS.Application.Main (System.String[] args) [0x00008] in /Users/ibrahim/Projects/pbcare/iOS/Main.cs:17 
+2016-04-18 19:31:38.086 pbcare.iOS[2212:48937] critical: Stacktrace:
+
+2016-04-18 19:31:38.087 pbcare.iOS[2212:48937] critical: 
+Native stacktrace:
+

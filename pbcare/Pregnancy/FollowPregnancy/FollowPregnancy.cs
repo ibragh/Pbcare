@@ -20,15 +20,15 @@ namespace pbcare
 				// get the pregnancy weekly info from local database
 				info [i] = pbcareApp.Database.InsertIntoPregnancyWeekly (i);
 			}
-			PregnancyWeekly[] pregnancyWeek = new PregnancyWeekly[41];
+			WeeklyInfo[] pregnancyWeek = new WeeklyInfo[41];
 			for (int i = 1; i < pregnancyWeek.Length; i++) {
-				pregnancyWeek[i] = new PregnancyWeekly("الأسبوع "+i,info [i]);
+				pregnancyWeek[i] = new WeeklyInfo("الأسبوع "+i,info [i]);
 			}
 			this.ItemsSource =pregnancyWeek;
-			this.ItemTemplate = new DataTemplate (typeof(PregnancyWeeklyPage));
+			this.ItemTemplate = new DataTemplate (typeof(WeeklyInfoPage));
 			// selected week .. so her preganncy week will
 			// be the first screen will appear 
-			this.SelectedItem = ((PregnancyWeekly[])ItemsSource); // it needs change
+			this.SelectedItem = ((WeeklyInfo[])ItemsSource); // it needs change
 		//	this.CurrentPage = this.Children[9];
 
 

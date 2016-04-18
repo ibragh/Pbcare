@@ -3,10 +3,10 @@ using Xamarin.Forms;
 
 namespace pbcare
 {
-	public class PregnancyWeeklyPage : ContentPage
+	public class WeeklyInfoPage : ContentPage
 	{
 		
-		public PregnancyWeeklyPage ()
+		public WeeklyInfoPage ()
 		{
 			BackgroundColor = Color.FromRgb (197, 255, 255);
 

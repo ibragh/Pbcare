@@ -3,13 +3,13 @@ using Xamarin.Forms;
 
 namespace pbcare
 {
-	public class PregnancyWeekly
+	public class WeeklyInfo
 	{
-		public PregnancyWeekly ()
+		public WeeklyInfo ()
 		{
 
 		}
-		public PregnancyWeekly(string w, string msg)
+		public WeeklyInfo(string w, string msg)
 		{
 			this.week = w;
 			this.message = msg;

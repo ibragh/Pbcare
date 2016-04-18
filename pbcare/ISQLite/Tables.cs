@@ -39,7 +39,17 @@ namespace pbcare
 		}
 
 	}
+	public class FetusWeeklyTable
+	{
+		public int week { get; set; }
 
+		public string info { get; set; }
+
+		public FetusWeeklyTable ()
+		{
+		}
+
+	}
 	public class Months
 	{
 		public int month { get; set; }

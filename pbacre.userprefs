@@ -1,28 +1,6 @@
-﻿<Properties StartupItem="Droid\pbcare.Droid.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Android" />
-  <MonoDevelop.Ide.Workbench>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="pbacre" expanded="True">
-            <Node name="pbcare" expanded="True">
-              <Node name="Baby" expanded="True">
-                <Node name="BabyPage.cs" selected="True" />
-              </Node>
-              <Node name="ISQLite" expanded="True" />
-              <Node name="Pregnancy" expanded="True">
-                <Node name="FollowPregnancy" expanded="True" />
-              </Node>
-              <Node name="Setting" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
+﻿<Properties StartupItem="Droid/pbcare.Droid.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Jelly Bean)" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/ibrahim/Projects/pbcare github/Droid/SQLite_Droid.cs" line="20" column="1" />
