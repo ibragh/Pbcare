@@ -71,7 +71,7 @@ namespace pbcare
 					DisplayAlert ("خطأ", "يجب أن يكون موعد الولادة المتوقع صحيحاً", "تم");
 				} else {
 					pbcareApp.FinaldueDate = dueDate.Date; /* Save data for farther use */
-					int CurrentWeek = pbcareApp.CurrentWeek(dueDate.Date); // for testing
+					int CurrentWeek = PregnancyPage.CurrentWeek(dueDate.Date); // for testing
 					//  convert date to formatted string for DB 
 					DueDateText = dueDate.Date.ToString("ddMMyyyy"); 
 					// convert date to string for display 
@@ -137,7 +137,7 @@ namespace pbcare
 					
 					DateTime expectedDueDate = firstPregnancyDate.Date.AddDays(280);
 					pbcareApp.FinaldueDate = expectedDueDate.Date; 
-					int currentWeek = pbcareApp.CurrentWeek(expectedDueDate.Date);
+					int currentWeek = PregnancyPage.CurrentWeek(expectedDueDate.Date);
 					int y = expectedDueDate.Date.Year, m = expectedDueDate.Date.Month, d = expectedDueDate.Date.Day;
 					string DueDateDisplay = d + "/" + m + "/" + y; 
 

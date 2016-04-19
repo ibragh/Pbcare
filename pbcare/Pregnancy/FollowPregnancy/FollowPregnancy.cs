@@ -12,7 +12,7 @@ namespace pbcare
 			BackgroundColor = Color.FromRgb (197, 255, 255);
 
 
-			int CurrentWeek = pbcareApp.CurrentWeek (pbcareApp.FinaldueDate);
+			int CurrentWeek = PregnancyPage.CurrentWeek(pbcareApp.FinaldueDate);
 
 			string[] info = new string[41];
 			for (int i = 1; i < info.Length; i++) {
@@ -28,8 +28,20 @@ namespace pbcare
 			this.ItemTemplate = new DataTemplate (typeof(WeeklyInfoPage));
 			// selected week .. so her preganncy week will
 			// be the first screen will appear 
-			this.SelectedItem = ((WeeklyInfo[])ItemsSource); // it needs change
-		//	this.CurrentPage = this.Children[9];
+
+			if (Device.OS == TargetPlatform.iOS) {
+				this.SelectedItem = ((WeeklyInfo[])ItemsSource) [CurrentWeek];
+
+			} else {
+				this.SelectedItem = ((WeeklyInfo[])ItemsSource);
+			}
+
+
+
+		
+
+			 
+		
 
 
 		}

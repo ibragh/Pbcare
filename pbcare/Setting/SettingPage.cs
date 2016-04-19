@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Diagnostics;
+using Acr.Notifications;
 
 namespace pbcare
 {
@@ -17,17 +18,19 @@ namespace pbcare
 			BackgroundColor = Color.FromRgb (94, 196, 225);
 			List<settingClass> settingList = new List<settingClass> ();	
 			settingList.Add (new settingClass ("تغيير الاسم", 1));
-			settingList.Add (new settingClass("تغيير كلمة المرور" , 2));
-			settingList.Add (new settingClass("جهاز الإستشعار" ,3 ));
+			settingList.Add (new settingClass ("تغيير كلمة المرور", 2));
+			if (Device.OS == TargetPlatform.Android) {
+				settingList.Add (new settingClass ("جهاز الإستشعار", 3));
+			}
 
-			setting.ItemsSource = settingList ;
+			setting.ItemsSource = settingList;
 			setting.ItemTemplate = new DataTemplate (typeof(everyCell));
-			setting.BackgroundColor = Color.Transparent ;
+			setting.BackgroundColor = Color.Transparent;
 			setting.SeparatorColor = Color.White;
 			setting.ItemSelected += (Sender, Event) => {
 				var selceted = (settingClass)Event.SelectedItem;
 				var settingView = new settingView (selceted);
-				 Navigation.PushAsync (settingView);
+				Navigation.PushAsync (settingView);
 			};
 
 
@@ -38,17 +41,17 @@ namespace pbcare
 				FontSize = 15,
 				WidthRequest = 200,
 				HeightRequest = 65,
-				BackgroundColor = Color.Red ,
-				VerticalOptions = LayoutOptions.End ,
-				FontAttributes = FontAttributes.Bold ,
-				BorderRadius = 30 ,
+				BackgroundColor = Color.Red,
+				VerticalOptions = LayoutOptions.End,
+				FontAttributes = FontAttributes.Bold,
+				BorderRadius = 30,
 			};
 
 			logOutButton.Clicked += OnAlertYesNoClicked;
 
 			Content = new StackLayout {
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				Padding = new Thickness(10 ,20 , 10 , 53) ,
+				Padding = new Thickness (10, 20, 10, 53),
 				Children = {  
 					setting,
 					logOutButton
@@ -65,26 +68,30 @@ namespace pbcare
 			if (answer == true) {
 				pbcareApp.Database.InsertUserLoggedin (false);
 				pbcareApp.IsUserLoggedIn = false; 
-				await Navigation.PopToRootAsync();
-				await Navigation.PushModalAsync (new pbcareMainPage());
+				await Navigation.PopToRootAsync ();
+				await Navigation.PushModalAsync (new pbcareMainPage ());
 			} 
 		}
 	}
 
 	//--------------------------------------------------------------
-	public class settingClass 
+	public class settingClass
 	{
-		public string name { get; set;}
-		public int number { get; set;}
-		public settingClass(string n , int num ){
+		public string name { get; set; }
+
+		public int number { get; set; }
+
+		public settingClass (string n, int num)
+		{
 			this.name = n;
 			this.number = num;
 		}
 	}
-//===========================================================
+	//===========================================================
 	public class everyCell : ViewCell
 	{
-		public everyCell(){
+		public everyCell ()
+		{
 			
 			var name = new Label {
 				Text = " . ",
@@ -125,21 +132,22 @@ namespace pbcare
 		public settingView (settingClass selectedSetting)
 		{
 			BackgroundColor = Color.FromRgb (94, 196, 225);
-			Title = selectedSetting.name ;
+			Title = selectedSetting.name;
 
 			var CancelButton = new Button {
 				Text = "إلغاء",
-				TextColor = Color.FromHex("#FFFFFF"),
-				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
-				BackgroundColor = Color.FromHex("#FFA4C1"),
-				BorderColor = Color.FromHex("#FFA4C1"),
-				HeightRequest = 50 ,
+				TextColor = Color.FromHex ("#FFFFFF"),
+				FontSize = Device.GetNamedSize (NamedSize.Medium, typeof(Button)),
+				BackgroundColor = Color.FromHex ("#FFA4C1"),
+				BorderColor = Color.FromHex ("#FFA4C1"),
+				HeightRequest = 50,
 			};
 
 			CancelButton.Clicked += (sender, e) => {
 				Navigation.PopAsync ();
 			};
-			if(selectedSetting.number == 1){
+			// ------------ Setting Cell Number 1
+			if (selectedSetting.number == 1) {
 				var yourname = new Label {
 					Text = "اسمك : ",
 					FontSize = 20,
@@ -149,16 +157,16 @@ namespace pbcare
 
 				var nameEntry = new Entry1 { Placeholder = "أدخل اسمك هنا" };
 				var saveNameButton = new Button { 
-					Text = " حفظ البيانات " ,
-					TextColor = Color.FromHex("#FFFFFF"),
-					FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
-					BackgroundColor = Color.FromHex("#FFA4C1"),
-					BorderColor = Color.FromHex("#FFA4C1"),
-					HeightRequest = 50 ,
+					Text = " حفظ البيانات ",
+					TextColor = Color.FromHex ("#FFFFFF"),
+					FontSize = Device.GetNamedSize (NamedSize.Medium, typeof(Button)),
+					BackgroundColor = Color.FromHex ("#FFA4C1"),
+					BorderColor = Color.FromHex ("#FFA4C1"),
+					HeightRequest = 50,
 				};
 				
 				saveNameButton.Clicked += (sender, e) => {
-					if (!string.IsNullOrWhiteSpace(nameEntry.Text)) {
+					if (!string.IsNullOrWhiteSpace (nameEntry.Text)) {
 						pbcareApp.u.name = nameEntry.Text;
 						Navigation.PopAsync ();
 						DisplayAlert ("  تم", "  تغيير الاسم إلى" + nameEntry.Text, "موافق");
@@ -173,12 +181,12 @@ namespace pbcare
 				this.Content = new ScrollView {
 					Content = new StackLayout {
 						VerticalOptions = LayoutOptions.FillAndExpand,
-						Padding = 20 ,
+						Padding = 20,
 						Children = { yourname, nameEntry, saveNameButton, CancelButton }
 					}
 				};
-			}
-			else if(selectedSetting.number == 2){
+				// ------------ Setting Cell Number 2
+			} else if (selectedSetting.number == 2) {
 				var yourPass = new Label {
 					Text = "كلمة المرور : ",
 					FontSize = 20,
@@ -195,22 +203,22 @@ namespace pbcare
 				var passConfirm = new Entry1 { Placeholder = " تأكيد كلمة المرور" };
 				var savePassButton = new Button {
 					Text = "حفظ البيانات",
-					TextColor = Color.FromHex("#FFFFFF"),
-					FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
-					BackgroundColor = Color.FromHex("#FFA4C1"),
-					BorderColor = Color.FromHex("#FFA4C1"),
-					HeightRequest = 50 ,
+					TextColor = Color.FromHex ("#FFFFFF"),
+					FontSize = Device.GetNamedSize (NamedSize.Medium, typeof(Button)),
+					BackgroundColor = Color.FromHex ("#FFA4C1"),
+					BorderColor = Color.FromHex ("#FFA4C1"),
+					HeightRequest = 50,
 				};
 	
 				savePassButton.Clicked += (sender, e) => {
-					if (!string.IsNullOrWhiteSpace(passwordEntry.Text)&& passConfirm.Text.Equals (passwordEntry.Text)) {
+					if (!string.IsNullOrWhiteSpace (passwordEntry.Text) && passConfirm.Text.Equals (passwordEntry.Text)) {
 						Navigation.PopAsync ();
 						DisplayAlert (" تم", " تغيير كلمة المرور ", "موافق");
 	
 					} else if (passwordEntry.Text != passConfirm.Text) {
 						DisplayAlert ("خطأ", "كلمة المرور غير متطابقة", "إلغاء");
 	
-					} else{
+					} else {
 						DisplayAlert ("خطأ", "كلمة المرور غير متطابقة", "إلغاء");
 					}
 				};
@@ -219,13 +227,12 @@ namespace pbcare
 					Content = new StackLayout {
 						VerticalOptions = LayoutOptions.FillAndExpand,
 						Padding = 20,
-						Children = { yourPass, passwordEntry,confYourPass, passConfirm, savePassButton, CancelButton }
+						Children = { yourPass, passwordEntry, confYourPass, passConfirm, savePassButton, CancelButton }
 					}
 				};
-			}
-
-			else if(selectedSetting.number == 3){
-				
+				// ------------ Setting Cell Number 3
+			} else if (selectedSetting.number == 3) {
+				this.Content = new arduino_bt ();
 			}
 
 		}

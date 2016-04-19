@@ -11,7 +11,7 @@ namespace pbcare
 			this.Title = "متابعة الطفل الشهرية";
 			BackgroundColor = Color.FromRgb (197, 255, 255);
 
-			int CurrentMonth = pbcareApp.CurrentMonth (c.birthDate);
+			int CurrentMonth = BabyPage.CurrentMonth (c.birthDate);
 
 			string[] info = new string[13];
 			for (int i = 1; i < info.Length; i++) {

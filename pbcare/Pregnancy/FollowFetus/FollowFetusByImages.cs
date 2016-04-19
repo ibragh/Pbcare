@@ -11,7 +11,7 @@ namespace pbcare
 
 			this.Title = "متابعة الحمل الأسبوعي";
 			BackgroundColor = Color.White; //Color.FromRgb (197, 255, 255);
-			int CurrentWeek = pbcareApp.CurrentWeek (pbcareApp.FinaldueDate);
+			int CurrentWeek = PregnancyPage.CurrentWeek(pbcareApp.FinaldueDate);
 
 			string[] images = new string[41];
 			for (int i = 1; i < images.Length; i++) {
@@ -26,7 +26,12 @@ namespace pbcare
 			this.ItemTemplate = new DataTemplate (typeof(fetuseImagesPage));
 			// selected week .. so her preganncy week will
 			// be the first screen will appear 
-			this.SelectedItem = ((fetusImages[])ItemsSource);
+			if (Device.OS == TargetPlatform.iOS) {
+				this.SelectedItem = ((fetusImages[])ItemsSource) [CurrentWeek];
+
+			} else {
+				this.SelectedItem = ((fetusImages[])ItemsSource);
+			}
 
 	}
 }

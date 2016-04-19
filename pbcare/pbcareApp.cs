@@ -14,8 +14,6 @@ namespace pbcare
 		{
 			var p = new pbcareMainPage ();
 			MyNavigation = p.Navigation;
-
-
 			return p;
 		}
 
@@ -32,28 +30,10 @@ namespace pbcare
 
 		public static User u = new User ();
 
-		/* Calculate Current Week */
-		public static int CurrentWeek (DateTime dueDate)
-		{
-			TimeSpan difference = dueDate - DateTime.Now.AddDays (-1);
-			// for calculating the past days of pregnancy
-			double PastDays = (280 - (int)difference.TotalDays); 
-			return (int)Math.Ceiling ((PastDays/7));
 
-		}
 
-		/* Calculate Current Month */
-		public static int CurrentMonth (string birth)
-		{
-			DateTime birthDate = DateTime.ParseExact (birth , "ddMMyyyy", null);
-			TimeSpan difference = DateTime.Now.AddDays (-1) - birthDate ;
-			double PastDays = ((int)difference.TotalDays ); 
-			return (int)Math.Ceiling ((PastDays/30) );
-
-		}
 
 		static DatabaseClass database;
-
 		public static DatabaseClass Database {
 			get { 
 				if (database == null) {
@@ -63,22 +43,30 @@ namespace pbcare
 
 			}
 		}
-
-	
+			
 		protected override void OnStart ()
 		{
 			// Handle when your app starts
 
 		}
+			
 
 		protected override void OnSleep ()
 		{
-			// Handle when your app sleeps
+			// Only for Android
+			if (Device.OS == TargetPlatform.Android) {
+				DependencyService.Get<IAudio> ().StopMP3File ();
+				//DependencyService.Get<IBth> ().Cancel ();
+			} 
 		}
 
 		protected override void OnResume ()
 		{
-			// Handle when your app resumes
+			// Only for Android
+			if (Device.OS == TargetPlatform.Android) {
+				//DependencyService.Get<IBth> ().Start ("HC-06");
+			} 
+
 		}
 	}
 }

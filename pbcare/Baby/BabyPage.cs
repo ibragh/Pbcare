@@ -49,6 +49,17 @@ namespace pbcare
 			};
 
 		}
+
+		/* Calculate Current Month */
+		public static int CurrentMonth (string birth)
+		{
+			DateTime birthDate = DateTime.ParseExact (birth , "ddMMyyyy", null);
+			TimeSpan difference = DateTime.Now.AddDays (-1) - birthDate ;
+			double PastDays = ((int)difference.TotalDays ); 
+			return (int)Math.Ceiling ((PastDays/30) );
+
+		}
+
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();

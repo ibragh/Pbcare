@@ -64,6 +64,15 @@ namespace pbcare
 
 		}
 
+		/* Calculate Current Week */
+		public static int CurrentWeek (DateTime dueDate)
+		{
+			TimeSpan difference = dueDate - DateTime.Now.AddDays (-1);
+			// for calculating the past days of pregnancy
+			double PastDays = (280 - (int)difference.TotalDays); 
+			return (int)Math.Ceiling ((PastDays/7));
+
+		}
 
 		public void AddPregnancyClicked (object sender, EventArgs e)
 		{
