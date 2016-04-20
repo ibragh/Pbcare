@@ -1,13 +1,6 @@
 ﻿<Properties StartupItem="pbcare/pbcare.csproj" RefactoringSettings.EnableRefactorings="True">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.4df71a493152309b" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare/Setting/SettingPage.cs">
-    <Files>
-      <File FileName="Droid/Bth.cs" Line="133" Column="8" />
-      <File FileName="pbcare/Setting/SettingPage.cs" Line="240" Column="37" />
-      <File FileName="pbcare/Setting/arduino_bt.cs" Line="61" Column="6" />
-      <File FileName="pbcare/ISQLite/DatabaseClass.cs" Line="110" Column="51" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/ibrahim/Projects/pbcare github/Droid/SQLite_Droid.cs" line="20" column="1" />

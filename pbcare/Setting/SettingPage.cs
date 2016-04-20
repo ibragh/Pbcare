@@ -232,7 +232,7 @@ namespace pbcare
 				};
 				// ------------ Setting Cell Number 3
 			} else if (selectedSetting.number == 3) {
-				this.Content = new arduino_bt ();
+				//this.Content =  new arduino_bt ();
 			}
 
 		}
