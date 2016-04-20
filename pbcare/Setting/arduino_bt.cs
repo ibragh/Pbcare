@@ -25,20 +25,29 @@ namespace pbcare
 
 		public arduino_bt ()
 		{
+			BackgroundColor = Color.FromRgb (94, 196, 225);
+
 			Label header = new Label {
-				Text = "Switch",
+				Text = "تشغيل",
+				TextColor = Color.White,
 				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
-				HorizontalOptions = LayoutOptions.Center
+				HorizontalOptions = LayoutOptions.End
 			};
 			Label msg = new Label {
 				Text = "Use The Switch To Turn ",
+				TextColor = Color.White,
 				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 			Button StopSound = new Button {
 				Text = "إيقاف الصوت",
-				HorizontalOptions = LayoutOptions.Center,
+				TextColor = Color.FromHex("#FFFFFF"),
+				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
+				BackgroundColor = Color.FromHex("#FFA4C1"),
+				BorderColor = Color.FromHex("#FFA4C1"),
+				HeightRequest = 50 ,
+				//HorizontalOptions = LayoutOptions.CenterAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 			StopSound.Clicked += (object sender, EventArgs e) => {
@@ -63,6 +72,7 @@ namespace pbcare
 					System.Diagnostics.Debug.WriteLine ("Toggled Switch: " + ex.Message);
 				}
 			};
+
 			MessagingCenter.Subscribe<pbcareApp, string> (this, "0", (mysender, arg) => {
 				System.Diagnostics.Debug.WriteLine ("MessagingCenter.Subscribe 0: " + arg);
 				msg.Text = arg;
@@ -104,7 +114,7 @@ namespace pbcare
 			MessagingCenter.Subscribe<  pbcareApp, string> (this, "4", (mysender, arg) => {
 				Device.BeginInvokeOnMainThread (() => {
 					msg.Text = arg;
-					this.DisplayAlert ("Warning", arg , "OK");
+					//this.DisplayAlert ("Warning", arg , "OK");
 				});
 
 			});
@@ -123,10 +133,12 @@ namespace pbcare
 
 			});
 			// Accomodate iPhone status bar.
-			this.Padding = new Thickness (10, Device.OnPlatform (20, 0, 0), 10, 5);
+			this.Padding = new Thickness (10 , Device.OnPlatform (20, 30, 0), 10, 5);
 
 			// Build the page.
 			this.Content = new StackLayout {
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = {
 					header,
 					switcher,

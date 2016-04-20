@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="pbcare/pbcare.csproj" RefactoringSettings.EnableRefactorings="True">
+﻿<Properties StartupItem="Droid\pbcare.Droid.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

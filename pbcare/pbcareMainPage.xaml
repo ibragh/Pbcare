@@ -31,7 +31,7 @@
 			</x:Arguments>
 		</NavigationPage>
 
-		<NavigationPage Title="الحساس" Icon="Setting.png" >
+		<NavigationPage Title="جهاز الإستشعار " Icon="Setting.png" >
 			<x:Arguments>
 				<myapp:arduino_bt />
 			</x:Arguments>

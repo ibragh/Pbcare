@@ -340,6 +340,26 @@ namespace pbcare
 			}
 		}
 
+		public void updateUserName(string newName){
+			try{
+				
+			DB.Query<User> ("UPDATE User Set name = ? WHERE email = ? ", newName, pbcareApp.u.Email);
+			
+			}catch(Exception ex ){
+				Debug.WriteLine (ex.Message);
+			}
+		}
+
+		public void updatePassword(string newPass){
+
+			try{
+			DB.Query<User> ("UPDATE User Set Password = ? WHERE email = ? ", newPass , pbcareApp.u.Email);
+			
+			}catch(Exception ex){
+				Debug.WriteLine (ex.Message);
+			}
+		}
+
 	}
 }
 

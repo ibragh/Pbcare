@@ -20,7 +20,7 @@ namespace pbcare
 			settingList.Add (new settingClass ("تغيير الاسم", 1));
 			settingList.Add (new settingClass ("تغيير كلمة المرور", 2));
 			if (Device.OS == TargetPlatform.Android) {
-				settingList.Add (new settingClass ("جهاز الإستشعار", 3));
+				//settingList.Add (new settingClass ("جهاز الإستشعار", 3));
 			}
 
 			setting.ItemsSource = settingList;
@@ -168,6 +168,7 @@ namespace pbcare
 				saveNameButton.Clicked += (sender, e) => {
 					if (!string.IsNullOrWhiteSpace (nameEntry.Text)) {
 						pbcareApp.u.name = nameEntry.Text;
+						pbcareApp.Database.updateUserName(nameEntry.Text);
 						Navigation.PopAsync ();
 						DisplayAlert ("  تم", "  تغيير الاسم إلى" + nameEntry.Text, "موافق");
 	
@@ -191,7 +192,7 @@ namespace pbcare
 					Text = "كلمة المرور : ",
 					FontSize = 20,
 					HorizontalOptions = LayoutOptions.End,
-					TextColor = Color.White
+					TextColor = Color.White,
 				};
 				var confYourPass = new Label {
 					Text = "تأكيد كلمة المرور",
@@ -199,8 +200,14 @@ namespace pbcare
 					HorizontalOptions = LayoutOptions.End,
 					TextColor = Color.White
 				};
-				var passwordEntry = new Entry1 {	Placeholder = "أدخل كلمة المرور هنا" };
-				var passConfirm = new Entry1 { Placeholder = " تأكيد كلمة المرور" };
+				var passwordEntry = new Entry1 {	
+					Placeholder = "أدخل كلمة المرور هنا" ,
+					IsPassword = true
+				};
+				var passConfirm = new Entry1 { 
+					Placeholder = " تأكيد كلمة المرور" ,
+					IsPassword = true
+				};
 				var savePassButton = new Button {
 					Text = "حفظ البيانات",
 					TextColor = Color.FromHex ("#FFFFFF"),
@@ -212,9 +219,10 @@ namespace pbcare
 	
 				savePassButton.Clicked += (sender, e) => {
 					if (!string.IsNullOrWhiteSpace (passwordEntry.Text) && passConfirm.Text.Equals (passwordEntry.Text)) {
-						Navigation.PopAsync ();
+						pbcareApp.Database.updatePassword(passwordEntry.Text);
 						DisplayAlert (" تم", " تغيير كلمة المرور ", "موافق");
-	
+						Navigation.PopAsync ();
+
 					} else if (passwordEntry.Text != passConfirm.Text) {
 						DisplayAlert ("خطأ", "كلمة المرور غير متطابقة", "إلغاء");
 	
@@ -230,10 +238,11 @@ namespace pbcare
 						Children = { yourPass, passwordEntry, confYourPass, passConfirm, savePassButton, CancelButton }
 					}
 				};
-				// ------------ Setting Cell Number 3
-			} else if (selectedSetting.number == 3) {
-				//this.Content =  new arduino_bt ();
 			}
+				// ------------ Setting Cell Number 3
+//			} else if (selectedSetting.number == 3) {
+//				//this.Content =  new arduino_bt ();
+//			}
 
 		}
 	}
