@@ -59,6 +59,7 @@ namespace pbcare
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
 				HeightRequest = 50,
+				StyleId = "AddDueDate"
 			};
 
 			String DueDateText;

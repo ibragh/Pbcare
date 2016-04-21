@@ -19,9 +19,7 @@ namespace pbcare
 			List<settingClass> settingList = new List<settingClass> ();	
 			settingList.Add (new settingClass ("تغيير الاسم", 1));
 			settingList.Add (new settingClass ("تغيير كلمة المرور", 2));
-			if (Device.OS == TargetPlatform.Android) {
-				//settingList.Add (new settingClass ("جهاز الإستشعار", 3));
-			}
+			settingList.Add (new settingClass ("عن تطبـيقنا",3));
 
 			setting.ItemsSource = settingList;
 			setting.ItemTemplate = new DataTemplate (typeof(everyCell));
@@ -63,8 +61,6 @@ namespace pbcare
 		async void OnAlertYesNoClicked (object sender, EventArgs e)
 		{
 			var answer = await DisplayAlert ("تسجيل الخروج ", "هل تريد تأكيد تسجيل الخروج ؟ ", "نعم", "لا");
-			Debug.WriteLine ("Answer: " + answer);
-
 			if (answer == true) {
 				pbcareApp.Database.InsertUserLoggedin (false);
 				pbcareApp.IsUserLoggedIn = false; 
@@ -168,7 +164,7 @@ namespace pbcare
 				saveNameButton.Clicked += (sender, e) => {
 					if (!string.IsNullOrWhiteSpace (nameEntry.Text)) {
 						pbcareApp.u.name = nameEntry.Text;
-						pbcareApp.Database.updateUserName(nameEntry.Text);
+						pbcareApp.Database.updateUserName (nameEntry.Text);
 						Navigation.PopAsync ();
 						DisplayAlert ("  تم", "  تغيير الاسم إلى" + nameEntry.Text, "موافق");
 	
@@ -201,11 +197,11 @@ namespace pbcare
 					TextColor = Color.White
 				};
 				var passwordEntry = new Entry1 {	
-					Placeholder = "أدخل كلمة المرور هنا" ,
+					Placeholder = "أدخل كلمة المرور هنا",
 					IsPassword = true
 				};
 				var passConfirm = new Entry1 { 
-					Placeholder = " تأكيد كلمة المرور" ,
+					Placeholder = " تأكيد كلمة المرور",
 					IsPassword = true
 				};
 				var savePassButton = new Button {
@@ -219,7 +215,7 @@ namespace pbcare
 	
 				savePassButton.Clicked += (sender, e) => {
 					if (!string.IsNullOrWhiteSpace (passwordEntry.Text) && passConfirm.Text.Equals (passwordEntry.Text)) {
-						pbcareApp.Database.updatePassword(passwordEntry.Text);
+						pbcareApp.Database.updatePassword (passwordEntry.Text);
 						DisplayAlert (" تم", " تغيير كلمة المرور ", "موافق");
 						Navigation.PopAsync ();
 
@@ -238,15 +234,36 @@ namespace pbcare
 						Children = { yourPass, passwordEntry, confYourPass, passConfirm, savePassButton, CancelButton }
 					}
 				};
-			}
 				// ------------ Setting Cell Number 3
-//			} else if (selectedSetting.number == 3) {
-//				//this.Content =  new arduino_bt ();
-//			}
+			} else if (selectedSetting.number == 2) {
 
+				var Copyright = new Label {
+					Text = "This Project is Done By",
+					FontSize = 35,
+					HorizontalOptions = LayoutOptions.Center,
+					TextColor = Color.White
+				};
+				var Copyright1 = new Label {
+					Text = "Saud Alqarni \nIbrahim Alghamdi",
+					FontSize = 30,
+					HorizontalOptions = LayoutOptions.Center,
+					TextColor = Color.White
+				};
+				var Copyright2 = new Label {
+					Text = "2016",
+					FontSize = 20,
+					HorizontalOptions = LayoutOptions.Center,
+					TextColor = Color.White
+				};
+				this.Content = new ScrollView {
+					Content = new StackLayout {
+						VerticalOptions = LayoutOptions.FillAndExpand,
+						Padding = 20,
+						Children = { Copyright, Copyright1 , Copyright2}
+					}
+				};
+			}
 		}
 	}
+
 }
-
-
-

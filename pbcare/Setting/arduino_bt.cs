@@ -1,6 +1,5 @@
 ﻿// ToDo: 	1- Info Button for handling Error Connection
 // 			2- ContentPage With the Scanned Devices. So Connect Whatever I Want
-
 using System;
 using Acr.Notifications;
 using Xamarin.Forms;
@@ -20,8 +19,7 @@ namespace pbcare
 	
 	public class arduino_bt : ContentPage
 	{
-		Boolean DisplayOn, IsSoundOn, WarningBtConnected;
-		Switch switcher = new Switch {};
+		Boolean IsSoundOn;
 
 		public arduino_bt ()
 		{
@@ -33,6 +31,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
 				HorizontalOptions = LayoutOptions.End
 			};
+			Switch switcher = new Switch {};
 			Label msg = new Label {
 				Text = "Use The Switch To Turn ",
 				TextColor = Color.White,
@@ -51,32 +50,18 @@ namespace pbcare
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 			StopSound.Clicked += (object sender, EventArgs e) => {
-				DependencyService.Get<IAudio> ().StopMP3File ();
-				msg.Text ="Sound has Stopped";
-			};
-
-			switcher.Toggled += (object sender, ToggledEventArgs e) => {
-
-				try {
-					if (e.Value) {
-						WarningBtConnected = true;
-						IsSoundOn = true;
-						DependencyService.Get<IBth> ().Start ("HC-06");
-					} else {
-						IsSoundOn = false;
-						DependencyService.Get<IAudio> ().StopMP3File ();
-
-						msg.Text ="bluetooth task is canceled";
-					}
-				} catch (Exception ex) {
-					System.Diagnostics.Debug.WriteLine ("Toggled Switch: " + ex.Message);
+				// only stop sound in case it is Playing
+				if(!IsSoundOn){
+					DependencyService.Get<IAudio> ().StopAlarm ();
+					switcher.IsToggled = false;
 				}
+				msg.Text ="Sound has Stopped";
 			};
 
 			MessagingCenter.Subscribe<pbcareApp, string> (this, "0", (mysender, arg) => {
 				System.Diagnostics.Debug.WriteLine ("MessagingCenter.Subscribe 0: " + arg);
 				msg.Text = arg;
-				DependencyService.Get<IAudio> ().StopMP3File ();
+				DependencyService.Get<IAudio> ().StopAlarm ();
 			});
 			MessagingCenter.Subscribe<  pbcareApp, string> (this, "1", (mysender, arg) => {
 
@@ -85,7 +70,7 @@ namespace pbcare
 						if (IsSoundOn) {
 							msg.Text = arg;
 							IsSoundOn = false;
-							DependencyService.Get<IAudio> ().PlayMp3File ("test.mp3");
+							DependencyService.Get<IAudio> ().PlayAlarm ();
 							this.DisplayAlert ("تنـــــبـــيه", "يوجد حركة عند حساس الباب", "حسناً");
 						}
 					});
@@ -98,10 +83,6 @@ namespace pbcare
 
 				Device.BeginInvokeOnMainThread (() => {
 					msg.Text = arg ;
-					if (WarningBtConnected) {
-						this.DisplayAlert ("Warning", arg+ "-Check Sensor BT" , "OK");
-						WarningBtConnected = false;
-					}
 				});
 
 			});
@@ -132,6 +113,26 @@ namespace pbcare
 				});
 
 			});
+
+			switcher.Toggled += (object sender, ToggledEventArgs e) => {
+
+				try {
+					if (e.Value) {
+						IsSoundOn = true;
+						DependencyService.Get<IBth> ().Start ("HC-06");
+					} else {
+						DependencyService.Get<IBth> ().Cancel();
+						// only stop sound in case it is Playing
+						if(!IsSoundOn){
+							DependencyService.Get<IAudio> ().StopAlarm ();
+						}
+						msg.Text ="bluetooth task is canceled";
+
+					}
+				} catch (Exception ex) {
+					System.Diagnostics.Debug.WriteLine ("Toggled Switch: " + ex.Message);
+				}
+			};
 			// Accomodate iPhone status bar.
 			this.Padding = new Thickness (10 , Device.OnPlatform (20, 30, 0), 10, 5);
 

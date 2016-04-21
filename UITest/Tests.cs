@@ -34,6 +34,11 @@ namespace pbcare
 		public void AppLaunches ()
 		{
 			app.Repl ();
+//			app.EnterText ("emailEntry", "A@a");
+//			app.EnterText ("passwordEntry", "A");
+//			app.Tap (c => c.Button ("تســـجيل الدخــول"));
+//			app.Tap (c => c.Button ("إضافة حمل"));
+
 		}
 	}
 }

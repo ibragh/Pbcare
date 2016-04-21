@@ -13,22 +13,19 @@ namespace pbcare.Droid
 
 		private MediaPlayer _mediaPlayer;
 
-		public bool PlayMp3File(string fileName)
+		public bool PlayAlarm()
 		{
 
-				_mediaPlayer = MediaPlayer.Create (global::Android.App.Application.Context, Resource.Raw.test);
-				_mediaPlayer.Looping = true;
-
-				_mediaPlayer.Start ();
+			_mediaPlayer = MediaPlayer.Create (global::Android.App.Application.Context, Resource.Raw.Alarm_Clock);
+			_mediaPlayer.Looping = true;
+			_mediaPlayer.Start ();
 
 			return true;
 		}
 
-		public bool StopMP3File()
+		public bool StopAlarm()
 		{
-
 			_mediaPlayer.Stop ();
-
 			return true;
 		}
 	}

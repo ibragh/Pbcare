@@ -19,9 +19,7 @@ namespace pbcare
 
 		public pbcareApp ()
 		{
-
 			MainPage = GetMainPage ();
-
 		}
 
 		public static bool IsUserLoggedIn { get; set; }
@@ -55,7 +53,7 @@ namespace pbcare
 		{
 			// Only for Android
 			if (Device.OS == TargetPlatform.Android) {
-				DependencyService.Get<IAudio> ().StopMP3File ();
+				DependencyService.Get<IAudio> ().StopAlarm ();
 				//DependencyService.Get<IBth> ().Cancel ();
 			} 
 		}

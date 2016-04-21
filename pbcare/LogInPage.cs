@@ -15,7 +15,8 @@ namespace pbcare
 				TextColor = Color.FromHex("#5069A1"),
 				PlaceholderColor = Color.FromRgba(255,255,255,225),
 				WidthRequest = 30 ,
-				AnchorX = 100
+				AnchorX = 100,
+				StyleId = "emailEntry"
 			};
 
 			var passwordEntry = new Entry1{
@@ -23,7 +24,8 @@ namespace pbcare
 				TextColor = Color.FromHex("#5069A1"),
 				PlaceholderColor = Color.FromRgba(255,255,255,225),
 				WidthRequest = 30 ,
-				IsPassword = true
+				IsPassword = true,
+				StyleId = "passwordEntry"
 			};
 
 			var messageLogin = new Label {
