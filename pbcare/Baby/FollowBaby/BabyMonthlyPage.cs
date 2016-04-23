@@ -25,18 +25,25 @@ namespace pbcare
 
 
 			}
-
+	
 		protected override void OnAppearing ()
 		{
 
 			this.Content = new StackLayout {
 				Padding = 20,
 				Children = {
-					monthLabel, messageLabel
+					monthLabel,
+					new ScrollView {
+						Content = new StackLayout {
+							Children = {
+								messageLabel
+							}
+						}
+					}
 				}
 			};
+
 		}
 	}
 }
-
 

@@ -13,7 +13,7 @@ namespace pbcare
 			this.Children.Add (new NavigationPage (new WebsitePage ()){ Title = "المنتدى", Icon = "Setting.png" });
 			// Show Ardunio Page Handler ONLY --- For Android Devices
 			if (Device.OS == TargetPlatform.Android) {
-				this.Children.Add (new NavigationPage (new arduino_bt (){ Title = "مستشعر الطفل", Icon = "Setting.png" }));
+				this.Children.Add (new NavigationPage (new arduino_bt ()){ Title = "جهاز الإستشعار", Icon = "Setting.png" });
 			}
 			this.Children.Add (new NavigationPage (new SettingPage ()){ Title = "الإعدادات", Icon = "Setting.png" });
 

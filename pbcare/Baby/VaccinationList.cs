@@ -7,6 +7,8 @@ namespace pbcare
 {
 	public class VaccinationList : ContentPage
 	{
+		bool isclicked = true ;
+
 		public static List<vaccinationTable> Vaccinations = new List<vaccinationTable>(); 
 		ListView vaccinationList = new ListView {
 			RowHeight = 40
@@ -22,9 +24,14 @@ namespace pbcare
 			vaccinationList.ItemTemplate = new DataTemplate (typeof(EveryVaccinationCell));
 			vaccinationList.BackgroundColor = Color.Transparent;
 			vaccinationList.SeparatorColor = Color.White;
-			vaccinationList.ItemSelected +=  (Sender, Event) => {
-				var V = (vaccinationTable)Event.SelectedItem;
-				Navigation.PushAsync(new VaccinationInfoView(V, c));
+			vaccinationList.ItemTapped +=  (Sender, Event) => {
+				
+				if(isclicked)
+				{
+					isclicked = false;
+					var V = (vaccinationTable)Event.Item;
+					Navigation.PushAsync(new VaccinationInfoView(V, c));
+				}
 			};
 
 			Content = new StackLayout {
@@ -38,16 +45,7 @@ namespace pbcare
 
 		protected override void OnAppearing ()
 		{
-//			Content = new StackLayout {
-//				VerticalOptions= LayoutOptions.FillAndExpand,
-//				Padding = new Thickness(0, 10, 0, 10),
-//				Children = {  
-//					vaccinationList
-//				}
-//			};
-//			//vaccinationList.SelectedItem = null;
-//			base.OnAppearing ();
-//		}
+			isclicked = true ;
 		}
 	}
 

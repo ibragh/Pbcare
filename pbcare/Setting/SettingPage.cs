@@ -11,12 +11,14 @@ namespace pbcare
 		ListView setting = new ListView {
 			RowHeight = 50  
 		};
+		List<settingClass> settingList = new List<settingClass> ();	
 
 		public SettingPage ()
 		{
 			this.Title = "الإعدادات";
 			BackgroundColor = Color.FromRgb (94, 196, 225);
-			List<settingClass> settingList = new List<settingClass> ();	
+
+
 			settingList.Add (new settingClass ("تغيير الاسم", 1));
 			settingList.Add (new settingClass ("تغيير كلمة المرور", 2));
 			settingList.Add (new settingClass ("عن تطبـيقنا",3));
@@ -25,10 +27,12 @@ namespace pbcare
 			setting.ItemTemplate = new DataTemplate (typeof(everyCell));
 			setting.BackgroundColor = Color.Transparent;
 			setting.SeparatorColor = Color.White;
-			setting.ItemSelected += (Sender, Event) => {
-				var selceted = (settingClass)Event.SelectedItem;
+
+			setting.ItemTapped += (Sender, Event) => {
+				var selceted = (settingClass)Event.Item;
 				var settingView = new settingView (selceted);
 				Navigation.PushAsync (settingView);
+
 			};
 
 
@@ -67,6 +71,11 @@ namespace pbcare
 				await Navigation.PopToRootAsync ();
 				await Navigation.PushModalAsync (new pbcareMainPage ());
 			} 
+		}
+
+		protected override void OnAppearing (){
+
+			base.OnAppearing ();
 		}
 	}
 
@@ -151,7 +160,11 @@ namespace pbcare
 					TextColor = Color.White
 				};
 
-				var nameEntry = new Entry1 { Placeholder = "أدخل اسمك هنا" };
+				var nameEntry = new Entry1 { 
+					Placeholder = "أدخل اسمك هنا" ,
+					PlaceholderColor = Color.White,
+					TextColor = Color.FromHex("#5069A1"),
+				};
 				var saveNameButton = new Button { 
 					Text = " حفظ البيانات ",
 					TextColor = Color.FromHex ("#FFFFFF"),
@@ -198,10 +211,14 @@ namespace pbcare
 				};
 				var passwordEntry = new Entry1 {	
 					Placeholder = "أدخل كلمة المرور هنا",
+					PlaceholderColor = Color.White,
+					TextColor = Color.FromHex("#5069A1"),
 					IsPassword = true
 				};
 				var passConfirm = new Entry1 { 
 					Placeholder = " تأكيد كلمة المرور",
+					PlaceholderColor = Color.White,
+					TextColor = Color.FromHex("#5069A1"),
 					IsPassword = true
 				};
 				var savePassButton = new Button {
@@ -260,6 +277,20 @@ namespace pbcare
 						VerticalOptions = LayoutOptions.FillAndExpand,
 						Padding = 20,
 						Children = { Copyright, Copyright1 , Copyright2}
+					}
+				};
+			} else if(selectedSetting.number == 3){
+				this.Content = new ScrollView {
+					Content = new StackLayout {
+						HorizontalOptions = LayoutOptions.Center,
+						Padding = 20,
+						Children = {
+							new Label {
+								Text = "معـــلومات عن  التطبيق ",
+								TextColor = Color.White,
+								FontSize = Device.GetNamedSize(NamedSize.Large ,typeof(Label))
+							}
+						}
 					}
 				};
 			}

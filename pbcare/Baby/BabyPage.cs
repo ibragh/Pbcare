@@ -11,6 +11,8 @@ namespace pbcare
 		ListView childrenList = new ListView {
 			RowHeight = 60
 		};
+		bool Locked = true ;
+
 		public BabyPage()
 		{
 			Title = "أطفالي";
@@ -20,6 +22,13 @@ namespace pbcare
 			childrenList.ItemTemplate = new DataTemplate (typeof(EveryChildCell));
 			childrenList.SeparatorColor = Color.White;
 			childrenList.BackgroundColor = Color.Transparent;
+			childrenList.ItemTapped += (Sender, Event) => {
+				Child c = (Child)Event.Item;
+				if(Locked){
+					
+					EditChild (c); 
+				}
+			};
 
 			childrenList.ItemSelected +=  (Sender, Event) => {
 				((ListView)Sender).SelectedItem = null; 
@@ -59,12 +68,32 @@ namespace pbcare
 			return (int)Math.Ceiling ((PastDays/30) );
 
 		}
+		
+		async void EditChild(Child c ){
+			
+			Locked = false;
+			var answer = await DisplayActionSheet  (c.ChildName , "إلغاء" , null , "تعديل", "حــذف");
+
+			if(answer.Equals("تعديل")){
+				await Navigation.PushAsync (new EditBaby (c));
+			}
+
+			else if(answer.Equals("حــذف")){
+				var isDeleted = await DisplayAlert (" حــذف "+c.ChildName , "هل تريد تأكيد حــذف "+c.ChildName+" ؟ ", "نعم", "لا");
+
+				if (isDeleted)
+					pbcareApp.Database.RemoveBaby (c);
+				}	
+			Locked = true;
+			OnAppearing ();
+		}
 
 		protected override void OnAppearing ()
-		{
+		{			
 			base.OnAppearing ();
 			var childrenNum = pbcareApp.Database.getChildrenFromDB(pbcareApp.u.Email);
 			childrenList.ItemsSource = childrenNum;
+
 			Image c = new Image {
 				Source = "children.png"
 			};

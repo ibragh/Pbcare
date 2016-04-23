@@ -5,11 +5,12 @@ using Acr.Notifications;
 
 namespace pbcare
 {
-	public class AddBaby : ContentPage
+	public class EditBaby : ContentPage
 	{
-		public AddBaby ()
+		public EditBaby (Child c)
 		{
-			Title = "إضــافة طــفل ";
+			
+			Title = "تعـــديل "+ c.ChildName ;
 			BackgroundColor = Color.FromRgb (94, 196, 225);
 
 
@@ -20,10 +21,9 @@ namespace pbcare
 			};
 
 			var nameEntry = new Entry1 {
-				Placeholder = " اسم الطفل هنا",
-				PlaceholderColor = Color.White,
+				Text = c.ChildName,
 				TextColor = Color.FromHex("#5069A1"),
-			
+
 			};
 
 			var childGender = new Label {
@@ -37,6 +37,12 @@ namespace pbcare
 			gender.Items.Add ("ذكر");
 			gender.Items.Add ("أنثى");
 
+			if(c.gender.Equals("ذكر")){
+				gender.SelectedIndex = 0 ; 
+
+			}else if(c.gender.Equals("أنثى")){
+				gender.SelectedIndex = 1 ; 
+			}
 
 			var childBirthdate = new Label {
 				Text = "تاريخ الميلاد",
@@ -44,7 +50,9 @@ namespace pbcare
 				HorizontalOptions = LayoutOptions.End,
 			};
 
-			var birthdate = new DatePicker1 ();
+			var birthdate = new DatePicker1 {
+				Date = DateTime.ParseExact(c.birthDate , "ddMMyyyy", null)
+			};
 
 			var saveButton = new Button {
 				Text = "حفظ البيانات",
@@ -64,13 +72,17 @@ namespace pbcare
 						birthDate = birthdate.Date.ToString("ddMMyyyy") ,
 						gender = gender.Items [gender.SelectedIndex]
 					};
-					bool check = pbcareApp.Database.AddChildToDB(baby);
-
+					bool _check = pbcareApp.Database.RemoveBaby(c);
+					bool check  = false ; 
+					if(_check){
+						check = pbcareApp.Database.AddChildToDB(baby);
+					}
 					if (check) {
+						pbcareApp.Database.RemoveChildVaccinations(c.ChildName );
 						pbcareApp.Database.insertChildVaccinations(baby.ChildName);
 						var Vaccinations =  pbcareApp.Database.getVaccinationsFromDB();
-						Navigation.PopAsync ();
 
+						Navigation.PopAsync ();
 						for(int i = 0 ; i < Vaccinations.Count ; i++){
 							var periodInDays = (Vaccinations[i].time *30) - ((int)(DateTime.Now.Date - birthdate.Date).TotalDays) ;
 							Notifications.Instance.Send ("تنبيه", Vaccinations[i].name + "  for  " + baby.ChildName ,when: TimeSpan.FromDays (periodInDays));
@@ -98,29 +110,30 @@ namespace pbcare
 			};
 
 			Content = new ScrollView {
-					Content = new StackLayout {
-						Padding = 20, 
-						Spacing = 15,
-						Children = {
-							childName,
-							nameEntry,
-							childGender,
-							gender,
-							childBirthdate,
-							birthdate,
-							new StackLayout{
-								Padding = new Thickness (0 , 20 , 0 , 10),
-								Orientation = StackOrientation.Horizontal,
-								HorizontalOptions = LayoutOptions.Center,
-								Children = {
-									cancelButton,
-									saveButton
-								}
+				Content = new StackLayout {
+					Padding = 20, 
+					Spacing = 15,
+					Children = {
+						childName,
+						nameEntry,
+						childGender,
+						gender,
+						childBirthdate,
+						birthdate,
+						new StackLayout{
+							Padding = new Thickness (0 , 20 , 0 , 10),
+							Orientation = StackOrientation.Horizontal,
+							HorizontalOptions = LayoutOptions.Center,
+							Children = {
+								cancelButton,
+								saveButton
 							}
 						}
 					}
+				}
 			};
+		}
 	}
 }
-}
+
 

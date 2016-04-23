@@ -53,7 +53,7 @@ namespace pbcare
 		{
 			// Only for Android
 			if (Device.OS == TargetPlatform.Android) {
-				DependencyService.Get<IAudio> ().StopAlarm ();
+			//	DependencyService.Get<IAudio> ().StopAlarm ();
 				//DependencyService.Get<IBth> ().Cancel ();
 			} 
 		}

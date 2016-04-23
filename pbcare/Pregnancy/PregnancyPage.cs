@@ -116,8 +116,10 @@ namespace pbcare
 				pbcareApp.u.isPregnant = 0;
 				pbcareApp.Database.updateIsPregnant (0);
 				pbcareApp.Database.removeDueDate ();
-				await DisplayAlert ("ألف مبروك ","حمداً لله على سلامتك","إضافة مولودك");
-				await Navigation.PushAsync (new AddBaby ());
+				var cancel = await DisplayAlert (" ألف مبــروك", "حمداً لله على سلامتك يا  " + pbcareApp.u.name, "إلغاء", "إضافة مولود");
+				if (!cancel) {
+					await Navigation.PushAsync (new AddBaby ());
+				}
 			}
 		}
 

@@ -23,6 +23,7 @@ namespace pbcare
 
 		public arduino_bt ()
 		{
+			Title = "جهاز الإستشعار";
 			BackgroundColor = Color.FromRgb (94, 196, 225);
 
 			Label header = new Label {

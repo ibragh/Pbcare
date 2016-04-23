@@ -39,7 +39,9 @@ namespace pbcare
 
 					/* Retreve Email from Database */
 					pbcareApp.u.Email = RigrsterdUser.email;
-					pbcareApp.u.isPregnant = DB.Table<User> ().Where (c => c.Email == pbcareApp.u.Email).FirstOrDefault ().isPregnant;
+					var _user = DB.Table<User> ().Where (c => c.Email == pbcareApp.u.Email).FirstOrDefault ();
+					pbcareApp.u.isPregnant = _user.isPregnant;
+					pbcareApp.u.name = _user.name ; 
 					Debug.WriteLine (" RigrsterdUser email ************ : " + RigrsterdUser.email);
 					pbcareApp.IsUserLoggedIn = true;
 					/* Retreve DueDate from Database */
@@ -108,6 +110,7 @@ namespace pbcare
 			var Logeduser = DB.Table<User> ().Where (user => user.Email == email && user.Password == password).FirstOrDefault ();
 			if ( Logeduser != null) {
 				pbcareApp.u.isPregnant = Logeduser.isPregnant;
+				pbcareApp.u.name = Logeduser.name;
 				return true;
 			} else {
 				return false;
@@ -255,6 +258,15 @@ namespace pbcare
 			}
 		}
 
+		public bool RemoveBaby(Child child){
+			try{
+				DB.Query<Child> ("DELETE FROM Child WHERE ChildName = ? and mother = ? ", child.ChildName , pbcareApp.u.Email);
+				return true ; 
+
+			}catch(Exception ex){
+				return false;
+			}
+		}
 		public Child getChildFromDB (string name, string email)
 		{
 		
@@ -304,6 +316,16 @@ namespace pbcare
 			}
 		}
 
+		public bool RemoveChildVaccinations (string oldChildName)
+		{
+			try{
+				DB.Query<ChildVaccinations> ("DELETE FROM ChildVaccinations WHERE ChildName = ? and mother = ? ", oldChildName, pbcareApp.u.Email);
+				return true ;
+
+			}catch(Exception ex){
+				return false;
+			}
+		}
 		public void updateIsTaken (bool isTakenCase, int VID, string childName)
 		{
 			try {
