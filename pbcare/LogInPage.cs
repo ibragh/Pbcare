@@ -73,13 +73,15 @@ namespace pbcare
 					messageLogin.Text = "فضلاً .. تأكد من كتابة الإيميل بشكل صحيح";
 
 				} else if (pbcareApp.Database.checkLogin (Email, pwd)) {
+					pbcareApp.u.Email = Email;
+					User loggedUser = pbcareApp.Database.get_User(pbcareApp.u.Email);
+					pbcareApp.u.name = loggedUser.name;
+					pbcareApp.u.isPregnant = loggedUser.isPregnant;
 					messageLogin.TextColor = Color.Green;
 					messageLogin.Text = "تم تسجيل الدخول بنجاح"; 
 					pbcareApp.IsUserLoggedIn = true;
-					pbcareApp.MyNavigation.PopModalAsync ();
-					pbcareApp.u.Email = Email;
 					pbcareApp.Database.User_Loggedin (true);
-
+					pbcareApp.MyNavigation.PopModalAsync ();
 				} else {
 					messageLogin.Text = "فشل تسجيل الدخول .. الرجاء ال";
 

@@ -16,7 +16,6 @@ namespace pbcare
 		{
 			this.Title = "حملي";
 			BackgroundColor = Color.FromRgb (94, 196, 225);
-
 			AddPregnancy = new Button {
 				Text = "إضافة حمل",
 				TextColor = Color.FromHex("#FFFFFF"),
@@ -126,7 +125,8 @@ namespace pbcare
 		}
 		protected override void OnAppearing()
 		{
-			
+			base.OnAppearing ();
+	
 			if(pbcareApp.u.isPregnant == 0){
 
 				Content = new StackLayout {
@@ -136,11 +136,20 @@ namespace pbcare
 					Spacing = 20 ,
 					Children = {
 						s , 
-						AddPregnancy
+						AddPregnancy,
+						new Label {
+							Text = pbcareApp.u.isPregnant + ""
+						}
 					}
 				};
 
 			}else{
+				Label showDueDate = new Label{
+					Text = " موعد ولادتك المتوقع هـو "+ pbcareApp.Database.GetDueDate(),
+					TextColor = Color.White,
+					FontAttributes = FontAttributes.Bold,
+					HorizontalOptions = LayoutOptions.Center
+				};
 				Content =  new ScrollView {
 					Content = new StackLayout {
 						Padding = new Thickness(20 ,40,20,20),
@@ -149,11 +158,13 @@ namespace pbcare
 									FollowPregnancy,
 									FollowFetusImages,
 									FollowFetusWeekly,
-									finishPreg_
+									finishPreg_,
+									showDueDate
 						}
 					}
 				};
 			}
+
 		}
 	}
 }

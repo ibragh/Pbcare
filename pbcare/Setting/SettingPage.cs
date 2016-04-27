@@ -68,6 +68,8 @@ namespace pbcare
 			if (answer == true) {
 				pbcareApp.Database.User_Loggedin (false);
 				pbcareApp.IsUserLoggedIn = false; 
+				pbcareApp.u.isPregnant = 0;
+				pbcareApp.u.Email = null;
 				await Navigation.PopToRootAsync ();
 				await Navigation.PushModalAsync (new pbcareMainPage ());
 			} 

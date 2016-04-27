@@ -26,8 +26,8 @@ namespace pbcare
 			// the login screen...
 			if (!pbcareApp.IsUserLoggedIn && !pbcareApp.Database.checkUserLoggedin ()) {
 				Navigation.PushModalAsync (new NavigationPage (new LogInPage ()));
-
 			}
+
 			base.OnAppearing ();
 		}
 	}

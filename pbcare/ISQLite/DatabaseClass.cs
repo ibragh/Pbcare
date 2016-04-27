@@ -98,6 +98,10 @@ namespace pbcare
 			}
 		}
 
+		public User get_User (string email)
+		{
+			return DB.Table<User> ().Where (user => user.Email == email).FirstOrDefault ();
+		}
 		// check signup entries
 		public bool add_User (string email, string password, string name)
 		{
@@ -150,25 +154,6 @@ namespace pbcare
 		}
 // ============================================================================================================
 		//Prgnancy Methods
-		public void removeDueDate ()
-		{
-			try {
-				DB.Query<PregnancyDuedateTable> ("DELETE FROM PregnancyDuedateTable WHERE email = ?", pbcareApp.u.Email);
-			} catch (Exception ex) {
-				Debug.WriteLine (ex.Message);
-			}
-		}
-
-		public string GetDueDate ()
-		{
-			try {
-				return DB.Table<PregnancyDuedateTable> ().Where (i => i.email == pbcareApp.u.Email).FirstOrDefault ().dueDate;
-			} catch (Exception ex) {
-				Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
-				return "false";
-			}
-		}
-			
 		public int AddPregnancy (string email, string date)
 		{
 
@@ -198,6 +183,27 @@ namespace pbcare
 				return -1;
 			} 
 		}
+
+		public string GetDueDate ()
+		{
+			try {
+				return DB.Table<PregnancyDuedateTable> ().Where (i => i.email == pbcareApp.u.Email).FirstOrDefault ().dueDate;
+			} catch (Exception ex) {
+				Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return "false";
+			}
+		}
+
+		public void removeDueDate ()
+		{
+			try {
+				DB.Query<PregnancyDuedateTable> ("DELETE FROM PregnancyDuedateTable WHERE email = ?", pbcareApp.u.Email);
+			} catch (Exception ex) {
+				Debug.WriteLine (ex.Message);
+			}
+		}
+
+
 
 		public string  getPregnancyWeeks (int WeekNumber)
 		{
@@ -236,6 +242,43 @@ namespace pbcare
 
 
 		}
+//==============================================================================
+		// CHild Methods ...
+
+		public bool AddChild (Baby child)
+		{
+			try {
+				DB.Insert (child);
+				return true;
+
+				Debug.WriteLine ("**** Method is: " + this.ToString ());
+
+			} catch (Exception ex) {
+				Debug.WriteLine ("****&&&^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return false;
+			}
+		}
+
+		public bool RemoveChild(Baby child){
+			try{
+				DB.Query<Baby> ("DELETE FROM Child WHERE ChildName = ? and mother = ? ", child.ChildName , pbcareApp.u.Email);
+				return true ; 
+
+			}catch(Exception ex){
+				return false;
+			}
+		}
+		public Baby getChildInfo (string name, string email)
+		{
+
+			try {
+				return DB.Table<Baby> ().Where (c => c.ChildName == name && c.mother == email).FirstOrDefault ();
+			} catch (Exception ex) {
+				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return null;
+			}
+		}
+
 
 		public string  getChildMonth (int MonthNumber)
 		{
@@ -267,39 +310,8 @@ namespace pbcare
 			}
 		}
 
-		public bool AddChild (Baby child)
-		{
-			try {
-				DB.Insert (child);
-				return true;
-
-				Debug.WriteLine ("**** Method is: " + this.ToString ());
-
-			} catch (Exception ex) {
-				Debug.WriteLine ("****&&&^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
-				return false;
-			}
-		}
-
-		public bool RemoveChild(Baby child){
-			try{
-				DB.Query<Baby> ("DELETE FROM Child WHERE ChildName = ? and mother = ? ", child.ChildName , pbcareApp.u.Email);
-				return true ; 
-
-			}catch(Exception ex){
-				return false;
-			}
-		}
-		public Baby getChildInfo (string name, string email)
-		{
-		
-			try {
-				return DB.Table<Baby> ().Where (c => c.ChildName == name && c.mother == email).FirstOrDefault ();
-			} catch (Exception ex) {
-				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
-				return null;
-			}
-		}
+//===============================================================
+		// vaccinations mthods ....
 
 		public List<vaccinationTable> getVaccinationsList ()
 		{
