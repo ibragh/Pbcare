@@ -101,7 +101,7 @@ namespace pbcare
 				} else if (!pwd.Equals (pwdCon)) {
 					messageSignUp.Text = "كلمة المرور غير متطابقة"; // Password not matched
 				} else {
-					if (pbcareApp.Database.signup (Email, pwd, name)) {
+					if (pbcareApp.Database.add_User (Email, pwd, name)) {
 						pbcareApp.IsUserLoggedIn = true;
 						messageSignUp.TextColor = Color.Green;
 						messageSignUp.Text = "تم تسجيل الدخول بنجاح"; 
@@ -109,7 +109,7 @@ namespace pbcare
 						pbcareApp.u.Email = Email;
 						pbcareApp.u.name = name;
 						pbcareApp.u.isPregnant = 0 ;
-						pbcareApp.Database.InsertUserLoggedin (true);
+						pbcareApp.Database.User_Loggedin (true);
 					} else {
 						messageSignUp.Text = "تم التسجيل بنفس الإيميل مسبقاً"; // Email is rigistered
 						passwordEntry.Text = string.Empty;

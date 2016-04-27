@@ -44,7 +44,7 @@ namespace pbcare
 			info.Clicked += (sender, e) => {
 				var b = (Button) sender;
 				var t = b.CommandParameter;
-				Child c = pbcareApp.Database.getChildFromDB(t+"" , pbcareApp.u.Email);
+				Baby c = pbcareApp.Database.getChildInfo(t+"" , pbcareApp.u.Email);
 				((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new FollowBabyMonthly(c));
 
 			};
@@ -62,7 +62,7 @@ namespace pbcare
 			vacc.Clicked += (sender, e) => {
 				var b = (Button)sender;
 				var t = b.CommandParameter;
-				Child c = pbcareApp.Database.getChildFromDB (t + "", pbcareApp.u.Email);
+				Baby c = pbcareApp.Database.getChildInfo (t + "", pbcareApp.u.Email);
 				((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new VaccinationList(c));
 			};
 

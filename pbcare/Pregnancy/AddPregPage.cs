@@ -80,7 +80,7 @@ namespace pbcare
 					string DueDateDisplay = d + "/" + m + "/" + y; 
 
 					// the result from [AddPregnancyToDB] method will return numbers, each one has a meaning
-					int result = pbcareApp.Database.AddPregnancyToDB (pbcareApp.u.Email,DueDateText );
+					int result = pbcareApp.Database.AddPregnancy (pbcareApp.u.Email,DueDateText );
 					if (result == -1) {
 						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
 					} else if (result == 0) {
@@ -97,7 +97,7 @@ namespace pbcare
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -2));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
-						pbcareApp.Database.updateIsPregnant(1);
+						pbcareApp.Database.update_IsPregnant(1);
 						pbcareApp.u.isPregnant = 1;
 						//Navigation.PopAsync ();
 
@@ -143,7 +143,7 @@ namespace pbcare
 					string DueDateDisplay = d + "/" + m + "/" + y; 
 
 					// the result from [AddPregnancyToDB] method will return numbers, each one has a meaning
-					int result = pbcareApp.Database.AddPregnancyToDB (pbcareApp.u.Email,DueDateDisplay );
+					int result = pbcareApp.Database.AddPregnancy (pbcareApp.u.Email,DueDateDisplay );
 					if (result == -1) {
 						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
 					} else if (result == 0) {
@@ -158,7 +158,7 @@ namespace pbcare
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -2));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
-						pbcareApp.Database.updateIsPregnant(1);
+						pbcareApp.Database.update_IsPregnant(1);
 
 						pbcareApp.u.isPregnant = 1;
 						//Navigation.PopAsync ();

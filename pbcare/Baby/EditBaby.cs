@@ -7,7 +7,7 @@ namespace pbcare
 {
 	public class EditBaby : ContentPage
 	{
-		public EditBaby (Child c)
+		public EditBaby (Baby c)
 		{
 			
 			Title = "تعـــديل "+ c.ChildName ;
@@ -66,21 +66,21 @@ namespace pbcare
 
 			saveButton.Clicked += (sender, e) => {
 				if (!string.IsNullOrWhiteSpace (nameEntry.Text) && gender.SelectedIndex != -1) {
-					Child baby = new Child{
+					Baby baby = new Baby{
 						mother = pbcareApp.u.Email,
 						ChildName = nameEntry.Text,
 						birthDate = birthdate.Date.ToString("ddMMyyyy") ,
 						gender = gender.Items [gender.SelectedIndex]
 					};
-					bool _check = pbcareApp.Database.RemoveBaby(c);
+					bool _check = pbcareApp.Database.RemoveChild(c);
 					bool check  = false ; 
 					if(_check){
-						check = pbcareApp.Database.AddChildToDB(baby);
+						check = pbcareApp.Database.AddChild(baby);
 					}
 					if (check) {
-						pbcareApp.Database.RemoveChildVaccinations(c.ChildName );
-						pbcareApp.Database.insertChildVaccinations(baby.ChildName);
-						var Vaccinations =  pbcareApp.Database.getVaccinationsFromDB();
+						pbcareApp.Database.delete_CV_Sechduale(c.ChildName );
+						pbcareApp.Database.set_CV_Sechduale(baby.ChildName);
+						var Vaccinations =  pbcareApp.Database.getVaccinationsList();
 
 						Navigation.PopAsync ();
 						for(int i = 0 ; i < Vaccinations.Count ; i++){

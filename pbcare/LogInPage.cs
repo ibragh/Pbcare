@@ -78,7 +78,7 @@ namespace pbcare
 					pbcareApp.IsUserLoggedIn = true;
 					pbcareApp.MyNavigation.PopModalAsync ();
 					pbcareApp.u.Email = Email;
-					pbcareApp.Database.InsertUserLoggedin (true);
+					pbcareApp.Database.User_Loggedin (true);
 
 				} else {
 					messageLogin.Text = "فشل تسجيل الدخول .. الرجاء ال";

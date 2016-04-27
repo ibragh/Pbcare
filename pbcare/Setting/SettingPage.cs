@@ -66,7 +66,7 @@ namespace pbcare
 		{
 			var answer = await DisplayAlert ("تسجيل الخروج ", "هل تريد تأكيد تسجيل الخروج ؟ ", "نعم", "لا");
 			if (answer == true) {
-				pbcareApp.Database.InsertUserLoggedin (false);
+				pbcareApp.Database.User_Loggedin (false);
 				pbcareApp.IsUserLoggedIn = false; 
 				await Navigation.PopToRootAsync ();
 				await Navigation.PushModalAsync (new pbcareMainPage ());
@@ -177,7 +177,7 @@ namespace pbcare
 				saveNameButton.Clicked += (sender, e) => {
 					if (!string.IsNullOrWhiteSpace (nameEntry.Text)) {
 						pbcareApp.u.name = nameEntry.Text;
-						pbcareApp.Database.updateUserName (nameEntry.Text);
+						pbcareApp.Database.update_UserName (nameEntry.Text);
 						Navigation.PopAsync ();
 						DisplayAlert ("  تم", "  تغيير الاسم إلى" + nameEntry.Text, "موافق");
 	
@@ -232,7 +232,7 @@ namespace pbcare
 	
 				savePassButton.Clicked += (sender, e) => {
 					if (!string.IsNullOrWhiteSpace (passwordEntry.Text) && passConfirm.Text.Equals (passwordEntry.Text)) {
-						pbcareApp.Database.updatePassword (passwordEntry.Text);
+						pbcareApp.Database.update_Password (passwordEntry.Text);
 						DisplayAlert (" تم", " تغيير كلمة المرور ", "موافق");
 						Navigation.PopAsync ();
 

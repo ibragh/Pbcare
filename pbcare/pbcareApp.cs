@@ -8,6 +8,23 @@ namespace pbcare
 	
 	public class pbcareApp : Application
 	{
+		public static bool IsUserLoggedIn { get; set; }
+
+		public static DateTime FinaldueDate  { get; set; } 
+
+		public static User u = new User ();
+
+		static DatabaseClass database;
+		public static DatabaseClass Database {
+			get { 
+				if (database == null) {
+					database = new DatabaseClass ();
+				} 
+				return database;
+
+			}
+		}
+
 		public static INavigation MyNavigation { get; set; }
 
 		public static Page GetMainPage ()
@@ -22,26 +39,7 @@ namespace pbcare
 			MainPage = GetMainPage ();
 		}
 
-		public static bool IsUserLoggedIn { get; set; }
 
-		public static DateTime FinaldueDate  { get; set; } 
-
-		public static User u = new User ();
-
-
-
-
-		static DatabaseClass database;
-		public static DatabaseClass Database {
-			get { 
-				if (database == null) {
-					database = new DatabaseClass ();
-				} 
-				return database;
-
-			}
-		}
-			
 		protected override void OnStart ()
 		{
 			// Handle when your app starts

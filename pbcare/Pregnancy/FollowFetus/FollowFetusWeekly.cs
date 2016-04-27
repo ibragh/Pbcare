@@ -18,7 +18,7 @@ namespace pbcare
 			for (int i = 1; i < info.Length; i++) {
 
 				// get the Fetus weekly info from local database
-				info [i] = pbcareApp.Database.InsertIntoFetusWeekly (i);
+				info [i] = pbcareApp.Database.getFetusWeeks (i);
 			}
 			WeeklyInfo[] pregnancyWeek = new WeeklyInfo[41];
 			for (int i = 1; i < pregnancyWeek.Length; i++) {

@@ -60,7 +60,7 @@ namespace pbcare
 			FollowPregnancy.Clicked += FollowPregnancyWeeklyClicked;
 			FollowFetusImages.Clicked += FollowFetusByImagesClicked;
 			FollowFetusWeekly.Clicked += FollowFetusWeeklyClicked;
-			finishPreg_.Clicked += OnAlertYesNoClicked ;
+			finishPreg_.Clicked += Pregnancy_Finished ;
 
 		}
 
@@ -107,22 +107,23 @@ namespace pbcare
 			}
 		}
 
-		async void OnAlertYesNoClicked (object sender, EventArgs e)
+		async void Pregnancy_Finished (object sender, EventArgs e)
 		{
 			var answer = await DisplayAlert ("تمت الولادة  ", "هل أنتي متأكدة من إنهاء جميع معلومات الحمل الحالي و أن الولادة قد تمت ؟ ", "نعم", "لا");
 			Debug.WriteLine ("Answer: " + answer);
 
 			if (answer == true) {
 				pbcareApp.u.isPregnant = 0;
-				pbcareApp.Database.updateIsPregnant (0);
+				pbcareApp.Database.update_IsPregnant (0);
 				pbcareApp.Database.removeDueDate ();
-				var cancel = await DisplayAlert (" ألف مبــروك", "حمداً لله على سلامتك يا  " + pbcareApp.u.name, "إلغاء", "إضافة مولود");
+				var cancel = await DisplayAlert (" ألف مبــروك و الحمدلله على سلامتك يا "+ pbcareApp.u.name ,"هل تريدين إضافة مولودك ؟ ", "لا", "نــعم ");
 				if (!cancel) {
 					await Navigation.PushAsync (new AddBaby ());
+				} else {
+					OnAppearing ();
 				}
-			}
 		}
-
+		}
 		protected override void OnAppearing()
 		{
 			

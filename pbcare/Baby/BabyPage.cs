@@ -23,7 +23,7 @@ namespace pbcare
 			childrenList.SeparatorColor = Color.White;
 			childrenList.BackgroundColor = Color.Transparent;
 			childrenList.ItemTapped += (Sender, Event) => {
-				Child c = (Child)Event.Item;
+				Baby c = (Baby)Event.Item;
 				if(Locked){
 					
 					EditChild (c); 
@@ -69,7 +69,7 @@ namespace pbcare
 
 		}
 		
-		async void EditChild(Child c ){
+		async void EditChild(Baby c ){
 			
 			Locked = false;
 			var answer = await DisplayActionSheet  (c.ChildName , "إلغاء" , null , "تعديل", "حــذف");
@@ -82,7 +82,7 @@ namespace pbcare
 				var isDeleted = await DisplayAlert (" حــذف "+c.ChildName , "هل تريد تأكيد حــذف "+c.ChildName+" ؟ ", "نعم", "لا");
 
 				if (isDeleted)
-					pbcareApp.Database.RemoveBaby (c);
+					pbcareApp.Database.RemoveChild (c);
 				}	
 			Locked = true;
 			OnAppearing ();
@@ -91,7 +91,7 @@ namespace pbcare
 		protected override void OnAppearing ()
 		{			
 			base.OnAppearing ();
-			var childrenNum = pbcareApp.Database.getChildrenFromDB(pbcareApp.u.Email);
+			var childrenNum = pbcareApp.Database.getChildren(pbcareApp.u.Email);
 			childrenList.ItemsSource = childrenNum;
 
 			Image c = new Image {

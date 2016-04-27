@@ -13,12 +13,12 @@ namespace pbcare
 		ListView vaccinationList = new ListView {
 			RowHeight = 40
 		};
-		public VaccinationList (Child c)
+		public VaccinationList (Baby c)
 		{
 			this.Title = "تطعيمات "+ c.ChildName ;
 			BackgroundColor = Color.FromRgb (94, 196, 225);
 
-			Vaccinations =  pbcareApp.Database.getVaccinationsFromDB();
+			Vaccinations =  pbcareApp.Database.getVaccinationsList();
 		
 			vaccinationList.ItemsSource = Vaccinations;
 			vaccinationList.ItemTemplate = new DataTemplate (typeof(EveryVaccinationCell));
@@ -55,7 +55,7 @@ namespace pbcare
 		Label VName, isTakenLabel ;
 		Button isTakenButton ;
 		vaccinationTable V ;
-		public VaccinationInfoView (vaccinationTable v, Child c)
+		public VaccinationInfoView (vaccinationTable v, Baby c)
 		{
 			this.V = v;
 			this.Title = "تطعيمات "+ c.ChildName ;
@@ -86,7 +86,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label))
 			};
 
-			bool isTaken = pbcareApp.Database.getVaccinaton (V.VaccinationID, c.ChildName);
+			bool isTaken = pbcareApp.Database.is_vaccination_taken (V.VaccinationID, c.ChildName);
 
 			if(isTaken == true){
 				isTakenButton.Image = "right.png";
@@ -101,13 +101,13 @@ namespace pbcare
 
 			isTakenButton.Clicked += (sender, e) => {
 				if(isTaken == true){
-					pbcareApp.Database.updateIsTaken(false, V.VaccinationID, c.ChildName);
+					pbcareApp.Database.update_IsTaken(false, V.VaccinationID, c.ChildName);
 					isTakenButton.Image = "X.png";
 					isTakenButton.BackgroundColor = Color.Transparent;
 					isTakenLabel.Text = "لم يتم أخذها";
 					isTaken = false;
 				}else{
-					pbcareApp.Database.updateIsTaken(true, V.VaccinationID, c.ChildName);
+					pbcareApp.Database.update_IsTaken(true, V.VaccinationID, c.ChildName);
 					isTakenButton.Image = "right.png";
 					isTakenButton.BackgroundColor = Color.Transparent;
 					isTakenLabel.Text = "تم أخذها";
