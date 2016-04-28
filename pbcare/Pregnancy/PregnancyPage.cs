@@ -12,9 +12,12 @@ namespace pbcare
 		Button AddPregnancy, FollowPregnancy, FollowFetusImages, FollowFetusWeekly, finishPreg_  ;
 		Image s = new Image { Source = "notPregnant2.png" };
 
+
 		public PregnancyPage ()
 		{
 			this.Title = "حملي";
+
+
 			BackgroundColor = Color.FromRgb (94, 196, 225);
 			AddPregnancy = new Button {
 				Text = "إضافة حمل",
@@ -66,6 +69,11 @@ namespace pbcare
 			FollowFetusWeekly.Clicked += FollowFetusWeeklyClicked;
 			finishPreg_.Clicked += Pregnancy_Finished ;
 
+		}
+
+		public void ShowSettingsPage(object sender, EventArgs e)
+		{
+			Navigation.PushAsync(new SettingPage());
 		}
 
 		/* Calculate Current Week */
@@ -133,6 +141,16 @@ namespace pbcare
 			base.OnAppearing ();
 	
 			if(pbcareApp.u.isPregnant == 0){
+				Label message = new Label {
+					Text = "مرحـــبا " + pbcareApp.u.name + " ...",
+					TextColor = Color.White,
+					HorizontalOptions = LayoutOptions.Center
+				};
+				Label message2 = new Label {
+					Text = "لا يوجد حمل مسجل ...                \n تستطيعي تسجيل حملك بالضغط على زر الإضافة",
+					TextColor = Color.White,
+					HorizontalOptions = LayoutOptions.Center
+				};
 
 				Content = new StackLayout {
 					HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -140,11 +158,10 @@ namespace pbcare
 					Padding = new Thickness (20, 50 ,20 , 30),
 					Spacing = 20 ,
 					Children = {
+						message,
+						message2,
 						s , 
 						AddPregnancy,
-						new Label {
-							Text = pbcareApp.u.isPregnant + ""
-						}
 					}
 				};
 

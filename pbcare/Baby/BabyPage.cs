@@ -11,7 +11,7 @@ namespace pbcare
 		ListView childrenList = new ListView {
 			RowHeight = 60
 		};
-		bool Locked = true ;
+		bool Locked = false ;
 
 		public BabyPage()
 		{
@@ -24,17 +24,14 @@ namespace pbcare
 			childrenList.SeparatorColor = Color.White;
 			childrenList.BackgroundColor = Color.Transparent;
 			childrenList.ItemTapped += (Sender, Event) => {
+				
 				Baby c = (Baby)Event.Item;
-				if(Locked){
-					
+				if(!Locked){
+					Locked = true;
 					EditChild (c); 
 				}
 			};
-
-			childrenList.ItemSelected +=  (Sender, Event) => {
-				((ListView)Sender).SelectedItem = null; 
-			};
-
+				
 			AddChild = new Button {
 				Text = " + ",
 				FontAttributes = FontAttributes.None,
@@ -54,8 +51,11 @@ namespace pbcare
 
 
 			AddChild.Clicked += (sender, e) => {
-				Navigation.PushAsync(new AddBaby());
-
+				if(!Locked)
+				{
+					Locked = true;
+					pushAddBaby(); 
+				}
 			};
 
 		}
@@ -65,27 +65,32 @@ namespace pbcare
 		{
 			DateTime birthDate = DateTime.ParseExact (birth , "ddMMyyyy", null);
 			TimeSpan difference = DateTime.Now.AddDays (-1) - birthDate ;
-			double PastDays = ((int)difference.TotalDays ); 
+			double PastDays = ((int)difference.TotalDays );
+			if(PastDays == 0){
+				return 1;
+			}else{
 			return (int)Math.Ceiling ((PastDays/30) );
-
-		}
-		
-		async void EditChild(Baby c ){
-			
-			Locked = false;
-			var answer = await DisplayActionSheet  (c.ChildName , "إلغاء" , null , "تعديل", "حــذف");
-
-			if(answer.Equals("تعديل")){
-				await Navigation.PushAsync (new EditBaby (c));
 			}
 
-			else if(answer.Equals("حــذف")){
-				var isDeleted = await DisplayAlert (" حــذف "+c.ChildName , "هل تريد تأكيد حــذف "+c.ChildName+" ؟ ", "نعم", "لا");
+		}
+		async void pushAddBaby(){
+			await Navigation.PushAsync(new AddBaby());
+			Locked = false ;
+		}
+		async void EditChild(Baby c ){
+			var answer = await DisplayActionSheet  (c.ChildName , "إلغاء" , null , "تعديل", "حــذف");
 
-				if (isDeleted)
-					pbcareApp.Database.RemoveChild (c);
+			if (answer.Equals ("تعديل")) {
+				await Navigation.PushAsync (new EditBaby (c));
+			} else if (answer.Equals ("حــذف")) {
+				var isDeleted = await DisplayAlert (" حــذف " + c.ChildName, "هل تريد تأكيد حــذف " + c.ChildName + " ؟ ", "نعم", "لا");
+
+				if (isDeleted){
+					pbcareApp.Database.RemoveChild (c.ChildName);
+					pbcareApp.Database.delete_CV_Sechduale (c.ChildName);
+			}
 				}	
-			Locked = true;
+			Locked = false;
 			OnAppearing ();
 		}
 

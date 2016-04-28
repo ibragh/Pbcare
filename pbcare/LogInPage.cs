@@ -60,7 +60,6 @@ namespace pbcare
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
 				HeightRequest = 50 ,
-				StyleId = "LoginButton"
 			};
 
 			LoginButton.Clicked += (sender, e) => {
@@ -78,11 +77,14 @@ namespace pbcare
 					User loggedUser = pbcareApp.Database.get_User(pbcareApp.u.Email);
 					pbcareApp.u.name = loggedUser.name;
 					pbcareApp.u.isPregnant = loggedUser.isPregnant;
+					pbcareApp.u.isSensorOn = loggedUser.isSensorOn;
 					messageLogin.TextColor = Color.Green;
 					messageLogin.Text = "تم تسجيل الدخول بنجاح"; 
 					pbcareApp.IsUserLoggedIn = true;
 					pbcareApp.Database.User_Loggedin (true);
-					pbcareApp.MyNavigation.PopModalAsync ();
+
+					Application.Current.MainPage = pbcareApp.GetMainPage();
+
 				} else {
 					messageLogin.Text = "فشل تسجيل الدخول .. الرجاء ال";
 
@@ -90,30 +92,35 @@ namespace pbcare
 			};
 
 			Content = new ScrollView{
-				
+
 				Content = new StackLayout { 
-				Orientation = StackOrientation.Vertical,
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				Padding = new Thickness (30, 60, 30, 15),
+					Orientation = StackOrientation.Vertical,
+					VerticalOptions = LayoutOptions.FillAndExpand,
+					Padding = new Thickness (30, 60, 30, 15),
 					HorizontalOptions = LayoutOptions.FillAndExpand,
-				Children = {
-						
+					Children = {
+
 						i, empty, emailEntry, passwordEntry, LoginButton,
 						new StackLayout {
-						Padding = new Thickness (0, 30, 0, 30),
-						Children = {
+							Padding = new Thickness (0, 30, 0, 30),
+							Children = {
 								messageLogin , 
-						}
-					},
+							}
+						},
 
 						sinUpButton
-				}
+					}
 				}
 			};
 		}
 
 		protected override void OnAppearing ()
 		{
+			if (pbcareApp.Database.checkUserLoggedin ()) {
+				
+					Application.Current.MainPage = pbcareApp.GetMainPage();
+
+			} 
 			base.OnAppearing ();
 			NavigationPage.SetHasNavigationBar (this, false); 
 		}

@@ -12,17 +12,27 @@ namespace pbcare
 			RowHeight = 50  
 		};
 		List<settingClass> settingList = new List<settingClass> ();	
-
+		Label sensorStatus = new Label{
+			FontAttributes = FontAttributes.Bold,
+			FontSize = Device.GetNamedSize(NamedSize.Small,typeof(Label)),
+			HorizontalOptions = LayoutOptions.Center,
+			VerticalOptions = LayoutOptions.CenterAndExpand,
+		};
+		bool Locked = false ;
 		public SettingPage ()
 		{
 			StyleId = "SettingPage";
 			Title = "الإعدادات";
 			BackgroundColor = Color.FromRgb (94, 196, 225);
-
+			settingClass sensor_on;
+			sensor_on = new settingClass ("جهاز الإستشعار", 3);
 
 			settingList.Add (new settingClass ("تغيير الاسم", 1));
 			settingList.Add (new settingClass ("تغيير كلمة المرور", 2));
-			settingList.Add (new settingClass ("عن تطبـيقنا",3));
+			if (Device.OS == TargetPlatform.Android) {
+				settingList.Add (sensor_on);
+			}
+			settingList.Add (new settingClass ("عن تطبـيقنا",4));
 
 			setting.ItemsSource = settingList;
 			setting.ItemTemplate = new DataTemplate (typeof(everyCell));
@@ -30,12 +40,19 @@ namespace pbcare
 			setting.SeparatorColor = Color.White;
 
 			setting.ItemTapped += (Sender, Event) => {
+				if(!Locked)
+				{
+				Locked = true;
 				var selceted = (settingClass)Event.Item;
-				var settingView = new settingView (selceted);
-				Navigation.PushAsync (settingView);
+				if(selceted.number == 3){
+					sensor_Confirm();
 
+				}else{
+					var settingView = new settingView (selceted);
+					Navigation.PushAsync (settingView);
+				}
+				}
 			};
-
 
 			var logOutButton = new Button {
 				Text = " تسجيل خــــروج ",
@@ -53,15 +70,26 @@ namespace pbcare
 
 			logOutButton.Clicked += OnAlertYesNoClicked;
 
-			Content = new StackLayout {
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				Padding = new Thickness (10, 20, 10, 53),
-				Children = {  
-					setting,
-					logOutButton
-				}
-			};
-
+			if (Device.OS == TargetPlatform.Android) {
+				Content = new StackLayout {
+					VerticalOptions = LayoutOptions.FillAndExpand,
+					Padding = new Thickness (10, 20, 10, 53),
+					Children = {  
+						setting,
+						sensorStatus,
+						logOutButton
+					}
+				};
+			}else{
+				Content = new StackLayout {
+					VerticalOptions = LayoutOptions.FillAndExpand,
+					Padding = new Thickness (10, 20, 10, 53),
+					Children = {  
+						setting,
+						logOutButton
+					}
+				};
+			}
 		}
 
 		async void OnAlertYesNoClicked (object sender, EventArgs e)
@@ -72,13 +100,43 @@ namespace pbcare
 				pbcareApp.IsUserLoggedIn = false; 
 				pbcareApp.u.isPregnant = 0;
 				pbcareApp.u.Email = null;
-				await Navigation.PopToRootAsync ();
-				await Navigation.PushModalAsync (new pbcareMainPage ());
+				Application.Current.MainPage = new LogInPage ();
+
 			} 
 		}
 
+		async void sensor_Confirm(){
+			if (pbcareApp.u.isSensorOn == 0) {
+				var answer = await DisplayAlert ("تفعيل جهاز الإستشعار؟", "هل تريد تفعيل جهاز الإستشعار ؟", "نعم", "لا");
+				if (answer) {
+					pbcareApp.u.isSensorOn = 1;
+					pbcareApp.Database.updateSensorOn (1);
+					sensorStatus.Text = "جهاز الإستشعار مفعل";
+					sensorStatus.TextColor = Color.White;
+					Application.Current.MainPage = new pbcareMainPage ();
+				}
+			}else{
+				var answer = await DisplayAlert ("تفعيل جهاز الإستشعار؟", "هل تريد إلغاء تفعيل جهاز الإستشعار ؟", "نعم", "لا");
+				if (answer) {
+					pbcareApp.u.isSensorOn = 0;
+					pbcareApp.Database.updateSensorOn (0);
+					sensorStatus.Text = "جهاز الاستشعار غير مفعل";
+					sensorStatus.TextColor = Color.Red;
+					Application.Current.MainPage = new pbcareMainPage ();
+				}
+			}
+			Locked = false; 
+		}
+			
 		protected override void OnAppearing (){
-
+			Locked = false; 
+			if (pbcareApp.u.isSensorOn == 1 && pbcareApp.IsUserLoggedIn == true) {
+				sensorStatus.Text = "جهاز الإستشعار مفعل";
+				sensorStatus.TextColor = Color.White;
+			} else if(pbcareApp.u.isSensorOn == 0 && pbcareApp.IsUserLoggedIn == true){
+				sensorStatus.Text = "جهاز الإستشعار غير مفعل";
+				sensorStatus.TextColor = Color.Red;
+			}
 			base.OnAppearing ();
 		}
 	}
@@ -183,7 +241,7 @@ namespace pbcare
 						pbcareApp.u.name = nameEntry.Text;
 						pbcareApp.Database.update_UserName (nameEntry.Text);
 						Navigation.PopAsync ();
-						DisplayAlert ("  تم", "  تغيير الاسم إلى" + nameEntry.Text, "موافق");
+						DisplayAlert ("تـــم","تغيير الاسم إلى   "+nameEntry.Text ,"موافق");
 	
 					} else {
 						DisplayAlert ("خطأ", "لم يتم إدخال أي اسم", "إلغاء");
@@ -255,49 +313,33 @@ namespace pbcare
 						Children = { yourPass, passwordEntry, confYourPass, passConfirm, savePassButton, CancelButton }
 					}
 				};
-				// ------------ Setting Cell Number 3
-			} else if (selectedSetting.number == 2) {
-
-				var Copyright = new Label {
-					Text = "This Project is Done By",
-					FontSize = 35,
-					HorizontalOptions = LayoutOptions.Center,
-					TextColor = Color.White
+				// ------------ Setting Cell Number 4
+			} else if (selectedSetting.number == 4) {
+				
+				Image i = new Image{ 
+					Source= "mainBLogo2.png"
 				};
 				var Copyright1 = new Label {
-					Text = "Saud Alqarni \nIbrahim Alghamdi",
-					FontSize = 30,
+					Text = "Prgnancy & Baby care application allows mothers to make sure that their health states during pregnancy period are fine. It will be based on the information of the normal pregnancy that every woman should go through.These information include aspects of the fetus development every week, and a general health education about every stage of pregnancy. The application contains also calculation of the due date, reminders of the important events, such as vaccination for child in a particular time that will be defined directly through the application itself. Calculation of vaccination appointment is based on birthday of the child. The application also allows a mother to follow-up the natural status from the birth to 1 year old, which will be helpful in observing the growth of the baby. In addition, the application can alarm the mother if her child came out of bedroom.",
+					FontSize = Device.GetNamedSize(NamedSize.Small,typeof(Label)),
 					HorizontalOptions = LayoutOptions.Center,
 					TextColor = Color.White
 				};
 				var Copyright2 = new Label {
-					Text = "2016",
-					FontSize = 20,
+					Text = "(C) 2016 Ibrahim Alghamdi and Saud AlQarni ALL RIGHTS RESERVED",
 					HorizontalOptions = LayoutOptions.Center,
-					TextColor = Color.White
+					TextColor = Color.White,
+					FontSize = Device.GetNamedSize(NamedSize.Micro,typeof(Label)),
 				};
 				this.Content = new ScrollView {
 					Content = new StackLayout {
 						VerticalOptions = LayoutOptions.FillAndExpand,
-						Padding = 20,
-						Children = { Copyright, Copyright1 , Copyright2}
+						Padding = 15,
+						Spacing = 20,
+						Children = { i , Copyright1 , Copyright2}
 					}
 				};
-			} else if(selectedSetting.number == 3){
-				this.Content = new ScrollView {
-					Content = new StackLayout {
-						HorizontalOptions = LayoutOptions.Center,
-						Padding = 20,
-						Children = {
-							new Label {
-								Text = "معـــلومات عن  التطبيق ",
-								TextColor = Color.White,
-								FontSize = Device.GetNamedSize(NamedSize.Large ,typeof(Label))
-							}
-						}
-					}
-				};
-			}
+			} 
 		}
 	}
 

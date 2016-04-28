@@ -52,7 +52,7 @@ namespace pbcare
 				HorizontalOptions = LayoutOptions.End
 
 			};
-//===========================================================================
+			//===========================================================================
 			var usernameEntry = new Entry1 {
 				TextColor = Color.FromHex("#5069A1"),
 			};
@@ -88,13 +88,13 @@ namespace pbcare
 			};
 
 			SignUpButton.Clicked += (sender, e) => {
-				
+
 				string Email = emailEntry.Text;
 				string pwd = passwordEntry.Text;
 				string pwdCon = passwordConfirmEntry.Text;
 				string name = usernameEntry.Text;
 				if (string.IsNullOrWhiteSpace (Email) || string.IsNullOrWhiteSpace (pwd) ||
-				    string.IsNullOrWhiteSpace (pwdCon) || string.IsNullOrWhiteSpace (name)) {
+					string.IsNullOrWhiteSpace (pwdCon) || string.IsNullOrWhiteSpace (name)) {
 					messageSignUp.Text = "فضلاً املأ الفراغات"; // please fill all fields
 				} else if (!Email.Contains ("@")) {
 					messageSignUp.Text = "فضلاً .. تأكد من كتابة الإيميل بشكل صحيح"; // please .. type your Email correctly
@@ -105,6 +105,7 @@ namespace pbcare
 						pbcareApp.u.Email = Email;
 						pbcareApp.u.name = name;
 						pbcareApp.u.isPregnant = 0 ;
+						pbcareApp.u.isSensorOn = 0 ;
 						pbcareApp.IsUserLoggedIn = true;
 						messageSignUp.TextColor = Color.Green;
 						messageSignUp.Text = "تم تسجيل الدخول بنجاح"; 
@@ -131,22 +132,22 @@ namespace pbcare
 							}
 						},
 						new StackLayout {
-								Padding = 20 ,
-								HorizontalOptions = LayoutOptions.FillAndExpand,
-								Spacing = 7, 
-								Children = {
-									NameLabel,
-									usernameEntry,
-									EmailLabel,
-									emailEntry,
-									PassLabel,
-									passwordEntry,
-									ConfirmPassLabel,
-									passwordConfirmEntry,
-									SignUpButton,
-									messageSignUp
-								}
+							Padding = 20 ,
+							HorizontalOptions = LayoutOptions.FillAndExpand,
+							Spacing = 7, 
+							Children = {
+								NameLabel,
+								usernameEntry,
+								EmailLabel,
+								emailEntry,
+								PassLabel,
+								passwordEntry,
+								ConfirmPassLabel,
+								passwordConfirmEntry,
+								SignUpButton,
+								messageSignUp
 							}
+						}
 					}
 				}
 			};

@@ -7,7 +7,7 @@ namespace pbcare
 {
 	public class VaccinationList : ContentPage
 	{
-		bool isclicked = true ;
+		bool Locked = false ;
 
 		public static List<vaccinationTable> Vaccinations = new List<vaccinationTable>(); 
 		ListView vaccinationList = new ListView {
@@ -26,9 +26,9 @@ namespace pbcare
 			vaccinationList.SeparatorColor = Color.White;
 			vaccinationList.ItemTapped +=  (Sender, Event) => {
 				
-				if(isclicked)
+				if(!Locked)
 				{
-					isclicked = false;
+					Locked = true;
 					var V = (vaccinationTable)Event.Item;
 					Navigation.PushAsync(new VaccinationInfoView(V, c));
 				}
@@ -45,7 +45,7 @@ namespace pbcare
 
 		protected override void OnAppearing ()
 		{
-			isclicked = true ;
+			Locked = false ;
 		}
 	}
 

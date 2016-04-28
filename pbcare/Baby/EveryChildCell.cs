@@ -6,6 +6,7 @@ namespace pbcare
 {
 	public class EveryChildCell : ViewCell
 	{
+		bool Locked = false ;
 		public static INavigation Navigation { get; set; }
 		public EveryChildCell ()
 		{
@@ -42,11 +43,13 @@ namespace pbcare
 
 			info.SetBinding(Button.CommandParameterProperty, "ChildName");
 			info.Clicked += (sender, e) => {
-				var b = (Button) sender;
-				var t = b.CommandParameter;
-				Baby c = pbcareApp.Database.getChildInfo(t+"" , pbcareApp.u.Email);
-				((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new FollowBabyMonthly(c));
-
+				if(!Locked){
+					Locked = true ;
+					var b = (Button) sender;
+					var t = b.CommandParameter;
+					Baby c = pbcareApp.Database.getChildInfo(t+"" , pbcareApp.u.Email);
+					((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new FollowBabyMonthly(c));
+				}
 			};
 			var vacc = new Button { 
 				Image = "vaccinationLogo.png",
@@ -60,10 +63,13 @@ namespace pbcare
 
 			vacc.SetBinding(Button.CommandParameterProperty, "ChildName");
 			vacc.Clicked += (sender, e) => {
-				var b = (Button)sender;
-				var t = b.CommandParameter;
-				Baby c = pbcareApp.Database.getChildInfo (t + "", pbcareApp.u.Email);
-				((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new VaccinationList(c));
+				if(!Locked){
+					Locked = true ;
+					var b = (Button)sender;
+					var t = b.CommandParameter;
+					Baby c = pbcareApp.Database.getChildInfo (t + "", pbcareApp.u.Email);
+					((ListView)((StackLayout)b.ParentView).ParentView).Navigation.PushAsync(new VaccinationList(c));
+				}
 			};
 
 			View = new StackLayout {
@@ -83,6 +89,11 @@ namespace pbcare
 
 				}
 			};
+		}
+
+		protected override void OnAppearing ()
+		{
+			Locked = false ; 
 		}
 	}
 }

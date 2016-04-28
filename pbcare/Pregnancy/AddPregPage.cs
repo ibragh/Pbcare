@@ -51,7 +51,9 @@ namespace pbcare
 			var dueDate = new DatePicker1 {
 				Format = "D",
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				StyleId = "DueDate"
+				StyleId = "DueDate",
+				MaximumDate = DateTime.Now.AddDays(280),
+				MinimumDate = DateTime.Today
 			};
 			Button AddDueDate = new Button {
 				Text = " اضافة تاريخ الولادة المتوقع", 
@@ -65,13 +67,7 @@ namespace pbcare
 
 			String DueDateText;
 			AddDueDate.Clicked += (sender, e) => {
-				/* check if data is within a valid pregnancy date 
-				 * not before a ten mothns from the current date ,
-				 * AND not after ten months from the current date 
-				 */
-				if (dueDate.Date < DateTime.Now.AddDays (-1) || dueDate.Date > DateTime.Now.AddMonths (11)) {
-					DisplayAlert ("خطأ", "يجب أن يكون موعد الولادة المتوقع صحيحاً", "تم");
-				} else {
+				
 					pbcareApp.FinaldueDate = dueDate.Date; /* Save data for farther use */
 					int CurrentWeek = PregnancyPage.CurrentWeek(dueDate.Date); // for testing
 					//  convert date to formatted string for DB 
@@ -100,7 +96,7 @@ namespace pbcare
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
 						pbcareApp.Database.update_IsPregnant(1);
 						pbcareApp.u.isPregnant = 1;
-						//Navigation.PopAsync ();
+						Navigation.PopAsync ();
 
 
 					} else {
@@ -108,14 +104,15 @@ namespace pbcare
 						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
 
 					}
-				}
 			};
 //===============================================================================
 			//Calculate DueDate !!!
 
 			var firstPregnancyDate = new DatePicker1 {
 				Format= "D",
-				VerticalOptions = LayoutOptions.Center
+				VerticalOptions = LayoutOptions.Center,
+				MaximumDate = DateTime.Today,
+				MinimumDate = DateTime.Now.AddDays(-280)
 			};
 			Button CalculateButton = new Button {
 				Text = "احسب تاريخ الولادة المتوقع",
@@ -133,10 +130,7 @@ namespace pbcare
 			};
 
 			CalculateButton.Clicked += (sender, e) =>  {
-				if (firstPregnancyDate.Date > DateTime.Now.AddDays (-1) || firstPregnancyDate.Date < DateTime.Now.AddMonths (-9)) {
-					DisplayAlert ("خطأ", "يجب أن يكون موعد التاريخ صحيحا ", "تم");
-				}else{
-					
+				
 					DateTime expectedDueDate = firstPregnancyDate.Date.AddDays(280);
 					pbcareApp.FinaldueDate = expectedDueDate.Date; 
 					int currentWeek = PregnancyPage.CurrentWeek(expectedDueDate.Date);
@@ -160,9 +154,8 @@ namespace pbcare
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
 						pbcareApp.Database.update_IsPregnant(1);
-
 						pbcareApp.u.isPregnant = 1;
-						//Navigation.PopAsync ();
+						Navigation.PopAsync ();
 
 
 					} else {
@@ -170,7 +163,6 @@ namespace pbcare
 						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
 
 					}
-				}
 			};
 				
 //===============================================================================================

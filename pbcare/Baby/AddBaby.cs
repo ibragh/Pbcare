@@ -44,7 +44,10 @@ namespace pbcare
 				HorizontalOptions = LayoutOptions.End,
 			};
 
-			var birthdate = new DatePicker1 ();
+			var birthdate = new DatePicker1 {
+				MaximumDate = DateTime.Today,
+				MinimumDate = DateTime.Now.AddDays(-365)
+			};
 
 			var saveButton = new Button {
 				Text = "حفظ البيانات",

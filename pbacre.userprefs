@@ -1,20 +1,38 @@
-﻿<Properties StartupItem="pbcare.Tests.iOS/pbcare.Tests.iOS.csproj" RefactoringSettings.EnableRefactorings="True">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Android" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\ISQLite\User.cs">
+﻿<Properties StartupItem="Droid\pbcare.Droid.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.047b5bf7" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\pbcareMainPage.cs">
     <Files>
-      <File FileName="pbcare\pbcareMainPage.cs" Line="1" Column="1" />
+      <File FileName="pbcare\pbcareMainPage.cs" Line="36" Column="34" />
       <File FileName="Droid\AudioService.cs" Line="1" Column="1" />
       <File FileName="pbcare\Setting\arduino_bt.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Setting\SettingPage.cs" Line="1" Column="1" />
+      <File FileName="pbcare\Setting\SettingPage.cs" Line="28" Column="39" />
       <File FileName="pbcare\Baby\FollowBaby\BabyMonthlyPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Baby\FollowBaby\FollowBabyMonthly.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Baby\BabyPage.cs" Line="12" Column="18" />
+      <File FileName="pbcare\Baby\BabyPage.cs" Line="1" Column="1" />
       <File FileName="pbcare\Baby\VaccinationList.cs" Line="1" Column="1" />
       <File FileName="pbcare\Baby\AddBaby.cs" Line="1" Column="1" />
       <File FileName="pbcare\pbcareApp.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Baby\Child.cs" Line="1" Column="1" />
       <File FileName="pbcare\ISQLite\User.cs" Line="1" Column="1" />
+      <File FileName="pbcare\Pregnancy\PregnancyPage.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="pbacre" expanded="True">
+            <Node name="pbcare" expanded="True">
+              <Node name="Baby" expanded="True" />
+              <Node name="ISQLite" expanded="True" />
+              <Node name="Pregnancy" expanded="True" />
+              <Node name="Setting" expanded="True" />
+              <Node name="pbcareMainPage.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>

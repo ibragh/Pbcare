@@ -51,7 +51,9 @@ namespace pbcare
 			};
 
 			var birthdate = new DatePicker1 {
-				Date = DateTime.ParseExact(c.birthDate , "ddMMyyyy", null)
+				Date = DateTime.ParseExact(c.birthDate , "ddMMyyyy", null),
+				MaximumDate = DateTime.Today,
+				MinimumDate = DateTime.Now.AddDays(-365)
 			};
 
 			var saveButton = new Button {
@@ -72,7 +74,8 @@ namespace pbcare
 						birthDate = birthdate.Date.ToString("ddMMyyyy") ,
 						gender = gender.Items [gender.SelectedIndex]
 					};
-					bool _check = pbcareApp.Database.RemoveChild(c);
+					if(!c.birthDate.Equals(baby.birthDate)){
+					bool _check = pbcareApp.Database.RemoveChild(c.ChildName);
 					bool check  = false ; 
 					if(_check){
 						check = pbcareApp.Database.AddChild(baby);
@@ -89,6 +92,17 @@ namespace pbcare
 						}
 					} else {
 						DisplayAlert ("خطأ", "لديك طفل مسجل مسبقا بنفس الاسم ", "إلغاء");
+					}
+					}else {
+						bool _check = pbcareApp.Database.RemoveChild(c.ChildName);
+						bool check  = false ; 
+						if(_check){
+							check = pbcareApp.Database.AddChild(baby);
+							Navigation.PopAsync ();
+							if(!check){
+								DisplayAlert ("خطأ", "لديك طفل مسجل مسبقا بنفس الاسم ", "إلغاء");
+							}
+						}
 					}
 				} else {
 					DisplayAlert ("خطأ", "معلومات الطفل غير كاملة", "إلغاء");

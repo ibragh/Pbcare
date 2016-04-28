@@ -48,13 +48,13 @@ namespace pbcare.Droid
 			LoadApplication (new pbcareApp ());
 		}
 
-		public override void OnBackPressed ()
-		{
-			// This prevents a user from being able to hit the back button and leave the login page.
-			if (pbcareApp.IsUserLoggedIn) {
-				base.OnBackPressed ();
-			}
-		}
+//		public override void OnBackPressed ()
+//		{
+//			// This prevents a user from being able to hit the back button and leave the login page.
+//			if (!pbcareApp.IsUserLoggedIn) {
+//				base.OnBackPressed ();
+//			}
+//		}
 	}
 }
 

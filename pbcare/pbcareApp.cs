@@ -11,9 +11,8 @@ namespace pbcare
 		public static bool IsUserLoggedIn { get; set; }
 
 		public static DateTime FinaldueDate  { get; set; } 
-
+		public static NavigationPage n;
 		public static User u = new User ();
-
 		static DatabaseClass database;
 		public static DatabaseClass Database {
 			get { 
@@ -30,13 +29,14 @@ namespace pbcare
 		public static Page GetMainPage ()
 		{
 			var p = new pbcareMainPage ();
+			var c = new NavigationPage (p);
 			MyNavigation = p.Navigation;
 			return p;
 		}
 
 		public pbcareApp ()
 		{
-			MainPage = GetMainPage ();
+			MainPage = new LogInPage ();
 		}
 
 
@@ -49,20 +49,12 @@ namespace pbcare
 
 		protected override void OnSleep ()
 		{
-			// Only for Android
-			if (Device.OS == TargetPlatform.Android) {
-			//	DependencyService.Get<IAudio> ().StopAlarm ();
-				//DependencyService.Get<IBth> ().Cancel ();
-			} 
+			
 		}
 
 		protected override void OnResume ()
 		{
-			// Only for Android
-			if (Device.OS == TargetPlatform.Android) {
-				//DependencyService.Get<IBth> ().Start ("HC-06");
-			} 
-
+			
 		}
 	}
 }

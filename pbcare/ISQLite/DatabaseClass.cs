@@ -25,7 +25,7 @@ namespace pbcare
 			DB.CreateTable<BabyMonthlyTable> ();
 			DB.CreateTable<ChildVaccinations> ();
 		}
-//=============================================================================================
+		//=============================================================================================
 		// User Methods 
 
 		// check if user is logged in previasly... will chgange it later
@@ -35,7 +35,7 @@ namespace pbcare
 			try {
 				if (DB.Table<UserLoggedIn> ().Where (i => i.loggedIn == 1).FirstOrDefault () != null) {
 					var RigrsterdUser = DB.Table<UserLoggedIn> ().Where (i => i.loggedIn == 1).FirstOrDefault ();
-				
+
 					Debug.WriteLine (" RigrsterdUser loggedIn *************** : " + RigrsterdUser.loggedIn.ToString ());
 
 					/* Retreve Email from Database */
@@ -114,6 +114,7 @@ namespace pbcare
 					u.Password = password;
 					u.name = name;
 					u.isPregnant = 0;
+					u.isSensorOn = 0 ;
 					DB.Insert (u);
 					return true;
 				}
@@ -152,7 +153,16 @@ namespace pbcare
 				Debug.WriteLine (ex.Message);
 			}
 		}
-// ============================================================================================================
+
+		public void updateSensorOn(int status){
+			try{
+				DB.Query<User> ("UPDATE User Set isSensorOn = ? WHERE email = ? ", status , pbcareApp.u.Email);
+
+			}catch(Exception ex){
+				Debug.WriteLine (ex.Message);
+			}
+		}
+		// ============================================================================================================
 		//Prgnancy Methods
 		public int AddPregnancy (string email, string date)
 		{
@@ -242,7 +252,7 @@ namespace pbcare
 
 
 		}
-//==============================================================================
+		//==============================================================================
 		// CHild Methods ...
 
 		public bool AddChild (Baby child)
@@ -259,9 +269,9 @@ namespace pbcare
 			}
 		}
 
-		public bool RemoveChild(Baby child){
+		public bool RemoveChild(string child){
 			try{
-				DB.Query<Baby> ("DELETE FROM Child WHERE ChildName = ? and mother = ? ", child.ChildName , pbcareApp.u.Email);
+				DB.Query<Baby> ("DELETE FROM Baby WHERE ChildName = ? and mother = ? ", child , pbcareApp.u.Email);
 				return true ; 
 
 			}catch(Exception ex){
@@ -301,7 +311,7 @@ namespace pbcare
 
 		public List<Baby> getChildren (string email)
 		{
-			
+
 			try {
 				return  DB.Table<Baby> ().Where (c => c.mother == email).ToList ();
 			} catch (Exception ex) {
@@ -310,7 +320,7 @@ namespace pbcare
 			}
 		}
 
-//===============================================================
+		//===============================================================
 		// vaccinations mthods ....
 
 		public List<vaccinationTable> getVaccinationsList ()
@@ -391,4 +401,3 @@ namespace pbcare
 
 	}
 }
-

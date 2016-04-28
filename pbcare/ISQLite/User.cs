@@ -5,7 +5,7 @@ using SQLite;
 
 namespace pbcare
 {
-	
+
 	public class User
 	{
 		public string Email { get; set; }
@@ -15,7 +15,9 @@ namespace pbcare
 		public string name { get; set; }
 
 		public int isPregnant { get; set; }
-	
+
+		public int isSensorOn { get; set; }
+
 
 		public User ()
 		{
