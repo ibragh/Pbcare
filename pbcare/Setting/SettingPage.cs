@@ -15,7 +15,8 @@ namespace pbcare
 
 		public SettingPage ()
 		{
-			this.Title = "الإعدادات";
+			StyleId = "SettingPage";
+			Title = "الإعدادات";
 			BackgroundColor = Color.FromRgb (94, 196, 225);
 
 
@@ -47,6 +48,7 @@ namespace pbcare
 				VerticalOptions = LayoutOptions.End,
 				FontAttributes = FontAttributes.Bold,
 				BorderRadius = 30,
+				StyleId = "LogoutButton"
 			};
 
 			logOutButton.Clicked += OnAlertYesNoClicked;

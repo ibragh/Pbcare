@@ -15,6 +15,7 @@ namespace pbcare
 
 		public BabyPage()
 		{
+			StyleId = "BabyPage";
 			Title = "أطفالي";
 
 			BackgroundColor = Color.FromRgb (94, 196, 225);

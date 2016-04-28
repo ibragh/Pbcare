@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace pbcare
 {
-	public class SignUpPage2 : ContentPage
+	public class SignUpPage : ContentPage
 	{
-		public SignUpPage2 ()
+		public SignUpPage ()
 		{
 			Title = "مستخدم جديــد";
 			BackgroundColor = Color.FromRgb (94, 196, 225);

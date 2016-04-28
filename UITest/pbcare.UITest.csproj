@@ -45,15 +45,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\pbcare\pbcare.csproj">
+      <Project>{04C091B7-A3D4-4270-9993-4E83C6F0C90A}</Project>
+      <Name>pbcare</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iOS\pbcare.iOS.csproj">
+      <Project>{BA820E99-6530-4A18-A453-7081115D96F9}</Project>
+      <Name>pbcare.iOS</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Droid\pbcare.Droid.csproj">
       <Project>{9131B6CF-0ACB-45D7-8058-6D95C85FC7FD}</Project>
       <Name>pbcare.Droid</Name>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\pbcare\pbcare.csproj">
-      <Project>{04C091B7-A3D4-4270-9993-4E83C6F0C90A}</Project>
-      <Name>pbcare</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

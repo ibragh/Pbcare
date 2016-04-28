@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="Droid\pbcare.Droid.csproj" RefactoringSettings.EnableRefactorings="True">
+﻿<Properties StartupItem="pbcare.Tests.iOS/pbcare.Tests.iOS.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Android" />
   <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\ISQLite\User.cs">
     <Files>

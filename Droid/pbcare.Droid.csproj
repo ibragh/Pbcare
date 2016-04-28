@@ -85,11 +85,17 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Acr.Settings">
+      <HintPath>..\packages\Acr.Settings.5.0.0\lib\MonoAndroid10\Acr.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.Settings.Interface">
+      <HintPath>..\packages\Acr.Settings.5.0.0\lib\MonoAndroid10\Acr.Settings.Interface.dll</HintPath>
+    </Reference>
     <Reference Include="Acr.Notifications">
-      <HintPath>..\packages\Acr.Notifications.1.4.0\lib\MonoAndroid10\Acr.Notifications.dll</HintPath>
+      <HintPath>..\packages\Acr.Notifications.1.5.2\lib\MonoAndroid10\Acr.Notifications.dll</HintPath>
     </Reference>
     <Reference Include="Acr.Notifications.Interface">
-      <HintPath>..\packages\Acr.Notifications.1.4.0\lib\MonoAndroid10\Acr.Notifications.Interface.dll</HintPath>
+      <HintPath>..\packages\Acr.Notifications.1.5.2\lib\MonoAndroid10\Acr.Notifications.Interface.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

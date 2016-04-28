@@ -15,21 +15,18 @@ namespace pbcare.iOS
 	{
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
+			Xamarin.Forms.Forms.ViewInitialized += (object sender, Xamarin.Forms.ViewInitializedEventArgs e) => {
+				// http://developer.xamarin.com/recipes/testcloud/set-accessibilityidentifier-ios/
+				if (null != e.View.StyleId) {
+					e.NativeView.AccessibilityIdentifier = e.View.StyleId;
+				}
+			};
 			#if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start ();
 			#endif
 
 
 			global::Xamarin.Forms.Forms.Init ();
-
-			Forms.ViewInitialized += (object sender, ViewInitializedEventArgs e) => {
-				// http://developer.xamarin.com/recipes/testcloud/set-accessibilityidentifier-ios/
-				if (null != e.View.StyleId) {
-					e.NativeView.AccessibilityIdentifier = e.View.StyleId;
-				}
-			};
-
-			// TODO - set the StyleId of views here.
 
 			LoadApplication (new pbcareApp ());
 

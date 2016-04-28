@@ -42,7 +42,7 @@ namespace pbcare
 			};
 
 			sinUpButton.Clicked += (sender, e) => {
-				Navigation.PushAsync (new SignUpPage2 ());
+				Navigation.PushAsync (new SignUpPage ());
 			};
 
 			Image i = new Image{ 
@@ -60,6 +60,7 @@ namespace pbcare
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
 				HeightRequest = 50 ,
+				StyleId = "LoginButton"
 			};
 
 			LoginButton.Clicked += (sender, e) => {

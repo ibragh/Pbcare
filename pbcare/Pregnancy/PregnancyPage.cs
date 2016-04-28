@@ -22,6 +22,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
+				StyleId = "AddDuDate"
 			};
 			FollowPregnancy = new Button {
 				Text = " حــمــلــي ",
@@ -29,6 +30,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
+				StyleId = "FollowPregnancy"
 			};
 
 			FollowFetusImages = new Button {
@@ -37,6 +39,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
+				StyleId = "FollowFetusImages"
 			};
 
 			FollowFetusWeekly = new Button {
@@ -45,6 +48,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
+				StyleId = "FollowFetusWeekly"
 			};
 
 			finishPreg_ = new Button {
@@ -53,6 +57,7 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Button)),
 				BackgroundColor = Color.FromHex("#5069A1"),
 				BorderColor = Color.FromHex("#5069A1"),
+
 			};
 
 			AddPregnancy.Clicked += AddPregnancyClicked;

@@ -11,7 +11,8 @@ namespace pbcare
 
 		public WebsitePage ()
 		{
-			this.Title = "المنتدى";
+			StyleId = "WebsitePage";
+			Title = "المنتدى";
 			//BackgroundColor = Color.FromRgb (94, 196, 225);
 			browser = new WebView {
 				Source = "www.google.com"

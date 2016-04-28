@@ -1,0 +1,26 @@
+2016-04-28 10:45:50.135 DEBUG CalabashServer:242 | Creating the server: <LPHTTPServer: 0x78744d70>
+2016-04-28 10:45:50.210 DEBUG CalabashServer:243 | Calabash iOS server version: CALABASH VERSION: 0.18.2
+2016-04-28 10:45:50.210 DEBUG CalabashServer:246 | App Base SDK: iphonesimulator9.2
+2016-04-28 10:45:50.257 DEBUG CalabashServer:278 | IPHONE_SIMULATOR_ROOT: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
+2016-04-28 10:45:52.356 DEBUG CalabashServer:264 | Calabash iOS server is listening on: 0.0.0.0 port 37265
+2016-04-28 10:45:53.916 DEBUG LPWKWebViewRuntimeLoader:221 | WKWebView successfully implemented LPWebViewProtocol
+2016-04-28 10:45:54.175 pbcare.iOS[52887:1455585] Xamarin.iOS: Socket error while connecting to IDE on 127.0.0.1:60528: Connection refused
+2016-04-28 10:45:59.168 pbcare.iOS[52887:1455385] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-28 10:45:59.168 pbcare.iOS[52887:1455385] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b04b400 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-28 10:45:59.168 pbcare.iOS[52887:1455385] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-28 10:45:59.169 pbcare.iOS[52887:1455385] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b04b400 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-28 10:45:59.169 pbcare.iOS[52887:1455385] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-28 10:45:59.169 pbcare.iOS[52887:1455385] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b04b400 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-28 10:45:59.169 pbcare.iOS[52887:1455385] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-28 10:45:59.169 pbcare.iOS[52887:1455385] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b04b400 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-28 10:45:59.170 pbcare.iOS[52887:1455385] Error loading /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib:  dlopen(/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib, 262): no suitable image found.  Did find:
+	/System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib: mach-o, but not built for iOS simulator
+2016-04-28 10:45:59.170 pbcare.iOS[52887:1455385] Cannot find function pointer IOHIDLibFactory for factory 13AA9C44-6F1B-11D4-907C-0005028F18D5 in CFBundle/CFPlugIn 0x7b04b400 </System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin> (bundle, not loaded)
+2016-04-28 10:45:59.867 pbcare.iOS[52887:1455385]  RigrsterdUser loggedIn *************** : 1
+2016-04-28 10:45:59.872 pbcare.iOS[52887:1455385]  RigrsterdUser email ************ : A@a
+2016-04-28 10:45:59.906 pbcare.iOS[52887:1455385] **** Method id: pbcare.DatabaseClass Exeption is :System.NullReferenceException: Object reference not set to an instance of an object
+  at pbcare.DatabaseClass.GetDueDate () [0x00084] in /Users/ibrahim/Projects/pbcare/pbcare/ISQLite/DatabaseClass.cs:190 

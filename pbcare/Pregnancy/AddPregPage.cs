@@ -35,7 +35,7 @@ namespace pbcare
 				BackgroundColor = Color.Transparent,
 				WidthRequest = 110,
 				HeightRequest = 40,
-
+				StyleId = "MyDueDate"
 			};
 
 //=================================================================================
@@ -50,7 +50,8 @@ namespace pbcare
 
 			var dueDate = new DatePicker1 {
 				Format = "D",
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				StyleId = "DueDate"
 			};
 			Button AddDueDate = new Button {
 				Text = " اضافة تاريخ الولادة المتوقع", 
@@ -59,7 +60,7 @@ namespace pbcare
 				BackgroundColor = Color.FromHex("#FFA4C1"),
 				BorderColor = Color.FromHex("#FFA4C1"),
 				HeightRequest = 50,
-				StyleId = "AddDueDate"
+				StyleId = "AddMyDueDate"
 			};
 
 			String DueDateText;
