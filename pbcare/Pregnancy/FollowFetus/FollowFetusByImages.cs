@@ -15,12 +15,8 @@ namespace pbcare
 
 			string[] images;
 			int check = CurrentWeek + 10;
-			if (check > 40) {
-				check = check - 40;
-				if (check == 10) {
-					check = 9;
-				}
-				images = new string[10 - check];
+			if (CurrentWeek > 30) {
+				images = new string[40 -(CurrentWeek - 1)];
 			} else {
 				images = new string[10];
 			}
@@ -34,17 +30,12 @@ namespace pbcare
 			}
 
 			fetusImages[] FetusImages;
-			int check2 = CurrentWeek + 10;
-			if (check2 > 40) {
-				check2 = check2 - 40;
-				if (check2 == 10) {
-					check = 9;
-				}
-				FetusImages = new fetusImages[10 - check2];
+			if (CurrentWeek > 30) {
+				FetusImages = new fetusImages[40 -(CurrentWeek - 1)];
+
 			} else {
 				FetusImages = new fetusImages[10];
 			}
-
 			int img2 = CurrentWeek; 
 			int j = 0;
 			while(j < FetusImages.Length){

@@ -13,27 +13,29 @@ namespace pbcare
 
 			int CurrentMonth = BabyPage.CurrentMonth (c.birthDate);
 
-			string[] info = new string[13];
-			for (int i = 1; i < info.Length; i++) {
-				// get the Baby monthly info from local database
-				info [i] = pbcareApp.Database.getChildMonth (i);
-			}
-			BabyMonthly[] BabyMonth = new BabyMonthly[13];
-			BabyMonth[0] = new BabyMonthly(c.ChildName ,CurrentMonth+" شهر ");
+			string[] info = new string[12 -(CurrentMonth-1)];
 
-			for (int i = 1; i < BabyMonth.Length; i++) {
-				BabyMonth[i] = new BabyMonthly(" الشهر "+ i ,info [i]);
+			int temp = CurrentMonth; 
+			int i = 0;
+			while(i < info.Length){
+				info [i] = pbcareApp.Database.getChildMonth(temp);
+				temp++;
+				i++;
 			}
 				
+			BabyMonthly[] BabyMonth = new BabyMonthly[12- (CurrentMonth - 1)];
+			int temp2 = CurrentMonth; 
+			int j = 0;
+			while(j < info.Length){
+				BabyMonth[j] = new BabyMonthly(" الشهر "+ temp2 ,info [j]);
+				temp2++;
+				j++;
+			}
+
 			this.ItemsSource = BabyMonth;
 			this.ItemTemplate = new DataTemplate (typeof(BabyMonthlyPage));
 
-			if (Device.OS == TargetPlatform.iOS) {
-				this.SelectedItem = ((BabyMonthly[])ItemsSource)[CurrentMonth];
-
-			} else {
-				this.SelectedItem = ((BabyMonthly[])ItemsSource);
-			}
+			this.SelectedItem = ((BabyMonthly[])ItemsSource);
 		}
 
 	}

@@ -30,11 +30,12 @@ namespace pbcare
 		{
 
 			this.Content = new StackLayout {
-				Padding = 20,
+				Padding = new Thickness(10,20,0,10),
 				Children = {
 					monthLabel,
 					new ScrollView {
 						Content = new StackLayout {
+							Padding = new Thickness(0,0,20,0),
 							Children = {
 								messageLabel
 							}

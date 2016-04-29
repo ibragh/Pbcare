@@ -14,42 +14,33 @@ namespace pbcare
 
 			int CurrentWeek = PregnancyPage.CurrentWeek(pbcareApp.FinaldueDate);
 			string[] info;
-			int check = CurrentWeek + 10;
-			if (check > 40) {
-				check = check - 40;
-				if (check == 10) {
-					check = 9;
-				}
-				info = new string[10 - check];
+			if (CurrentWeek > 30) {
+				info = new string[40 -(CurrentWeek - 1)];
 			} else {
 				info = new string[10];
 			}
 
-			int message = CurrentWeek; 
+			int temp = CurrentWeek; 
 			int i = 0;
 			while(i < info.Length){
-				info [i] = pbcareApp.Database.getFetusWeeks(message);
-				message++;
+				info [i] = pbcareApp.Database.getFetusWeeks(temp);
+				temp++;
 				i++;
 			}
 
 			WeeklyInfo[] pregnancyWeek;
-			int check2 = CurrentWeek + 10;
-			if (check2 > 40) {
-				check2 = check2 - 40;
-				if (check2 == 10) {
-					check = 9;
-				}
-				pregnancyWeek = new WeeklyInfo[10 - check2];
+			if (CurrentWeek > 30) {
+				pregnancyWeek = new WeeklyInfo[40 -(CurrentWeek - 1)];
+
 			} else {
 				pregnancyWeek = new WeeklyInfo[10];
 			}
 
-			int img2 = CurrentWeek; 
+			int temp2 = CurrentWeek; 
 			int j = 0;
 			while(j < pregnancyWeek.Length){
-				pregnancyWeek[j] = new WeeklyInfo("الأسبوع "+img2,info[j]);
-				img2++;
+				pregnancyWeek[j] = new WeeklyInfo("الأسبوع "+temp2 ,info[j]);
+				temp2++;
 				j++;
 			}
 
