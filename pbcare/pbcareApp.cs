@@ -36,7 +36,7 @@ namespace pbcare
 
 		public pbcareApp ()
 		{
-			MainPage = new LogInPage ();
+			MainPage = new NavigationPage(new LogInPage ());
 		}
 
 

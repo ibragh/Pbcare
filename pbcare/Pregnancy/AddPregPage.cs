@@ -7,6 +7,7 @@ namespace pbcare
 {
 	public class AddPregPage : ContentPage
 	{
+		bool Locked = false ;
 		public AddPregPage ()
 		{
 			BackgroundColor = Color.FromRgb (94, 196, 225);
@@ -67,42 +68,38 @@ namespace pbcare
 
 			String DueDateText;
 			AddDueDate.Clicked += (sender, e) => {
-				
+				if(!Locked){
+					Locked = true;
 					pbcareApp.FinaldueDate = dueDate.Date; /* Save data for farther use */
-					int CurrentWeek = PregnancyPage.CurrentWeek(dueDate.Date); // for testing
+					int CurrentWeek = PregnancyPage.CurrentWeek(pbcareApp.FinaldueDate.Date); // for testing
 					//  convert date to formatted string for DB 
-					DueDateText = dueDate.Date.ToString("ddMMyyyy"); 
-					// convert date to string for display 
-					int y = dueDate.Date.Year, m = dueDate.Date.Month, d = dueDate.Date.Day;
-					string DueDateDisplay = d + "/" + m + "/" + y; 
+					string DueDateDisplay = pbcareApp.FinaldueDate.Date.ToString("ddMMyyyy") ;
 
 					// the result from [AddPregnancyToDB] method will return numbers, each one has a meaning
-					int result = pbcareApp.Database.AddPregnancy (pbcareApp.u.Email, DueDateText);
+					int result = pbcareApp.Database.AddPregnancy (pbcareApp.u.Email, DueDateDisplay);
 					if (result == -1) {
 						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
+
 					} else if (result == 0) {
-						Navigation.PopAsync ();
 						DisplayAlert ("خطأ", "المستخدم غير مسجل مسبقاً", "تم");
 
 					} else if (result == 1) {
-						Navigation.PopAsync ();
 						DisplayAlert ("خطأ", "يوجد لديكي حمل مسبق - لتغيير تاريخ الحمل من الإعدادات", "تم");
 
 					}  else if (result == 99) { /* SUCCESSFUL */
-						DisplayAlert ("", "موعدك الولادة المتوقع : " + DueDateDisplay+" \nأنتي الآن في الأسبوع الـ "+CurrentWeek, "تم");
+						DisplayAlert ("", "موعدك الولادة المتوقع : " + pbcareApp.FinaldueDate.GetDateTimeFormats()[3]+" \nأنتي الآن في الأسبوع الـ "+CurrentWeek, "تم");
 						TimeSpan difference = dueDate.Date - DateTime.Now.AddDays (-1);
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -2));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
 						pbcareApp.Database.update_IsPregnant(1);
 						pbcareApp.u.isPregnant = 1;
-						Navigation.PopAsync ();
-
 
 					} else {
-						Navigation.PopAsync ();
+						
 						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
-
+					}
+					Locked = false ; 
 					}
 			};
 //===============================================================================
@@ -130,12 +127,12 @@ namespace pbcare
 			};
 
 			CalculateButton.Clicked += (sender, e) =>  {
-				
+				if(!Locked){
+					Locked = true;
 					DateTime expectedDueDate = firstPregnancyDate.Date.AddDays(280);
 					pbcareApp.FinaldueDate = expectedDueDate.Date; 
-					int currentWeek = PregnancyPage.CurrentWeek(expectedDueDate.Date);
-					int y = expectedDueDate.Date.Year, m = expectedDueDate.Date.Month, d = expectedDueDate.Date.Day;
-					string DueDateDisplay = d + "/" + m + "/" + y; 
+					int currentWeek = PregnancyPage.CurrentWeek(pbcareApp.FinaldueDate.Date);
+					string DueDateDisplay = pbcareApp.FinaldueDate.Date.ToString("ddMMyyyy") ;
 
 					// the result from [AddPregnancyToDB] method will return numbers, each one has a meaning
 					int result = pbcareApp.Database.AddPregnancy (pbcareApp.u.Email, DueDateDisplay );
@@ -148,20 +145,19 @@ namespace pbcare
 						DisplayAlert ("خطأ", "يوجد لديكي حمل مسبق - لتغيير تاريخ الحمل من الإعدادات", "تم");
 
 					}  else if (result == 99) { /* SUCCESSFUL */
-						DisplayAlert ("", "موعدك الولادة المتوقع : " + DueDateDisplay+" \nأنتي الآن في الأسبوع الـ "+currentWeek, "تم");
+						DisplayAlert ("", "موعدك الولادة المتوقع : " + pbcareApp.FinaldueDate.GetDateTimeFormats()[3]+" \nأنتي الآن في الأسبوع الـ "+currentWeek, "تم");
 						TimeSpan difference = expectedDueDate.Date - DateTime.Now.AddDays (-1);
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -2));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
 						pbcareApp.Database.update_IsPregnant(1);
 						pbcareApp.u.isPregnant = 1;
-						Navigation.PopAsync ();
-
 
 					} else {
 						Navigation.PopAsync ();
 						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
-
+					}
+					Locked = false ; 
 					}
 			};
 				

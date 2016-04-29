@@ -27,18 +27,20 @@ namespace pbcare
 				},
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
-					
-		}
 
-		protected override void OnAppearing()
-		{
-				Content = new ScrollView {
-					Content = new StackLayout {
+			Content = new ScrollView {
+				Content = new StackLayout {
 					Children = {
 						webView 
 					}
 				}
 			};
+					
+		}
+
+		protected override void OnAppearing()
+		{
+				
 	   }
 	}
 }

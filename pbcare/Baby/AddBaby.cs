@@ -7,6 +7,7 @@ namespace pbcare
 {
 	public class AddBaby : ContentPage
 	{
+		bool Locked = false ;
 		public AddBaby ()
 		{
 			Title = "إضــافة طــفل ";
@@ -60,6 +61,8 @@ namespace pbcare
 			};
 
 			saveButton.Clicked += (sender, e) => {
+				if(!Locked){
+					Locked = true;
 				if (!string.IsNullOrWhiteSpace (nameEntry.Text) && gender.SelectedIndex != -1) {
 					Baby baby = new Baby{
 						mother = pbcareApp.u.Email,
@@ -83,6 +86,7 @@ namespace pbcare
 					}
 				} else {
 					DisplayAlert ("خطأ", "معلومات الطفل غير كاملة", "إلغاء");
+				}
 				}
 			};
 

@@ -28,7 +28,12 @@ namespace pbcare
 			this.ItemsSource = BabyMonth;
 			this.ItemTemplate = new DataTemplate (typeof(BabyMonthlyPage));
 
-			this.SelectedItem = ((BabyMonthly[])ItemsSource);
+			if (Device.OS == TargetPlatform.iOS) {
+				this.SelectedItem = ((BabyMonthly[])ItemsSource)[CurrentMonth];
+
+			} else {
+				this.SelectedItem = ((BabyMonthly[])ItemsSource);
+			}
 		}
 
 	}

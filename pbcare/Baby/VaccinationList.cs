@@ -24,6 +24,10 @@ namespace pbcare
 			vaccinationList.ItemTemplate = new DataTemplate (typeof(EveryVaccinationCell));
 			vaccinationList.BackgroundColor = Color.Transparent;
 			vaccinationList.SeparatorColor = Color.White;
+			vaccinationList.ItemSelected += (sender, e) => {
+				((ListView)sender).SelectedItem = null; 
+			};
+
 			vaccinationList.ItemTapped +=  (Sender, Event) => {
 				
 				if(!Locked)

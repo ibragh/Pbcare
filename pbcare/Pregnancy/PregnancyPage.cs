@@ -11,7 +11,7 @@ namespace pbcare
 		
 		Button AddPregnancy, FollowPregnancy, FollowFetusImages, FollowFetusWeekly, finishPreg_  ;
 		Image s = new Image { Source = "notPregnant2.png" };
-
+		bool Locked = false ;
 
 		public PregnancyPage ()
 		{
@@ -70,52 +70,46 @@ namespace pbcare
 			finishPreg_.Clicked += Pregnancy_Finished ;
 
 		}
-
-		public void ShowSettingsPage(object sender, EventArgs e)
-		{
-			Navigation.PushAsync(new SettingPage());
-		}
-
+			
 		/* Calculate Current Week */
 		public static int CurrentWeek (DateTime dueDate)
 		{
-			TimeSpan difference = dueDate - DateTime.Now.AddDays (-1);
+			TimeSpan difference = dueDate - DateTime.Now.AddDays (0);
 			// for calculating the past days of pregnancy
 			double PastDays = (280 - (int)difference.TotalDays); 
 			return (int)Math.Ceiling ((PastDays/7));
 
 		}
 
-		public void AddPregnancyClicked (object sender, EventArgs e)
+		async public void AddPregnancyClicked (object sender, EventArgs e)
 		{
-			Navigation.PushAsync (new AddPregPage ());
+			if(!Locked){
+				Locked = true;
+				await Navigation.PushAsync (new AddPregPage ());
+		}
 		}
 
-		public void FollowPregnancyWeeklyClicked (object sender, EventArgs e)
+		async public void FollowPregnancyWeeklyClicked (object sender, EventArgs e)
 		{
-
-			if(pbcareApp.u.isPregnant == 0){
-				DisplayAlert ("Error","You should Add pregnancy","OK");
-			}else{
-				Navigation.PushAsync (new FollowPregnancy ());
+			if(!Locked){
+				Locked = true;
+				await Navigation.PushAsync (new FollowPregnancy ());
 			}
 		}
 
-		public void FollowFetusByImagesClicked (object sender, EventArgs e)
+		async public void FollowFetusByImagesClicked (object sender, EventArgs e)
 		{
-			if (pbcareApp.u.isPregnant == 0) {
-				DisplayAlert ("Error", "You should Add pregnancy", "OK");
-			} else {
-				Navigation.PushAsync (new FollowFetusByImages ());
+			if(!Locked){
+				Locked = true;
+				await Navigation.PushAsync (new FollowFetusByImages ());
 			}
 		}
 
-		public void FollowFetusWeeklyClicked (object sender, EventArgs e)
+		async public void FollowFetusWeeklyClicked (object sender, EventArgs e)
 		{
-			if (pbcareApp.u.isPregnant == 0) {
-				DisplayAlert ("Error", "You should Add pregnancy", "OK");
-			} else {
-				Navigation.PushAsync (new FollowFetusWeekly ());
+			if(!Locked){
+				Locked = true;
+				await Navigation.PushAsync (new FollowFetusWeekly ());
 			}
 		}
 
@@ -138,14 +132,15 @@ namespace pbcare
 		}
 		protected override void OnAppearing()
 		{
+			Locked = false;
 			base.OnAppearing ();
-	
+			Label message = new Label {
+				Text = "مرحـــبا " + pbcareApp.u.name + " ...",
+				TextColor = Color.White,
+				HorizontalOptions = LayoutOptions.Center,
+			};
 			if(pbcareApp.u.isPregnant == 0){
-				Label message = new Label {
-					Text = "مرحـــبا " + pbcareApp.u.name + " ...",
-					TextColor = Color.White,
-					HorizontalOptions = LayoutOptions.Center
-				};
+				
 				Label message2 = new Label {
 					Text = "لا يوجد حمل مسجل ...                \n تستطيعي تسجيل حملك بالضغط على زر الإضافة",
 					TextColor = Color.White,
@@ -166,8 +161,18 @@ namespace pbcare
 				};
 
 			}else{
+				string DueDate = pbcareApp.Database.GetDueDate ();
+				pbcareApp.FinaldueDate = DateTime.ParseExact (DueDate, "ddMMyyyy", null).Date;
+
 				Label showDueDate = new Label{
-					Text = " موعد ولادتك المتوقع هـو "+ pbcareApp.Database.GetDueDate(),
+					Text = " موعد ولادتك المتوقع هـو ",
+					TextColor = Color.White,
+					FontAttributes = FontAttributes.Bold,
+					HorizontalOptions = LayoutOptions.Center
+				};
+
+				Label showDueDate2 = new Label{
+					Text = pbcareApp.FinaldueDate.Day + " / " + pbcareApp.FinaldueDate.Month + " / " +pbcareApp.FinaldueDate.Year ,
 					TextColor = Color.White,
 					FontAttributes = FontAttributes.Bold,
 					HorizontalOptions = LayoutOptions.Center
@@ -176,12 +181,15 @@ namespace pbcare
 					Content = new StackLayout {
 						Padding = new Thickness(20 ,40,20,20),
 						VerticalOptions = LayoutOptions.FillAndExpand,
+						Spacing = 10 ,
 						Children = {
-									FollowPregnancy,
-									FollowFetusImages,
-									FollowFetusWeekly,
-									finishPreg_,
-									showDueDate
+							message,
+							FollowPregnancy,
+							FollowFetusImages,
+							FollowFetusWeekly,
+							finishPreg_,
+							showDueDate,
+							showDueDate2
 						}
 					}
 				};

@@ -110,7 +110,7 @@ namespace pbcare
 						messageSignUp.TextColor = Color.Green;
 						messageSignUp.Text = "تم تسجيل الدخول بنجاح"; 
 						pbcareApp.Database.User_Loggedin (true);
-						pbcareApp.MyNavigation.PopModalAsync ();
+						Application.Current.MainPage = pbcareApp.GetMainPage();
 
 					} else {
 						messageSignUp.Text = "تم التسجيل بنفس الإيميل مسبقاً"; // Email is rigistered

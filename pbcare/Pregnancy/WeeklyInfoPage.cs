@@ -18,17 +18,25 @@ namespace pbcare
 			};
 			Label messageLabel = new Label { 
 				FontSize = 20,
-				HorizontalOptions = LayoutOptions.EndAndExpand, 
+				HorizontalOptions = LayoutOptions.Center,  
 				TextColor = Color.FromHex("#5069A1"),
 			};
 			WeekLabel.SetBinding (Label.TextProperty, "week");
 			messageLabel.SetBinding (Label.TextProperty, "message");
 
 			this.Content = new StackLayout {
-				HorizontalOptions = LayoutOptions.End,
-				Padding = 20,
+				HorizontalOptions = LayoutOptions.Center,
+				Padding = new Thickness(10,20,0,10),
 				Children = {
-					WeekLabel, messageLabel
+					WeekLabel, 
+					new ScrollView{
+						Content = new StackLayout{ 
+							Padding = new Thickness(0,0,20,0),
+							Children = {
+								messageLabel
+							}
+						}
+					}
 				}
 			};	
 		}

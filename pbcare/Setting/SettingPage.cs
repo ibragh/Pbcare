@@ -38,7 +38,9 @@ namespace pbcare
 			setting.ItemTemplate = new DataTemplate (typeof(everyCell));
 			setting.BackgroundColor = Color.Transparent;
 			setting.SeparatorColor = Color.White;
-
+			setting.ItemSelected += (sender, e) => {
+				((ListView)sender).SelectedItem = null; 
+			};
 			setting.ItemTapped += (Sender, Event) => {
 				if(!Locked)
 				{
@@ -94,14 +96,16 @@ namespace pbcare
 
 		async void OnAlertYesNoClicked (object sender, EventArgs e)
 		{
-			var answer = await DisplayAlert ("تسجيل الخروج ", "هل تريد تأكيد تسجيل الخروج ؟ ", "نعم", "لا");
-			if (answer == true) {
-				pbcareApp.Database.User_Loggedin (false);
-				pbcareApp.IsUserLoggedIn = false; 
-				pbcareApp.u.isPregnant = 0;
-				pbcareApp.u.Email = null;
-				Application.Current.MainPage = new LogInPage ();
-
+			if(!Locked){
+				Locked = true;
+				var answer = await DisplayAlert ("تسجيل الخروج ", "هل تريد تأكيد تسجيل الخروج ؟ ", "نعم", "لا");
+				if (answer == true) {
+					pbcareApp.Database.User_Loggedin (false);
+					pbcareApp.IsUserLoggedIn = false; 
+					pbcareApp.u.isPregnant = 0;
+					pbcareApp.u.Email = null;
+					Application.Current.MainPage = new NavigationPage (new LogInPage ());
+				}
 			} 
 		}
 
@@ -196,6 +200,8 @@ namespace pbcare
 
 	public class settingView : ContentPage
 	{
+		bool Locked = false ;
+
 		public settingView (settingClass selectedSetting)
 		{
 			BackgroundColor = Color.FromRgb (94, 196, 225);
@@ -237,15 +243,18 @@ namespace pbcare
 				};
 				
 				saveNameButton.Clicked += (sender, e) => {
-					if (!string.IsNullOrWhiteSpace (nameEntry.Text)) {
-						pbcareApp.u.name = nameEntry.Text;
-						pbcareApp.Database.update_UserName (nameEntry.Text);
-						Navigation.PopAsync ();
-						DisplayAlert ("تـــم","تغيير الاسم إلى   "+nameEntry.Text ,"موافق");
-	
-					} else {
-						DisplayAlert ("خطأ", "لم يتم إدخال أي اسم", "إلغاء");
-	
+					if(!Locked){
+						Locked = true;
+						if (!string.IsNullOrWhiteSpace (nameEntry.Text)) {
+							pbcareApp.u.name = nameEntry.Text;
+							pbcareApp.Database.update_UserName (nameEntry.Text);
+							Navigation.PopAsync ();
+							DisplayAlert ("تـــم","تغيير الاسم إلى   "+nameEntry.Text ,"موافق");
+		
+						} else {
+							DisplayAlert ("خطأ", "لم يتم إدخال أي اسم", "إلغاء");
+							Locked = false ;
+						}
 					}
 				};
 
@@ -293,16 +302,20 @@ namespace pbcare
 				};
 	
 				savePassButton.Clicked += (sender, e) => {
-					if (!string.IsNullOrWhiteSpace (passwordEntry.Text) && passConfirm.Text.Equals (passwordEntry.Text)) {
-						pbcareApp.Database.update_Password (passwordEntry.Text);
-						DisplayAlert (" تم", " تغيير كلمة المرور ", "موافق");
-						Navigation.PopAsync ();
+					if(!Locked){
+						Locked = true;
+						if (!string.IsNullOrWhiteSpace (passwordEntry.Text) && passConfirm.Text.Equals (passwordEntry.Text)) {
+							pbcareApp.Database.update_Password (passwordEntry.Text);
+							DisplayAlert (" تم", " تغيير كلمة المرور ", "موافق");
+							Navigation.PopAsync ();
 
-					} else if (passwordEntry.Text != passConfirm.Text) {
-						DisplayAlert ("خطأ", "كلمة المرور غير متطابقة", "إلغاء");
-	
-					} else {
-						DisplayAlert ("خطأ", "كلمة المرور غير متطابقة", "إلغاء");
+						} else if (passwordEntry.Text != passConfirm.Text) {
+							DisplayAlert ("خطأ", "كلمة المرور غير متطابقة", "إلغاء");
+							Locked = false ;
+						} else {
+							DisplayAlert ("خطأ", "كلمة المرور غير متطابقة", "إلغاء");
+							Locked = false ;
+						}
 					}
 				};
 

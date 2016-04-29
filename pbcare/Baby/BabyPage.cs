@@ -23,6 +23,9 @@ namespace pbcare
 			childrenList.ItemTemplate = new DataTemplate (typeof(EveryChildCell));
 			childrenList.SeparatorColor = Color.White;
 			childrenList.BackgroundColor = Color.Transparent;
+			childrenList.ItemSelected += (sender, e) => {
+				((ListView)sender).SelectedItem = null; 
+			};
 			childrenList.ItemTapped += (Sender, Event) => {
 				
 				Baby c = (Baby)Event.Item;
@@ -64,7 +67,7 @@ namespace pbcare
 		public static int CurrentMonth (string birth)
 		{
 			DateTime birthDate = DateTime.ParseExact (birth , "ddMMyyyy", null);
-			TimeSpan difference = DateTime.Now.AddDays (-1) - birthDate ;
+			TimeSpan difference = DateTime.Now.AddDays (0) - birthDate ;
 			double PastDays = ((int)difference.TotalDays );
 			if(PastDays == 0){
 				return 1;

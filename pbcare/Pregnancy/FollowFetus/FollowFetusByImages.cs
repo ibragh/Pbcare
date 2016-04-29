@@ -13,26 +13,50 @@ namespace pbcare
 			BackgroundColor = Color.White; //Color.FromRgb (197, 255, 255);
 			int CurrentWeek = PregnancyPage.CurrentWeek(pbcareApp.FinaldueDate);
 
-			string[] images = new string[41];
-			for (int i = 1; i < images.Length; i++) {
-				images [i] = "fetus"+i+".png";
+			string[] images;
+			int check = CurrentWeek + 10;
+			if (check > 40) {
+				check = check - 40;
+				if (check == 10) {
+					check = 9;
+				}
+				images = new string[10 - check];
+			} else {
+				images = new string[10];
 			}
 
-			fetusImages[] FetusImages = new fetusImages[41];
-			for (int i = 1; i < FetusImages.Length; i++) {
-				FetusImages[i] = new fetusImages("الأسبوع "+i,images[i]);
+			int img = CurrentWeek; 
+			int i = 0;
+			while(i < images.Length){
+				images [i] = "fetus"+img+".jpg";
+				img++;
+				i++;
+			}
+
+			fetusImages[] FetusImages;
+			int check2 = CurrentWeek + 10;
+			if (check2 > 40) {
+				check2 = check2 - 40;
+				if (check2 == 10) {
+					check = 9;
+				}
+				FetusImages = new fetusImages[10 - check2];
+			} else {
+				FetusImages = new fetusImages[10];
+			}
+
+			int img2 = CurrentWeek; 
+			int j = 0;
+			while(j < FetusImages.Length){
+				FetusImages[j] = new fetusImages("الأسبوع "+img2,images[j]);
+				img2++;
+				j++;
 			}
 			this.ItemsSource = FetusImages;
 			this.ItemTemplate = new DataTemplate (typeof(fetuseImagesPage));
 			// selected week .. so her preganncy week will
 			// be the first screen will appear 
-			if (Device.OS == TargetPlatform.iOS) {
-				this.SelectedItem = ((fetusImages[])ItemsSource) [CurrentWeek];
-
-			} else {
 				this.SelectedItem = ((fetusImages[])ItemsSource);
-			}
-
 	}
 }
 	//================================================
