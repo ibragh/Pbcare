@@ -26,7 +26,7 @@ namespace pbcare
 			DB.CreateTable<ChildVaccinations> ();
 		}
 		//=============================================================================================
-		// User Methods 
+		// User Methods
 
 		// check if user is logged in previasly... will chgange it later
 		public bool checkUserLoggedin ()
@@ -42,7 +42,7 @@ namespace pbcare
 					pbcareApp.u.Email = RigrsterdUser.email;
 					var _user = DB.Table<User> ().Where (c => c.Email == pbcareApp.u.Email).FirstOrDefault ();
 					pbcareApp.u.isPregnant = _user.isPregnant;
-					pbcareApp.u.name = _user.name ; 
+					pbcareApp.u.name = _user.name; 
 					Debug.WriteLine (" RigrsterdUser email ************ : " + RigrsterdUser.email);
 					pbcareApp.IsUserLoggedIn = true;
 					/* Retreve DueDate from Database */
@@ -88,18 +88,57 @@ namespace pbcare
 		// check login in email & password are match in db
 		public bool checkLogin (string email, string password)
 		{
-			var Logeduser = DB.Table<User> ().Where (user => user.Email == email && user.Password == password).FirstOrDefault ();
-			if ( Logeduser != null) {
-				return true;
-			} else {
-				return false;
-			}
+			
+				int dbr = DependencyService.Get<DBRemoteConnection> ().Login (email, password); // remotly
+				
+				if (dbr == 1) {
+					string name = "";
+					MessagingCenter.Subscribe<DBRemoteConnection, string> (this, "1", (mysender, arg) => {
+						Debug.WriteLine ("aaaaaaaa user name = " + arg);
+						name = arg;
+					});
+					add_UserLocally (email, password, name);
+					return true;
+				} else {
+					var Logeduser = DB.Table<User> ().Where (user => user.Email == email && user.Password == password).FirstOrDefault ();
+					if (Logeduser != null) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+
 		}
 
 		public User get_User (string email)
 		{
 			return DB.Table<User> ().Where (user => user.Email == email).FirstOrDefault ();
 		}
+		public bool add_UserLocally (string email, string password, string name)
+		{
+			try {
+				if (DB.Table<User> ().Where (user => user.Email == email).FirstOrDefault () != null) {
+					return false;
+				} else {
+					User u = new User ();
+					u.Email = email;
+					u.Password = password;
+					u.name = name;
+					u.isPregnant = 0;
+					u.isSensorOn = 0;
+					DB.Insert (u); // locally
+					return true;
+				}
+			} catch (SQLiteException ex) {
+				Debug.WriteLine ("****&&&^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return false;
+
+			} catch (Exception ex) {
+				Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return false;
+			} 
+		}
+
 		// check signup entries
 		public bool add_User (string email, string password, string name)
 		{
@@ -112,15 +151,20 @@ namespace pbcare
 					u.Password = password;
 					u.name = name;
 					u.isPregnant = 0;
-					u.isSensorOn = 0 ;
-					DB.Insert (u);
+					u.isSensorOn = 0;
+					DB.Insert (u); // locally
+					int dbr = DependencyService.Get<DBRemoteConnection> ().CreateUser (name, email, password); // remotly
+					Debug.WriteLine (dbr + " return value from db remotly create");
+					if (dbr == 0) {
+						return false;
+					}
 					return true;
 				}
 			} catch (SQLiteException ex) {
 				Debug.WriteLine ("****&&&^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 
-			}catch (Exception ex) {
+			} catch (Exception ex) {
 				Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 			} 
@@ -136,31 +180,34 @@ namespace pbcare
 			}
 		}
 
-		public void update_UserName(string newName){
-			try{
+		public void update_UserName (string newName)
+		{
+			try {
 
 				DB.Query<User> ("UPDATE User Set name = ? WHERE email = ? ", newName, pbcareApp.u.Email);
 
-			}catch(Exception ex ){
+			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);
 			}
 		}
 
-		public void update_Password(string newPass){
+		public void update_Password (string newPass)
+		{
 
-			try{
-				DB.Query<User> ("UPDATE User Set Password = ? WHERE email = ? ", newPass , pbcareApp.u.Email);
+			try {
+				DB.Query<User> ("UPDATE User Set Password = ? WHERE email = ? ", newPass, pbcareApp.u.Email);
 
-			}catch(Exception ex){
+			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);
 			}
 		}
 
-		public void updateSensorOn(int status){
-			try{
-				DB.Query<User> ("UPDATE User Set isSensorOn = ? WHERE email = ? ", status , pbcareApp.u.Email);
+		public void updateSensorOn (int status)
+		{
+			try {
+				DB.Query<User> ("UPDATE User Set isSensorOn = ? WHERE email = ? ", status, pbcareApp.u.Email);
 
-			}catch(Exception ex){
+			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);
 			}
 		}
@@ -269,22 +316,24 @@ namespace pbcare
 				Debug.WriteLine ("****&&&^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 
-			}catch(Exception ex){
+			} catch (Exception ex) {
 				Debug.WriteLine ("****111111^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 			}
 		}
 
-		public bool RemoveChild(string child){
-			try{
-				DB.Query<Baby> ("DELETE FROM Baby WHERE ChildName = ? and mother = ? ", child , pbcareApp.u.Email);
-				return true ; 
+		public bool RemoveChild (string child)
+		{
+			try {
+				DB.Query<Baby> ("DELETE FROM Baby WHERE ChildName = ? and mother = ? ", child, pbcareApp.u.Email);
+				return true; 
 
-			}catch(Exception ex){
+			} catch (Exception ex) {
 				Debug.WriteLine ("****111111^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 			}
 		}
+
 		public Baby getChildInfo (string name, string email)
 		{
 
@@ -351,7 +400,7 @@ namespace pbcare
 					return 0;
 				}
 			} catch (Exception ex) {
-				return 0 ;
+				return 0;
 				Debug.WriteLine (ex.Message);
 			}
 		}
@@ -371,20 +420,21 @@ namespace pbcare
 
 		public bool delete_CV_Sechduale (string oldChildName)
 		{
-			try{
+			try {
 				DB.Query<ChildVaccinations> ("DELETE FROM ChildVaccinations WHERE ChildName = ? and mother = ? ", oldChildName, pbcareApp.u.Email);
-				return true ;
+				return true;
 
-			}catch(Exception ex){
+			} catch (Exception ex) {
 				Debug.WriteLine ("****4444 Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 			}
 		}
+
 		public void update_IsTaken (int isTakenCase, int VID, string childName)
 		{
 			try {
 				
-				DB.Query<ChildVaccinations> ("UPDATE ChildVaccinations Set isTaken = ? WHERE VaccinationID = ? ", isTakenCase ,VID);
+				DB.Query<ChildVaccinations> ("UPDATE ChildVaccinations Set isTaken = ? WHERE VaccinationID = ? ", isTakenCase, VID);
 			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);
 			}
@@ -400,12 +450,13 @@ namespace pbcare
 			}
 		}
 
-		public void Update_childName_inChildVaccinationTable(string newName , string oldName){
-			try{
+		public void Update_childName_inChildVaccinationTable (string newName, string oldName)
+		{
+			try {
 
-				DB.Query<ChildVaccinations> ("UPDATE ChildVaccinations Set ChildName = ? WHERE ChildName = ? and mother = ?", newName, oldName , pbcareApp.u.Email);
+				DB.Query<ChildVaccinations> ("UPDATE ChildVaccinations Set ChildName = ? WHERE ChildName = ? and mother = ?", newName, oldName, pbcareApp.u.Email);
 
-			}catch(Exception ex ){
+			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);
 			}
 		}

@@ -23,7 +23,7 @@ namespace pbcare
 			{
 				Source = new UrlWebViewSource
 				{
-					Url = "https://pbcare.azurewebsites.net/",
+					Url = "http://pbcareqa.azurewebsites.net/",
 				},
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};

@@ -97,6 +97,12 @@
     <Reference Include="Acr.Notifications.Interface">
       <HintPath>..\packages\Acr.Notifications.1.5.2\lib\MonoAndroid10\Acr.Notifications.Interface.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data.CF">
+      <HintPath>..\Components\MySQL-Plugin-1.0\lib\android\MySql.Data.CF.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N" />
+    <Reference Include="I18N.West" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -106,6 +112,7 @@
     <Compile Include="Renderer.cs" />
     <Compile Include="AudioService.cs" />
     <Compile Include="Bth.cs" />
+    <Compile Include="DBcon_Droid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -186,5 +193,11 @@
       <Project>{04C091B7-A3D4-4270-9993-4E83C6F0C90A}</Project>
       <Name>pbcare</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="MySQL-Plugin">
+      <Version>1.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>

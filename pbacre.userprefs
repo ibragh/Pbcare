@@ -1,39 +1,38 @@
-﻿<Properties StartupItem="Droid\pbcare.Droid.csproj" RefactoringSettings.EnableRefactorings="True">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.047b5bf7" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\Pregnancy\FollowFetus\FollowFetusByImages.cs">
+﻿<Properties StartupItem="Droid/pbcare.Droid.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.4df71a493152309b" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare/ISQLite/DatabaseClass.cs">
     <Files>
-      <File FileName="pbcare\pbcareApp.cs" Line="1" Column="1" />
-      <File FileName="pbcare\ISQLite\DatabaseClass.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Pregnancy\PregnancyPage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\Pregnancy\FollowPregnancy\FollowPregnancy.cs" Line="16" Column="4" />
-      <File FileName="pbcare\Baby\FollowBaby\FollowBabyMonthly.cs" Line="15" Column="1" />
-      <File FileName="pbcare\Pregnancy\FollowFetus\FollowFetusByImages.cs" Line="12" Column="38" />
-      <File FileName="pbcare\Pregnancy\FollowFetus\FollowFetusWeekly.cs" Line="37" Column="5" />
+      <File FileName="Droid/DBcon_Droid.cs" Line="82" Column="64" />
+      <File FileName="iOS/MySQL_DB_iOS.cs" Line="97" Column="12" />
+      <File FileName="pbcare/ISQLite/DatabaseClass.cs" Line="93" Column="1" />
+      <File FileName="pbcare/LogInPage.cs" Line="78" Column="1" />
+      <File FileName="pbcare/ISQLite/DBRemoteConnection.cs" Line="8" Column="39" />
+      <File FileName="iOS/Info.plist" />
+      <File FileName="pbcare/Setting/arduino_bt.cs" Line="66" Column="7" />
+      <File FileName="Droid/Bth.cs" Line="57" Column="1" />
+      <File FileName="pbcare/WebsiteView/WebsitePage.cs" Line="26" Column="47" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="pbacre" expanded="True">
             <Node name="pbcare" expanded="True">
-              <Node name="Baby" expanded="True">
-                <Node name="FollowBaby" expanded="True" />
-              </Node>
-              <Node name="Pregnancy" expanded="True">
-                <Node name="FollowFetus" expanded="True">
-                  <Node name="FollowFetusByImages.cs" selected="True" />
-                </Node>
+              <Node name="ISQLite" expanded="True">
+                <Node name="DatabaseClass.cs" selected="True" />
               </Node>
             </Node>
+            <Node name="pbcare.Droid" expanded="True" />
+            <Node name="pbcare.iOS" expanded="True" />
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/ibrahim/Projects/pbcare/pbcare/ISQLite/DatabaseClass.cs" line="93" column="1" />
+      <Breakpoint file="/Users/ibrahim/Projects/pbcare/iOS/MySQL_DB_iOS.cs" line="95" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.CustomExecutionModes>

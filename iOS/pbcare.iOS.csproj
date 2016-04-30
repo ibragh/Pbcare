@@ -106,6 +106,13 @@
     <Reference Include="Acr.Notifications.Interface">
       <HintPath>..\packages\Acr.Notifications.1.5.2\lib\Xamarin.iOS10\Acr.Notifications.Interface.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data.CF">
+      <HintPath>..\Components\MySQL-Plugin-1.0\lib\ios-unified\MySql.Data.CF.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N" />
+    <Reference Include="I18N.West" />
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -119,6 +126,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="SQLite_iOS.cs" />
     <Compile Include="Renderer.cs" />
+    <Compile Include="MySQL_DB_iOS.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw.targets')" />
@@ -135,9 +143,6 @@
     <BundleResource Include="Resources\MyPregnancy.png" />
     <BundleResource Include="Resources\Setting.png" />
     <BundleResource Include="Resources\Website.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\pbcare.db3" />
     <BundleResource Include="Resources\infoLogo.png" />
     <BundleResource Include="Resources\logOut.png" />
@@ -146,31 +151,52 @@
     <BundleResource Include="Resources\X.png" />
     <BundleResource Include="Resources\mainBLogo2.png" />
     <BundleResource Include="Resources\children.png" />
-    <BundleResource Include="Resources\fetus1.PNG" />
-    <BundleResource Include="Resources\fetus2.PNG" />
-    <BundleResource Include="Resources\fetus3.PNG" />
-    <BundleResource Include="Resources\fetus4.PNG" />
-    <BundleResource Include="Resources\fetus5.PNG" />
-    <BundleResource Include="Resources\fetus6.PNG" />
-    <BundleResource Include="Resources\fetus7.PNG" />
-    <BundleResource Include="Resources\fetus8.PNG" />
-    <BundleResource Include="Resources\fetus9.PNG" />
-    <BundleResource Include="Resources\fetus10.PNG" />
-    <BundleResource Include="Resources\fetus11.PNG" />
-    <BundleResource Include="Resources\fetus12.PNG" />
-    <BundleResource Include="Resources\fetus13.PNG" />
-    <BundleResource Include="Resources\fetus14.PNG" />
-    <BundleResource Include="Resources\fetus15.PNG" />
-    <BundleResource Include="Resources\fetus16.PNG" />
-    <BundleResource Include="Resources\fetus17.PNG" />
-    <BundleResource Include="Resources\fetus18.PNG" />
-    <BundleResource Include="Resources\fetus19.PNG" />
-    <BundleResource Include="Resources\fetus20.PNG" />
-    <BundleResource Include="Resources\fetus21.PNG" />
-    <BundleResource Include="Resources\fetus22.PNG" />
-    <BundleResource Include="Resources\fetus23.PNG" />
-    <BundleResource Include="Resources\fetus24.PNG" />
-    <BundleResource Include="Resources\fetus25.PNG" />
     <BundleResource Include="Resources\vaccinationLogo.png" />
+    <BundleResource Include="Resources\fetus1.jpg" />
+    <BundleResource Include="Resources\fetus2.jpg" />
+    <BundleResource Include="Resources\fetus3.jpg" />
+    <BundleResource Include="Resources\fetus4.jpg" />
+    <BundleResource Include="Resources\fetus5.jpg" />
+    <BundleResource Include="Resources\fetus6.jpg" />
+    <BundleResource Include="Resources\fetus7.jpg" />
+    <BundleResource Include="Resources\fetus8.jpg" />
+    <BundleResource Include="Resources\fetus9.jpg" />
+    <BundleResource Include="Resources\fetus10.jpg" />
+    <BundleResource Include="Resources\fetus11.jpg" />
+    <BundleResource Include="Resources\fetus12.jpg" />
+    <BundleResource Include="Resources\fetus13.jpg" />
+    <BundleResource Include="Resources\fetus14.jpg" />
+    <BundleResource Include="Resources\fetus15.jpg" />
+    <BundleResource Include="Resources\fetus16.jpg" />
+    <BundleResource Include="Resources\fetus17.jpg" />
+    <BundleResource Include="Resources\fetus18.jpg" />
+    <BundleResource Include="Resources\fetus19.jpg" />
+    <BundleResource Include="Resources\fetus20.jpg" />
+    <BundleResource Include="Resources\fetus21.jpg" />
+    <BundleResource Include="Resources\fetus22.jpg" />
+    <BundleResource Include="Resources\fetus23.jpg" />
+    <BundleResource Include="Resources\fetus24.jpg" />
+    <BundleResource Include="Resources\fetus25.jpg" />
+    <BundleResource Include="Resources\fetus26.jpg" />
+    <BundleResource Include="Resources\fetus27.jpg" />
+    <BundleResource Include="Resources\fetus28.jpg" />
+    <BundleResource Include="Resources\fetus29.jpg" />
+    <BundleResource Include="Resources\fetus30.jpg" />
+    <BundleResource Include="Resources\fetus31.jpg" />
+    <BundleResource Include="Resources\fetus32.jpg" />
+    <BundleResource Include="Resources\fetus33.jpg" />
+    <BundleResource Include="Resources\fetus34.jpg" />
+    <BundleResource Include="Resources\fetus35.jpg" />
+    <BundleResource Include="Resources\fetus36.jpg" />
+    <BundleResource Include="Resources\fetus37.jpg" />
+    <BundleResource Include="Resources\fetus38.jpg" />
+    <BundleResource Include="Resources\fetus39.jpg" />
+    <BundleResource Include="Resources\fetus40.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="MySQL-Plugin">
+      <Version>1.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>

@@ -162,7 +162,12 @@ namespace pbcare
 
 			}else{
 				string DueDate = pbcareApp.Database.GetDueDate ();
-				pbcareApp.FinaldueDate = DateTime.ParseExact (DueDate, "ddMMyyyy", null).Date;
+				try {
+					pbcareApp.FinaldueDate = DateTime.ParseExact (DueDate, "ddMMyyyy", null).Date;
+				} catch (FormatException ex) {
+					System.Diagnostics.Debug.WriteLine (ex.Message);
+				}
+
 
 				Label showDueDate = new Label{
 					Text = " موعد ولادتك المتوقع هـو ",
