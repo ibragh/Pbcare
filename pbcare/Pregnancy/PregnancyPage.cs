@@ -11,7 +11,7 @@ namespace pbcare
 		
 		Button AddPregnancy, FollowPregnancy, FollowFetusImages, FollowFetusWeekly, finishPreg_  ;
 		Image s = new Image { Source = "notPregnant2.png" };
-		bool Locked = false ;
+		bool Locked = false; // To prevent double clicks on (Saud)
 
 		public PregnancyPage ()
 		{

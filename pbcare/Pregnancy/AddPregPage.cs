@@ -89,9 +89,7 @@ namespace pbcare
 					}  else if (result == 99) { /* SUCCESSFUL */
 						DisplayAlert ("", "موعدك الولادة المتوقع : " + pbcareApp.FinaldueDate.GetDateTimeFormats()[3]+" \nأنتي الآن في الأسبوع الـ "+CurrentWeek, "تم");
 						TimeSpan difference = dueDate.Date - DateTime.Now.AddDays (-1);
-						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -2));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
-						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
 						pbcareApp.Database.update_IsPregnant(1);
 						pbcareApp.u.isPregnant = 1;
 
@@ -147,9 +145,7 @@ namespace pbcare
 					}  else if (result == 99) { /* SUCCESSFUL */
 						DisplayAlert ("", "موعدك الولادة المتوقع : " + pbcareApp.FinaldueDate.GetDateTimeFormats()[3]+" \nأنتي الآن في الأسبوع الـ "+currentWeek, "تم");
 						TimeSpan difference = expectedDueDate.Date - DateTime.Now.AddDays (-1);
-						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -2));
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
-						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays));
 						pbcareApp.Database.update_IsPregnant(1);
 						pbcareApp.u.isPregnant = 1;
 

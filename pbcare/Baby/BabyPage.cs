@@ -71,11 +71,12 @@ namespace pbcare
 			double PastDays = ((int)difference.TotalDays );
 			if(PastDays == 0){
 				return 1;
-			}else{
-			return (int)Math.Ceiling ((PastDays/30) );
-			}
 
+			}else{
+				return (int)Math.Ceiling ((PastDays/30) );
+			}
 		}
+
 		async void pushAddBaby(){
 			await Navigation.PushAsync(new AddBaby());
 			Locked = false ;

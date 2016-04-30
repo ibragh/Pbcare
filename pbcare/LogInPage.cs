@@ -81,7 +81,7 @@ namespace pbcare
 					messageLogin.TextColor = Color.Green;
 					messageLogin.Text = "تم تسجيل الدخول بنجاح"; 
 					pbcareApp.IsUserLoggedIn = true;
-					pbcareApp.Database.User_Loggedin (true);
+					pbcareApp.Database.User_Loggedin (true); // So user won't have to login again
 
 					Application.Current.MainPage = pbcareApp.GetMainPage();
 

@@ -9,12 +9,11 @@ namespace pbcare
 		public FollowFetusByImages ()
 		{
 
-			this.Title = "متابعة الحمل الأسبوعي";
+			this.Title = "متابعة الجنين بالصور";
 			BackgroundColor = Color.White; //Color.FromRgb (197, 255, 255);
 			int CurrentWeek = PregnancyPage.CurrentWeek(pbcareApp.FinaldueDate);
 
 			string[] images;
-			int check = CurrentWeek + 10;
 			if (CurrentWeek > 30) {
 				images = new string[40 -(CurrentWeek - 1)];
 			} else {

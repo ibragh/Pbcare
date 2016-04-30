@@ -2,6 +2,7 @@
 
 using Xamarin.Forms;
 using Acr.Notifications;
+using System.Collections.Generic;
 
 namespace pbcare
 {
@@ -74,40 +75,48 @@ namespace pbcare
 						birthDate = birthdate.Date.ToString("ddMMyyyy") ,
 						gender = gender.Items [gender.SelectedIndex]
 					};
-					if(!c.birthDate.Equals(baby.birthDate)){
-					bool _check = pbcareApp.Database.RemoveChild(c.ChildName);
-					bool check  = false ; 
-					if(_check){
-						check = pbcareApp.Database.AddChild(baby);
+					bool _check = true ; 
+					var children = pbcareApp.Database.getChildren(pbcareApp.u.Email);
+					if(!c.birthDate.Equals(baby.birthDate) ){
+						if(!c.ChildName.Equals(baby.ChildName)){
+							for(int i = 0 ; i < children.Count; i++){
+							
+							if(baby.ChildName == children[i].ChildName){
+								_check = false ;
+								break ;
+							}
+							_check = true ;
+						}
 					}
-					if (check) {
-						pbcareApp.Database.delete_CV_Sechduale(c.ChildName );
-						pbcareApp.Database.set_CV_Sechduale(baby.ChildName);
-						var Vaccinations =  pbcareApp.Database.getVaccinationsList();
+					if(_check){
 
-						Navigation.PopAsync ();
+					 		pbcareApp.Database.RemoveChild(c.ChildName);
+							pbcareApp.Database.AddChild(baby);
+							pbcareApp.Database.delete_CV_Sechduale(c.ChildName );
+							pbcareApp.Database.set_CV_Sechduale(baby.ChildName);
+							var Vaccinations =  pbcareApp.Database.getVaccinationsList();
+
 						for(int i = 0 ; i < Vaccinations.Count ; i++){
 							var periodInDays = (Vaccinations[i].time *30) - ((int)(DateTime.Now.Date - birthdate.Date).TotalDays) ;
 							Notifications.Instance.Send ("تنبيه", Vaccinations[i].name + "  for  " + baby.ChildName ,when: TimeSpan.FromDays (periodInDays));
-						}
-					} else {
-						DisplayAlert ("خطأ", "لديك طفل مسجل مسبقا بنفس الاسم ", "إلغاء");
-					}
-					}else {
-						bool _check = pbcareApp.Database.RemoveChild(c.ChildName);
-						bool check  = false ; 
-						if(_check){
-							check = pbcareApp.Database.AddChild(baby);
-							Navigation.PopAsync ();
-							if(!check){
-								DisplayAlert ("خطأ", "لديك طفل مسجل مسبقا بنفس الاسم ", "إلغاء");
 							}
+						
+						}else{
+							DisplayAlert ("خطأ", "لديك طفل مسجل مسبقا بنفس الاسم ", "إلغاء");
+						
 						}
+					}else {
+							pbcareApp.Database.RemoveChild(c.ChildName);
+							pbcareApp.Database.AddChild(baby);
+							pbcareApp.Database.Update_childName_inChildVaccinationTable(baby.ChildName,c.ChildName);
+
 					}
-				} else {
-					DisplayAlert ("خطأ", "معلومات الطفل غير كاملة", "إلغاء");
-				}
-			};
+						Navigation.PopAsync();
+
+				}else {
+						DisplayAlert ("خطأ", "معلومات الطفل غير كاملة", "إلغاء");
+					}
+		};
 
 			var cancelButton = new Button {
 				Text = "إلغاء",

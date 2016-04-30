@@ -10,6 +10,7 @@ namespace pbcare
 		bool Locked = false ;
 
 		public static List<vaccinationTable> Vaccinations = new List<vaccinationTable>(); 
+
 		ListView vaccinationList = new ListView {
 			RowHeight = 40
 		};
@@ -58,12 +59,15 @@ namespace pbcare
 	{
 		Label VName, isTakenLabel ;
 		Button isTakenButton ;
+		int isTaken ;
 		vaccinationTable V ;
+		Baby C ;
+
 		public VaccinationInfoView (vaccinationTable v, Baby c)
 		{
-			this.V = v;
 			this.Title = "تطعيمات "+ c.ChildName ;
-
+			this.V = v;
+			this.C = c;
 			BackgroundColor = Color.FromRgb (197, 255, 255);
 			VName = new Label{ 
 				Text = V.name,
@@ -90,44 +94,32 @@ namespace pbcare
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label))
 			};
 
-			bool isTaken = pbcareApp.Database.is_vaccination_taken (V.VaccinationID, c.ChildName);
-
-			if(isTaken == true){
-				isTakenButton.Image = "right.png";
-				isTakenButton.BackgroundColor = Color.Transparent;
-				isTakenLabel.Text = "تم أخذها";
-
-			}else{
-				isTakenButton.Image = "X.png";
-				isTakenButton.BackgroundColor = Color.Transparent;
-				isTakenLabel.Text = "لم يتم أخذها";
-			}
 
 			isTakenButton.Clicked += (sender, e) => {
-				if(isTaken == true){
-					pbcareApp.Database.update_IsTaken(false, V.VaccinationID, c.ChildName);
+				if(isTaken == 1){
+					pbcareApp.Database.update_IsTaken(0, V.VaccinationID, c.ChildName);
 					isTakenButton.Image = "X.png";
 					isTakenButton.BackgroundColor = Color.Transparent;
 					isTakenLabel.Text = "لم يتم أخذها";
-					isTaken = false;
-				}else{
-					pbcareApp.Database.update_IsTaken(true, V.VaccinationID, c.ChildName);
+					isTaken = 0;
+				}else if(isTaken == 0 ){
+					pbcareApp.Database.update_IsTaken(1, V.VaccinationID, c.ChildName);
 					isTakenButton.Image = "right.png";
 					isTakenButton.BackgroundColor = Color.Transparent;
 					isTakenLabel.Text = "تم أخذها";
-					isTaken = true;
+					isTaken = 1;
 
 				}
 			};
 
 			var VInfo = new Label{ 
-				Text = "سعود أحمد مكين القرني",
+				Text = V.info ,
 				TextColor = Color.FromHex("#5069A1"),
 				FontSize = Device.GetNamedSize(NamedSize.Medium , typeof(Label)),
 				HorizontalOptions = LayoutOptions.End
 			};
 
-			int when = pbcareApp.Database.getVaccinationDate (v.VaccinationID);
+			int when = pbcareApp.Database.getVaccinationDate (V.VaccinationID);
 			DateTime Vacc_Time = DateTime.ParseExact (c.birthDate, "ddMMyyyy", null).AddMonths(when);
 
 			var date = new Label{ 
@@ -176,6 +168,19 @@ namespace pbcare
 
 		protected override void OnAppearing ()
 		{
+			isTaken = pbcareApp.Database.is_vaccination_taken (V.VaccinationID, C.ChildName);
+
+			if(isTaken == 1){
+				isTakenButton.Image = "right.png";
+				isTakenButton.BackgroundColor = Color.Transparent;
+				isTakenLabel.Text = "تم أخذها";
+
+			}else if (isTaken == 0){
+				isTakenButton.Image = "X.png";
+				isTakenButton.BackgroundColor = Color.Transparent;
+				isTakenLabel.Text = "لم يتم أخذها";
+			}
+			base.OnAppearing ();
 		}
 	}
 }

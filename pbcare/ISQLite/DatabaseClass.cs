@@ -90,8 +90,6 @@ namespace pbcare
 		{
 			var Logeduser = DB.Table<User> ().Where (user => user.Email == email && user.Password == password).FirstOrDefault ();
 			if ( Logeduser != null) {
-				pbcareApp.u.isPregnant = Logeduser.isPregnant;
-				pbcareApp.u.name = Logeduser.name;
 				return true;
 			} else {
 				return false;
@@ -118,7 +116,11 @@ namespace pbcare
 					DB.Insert (u);
 					return true;
 				}
-			} catch (Exception ex) {
+			} catch (SQLiteException ex) {
+				Debug.WriteLine ("****&&&^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return false;
+
+			}catch (Exception ex) {
 				Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 			} 
@@ -263,8 +265,12 @@ namespace pbcare
 
 				Debug.WriteLine ("**** Method is: " + this.ToString ());
 
-			} catch (Exception ex) {
+			} catch (SQLiteException ex) {
 				Debug.WriteLine ("****&&&^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				return false;
+
+			}catch(Exception ex){
+				Debug.WriteLine ("****111111^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 			}
 		}
@@ -275,6 +281,7 @@ namespace pbcare
 				return true ; 
 
 			}catch(Exception ex){
+				Debug.WriteLine ("****111111^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 			}
 		}
@@ -283,8 +290,9 @@ namespace pbcare
 
 			try {
 				return DB.Table<Baby> ().Where (c => c.ChildName == name && c.mother == email).FirstOrDefault ();
+
 			} catch (Exception ex) {
-				Debug.WriteLine ("**** Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
+				Debug.WriteLine ("****fffff Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return null;
 			}
 		}
@@ -293,12 +301,12 @@ namespace pbcare
 		public string  getChildMonth (int MonthNumber)
 		{
 			try {
-				// 
+				
 				var month = DB.Table<BabyMonthlyTable> ().Where (c => c.month == MonthNumber).FirstOrDefault ();
 				if (month != null) {
 					return month.info;
 				} else {
-					return "المعلومة غير محفوظة في الداتابيس";
+					return "المعلومة غير محفوظة في قاعدة البيانات ";
 				}
 
 			} catch (Exception ex) {
@@ -333,17 +341,17 @@ namespace pbcare
 			}
 		}
 
-		public bool is_vaccination_taken (int VID, string childName)
+		public int is_vaccination_taken (int VID, string childName)
 		{
 			try {
 				var isTakeIt = DB.Table<ChildVaccinations> ().Where (v => v.VaccinationID == VID && v.ChildName == childName && v.mother == pbcareApp.u.Email).FirstOrDefault ().isTaken;
 				if (isTakeIt == 1) {
-					return true;
+					return 1;
 				} else {
-					return false;
+					return 0;
 				}
 			} catch (Exception ex) {
-				return false;
+				return 0 ;
 				Debug.WriteLine (ex.Message);
 			}
 		}
@@ -368,21 +376,15 @@ namespace pbcare
 				return true ;
 
 			}catch(Exception ex){
+				Debug.WriteLine ("****4444 Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
 				return false;
 			}
 		}
-		public void update_IsTaken (bool isTakenCase, int VID, string childName)
+		public void update_IsTaken (int isTakenCase, int VID, string childName)
 		{
 			try {
-				int takeVacc;
-
-				if (isTakenCase) {
-					takeVacc = 1;
-				} else {
-					takeVacc = 0;
-				}
-
-				DB.Query<ChildVaccinations> ("UPDATE ChildVaccinations Set isTaken  = ? WHERE ChildName = ? and VaccinationID = ?", takeVacc, childName, VID);
+				
+				DB.Query<ChildVaccinations> ("UPDATE ChildVaccinations Set isTaken = ? WHERE VaccinationID = ? ", isTakenCase ,VID);
 			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);
 			}
@@ -395,6 +397,16 @@ namespace pbcare
 			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);
 				return 000;
+			}
+		}
+
+		public void Update_childName_inChildVaccinationTable(string newName , string oldName){
+			try{
+
+				DB.Query<ChildVaccinations> ("UPDATE ChildVaccinations Set ChildName = ? WHERE ChildName = ? and mother = ?", newName, oldName , pbcareApp.u.Email);
+
+			}catch(Exception ex ){
+				Debug.WriteLine (ex.Message);
 			}
 		}
 

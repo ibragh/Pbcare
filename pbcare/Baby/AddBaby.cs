@@ -88,6 +88,7 @@ namespace pbcare
 					DisplayAlert ("خطأ", "معلومات الطفل غير كاملة", "إلغاء");
 				}
 				}
+				Locked = false ;
 			};
 
 			var cancelButton = new Button {
