@@ -46,7 +46,8 @@ namespace pbcare
 				Text = "أدخلي تاريخ الولادة",
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				TextColor=Color.White,
-				FontSize = Device.GetNamedSize(NamedSize.Medium , typeof(Label))
+				FontSize = Device.GetNamedSize(NamedSize.Medium , typeof(Label)),
+				//FontFamily = "Times"
 			};
 
 			var dueDate = new DatePicker1 {
@@ -78,12 +79,6 @@ namespace pbcare
 					// the result from [AddPregnancyToDB] method will return numbers, each one has a meaning
 					int result = pbcareApp.Database.AddPregnancy (pbcareApp.u.Email, DueDateDisplay);
 					if (result == -1) {
-						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
-
-					} else if (result == 0) {
-						DisplayAlert ("خطأ", "المستخدم غير مسجل مسبقاً", "تم");
-
-					} else if (result == 1) {
 						DisplayAlert ("خطأ", "يوجد لديكي حمل مسبق - لتغيير تاريخ الحمل من الإعدادات", "تم");
 
 					}  else if (result == 99) { /* SUCCESSFUL */
@@ -93,9 +88,12 @@ namespace pbcare
 						pbcareApp.Database.update_IsPregnant(1);
 						pbcareApp.u.isPregnant = 1;
 
-					} else {
-						
+					} else if(result == 2){
+						DisplayAlert ("خــطأ","لا يوجد اتصال بالإنترنت","تــم");
+
+					}else{
 						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
+
 					}
 					Locked = false ; 
 					}
@@ -135,23 +133,21 @@ namespace pbcare
 					// the result from [AddPregnancyToDB] method will return numbers, each one has a meaning
 					int result = pbcareApp.Database.AddPregnancy (pbcareApp.u.Email, DueDateDisplay );
 					if (result == -1) {
-						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
-					} else if (result == 0) {
-						DisplayAlert ("خطأ", "المستخدم غير مسجل مسبقاً", "تم");
-
-					} else if (result == 1) {
 						DisplayAlert ("خطأ", "يوجد لديكي حمل مسبق - لتغيير تاريخ الحمل من الإعدادات", "تم");
 
 					}  else if (result == 99) { /* SUCCESSFUL */
 						DisplayAlert ("", "موعدك الولادة المتوقع : " + pbcareApp.FinaldueDate.GetDateTimeFormats()[3]+" \nأنتي الآن في الأسبوع الـ "+currentWeek, "تم");
-						TimeSpan difference = expectedDueDate.Date - DateTime.Now.AddDays (-1);
+						TimeSpan difference = dueDate.Date - DateTime.Now.AddDays (-1);
 						Notifications.Instance.Send("تنبيه","موعد ولادتك قد حان أو اقترب ",when: TimeSpan.FromDays ((int)difference.TotalDays -1));
 						pbcareApp.Database.update_IsPregnant(1);
 						pbcareApp.u.isPregnant = 1;
 
-					} else {
-						Navigation.PopAsync ();
+					} else if(result == 2 ){
+						DisplayAlert ("خــطأ","لا يوجد اتصال بالإنترنت","تــم");
+
+					}else{
 						DisplayAlert ("خطأ", "خطأ غير معروف", "تم");
+
 					}
 					Locked = false ; 
 					}

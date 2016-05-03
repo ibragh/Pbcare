@@ -43,6 +43,7 @@ namespace pbcare
 					var _user = DB.Table<User> ().Where (c => c.Email == pbcareApp.u.Email).FirstOrDefault ();
 					pbcareApp.u.isPregnant = _user.isPregnant;
 					pbcareApp.u.name = _user.name; 
+					pbcareApp.u.isSensorOn = _user.isSensorOn ;
 					Debug.WriteLine (" RigrsterdUser email ************ : " + RigrsterdUser.email);
 					pbcareApp.IsUserLoggedIn = true;
 					/* Retreve DueDate from Database */
@@ -86,46 +87,56 @@ namespace pbcare
 		}
 
 		// check login in email & password are match in db
-		public bool checkLogin (string email, string password)
+		public int checkLogin (string email, string password)
 		{
+			int check = checkLoginLocally (email, password);
+			if (check == 1) {
+				return 1;
 			
-				int dbr = DependencyService.Get<DBRemoteConnection> ().Login (email, password); // remotly
-				
-				if (dbr == 1) {
-					string name = "";
-					MessagingCenter.Subscribe<DBRemoteConnection, string> (this, "1", (mysender, arg) => {
-						Debug.WriteLine ("aaaaaaaa user name = " + arg);
-						name = arg;
-					});
-					add_UserLocally (email, password, name);
-					return true;
-				} else {
-					var Logeduser = DB.Table<User> ().Where (user => user.Email == email && user.Password == password).FirstOrDefault ();
-					if (Logeduser != null) {
-						return true;
-					} else {
-						return false;
-					}
-				}
+			}else{
+				User loggedUser = DependencyService.Get<DBRemoteConnection> ().Login (email, password); // remotly
+//				
+				if (loggedUser != null) {
+					return 1;
 
+				}else {
+					return 0;
+				}
+			}
 		}
+
+		public int checkLoginLocally(string email , string password)
+		{
+			var loggedUser = DB.Table<User> ().Where (user => user.Email == email && user.Password  == password).FirstOrDefault ();
+			if (loggedUser != null) {
+				
+				return 1;
+
+			}else {
+				return 0;
+			}
+		}
+
 
 		public User get_User (string email)
 		{
 			return DB.Table<User> ().Where (user => user.Email == email).FirstOrDefault ();
 		}
-		public bool add_UserLocally (string email, string password, string name)
+
+
+		public bool add_UserLocally (string email, string password, string name , int isPregnant , int isSensorOn)
 		{
 			try {
 				if (DB.Table<User> ().Where (user => user.Email == email).FirstOrDefault () != null) {
-					return false;
+					return true;
+
 				} else {
 					User u = new User ();
 					u.Email = email;
 					u.Password = password;
 					u.name = name;
-					u.isPregnant = 0;
-					u.isSensorOn = 0;
+					u.isPregnant = isPregnant;
+					u.isSensorOn = isSensorOn;
 					DB.Insert (u); // locally
 					return true;
 				}
@@ -140,36 +151,41 @@ namespace pbcare
 		}
 
 		// check signup entries
-		public bool add_User (string email, string password, string name)
+		public int add_User (string email, string password, string name)
 		{
-			try {
-				if (DB.Table<User> ().Where (user => user.Email == email).FirstOrDefault () != null) {
-					return false;
-				} else {
+			int check = DependencyService.Get<DBRemoteConnection> ().CheckUser (email);
+			if (check == 1) {
+				int dbr = DependencyService.Get<DBRemoteConnection> ().CreateUser (name, email, password); // remotly
+				Debug.WriteLine (dbr + " return value from db remotly create");
+				if (dbr == 0) {
+					return dbr;
+
+				} else if (dbr == 1) {
 					User u = new User ();
 					u.Email = email;
 					u.Password = password;
 					u.name = name;
 					u.isPregnant = 0;
 					u.isSensorOn = 0;
-					DB.Insert (u); // locally
-					int dbr = DependencyService.Get<DBRemoteConnection> ().CreateUser (name, email, password); // remotly
-					Debug.WriteLine (dbr + " return value from db remotly create");
-					if (dbr == 0) {
-						return false;
+					try {
+						DB.Insert (u); // locally
+					} catch (SQLiteException e) {
+						return 0;
 					}
-					return true;
+					return dbr;
+
+				} else if (dbr == 2) {
+					return 2;
+				} else {
+					return 2; 
 				}
-			} catch (SQLiteException ex) {
-				Debug.WriteLine ("****&&&^^^ Method is: " + this.ToString () + " Exeption is :" + ex.ToString ());
-				return false;
 
-			} catch (Exception ex) {
-				Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
-				return false;
-			} 
+			} else if (check == 0){
+				return 0;
+			}else {
+				return 2;
+			}
 		}
-
 		//
 		public void update_IsPregnant (int PregnancyStatus)
 		{
@@ -217,24 +233,25 @@ namespace pbcare
 		{
 
 			try {
-				// check if user is registred
-				if (DB.Table<User> ().Where (c => c.Email == email).FirstOrDefault () != null) {
-					// check if the account is not already rigesterd..
-					// if so, and user want do edit, there is another way to do that
-					if (DB.Table<PregnancyDuedateTable> ().Where (c => c.email == email).FirstOrDefault () != null) {
-						return 1;
-						// user is ready to store a new DueDate
-					} else {
+				int check = DependencyService.Get<DBRemoteConnection> ().checkDueDate (email);
+				if(check == 1){
+					int check2 = DependencyService.Get<DBRemoteConnection> ().addDueDate (email, date);
+
 						PregnancyDuedateTable p = new PregnancyDuedateTable ();
 						p.email = email;
 						p.dueDate = date;
 						DB.Insert (p);
 						return 99;
-					}
 
-				} else {
+				}else if (check == 0){
+					PregnancyDuedateTable p = new PregnancyDuedateTable ();
+					p.email = email;
+					p.dueDate = date;
+					DB.Insert (p);
+					return 99;
 
-					return 0;
+				}else{
+					return check ;
 				}
 
 			} catch (Exception ex) {
@@ -245,20 +262,27 @@ namespace pbcare
 
 		public string GetDueDate ()
 		{
-			try {
-				return DB.Table<PregnancyDuedateTable> ().Where (i => i.email == pbcareApp.u.Email).FirstOrDefault ().dueDate;
-			} catch (Exception ex) {
-				Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
-				return "false";
-			}
+				try {
+					return DB.Table<PregnancyDuedateTable> ().Where (i => i.email == pbcareApp.u.Email).FirstOrDefault ().dueDate;
+				} catch (Exception ex) {
+					Debug.WriteLine ("**** Method id: " + this.ToString () + " Exeption is :" + ex.ToString ());
+					return "false";
+				}
 		}
 
-		public void removeDueDate ()
+		public int  removeDueDate ()
 		{
-			try {
-				DB.Query<PregnancyDuedateTable> ("DELETE FROM PregnancyDuedateTable WHERE email = ?", pbcareApp.u.Email);
-			} catch (Exception ex) {
-				Debug.WriteLine (ex.Message);
+			int check = DependencyService.Get<DBRemoteConnection> ().removeDueDate (pbcareApp.u.Email);
+			if (check == 1) {
+				try {
+					DB.Query<PregnancyDuedateTable> ("DELETE FROM PregnancyDuedateTable WHERE email = ?", pbcareApp.u.Email);
+					return 1;
+				} catch (Exception ex) {
+					Debug.WriteLine (ex.Message);
+					return 2;
+				}
+			} else {
+				return 2;
 			}
 		}
 

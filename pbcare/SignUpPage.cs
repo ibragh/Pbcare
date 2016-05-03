@@ -76,6 +76,7 @@ namespace pbcare
 				TextColor = Color.White,
 				FontAttributes = FontAttributes.Bold,
 				FontSize = Device.GetNamedSize(NamedSize.Medium , typeof(Label)),
+				HorizontalOptions = LayoutOptions.CenterAndExpand
 			};
 
 			var SignUpButton = new Button {
@@ -101,22 +102,27 @@ namespace pbcare
 				} else if (!pwd.Equals (pwdCon)) {
 					messageSignUp.Text = "كلمة المرور غير متطابقة"; // Password not matched
 				} else {
-					if (pbcareApp.Database.add_User (Email, pwd, name)) {
+					int result = pbcareApp.Database.add_User (Email, pwd, name) ;
+					if (result == 1) {
 						pbcareApp.u.Email = Email;
 						pbcareApp.u.name = name;
 						pbcareApp.u.isPregnant = 0 ;
-						pbcareApp.u.isSensorOn = 0 ;
+						pbcareApp.u.isSensorOn = 1 ;
 						pbcareApp.IsUserLoggedIn = true;
 						messageSignUp.TextColor = Color.Green;
 						messageSignUp.Text = "تم تسجيل الدخول بنجاح"; 
 						pbcareApp.Database.User_Loggedin (true);
 						Application.Current.MainPage = pbcareApp.GetMainPage();
 
-					} else {
-						messageSignUp.Text = "تم التسجيل بنفس الإيميل مسبقاً"; // Email is rigistered
+					} else if (result == 0){
+						messageSignUp.Text = "تم التسجيل بنفس الإيميل مسبقاً"; // Email is rigistered // Email is rigistered
 						passwordEntry.Text = string.Empty;
-					}
-
+					
+					}else if (result == 2){
+						messageSignUp.Text = "يجــب الاتصال بالانترنت "; // Email is rigistered
+						passwordEntry.Text = string.Empty;
+					
+					} 
 				}
 			};
 

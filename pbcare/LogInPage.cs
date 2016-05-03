@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace pbcare
 {
@@ -72,22 +73,31 @@ namespace pbcare
 				} else if (!Email.Contains ("@")) {
 					messageLogin.Text = "فضلاً .. تأكد من كتابة الإيميل بشكل صحيح";
 
-				} else if (pbcareApp.Database.checkLogin (Email, pwd)) {
-					pbcareApp.u.Email = Email;
-					User loggedUser = pbcareApp.Database.get_User(pbcareApp.u.Email);
-					pbcareApp.u.name = loggedUser.name;
-					pbcareApp.u.isPregnant = loggedUser.isPregnant;
-					pbcareApp.u.isSensorOn = loggedUser.isSensorOn;
-					messageLogin.TextColor = Color.Green;
-					messageLogin.Text = "تم تسجيل الدخول بنجاح"; 
-					pbcareApp.IsUserLoggedIn = true;
-					pbcareApp.Database.User_Loggedin (true); // So user won't have to login again
+				} else{
+					int result = pbcareApp.Database.checkLogin (Email, pwd);
+					if (result == 1 ) {
+						var loggedUser = pbcareApp.Database.get_User(Email);
+						pbcareApp.u.Email = Email;
+						pbcareApp.u.name = loggedUser.name;
+						pbcareApp.u.isPregnant = loggedUser.isPregnant;
+						pbcareApp.u.isSensorOn = loggedUser.isSensorOn;
+						messageLogin.TextColor = Color.Green;
+						messageLogin.Text = "تم تسجيل الدخول بنجاح"; 
+						pbcareApp.IsUserLoggedIn = true;
+						pbcareApp.Database.User_Loggedin (true); // So user won't have to login again
+						string DueDate = pbcareApp.Database.GetDueDate ();
+						try {
+							pbcareApp.FinaldueDate = DateTime.ParseExact (DueDate, "ddMMyyyy", null).Date;
+						} catch (FormatException ex) {
+							System.Diagnostics.Debug.WriteLine (ex.Message);
+						}
+							
+						Application.Current.MainPage = pbcareApp.GetMainPage();
 
-					Application.Current.MainPage = pbcareApp.GetMainPage();
+					} else if(result == 0) {
+						messageLogin.Text = "فشل تسجيل الدخول .. الرجاء ال";
 
-				} else {
-					messageLogin.Text = "فشل تسجيل الدخول .. الرجاء ال";
-
+					}
 				}
 			};
 

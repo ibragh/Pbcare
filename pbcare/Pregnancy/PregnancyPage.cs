@@ -119,16 +119,21 @@ namespace pbcare
 			Debug.WriteLine ("Answer: " + answer);
 
 			if (answer == true) {
-				pbcareApp.u.isPregnant = 0;
-				pbcareApp.Database.update_IsPregnant (0);
-				pbcareApp.Database.removeDueDate ();
-				var cancel = await DisplayAlert (" ألف مبــروك و الحمدلله على سلامتك يا "+ pbcareApp.u.name ,"هل تريدين إضافة مولودك ؟ ", "لا", "نــعم ");
-				if (!cancel) {
-					await Navigation.PushAsync (new AddBaby ());
+				if (pbcareApp.Database.removeDueDate () == 1) {
+					pbcareApp.u.isPregnant = 0;
+					pbcareApp.Database.update_IsPregnant (0);
+
+					var cancel = await DisplayAlert (" ألف مبــروك و الحمدلله على سلامتك يا " + pbcareApp.u.name, "هل تريدين إضافة مولودك ؟ ", "لا", "نــعم ");
+					if (!cancel) {
+						await Navigation.PushAsync (new AddBaby ());
+					} else {
+						OnAppearing ();
+					}
 				} else {
-					OnAppearing ();
+					DisplayAlert ("خــطأ","لا يوجد اتصال بالإنترنت","تــم");
+
 				}
-		}
+			}
 		}
 		protected override void OnAppearing()
 		{
@@ -161,13 +166,6 @@ namespace pbcare
 				};
 
 			}else{
-				string DueDate = pbcareApp.Database.GetDueDate ();
-				try {
-					pbcareApp.FinaldueDate = DateTime.ParseExact (DueDate, "ddMMyyyy", null).Date;
-				} catch (FormatException ex) {
-					System.Diagnostics.Debug.WriteLine (ex.Message);
-				}
-
 
 				Label showDueDate = new Label{
 					Text = " موعد ولادتك المتوقع هـو ",

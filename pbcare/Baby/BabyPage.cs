@@ -7,6 +7,14 @@ namespace pbcare
 {
 	public class BabyPage : ContentPage
 	{
+		public static Label message = new Label{
+			TextColor = Color.White,
+			FontSize = Device.GetNamedSize(NamedSize.Medium ,typeof(Label)),
+			FontAttributes = FontAttributes.Bold,
+			HorizontalOptions = LayoutOptions.Center				 
+
+		};
+
 		Button AddChild ;
 		ListView childrenList = new ListView {
 			RowHeight = 60
@@ -108,15 +116,9 @@ namespace pbcare
 				Source = "children.png"
 			};
 
-			Label message = new Label {
-				Text = "ليس لديك أطفال مسجلين    \n للإضافة الرجاء الضغط على + ",
-				TextColor = Color.White,
-				FontSize = Device.GetNamedSize(NamedSize.Medium ,typeof(Label)),
-				FontAttributes = FontAttributes.Bold,
-				HorizontalOptions = LayoutOptions.Center				 
-					
-			};
 			if(childrenNum.Count == 0){
+				BabyPage.message.Text = "ليس لديك أطفال مسجلين    \n للإضافة الرجاء الضغط على + ";
+
 				Content = new ScrollView {
 					Content = new StackLayout {
 						HorizontalOptions = LayoutOptions.Center,

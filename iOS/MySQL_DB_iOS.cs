@@ -15,7 +15,7 @@ namespace pbcare.iOS
 		int lastID;
 		string name;
 
-		public int CreateUser (string name, string email, string pass)
+		public int CreateUser (string name, string email, string pass )
 		{
 			try {
 				// To prevent Exeption (No data is available for encoding 1252.)
@@ -37,41 +37,31 @@ namespace pbcare.iOS
 					System.Diagnostics.Debug.WriteLine ("Last id = " + lastID);
 				}
 				lastID = lastID + 10;
-				//string queryString = "insert into myusers values(\""+email+"\",\""+name+"\",\""+pass+"\")";
-				string queryString = "insert into mybb_users(uid, username, password, salt, loginkey, email, postnum, " +
-				                     "threadnum, avatar, " +
-				                     "avatardimensions, avatartype, usergroup, additionalgroups, displaygroup, usertitle, regdate," +
-				                     " lastactive, lastvisit, lastpost, website, icq, aim, yahoo, skype, google, birthday, " +
-				                     "birthdayprivacy, signature, allownotices, hideemail, subscriptionmethod, invisible, receivepms, " +
-				                     "receivefrombuddy, pmnotice, pmnotify, buddyrequestspm, buddyrequestsauto, threadmode, " +
-				                     "showimages, showvideos, showsigs, showavatars, showquickreply, showredirect, ppp, tpp, daysprune," +
-				                     " dateformat, timeformat, timezone, dst, dstcorrection, buddylist, ignorelist, style, away, " +
-				                     "awaydate, returndate, awayreason, pmfolders, notepad, referrer, referrals, reputation, regip, " +
-				                     "lastip, language, timeonline, showcodebuttons, totalpms, unreadpms, warningpoints, " +
-				                     "moderateposts, moderationtime, suspendposting, suspensiontime, suspendsignature, " +
-				                     "suspendsigtime, coppauser, classicpostbit, loginattempts, usernotes, sourceeditor)" +
-					// Values of this query
-				                     "Values" +
-				                     "('" + lastID + "', '" + name + "', '" + pass + "', '', '', '" + email + "'," +
-				                     " '0', '0', '', ''," +
-				                     " '0', '5', '', '0', '', '1461437167', '1461437167', '1461437167', '0', '', '', ''," +
-				                     " '', '', '', '', 'all', '', '1', '0', '0', '0', '1', '0', '1', '0', '1', '0', 'linear'," +
-				                     " '1', '1', '1', '1', '1', '1', '0', '0', '0', '', '', '0', '0', '2', '', '', '0', '0'," +
-				                     " '0', '0', '', '', '', '2', '0', '0', '', '', '', '46', '1', '0', '0', '0', '0', '0'," +
-				                     " '0', '0', '0', '0', '0', '0', '1', '', '0')\n";
+				try{
+				string queryString = "insert into users_mothers(email, Password, name, isPregnant, isSensorOn)" +
+					"values ('" +email+"' , '"+pass+"','"+name+"',"+0+","+ 1 +") \n "; 
+				
 				MySqlCommand sqlcmd = new MySqlCommand (queryString, sqlconn);
 				sqlcmd.ExecuteScalar ();
 				System.Diagnostics.Debug.WriteLine (queryString);
 
+				}catch(MySqlException ex){
+					return 2;
+				}
 				sqlconn.Close ();	
 				return 1;
+
+			}catch(MySqlException ex){
+				System.Diagnostics.Debug.WriteLine ("slslslsl 3 : " + ex.ToString ());
+				return 2;
+
 			} catch (Exception ex) {
-				System.Diagnostics.Debug.WriteLine (ex.Message);
+				System.Diagnostics.Debug.WriteLine ("slslslsl  : " + ex.ToString());
 				return 0;
 			}
 		}
 
-		public int Login (string email, string pass)
+		public User Login (string email, string pass)
 		{
 			try {
 				// To prevent Exeption (No data is available for encoding 1252.)
@@ -80,50 +70,178 @@ namespace pbcare.iOS
 
 				MySqlConnection sqlconn;
 				string connsqlstring = "Database=pbcareMySQL;Data Source=us-cdbr-azure-west-c.cloudapp.net;User Id=b2aa2cc8b1637c;Password=b1aa0157; charset=utf8";
+
+				//string connsqlstring = "Server=104.209.43.4;Port=3306;database=pbcareMySQL;Uid=b2aa2cc8b1637c;Pwd=b1aa0157;charset=utf8";
+
 				sqlconn = new MySqlConnection (connsqlstring);
 				System.Diagnostics.Debug.WriteLine (sqlconn.ToString ());
 				sqlconn.Open ();
 
-				String lastIDCmmd = "SELECT username FROM pbcaremysql.mybb_users where email = '" + email + "' and password = '" + pass + "'";
+				String lastIDCmmd = "SELECT * FROM pbcaremysql.users_mothers where email = '" + email + "' and Password = '" + pass + "'";
+
+				User u = new User();
+
+				using (MySqlCommand command = new MySqlCommand(lastIDCmmd, sqlconn))
+				{
+					
+					using (MySqlDataReader reader = command.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							u.Email = reader.GetValue(0).ToString();
+							u.name = reader.GetValue(2).ToString();
+							u.isPregnant = (int) reader.GetValue(3);
+							u.isSensorOn = (int) reader.GetValue(4);
+
+							sqlconn.Close ();
+							return u ;
+						}
+					}
+				}
+				sqlconn.Close ();
+				return null ;
+
+
+			} catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine ("saud" +ex.Message);
+				return null ;
+			}
+		}
+
+		public int CheckUser (string email)
+		{
+			try{
+				MySqlConnection sqlconn;
+				string connsqlstring = "Database=pbcareMySQL;Data Source=us-cdbr-azure-west-c.cloudapp.net;User Id=b2aa2cc8b1637c;Password=b1aa0157; charset=utf8";
+
+				sqlconn = new MySqlConnection (connsqlstring);
+				System.Diagnostics.Debug.WriteLine (sqlconn.ToString ());
+				sqlconn.Open ();
+
+				String lastIDCmmd = "SELECT * FROM pbcaremysql.users_mothers where email = '" + email + "'";
+									
 				MySqlCommand nsqlcmd = new MySqlCommand (lastIDCmmd, sqlconn);
 				var result = nsqlcmd.ExecuteScalar ();
-				System.Diagnostics.Debug.WriteLine ("********* INt ID " + result);
-				if (result == null) {
+				if (result != null) {
 					sqlconn.Close ();	
 					return 0;
 				} else {
-					name = result.ToString ();
-					MessagingCenter.Send<DBcon_iOS, string> (this, "1", name);
 					sqlconn.Close ();	
 					return 1;
 				}
 			} catch (Exception ex) {
-				System.Diagnostics.Debug.WriteLine (ex.Message);
-				return 0;
+				return 2;
 			}
 		}
-	}
-	/*
-		public List<String> LoadAllItemFromMySQL ()
-		{
-			List<String> products = new List<String> ();
-			try {
-				GetConnection (true);
-				DataSet tickets = new DataSet ();
-				string queryString = "select item.NAME from ITEM as item";
-				MySqlDataAdapter adapter = new MySqlDataAdapter (queryString, sqlconn);
-				adapter.Fill (tickets, "Item");
-				foreach (DataRow row in tickets.Tables["Item"].Rows) {
-					products.Add (row [0].ToString ());
+
+		public int checkDueDate(string email){
+			try{
+				MySqlConnection sqlconn;
+				string connsqlstring = "Database=pbcareMySQL;Data Source=us-cdbr-azure-west-c.cloudapp.net;User Id=b2aa2cc8b1637c;Password=b1aa0157; charset=utf8";
+
+				sqlconn = new MySqlConnection (connsqlstring);
+				System.Diagnostics.Debug.WriteLine (sqlconn.ToString ());
+				sqlconn.Open ();
+
+				String lastIDCmmd = "SELECT email FROM pbcaremysql.PregnancyDuedateTable where email = '" + email + "'";
+				MySqlCommand sqlcmd = new MySqlCommand (lastIDCmmd, sqlconn);
+				var result = sqlcmd.ExecuteScalar ();
+				System.Diagnostics.Debug.WriteLine (lastIDCmmd);
+				if(result != null ){
+					sqlconn.Close();
+					return 0;
+				}else{
+					return 1 ;
 				}
-
-				sqlconn.Close ();
-			} catch (Exception e) {
-				Console.Write (e.Message);
+			} catch (Exception ex) {
+				return 2;
 			}
-			return products;
 		}
-	}
-	*/
-}
+			
+		public int addDueDate(string email , string date){
 
+
+			try{
+				MySqlConnection sqlconn;
+				string connsqlstring = "Database=pbcareMySQL;Data Source=us-cdbr-azure-west-c.cloudapp.net;User Id=b2aa2cc8b1637c;Password=b1aa0157; charset=utf8";
+
+				sqlconn = new MySqlConnection (connsqlstring);
+				System.Diagnostics.Debug.WriteLine (sqlconn.ToString ());
+				sqlconn.Open ();
+				try{
+					string lastIDCmmd = "insert into PregnancyDuedateTable(email, dueDate)" +
+						"values ('" +email+"' , '"+date+"') \n "; 
+					
+					MySqlCommand sqlcmd = new MySqlCommand (lastIDCmmd, sqlconn);
+					sqlcmd.ExecuteScalar ();
+					System.Diagnostics.Debug.WriteLine (lastIDCmmd);
+
+				}catch(MySqlException ex){
+					return 2;
+				}
+				sqlconn.Close ();	
+				return 1;
+
+				}catch (Exception ex) {
+					System.Diagnostics.Debug.WriteLine ("slslslsl  : " + ex.ToString());
+					return 0;
+				}	
+		}
+
+		public int removeDueDate(string email){
+			try{
+				MySqlConnection sqlconn;
+				string connsqlstring = "Database=pbcareMySQL;Data Source=us-cdbr-azure-west-c.cloudapp.net;User Id=b2aa2cc8b1637c;Password=b1aa0157; charset=utf8";
+
+				sqlconn = new MySqlConnection (connsqlstring);
+				System.Diagnostics.Debug.WriteLine (sqlconn.ToString ());
+				sqlconn.Open ();
+				try{
+					string lastIDCmmd = "DELETE FROM PregnancyDuedateTable WHERE email = '"+ email +"'"; 
+
+					MySqlCommand sqlcmd = new MySqlCommand (lastIDCmmd, sqlconn);
+					sqlcmd.ExecuteScalar ();
+					System.Diagnostics.Debug.WriteLine (lastIDCmmd);
+
+				}catch(MySqlException ex){
+					return 2;
+				}
+				sqlconn.Close ();	
+				return 1;
+
+			}catch(MySqlException ex){
+				System.Diagnostics.Debug.WriteLine ("slslslsl 3 : " + ex.ToString ());
+				return 2;
+
+			} catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine ("slslslsl  : " + ex.ToString());
+				return 0;
+			}	
+		}
+
+		public string getDueDate(string email){
+			try{
+				MySqlConnection sqlconn;
+				string connsqlstring = "Database=pbcareMySQL;Data Source=us-cdbr-azure-west-c.cloudapp.net;User Id=b2aa2cc8b1637c;Password=b1aa0157; charset=utf8";
+
+				sqlconn = new MySqlConnection (connsqlstring);
+				System.Diagnostics.Debug.WriteLine (sqlconn.ToString ());
+				sqlconn.Open ();
+
+				String lastIDCmmd = "SELECT dueDate FROM pbcaremysql.PregnancyDuedateTable where email = '" + email + "'";
+				MySqlCommand sqlcmd = new MySqlCommand (lastIDCmmd, sqlconn);
+				var result = sqlcmd.ExecuteScalar ();
+				System.Diagnostics.Debug.WriteLine (lastIDCmmd);
+				if(result != null ){
+					sqlconn.Close();
+					return result.ToString();
+				}else{
+					return "False" ;
+				}
+			} catch (Exception ex) {
+				return "False2";
+			}
+		}
+
+	}
+}

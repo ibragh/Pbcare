@@ -105,6 +105,8 @@ namespace pbcare
 					pbcareApp.u.isPregnant = 0;
 					pbcareApp.u.Email = null;
 					Application.Current.MainPage = new NavigationPage (new LogInPage ());
+				} else {
+					Locked = false; 
 				}
 			} 
 		}
