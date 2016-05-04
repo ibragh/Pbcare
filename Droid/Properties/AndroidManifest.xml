@@ -22,7 +22,7 @@
 	<uses-permission android:name="android.permission.BIND_REMOTEVIEWS" />
 	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
-	<application android:label="Pbcare" android:icon="@drawable/infologo"></application>
+	<application android:icon="@drawable/infologo" android:label="pbcare"></application>
 	<!-- <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 -->
 </manifest>

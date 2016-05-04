@@ -1,28 +1,44 @@
 ﻿<Properties StartupItem="Droid\pbcare.Droid.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.047b5bf7" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="pbcare\ISQLite\DatabaseClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid\Properties\AndroidManifest.xml">
     <Files>
-      <File FileName="Droid\DBcon_Droid.cs" Line="95" Column="13" />
-      <File FileName="iOS\MySQL_DB_iOS.cs" Line="1" Column="1" />
-      <File FileName="pbcare\ISQLite\DatabaseClass.cs" Line="142" Column="26" />
-      <File FileName="pbcare\LogInPage.cs" Line="75" Column="45" />
-      <File FileName="pbcare\ISQLite\DBRemoteConnection.cs" Line="8" Column="3" />
+      <File FileName="Droid\DBcon_Droid.cs" Line="11" Column="37" />
+      <File FileName="pbcare\ISQLite\DatabaseClass.cs" Line="46" Column="49" />
+      <File FileName="pbcare\LogInPage.cs" Line="129" Column="44" />
+      <File FileName="pbcare\ISQLite\DBRemoteConnection.cs" Line="15" Column="3" />
       <File FileName="iOS\Info.plist" Line="1" Column="1" />
       <File FileName="pbcare\Setting\arduino_bt.cs" Line="1" Column="1" />
       <File FileName="Droid\Bth.cs" Line="1" Column="1" />
       <File FileName="pbcare\WebsiteView\WebsitePage.cs" Line="1" Column="1" />
-      <File FileName="pbcare\SignUpPage.cs" Line="104" Column="35" />
+      <File FileName="pbcare\SignUpPage.cs" Line="104" Column="13" />
+      <File FileName="pbcare\Baby\BabyPage.cs" Line="121" Column="5" />
+      <File FileName="pbcare\Pregnancy\AddPregPage.cs" Line="94" Column="12" />
+      <File FileName="pbcare\pbcareMainPage.cs" Line="19" Column="69" />
+      <File FileName="pbcare\Setting\SettingPage.cs" Line="133" Column="5" />
+      <File FileName="pbcare\Pregnancy\PregnancyPage.cs" Line="5" Column="26" />
+      <File FileName="pbcare\pbcareApp.cs" Line="15" Column="38" />
+      <File FileName="pbcare\ISQLite\User.cs" Line="1" Column="1" />
+      <File FileName="iOS\MySQL_DB_iOS.cs" Line="1" Column="1" />
+      <File FileName="pbcare\Properties\AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="Droid\Properties\AndroidManifest.xml" Line="26" Column="60" />
+      <File FileName="Droid\Properties\AssemblyInfo.cs" Line="8" Column="34" />
+      <File FileName="Droid\Resources\Resource.designer.cs" Line="1" Column="1" />
+      <File FileName="Droid\Assets\AboutAssets.txt" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="pbacre" expanded="True">
             <Node name="pbcare" expanded="True">
-              <Node name="ISQLite" expanded="True">
-                <Node name="DatabaseClass.cs" selected="True" />
-              </Node>
+              <Node name="References" expanded="True" />
             </Node>
-            <Node name="pbcare.Droid" expanded="True" />
+            <Node name="pbcare.Droid" expanded="True">
+              <Node name="References" expanded="True" />
+              <Node name="Properties" expanded="True">
+                <Node name="AndroidManifest.xml" selected="True" />
+              </Node>
+              <Node name="Resources" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
